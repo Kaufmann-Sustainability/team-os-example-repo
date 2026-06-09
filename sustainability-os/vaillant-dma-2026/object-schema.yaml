@@ -83,6 +83,9 @@ objekt_typen:
   annual-plan:                  # Jahres-Planungs-Layer (#12/#14)
     pflichtfelder: [jahr]
     beziehungen: [plans]
+  dependency:                   # Abhängigkeit von natürl./sozialem Kapital (DMA Sheet 2)
+    pflichtfelder: []
+    beziehungen: []
 
 # --- Beziehungs-Vokabular: erlaubte Kante -> erlaubte Ziel-Typen ---
 # Eine Kante, die hier nicht steht, ist verboten. Eine Kante auf einen

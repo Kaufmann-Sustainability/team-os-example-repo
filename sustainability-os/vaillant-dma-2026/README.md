@@ -6,12 +6,13 @@
 > und Demo-Daten nicht vermischen.
 
 ## Inhalt
-- **120 wesentliche IROs** (`iro-*`) — alle mit `Material? = Ja` aus der Bewertung.
-- **71 Themen** (`topic-*`) — je Kombination aus ESRS-Standard + Sub-Thema, dem IROs angehören.
-- **1 `decision-dma-2026`** — append-only Jahres-Record (`affects` → alle 71 Themen).
+- **170 IROs** (`iro-*`) — 120 wesentlich + 50 nicht-wesentlich (Letztere als Ausschluss-Begründung, prüfungsrelevant).
+- **89 Themen** (`topic-*`) — je ESRS-Standard + Sub-Thema; 71 wesentlich, 18 nicht-wesentlich (`status`).
+- **34 Dependencies** (`dependency-*`) — Abhängigkeiten von natürl./sozialem Kapital je Standard (DMA Sheet 2), mit R/O-Relevanz.
+- **1 `decision-dma-2026`** — append-only Jahres-Record (`affects` → alle 89 Themen).
 - **1 `methodology-dma-2026`**, **1 `person-dma-lead`** (Platzhalter-Owner).
 
-**194 Objekte, 433 Kanten, Validator grün.**
+**296 Objekte, Validator grün.**
 
 ## So wurde es erzeugt (reproduzierbar)
 ```bash

@@ -121,8 +121,27 @@ def main():
         f"{len(topics)} Themen ({n_mat_topics} wesentlich, {len(topics)-n_mat_topics} nicht wesentlich) "
         f"über die ESRS-Standards E1-E5, ES, G1, S1-S4.")
 
+    # Sheet 2: Abhängigkeiten von natürlichem/sozialem Kapital je Standard
+    ndep, seen = 0, {}
+    for r in wb[wb.sheetnames[1]].iter_rows(values_only=True):
+        c0 = str(r[0]).strip() if r and r[0] else ""
+        if not re.fullmatch(r"(ES|E\d|S\d|G\d)", c0) or len(r) < 2 or not r[1]:
+            continue
+        ressource = str(r[1]).strip()
+        seen[c0] = seen.get(c0, 0) + 1
+        did = f"dependency-{slug(c0)}-{seen[c0]:02d}-{slug(ressource, 26)}"
+        write(did, {
+            "id": did, "type": "dependency", "owner": "person-dma-lead", "status": "erfasst",
+            "stand": STAND, "vertraulichkeit": "intern", "esrs_bezug": c0,
+            "ressource": q(ressource), "relevanz": q(r[3] if len(r) > 3 else "")},
+            f"# Abhängigkeit: {ressource}\n\n**Standard:** {c0} · "
+            f"**Relevanz (R/O):** {r[3] if len(r) > 3 and r[3] else '—'}\n\n"
+            f"{r[2] if len(r) > 2 and r[2] else '—'}")
+        ndep += 1
+
     print(f"Importiert: {len(topics)} Themen ({n_mat_topics} wesentlich) + {len(rows)} IROs "
-          f"({n_mat} wesentlich) + 3 Stamm = {len(topics)+len(rows)+3} Objekte")
+          f"({n_mat} wesentlich) + {ndep} Dependencies + 3 Stamm "
+          f"= {len(topics)+len(rows)+ndep+3} Objekte")
 
 
 if __name__ == "__main__":
