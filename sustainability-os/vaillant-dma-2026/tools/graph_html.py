@@ -28,9 +28,12 @@ VOCAB = {"has_target","has_kpi","has_initiative","has_iro","measured_by","suppor
 def load():
     objs = {}
     for p in (ROOT / "objects").glob("*.md"):
-        m = FM.search(p.read_text(encoding="utf-8"))
+        txt = p.read_text(encoding="utf-8")
+        m = FM.search(txt)
         if m:
             d = yaml.safe_load(m.group(1)) or {}
+            h = re.search(r"(?m)^#\s+(.+)", txt)
+            d["_h"] = h.group(1).strip() if h else ""
             objs[d.get("id", p.stem)] = d
     return objs
 
@@ -64,11 +67,7 @@ def main():
     groups = sorted({grp(o) for o in objs.values()})
     nodes = []
     for oid, o in objs.items():
-        sub = ""
-        mlab = re.search(r"#\s*(?:Thema|IRO[^:]*|Begriff|Ziel|Abhängigkeit)?:?\s*(.+)", o.get("_b", "")) if False else None
-        label = o.get("sub_thema") or oid.split("-", 1)[-1]
-        if isinstance(label, str):
-            label = label.strip('"')
+        label = o.get("_h") or oid
         title = f"{oid}  ·  {o.get('type')}"
         if o.get("esrs_bezug"): title += f"  ·  {o['esrs_bezug']}"
         if o.get("type") == "iro":
@@ -76,13 +75,14 @@ def main():
         if o.get("type") == "target":
             title += f"  ·  {o.get('baseline_wert')}→{o.get('zielwert')} {o.get('einheit','')}"
         nodes.append({"id": oid, "t": o.get("type"), "g": grp(o), "d": deg[oid],
-                      "l": str(label)[:24], "title": title,
+                      "l": str(label)[:30], "title": title,
                       "mat": str(o.get("wesentlich")).strip('"').lower() != "nein"})
 
-    data = {"nodes": nodes, "links": links, "groups": groups}
+    types = sorted({n["t"] for n in nodes})
+    data = {"nodes": nodes, "links": links, "groups": groups, "types": types}
     n_obj, n_edge = len(nodes), len(links)
     title = f"{ROOT.name} — Objektgraph"
-    sub = (f"{n_obj} Objekte · {n_edge} Kanten · Farbe = Gruppe · "
+    sub = (f"{n_obj} Objekte · {n_edge} Kanten · Farbe = Objektklasse (Topic/IRO/Ziel/KPI/Policy/Initiative…) · "
            f"KLICK auf einen Knoten = nur dessen Umfeld zeigen (Klick auf Hintergrund = zurück) · ziehen · scroll=zoom · hover=Details")
     htmldoc = TEMPLATE.replace("__DATA__", json.dumps(data)).replace("__TITLE__", html.escape(title)).replace("__SUB__", html.escape(sub))
     (OUT / "graph.html").write_text(htmldoc, encoding="utf-8")
@@ -111,13 +111,19 @@ const PALETTE=["#e74c3c","#e67e22","#f1c40f","#2ecc71","#1abc9c","#3498db","#9b5
 const cv=document.getElementById('c'),ctx=cv.getContext('2d'),tip=document.getElementById('tip');
 let W,H;function resize(){W=cv.width=innerWidth;H=cv.height=innerHeight;}resize();addEventListener('resize',resize);
 const N=DATA.nodes,L=DATA.links,G=DATA.groups;
-const color={};G.forEach((g,i)=>color[g]=PALETTE[i%PALETTE.length]);
+const T=DATA.types;
+const TYPECOL={topic:"#3498db",iro:"#e67e22",target:"#2ecc71",kpi:"#1abc9c",policy:"#9b59b6",
+initiative:"#e74c3c",dependency:"#95a5a6",decision:"#f1c40f",methodology:"#e84393",person:"#7f8c8d",
+"audit-finding":"#c0392b",finding:"#d35400",disclosure:"#2980b9",datapoint:"#636e72",evidence:"#8395a7",
+control:"#576574",budget:"#27ae60","emission-factor":"#16a085",term:"#a29bfe",threshold:"#fd79a8",
+stakeholder:"#fdcb6e","annual-plan":"#00cec9"};
+function tcol(t){return TYPECOL[t]||"#bbb";}
 const cx=()=>W/2,cy=()=>H/2,Rr=()=>Math.min(W,H)*0.36;
 const anchor={};G.forEach((g,i)=>{const a=2*Math.PI*i/G.length;anchor[g]=[()=>cx()+Rr()*Math.cos(a),()=>cy()+Rr()*Math.sin(a)];});
 const byId={};N.forEach(n=>{byId[n.id]=n;const[ax,ay]=anchor[n.g];n.x=ax()+(Math.random()-.5)*140;n.y=ay()+(Math.random()-.5)*140;n.vx=0;n.vy=0;n.r=3+Math.sqrt(n.d)*1.4;});
 // Legende
-const lg=document.getElementById('legend');G.forEach(g=>{const d=document.createElement('div');
-d.innerHTML='<i style="background:'+color[g]+'"></i>'+g;lg.appendChild(d);});
+const lg=document.getElementById('legend');T.forEach(t=>{const d=document.createElement('div');
+d.innerHTML='<i style="background:'+tcol(t)+'"></i>'+t;lg.appendChild(d);});
 const REP=900,LEN=34,SPR=0.025,GG=0.012,CG=0.0018,DAMP=0.84;let alpha=1;
 function tick(){
  for(let i=0;i<N.length;i++){const a=N[i];for(let j=i+1;j<N.length;j++){const b=N[j];
@@ -138,7 +144,7 @@ function draw(){
  ctx.strokeStyle=focusSet?"rgba(150,170,190,0.35)":"rgba(120,140,160,0.14)";ctx.lineWidth=0.7;ctx.beginPath();
  L.forEach(l=>{if(focusSet&&!(focusSet.has(l.s)&&focusSet.has(l.t)))return;
   const a=byId[l.s],b=byId[l.t];ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);});ctx.stroke();
- N.forEach(n=>{if(!vis(n))return;ctx.beginPath();ctx.arc(n.x,n.y,n.r,0,6.283);ctx.fillStyle=color[n.g];
+ N.forEach(n=>{if(!vis(n))return;ctx.beginPath();ctx.arc(n.x,n.y,n.r,0,6.283);ctx.fillStyle=tcol(n.t);
   ctx.globalAlpha=n.mat?1:0.45;ctx.fill();ctx.globalAlpha=1;
   if(n.r>6||focusSet){ctx.strokeStyle=(n.id===focusId)?"#fff":"rgba(255,255,255,0.6)";
    ctx.lineWidth=(n.id===focusId)?2:0.8;ctx.stroke();}});
