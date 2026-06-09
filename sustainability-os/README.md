@@ -16,6 +16,8 @@ Alle Inhalte beziehen sich auf **Nordmark Industrie GmbH**, einen fiktiven mitte
 
 ## Einstieg
 
+- **Zum ersten Mal hier / Feedback geben?** → [`TOUR.md`](TOUR.md) (geführte 5-Minuten-Tour)
+- **Wie bleibt das OS lebendig?** → [`MAINTAINING.md`](MAINTAINING.md) (Pflege & Beiträge)
 - **Neu im Team?** → [`team/onboarding-guides/onboarding-general.md`](team/onboarding-guides/onboarding-general.md)
 - **Überblick über alles?** → [`CLAUDE.md`](CLAUDE.md) (Root-Wegweiser)
 - **Eine bestimmte Initiative?** → [`sustainability-development/initiative-index.yaml`](sustainability-development/initiative-index.yaml)
