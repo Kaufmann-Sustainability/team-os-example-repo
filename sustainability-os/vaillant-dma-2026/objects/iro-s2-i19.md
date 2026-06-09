@@ -1,0 +1,30 @@
+---
+id: iro-s2-i19
+type: iro
+owner: person-dma-lead
+status: final
+stand: 2026-06-09
+review_zyklus: P12M
+vertraulichkeit: intern
+esrs_bezug: S2
+iro_typ: Impact-negativ
+impact_wesentlichkeit: mittel
+finanz_wesentlichkeit: niedrig
+wesentlich: "ja"
+impact_score: 3
+financial_score: 0
+iro_nr: "S2-I19"
+sub_thema: "Maßnahmen gegen Gewalt"
+concerns: [topic-s2-massnahmen-gegen-gewalt]
+scored_under: [methodology-dma-2026]
+---
+
+# IRO S2-I19: Maßnahmen gegen Gewalt
+
+**Typ:** I- · **Aktuell/Potenziell:** Potenziell · **Wertschöpfungskette:** Upstream · **Zeithorizont:** Mittel
+
+## Beschreibung
+Gewaltrisiko an vorgelagerten Bergbau-/Konfliktgebietsstandorten (DRC, Teile LatAm); kleine und mittlere Installateursbetriebe niedrigeres Risiko.
+
+## Begründung der Wesentlichkeit
+Menschenrechts-Vorrang; §34 Global Witness 2024 (IG1 §120).

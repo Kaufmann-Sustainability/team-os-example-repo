@@ -8,9 +8,11 @@ on:
   push:
     paths:
       - 'sustainability-os/object-model/**'
+      - 'sustainability-os/vaillant-dma-2026/**'
   pull_request:
     paths:
       - 'sustainability-os/object-model/**'
+      - 'sustainability-os/vaillant-dma-2026/**'
   workflow_dispatch:        # manuell auslösbar
 
 jobs:
@@ -23,5 +25,7 @@ jobs:
           python-version: '3.12'
       - name: PyYAML installieren
         run: pip install pyyaml
-      - name: Objektgraph validieren
+      - name: Objektgraph validieren (Nordmark)
         run: python3 sustainability-os/object-model/tools/validate.py
+      - name: Objektgraph validieren (Vaillant DMA 2026)
+        run: python3 sustainability-os/vaillant-dma-2026/tools/validate.py
