@@ -61,6 +61,32 @@ Frage zu Beginn, falls unklar: **„Möchtest du etwas *definieren* (Begriff/Ken
 
 ## Modus B — Ziel
 
+### Schritt 0 — Kontext über den Object-Model-Pack laden (wenn das Objektmodell genutzt wird)
+
+Sofern der Object-Model-Spike im Einsatz ist, **sammle den Kontext nicht von Hand**,
+sondern löse den Context-Pack
+`sustainability-os/object-model-spike/context-packs/target-setting.pack.yaml`
+für das betroffene Thema auf. Konkret:
+
+1. **Topic-Objekt öffnen** (`objects/topic-<thema>.md`) und seine Kanten ablaufen:
+   `has_kpi` (aktueller Wert + Trend), `has_target` (bestehende Ziele → Konsistenz!),
+   `has_initiative → has_budget` (Hebel + Budget-Restriktion). So kommen die
+   bestehenden Ziele/KPIs **frisch aus dem Graphen** statt aus einer kopierten Liste.
+2. **Eskalations-Klausel anwenden (Pflicht):** Laufe
+   `target → measured_by → kpi → at_risk_from → finding WHERE status != geschlossen`
+   ab. Findet sich eine **offene Finding, die Baseline oder Metrik berührt**, dann gilt:
+   - ⛔ **Kein Ziel auf kippeliger Baseline bestätigen.** Weise auf die Finding hin
+     und schlage — passend zur Baseline-Regel unten — ein **Fundament-Ziel** vor
+     (*„Baseline für <Metrik> nach Korrektur von <finding> neu berechnen"*), bevor ein
+     Reduktionsziel fixiert wird.
+   - Beispiel im Spike: `target-sbti-scope3-2030` zieht über diese Kette
+     `finding-2026-05-12-spend-based-overcount` herein → Baseline 2024 erst neu rechnen.
+3. **Vertraulichkeit:** Der Pack blendet Objekte oberhalb der Freigabe des Konsumenten
+   aus — übernimm diese Grenze (z. B. Budget nicht an Externe weitergeben).
+
+Danach weiter mit den Pflichtfeldern. Ergebnis bleibt der kanonische Eintrag in
+`targets.yaml` — der Pack liefert nur den **richtigen, lückenlosen Kontext** dafür.
+
 ### Pflichtfelder
 | Feld | Regel |
 |------|-------|
@@ -115,7 +141,7 @@ Wenn die Person ein Feld nicht weiß (z. B. ESRS-Bezug), schlage einen Wert vor 
 - [ ] Einem wesentlichen Thema zugeordnet (oder Hinweis, dass keins passt)
 - [ ] Owner gesetzt (kein Platzhalter)
 - [ ] **Modus A:** Definition eindeutig; Kennzahl → Einheit + Berechnung vorhanden
-- [ ] **Modus B:** Baseline (Wert + Jahr) vorhanden; Metrik mit Einheit; Zieljahr > Baselinejahr; gegen Roadmap plausibilisiert
+- [ ] **Modus B:** Baseline (Wert + Jahr) vorhanden; Metrik mit Einheit; Zieljahr > Baselinejahr; gegen Roadmap plausibilisiert; **keine offene Finding kippt die Baseline** (Eskalations-Check aus Schritt 0)
 - [ ] In das **kanonische Register** geschrieben (nicht in ein beliebiges Dokument)
 - [ ] Bei Zielen: Verweis auf einzahlende Initiative gesetzt (oder „noch keine" vermerkt)
 

@@ -1,0 +1,27 @@
+name: Validate Object Model
+
+# Grundproblem E maschinell durchgesetzt: Bei jeder Änderung am Objektmodell
+# prüft der Validator referenzielle Integrität, Pflichtfelder, Ziel-Regeln und
+# Frische. Tote Kante oder fehlendes Pflichtfeld -> CI rot (exit 1).
+
+on:
+  push:
+    paths:
+      - 'sustainability-os/object-model-spike/**'
+  pull_request:
+    paths:
+      - 'sustainability-os/object-model-spike/**'
+  workflow_dispatch:        # manuell auslösbar
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: PyYAML installieren
+        run: pip install pyyaml
+      - name: Objektgraph validieren
+        run: python3 sustainability-os/object-model-spike/tools/validate.py
