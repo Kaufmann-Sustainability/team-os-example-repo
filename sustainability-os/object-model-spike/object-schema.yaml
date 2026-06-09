@@ -19,7 +19,7 @@ vertraulichkeit_stufen: [oeffentlich, intern, vertraulich, streng-vertraulich]
 objekt_typen:
   topic:
     pflichtfelder: []
-    beziehungen: [has_target, has_kpi, has_initiative]
+    beziehungen: [has_target, has_kpi, has_initiative, has_iro]
   target:
     pflichtfelder: [baseline_wert, baseline_jahr, zielwert, zieljahr, einheit, geltungsbereich]
     beziehungen: [measured_by, supported_by, approved_by, at_risk_from]
@@ -31,7 +31,7 @@ objekt_typen:
     beziehungen: [has_budget, supports]
   decision:
     pflichtfelder: [datum, entscheidung]
-    beziehungen: [decided_by, affects]
+    beziehungen: [decided_by, affects, based_on, applies, informed_by]
   budget:
     pflichtfelder: [betrag, waehrung, jahr]
     beziehungen: []
@@ -39,6 +39,19 @@ objekt_typen:
     pflichtfelder: [datum]
     beziehungen: [affects]
   person:
+    pflichtfelder: []
+    beziehungen: []
+  # --- DMA-Slice: Wesentlichkeitsanalyse ---
+  iro:                          # Impact / Risk / Opportunity — Kernobjekt der DMA
+    pflichtfelder: [iro_typ, impact_wesentlichkeit, finanz_wesentlichkeit, wesentlich]
+    beziehungen: [concerns, informed_by, scored_under]
+  stakeholder:                  # interne/externe Partei, deren Input einfließt
+    pflichtfelder: [stakeholder_typ]
+    beziehungen: []             # owner = interne:r Beziehungs-Verantwortliche:r (person)
+  methodology:                  # Governance: wie wurde bewertet (Begründungs-Layer, #3)
+    pflichtfelder: []
+    beziehungen: []
+  threshold:                    # Governance: ab wann gilt etwas als wesentlich
     pflichtfelder: []
     beziehungen: []
 
@@ -57,6 +70,13 @@ beziehungs_vokabular:
   affects:      [target, kpi, topic]
   at_risk_from: [finding]
   has_budget:   [budget]
+  # --- DMA-Slice ---
+  has_iro:      [iro]
+  concerns:     [topic]
+  informed_by:  [stakeholder]
+  scored_under: [methodology]
+  based_on:     [methodology]
+  applies:      [threshold]
   # sourced_from darf auf eine EXTERNE Datei im Repo zeigen (kein Objekt),
   # z. B. das Inventar. validate.py prüft hier nur: Pfad existiert.
   sourced_from: [_extern_]

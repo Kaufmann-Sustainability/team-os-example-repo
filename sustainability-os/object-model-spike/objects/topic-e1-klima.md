@@ -12,6 +12,7 @@ quelle: sustainability-development/programs/strategy/materiality/double-material
 has_target: [target-sbti-scope3-2030]
 has_kpi: [kpi-scope3-intensitaet]
 has_initiative: [initiative-scope3-supplier-engagement]
+has_iro: [iro-e1-klimawandel]
 ---
 
 # Thema: E1 Klima

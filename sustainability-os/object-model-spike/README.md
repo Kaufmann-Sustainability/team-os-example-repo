@@ -1,10 +1,13 @@
-# Object-Model Spike — Vertikaler Durchstich „Target-Setting"
+# Object-Model Spike — Vertikale Durchstiche „Target-Setting" & „DMA"
 
 > **Was das ist:** Ein bewusst kleiner, *vertikaler* Proof-of-Concept. Statt alle
-> Themen horizontal zu modellieren, sticht dieser Spike **eine Aufgabe komplett
-> durch** — *ein Ziel für ein Thema setzen* — über alle vier Schichten des
-> Objektmodells. Ziel: an echtem Material sehen, **wo das Modell trägt und wo es hakt**,
-> bevor groß umgebaut wird.
+> Themen horizontal zu modellieren, sticht dieser Spike **ganze Aufgaben komplett
+> durch** — über alle vier Schichten des Objektmodells. Ziel: an echtem Material sehen,
+> **wo das Modell trägt und wo es hakt**, bevor groß umgebaut wird.
+>
+> Aktuell zwei Durchstiche:
+> 1. **Target-Setting** — *ein Ziel für ein Thema setzen* (strukturlastig).
+> 2. **DMA** — *Wesentlichkeit eines Themas bestimmen/verteidigen* (narrativlastig, härtere Probe).
 >
 > **Status:** Spike / Diskussionsgrundlage. Bewusst **außerhalb** der normalen
 > `CLAUDE.md`-Ordnerkonvention und **nicht** im Doc-Index verdrahtet — er konkurriert
@@ -65,6 +68,33 @@ Heute baut der Skill (Modus B — Ziel setzen) seinen Kontext implizit. Mit dem 
 → Der Skill hört auf, Kontext fest einzubauen; er fragt den Graphen. Genau hier treffen
 sich Hannahs „minimal context" und das Objektmodell.
 
+## Zweiter Durchstich: DMA (die härtere Probe)
+Die DMA stresst das Modell bewusst stärker — und es hält. Was sie zeigt:
+
+- **Narrativ-in-Objekten trägt.** Die Wesentlichkeits-*Begründung* (Impact/finanziell)
+  lebt als Fließtext im Body der `iro-…`-Objekte; die *Scores* als strukturierte Felder
+  (`impact_wesentlichkeit`, `finanz_wesentlichkeit`, `wesentlich`). Beides nebeneinander
+  funktioniert — Prosa für das Warum, Felder für die Query.
+- **Das „nicht wesentlich"-Urteil bekommt eine Heimat.** `topic-e3-wasser` + `iro-e3-wasser`
+  existieren als vollwertige Objekte *mit Begründung* — denn Auditoren fechten gerade die
+  **Ausschlüsse** an. Im alten OS gab es für ausgeschlossene Themen schlicht keinen Ort.
+- **Neue Objekt-Typen, gleiches Muster:** `iro`, `stakeholder`, `methodology`, `threshold`.
+  Methodik + Schwellwert als eigene Objekte machen *„nach welcher Regel wurde entschieden?"*
+  in einem Hop beantwortbar (Begründungs-Layer, Grundproblem C/D).
+- **Themen-Objekte akkumulieren Kanten über Aufgaben hinweg:** `topic-e1-klima` trägt jetzt
+  `has_target` (aus Slice 1) **und** `has_iro` (aus Slice 2) — ein Objekt, viele Aufgaben.
+- **Grundproblem B wird sichtbar:** `topic-e2-umwelt` ist wesentlich, aber **hohl**
+  (nur `has_iro`, kein `has_target`). Eine Query „wesentlich ohne Ziel" findet die Lücke sofort.
+
+### DMA-Eskalations-Klausel (anderer Fall als Target-Setting)
+Bei der DMA ist der teure Fehler nicht „zu viel Kontext", sondern ein **stillschweigender
+Ausschluss**. Der `dma.pack` liefert deshalb bei einem *nicht-wesentlichen* Thema **immer**
+(a) die Ausschluss-Begründung und (b) jeden **widersprechenden** Stakeholder-Input mit.
+Konkret: Für `topic-e3-wasser` zieht er den **Investoren-Dissens** (Wasser als aufkommendes
+Risiko) herein — damit der Ausschluss bei der nächsten Prüfung verteidigt oder revidiert
+wird, statt im Stillen zu veralten. Das `review_zyklus: P6M` auf dem IRO sorgt zusätzlich
+dafür, dass der Refresh-Sweep ihn früher wieder hochspült.
+
 ## Die Loop-/Refresh-Frage (Pflege als Feature)
 Siehe `triggers/quarterly-refresh.md` + `context-packs/refresh-sweep.pack.yaml`:
 Ein **geplanter Trigger** (nicht `/loop` — Container sind ephemer) fährt quartalsweise
@@ -79,9 +109,10 @@ python3 tools/validate.py        # erwartet: ✓ Integrität OK
 Zum Gegentest: in einem Objekt eine Kanten-ID verfälschen → `validate.py` meldet die tote Kante (exit 1).
 
 ## Wo es (ehrlich) hakt — was der Spike sichtbar macht
-- **Narrativ-in-Objekten:** Funktioniert hier (Markdown-Body trägt Begründung/Text), aber
-  je länger der Text, desto mehr fühlt sich das Frontmatter wie ein Datenbank-Korsett an.
-  Disclosure-Wortlaut (#19) ist noch nicht modelliert.
+- **Narrativ-in-Objekten:** Durch die DMA getestet — **hält**. Body = Begründung (Prosa),
+  Frontmatter = Scores/Kanten. Caveat: Sehr lange, mehrteilige Narrative (volle DMA-Doku,
+  Methodik-Handbuch) wollen perspektivisch ein eigenes Doc-Objekt, das das IRO *referenziert*,
+  statt alles in einen Body zu pressen. Disclosure-Wortlaut (#19) ist noch nicht modelliert.
 - **Views sind nicht gratis:** `my-work.view.yaml` ist eine *Spezifikation* — sie zu
   rendern braucht Tooling (oder die KI generiert sie on demand). Im Repo gibt es keine
   Klick-Oberfläche.
