@@ -27,6 +27,9 @@ Fast alle Punkte fallen unter ein Dach: **strukturierte Metadaten + Single Sourc
 | 13 | Stakeholder-Ansprechpersonen nicht strukturiert; Accounts uneinheitlich befüllt | Mittel | Offen |
 | 14 | Kein Record durchgeführter Maßnahmen (Aktivitäts-/Done-Log fehlt) | Hoch | Offen |
 | 15 | Wesentliche Themen außer E1 nicht operationalisiert (Daten-/Ziel-Lücke) | Hoch | Offen |
+| 16 | Kein Artefakt-Typ „Policies" (ESRS-Pflicht) | Hoch | Offen |
+| 17 | Kein Nachweis-/Prüfspur-Layer (Disclosure ↔ Beleg) | Hoch | Offen |
+| 18 | Kein Audit-/Assurance-Feedback-Record (intern & extern) | Mittel | Offen |
 
 ---
 
@@ -104,6 +107,22 @@ Fast alle Punkte fallen unter ein Dach: **strukturierte Metadaten + Single Sourc
 **Problem:** Die Wesentlichkeitsanalyse deklariert sechs wesentliche Themen (E1, E2, E5, S1, S2, G1), aber nur **E1 (Klima)** ist mit Daten, Metriken, Roadmap, Initiativen und Zielen hinterlegt. E2/E5/S1/S2/G1 existieren nur als Zeile im `esrs-datapoint-mapping.md` mit Status ⏳ — ohne Baseline, Metrik, Datenquelle (außer grobem Pointer), Initiative oder Ziel. Beispiel: Für E5 (Metallschrott/Kreislauf) lässt sich kein Ziel ableiten, weil keinerlei Ausgangsdaten existieren. Zudem ist die `carbon-data/`-Ebene **ausschließlich THG/Klima** — es gibt keinen Ort für nicht-klimatische Umwelt-/Sozial-Metriken.
 **Warum prinzipiell:** Das OS verspricht über die Wesentlichkeit mehr, als es trägt — für 5 von 6 wesentlichen Themen kann es keine Frage beantworten. Die Datenarchitektur ist klima-zentriert statt an den deklarierten Themen ausgerichtet.
 **Fix-Richtung:** Entweder Scope ehrlich auf Klima begrenzen, oder pro wesentlichem Thema mindestens Baseline-Metrik + Datenquelle + Owner anlegen; Datenebene über THG hinaus öffnen (z. B. `carbon-data/` → `sustainability-data/` mit Metrik-Bereichen je Thema).
+**Weitere Belege (E2-Test):** E2 ist als wesentlich deklariert, fehlt aber **komplett im Datenpunkt-Mapping** (`reporting/esrs-datapoint-mapping.md` listet E2 nicht) → Drift zwischen Wesentlichkeit und Reporting. Zudem ist der Fachbegriff „Prozessemissionen" (Kern von E2) **im Glossar nicht definiert** — die Terminologie deckt nur Klima/THG ab.
+
+### 16 — Kein Artefakt-Typ „Policies"
+**Problem:** ESRS verlangt Offenlegung von Policies je wesentlichem Thema (E1-2, E2-1, S1-1 …). Das OS hat **keinen** Policies-Bereich; im E1-Mapping verweist E1-2 nur auf „(Policy-Dok, Stub)". Für E2 etc. existiert nichts.
+**Warum prinzipiell:** Policies sind ein eigener, pflichtiger Offenlegungs- und Governance-Bestandteil — sie gehören als Artefakt-Typ ins OS, nicht als Fußnote.
+**Fix-Richtung:** `policies/`-Bereich (je Thema), referenziert aus dem Datenpunkt-Mapping.
+
+### 17 — Kein Nachweis-/Prüfspur-Layer
+**Problem:** Disclosures sind nicht mit ihren **Belegen** verknüpft (Quelldokumente, Berechnungen, Freigaben). `reporting/assurance/` ist nur als leerer Stub erwähnt. Die Frage „Wo liegen die Nachweise für E2-Angaben?" ist nicht beantwortbar.
+**Warum prinzipiell:** Limited Assurance basiert auf nachvollziehbaren Belegen je Angabe — ohne Evidence-Layer ist das OS nicht prüfsicher.
+**Fix-Richtung:** Pro Datenpunkt ein Nachweis-Verweis (Beleg/Quelle/Freigabe) im Mapping; `reporting/assurance/`-Struktur mit Prüfspur.
+
+### 18 — Kein Audit-/Assurance-Feedback-Record
+**Problem:** Es gibt keine Historie von Prüf-Feedback (internes Audit, externe Assurance-Findings). „Welches Audit-Feedback gab es letztes Jahr?" ist nicht beantwortbar.
+**Warum prinzipiell:** Audit-Findings und ihre Erledigung sind steuerungs- und prüfungsrelevant; ohne Record wiederholen sich Mängel.
+**Fix-Richtung:** `reporting/assurance/findings/` (analog zu `data-quality-findings/`), datiert, mit Status/Erledigung.
 
 ---
 
