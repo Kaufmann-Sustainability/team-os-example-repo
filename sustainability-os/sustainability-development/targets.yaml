@@ -1,0 +1,57 @@
+# Ziele-Register — kanonische Single Source of Truth für alle Nachhaltigkeitsziele.
+# Einträge werden über den `sustainability-standard`-Skill erstellt/aktualisiert.
+# Regel: kein Ziel ohne Baseline (Wert + Jahr) und ohne Metrik mit Einheit.
+# Roadmap-Bezug: programs/strategy/roadmaps/net-zero-roadmap-2030.md
+
+ziele:
+  - ziel: SBTi Near-Term Scope 1+2
+    metrik: Scope 1+2 absolut, tCO2e
+    baseline_wert: 90000
+    baseline_jahr: 2024
+    zielwert: 52000          # -42 %
+    zieljahr: 2030
+    geltungsbereich: Konzern, alle Standorte
+    esrs_bezug: E1-4
+    massnahmen_bezug: renewable-electricity-ppa, fuhrpark-elektrifizierung
+    owner: Aylin Demir
+    status: eingereicht zur Validierung
+    stand: 2026-06-09
+
+  - ziel: SBTi Near-Term Scope 3
+    metrik: Scope 3 Intensität, kgCO2e/t Produkt
+    baseline_wert: 1000
+    baseline_jahr: 2024
+    zielwert: 750            # -25 %
+    zieljahr: 2030
+    geltungsbereich: Konzern, Kat. 1 priorisiert
+    esrs_bezug: E1-4
+    massnahmen_bezug: scope-3-supplier-engagement
+    owner: Jonas Fischer
+    status: eingereicht zur Validierung
+    stand: 2026-06-09
+
+  - ziel: Grünstrom-Anteil 100 %
+    metrik: Anteil erneuerbarer Strom (market-based), %
+    baseline_wert: 0
+    baseline_jahr: 2024
+    zielwert: 100
+    zieljahr: 2027
+    geltungsbereich: Alle 4 Produktionsstandorte
+    esrs_bezug: E1-5
+    massnahmen_bezug: renewable-electricity-ppa
+    owner: Aylin Demir
+    status: in Umsetzung
+    stand: 2026-06-09
+
+  - ziel: Net-Zero gesamte Wertschöpfungskette
+    metrik: Netto-THG gesamt, tCO2e
+    baseline_wert: 430000
+    baseline_jahr: 2024
+    zielwert: 0              # Restemissionen kompensiert
+    zieljahr: 2040
+    geltungsbereich: Konzern, Scope 1+2+3
+    esrs_bezug: E1-4
+    massnahmen_bezug: roadmap-gesamt
+    owner: Dr. Lena Hartmann
+    status: Commitment
+    stand: 2026-06-09

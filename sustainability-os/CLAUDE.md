@@ -50,6 +50,8 @@ Nordmark Industrie GmbH — mittelständischer Industriezulieferer (Metallverarb
 | Bereich | Datei | Beschreibung |
 |---------|-------|--------------|
 | Initiative-Index | `sustainability-development/initiative-index.yaml` | Master-Lookup — jede Initiative → Briefs, Pläne, Faktoren, Inventar, Reporting, Tickets |
+| Glossar | `sustainability-development/glossary.md` | Kanonische Definitionen aller Begriffe/Kennzahlen (Single Source of Truth) |
+| Ziele | `sustainability-development/targets.yaml` | Kanonisches Register aller Ziele (Baseline, Zielwert, Owner, ESRS-Bezug) |
 | Sustainability Development | `sustainability-development/CLAUDE.md` | Dachordner für alle Nachhaltigkeits-Artefakte |
 | Programme | `sustainability-development/programs/CLAUDE.md` | Strategie, Roadmaps, Initiativen-Briefs, Regulatorik, Stakeholder, Meetings |
 | Strategie | `sustainability-development/programs/strategy/CLAUDE.md` | Net-Zero-Strategie, Roadmaps, Wesentlichkeitsanalyse, Geschäftskontext |
@@ -62,6 +64,8 @@ Nordmark Industrie GmbH — mittelständischer Industriezulieferer (Metallverarb
 | Team | `team/CLAUDE.md` | Onboarding-Guides und Team-Ressourcen |
 
 ## Terminologie
+
+> Diese Tabelle ist eine Kurzreferenz. **Kanonische, vollständige Definitionen** stehen im Glossar: `sustainability-development/glossary.md` — gepflegt über den `sustainability-standard`-Skill (so können auch HR/Procurement konsistent Begriffe ergänzen).
 
 | Begriff | Definition |
 |---------|------------|
