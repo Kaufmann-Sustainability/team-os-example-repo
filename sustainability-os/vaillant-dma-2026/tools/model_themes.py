@@ -149,6 +149,8 @@ def main():
             topics.append((p, fm, body))
     n = 0
     for p, fm, body in topics:
+        if isinstance(fm.get("has_target"), list) and len(fm["has_target"]) > 1:
+            continue  # bereits voll/hand-modelliert -> nicht mit Template überschreiben
         tid = fm["id"]; std = str(fm["esrs_bezug"]); base_id = tid[len("topic-"):]
         h = re.search(r"# Thema:\s*(.+)", body)
         sub = (h.group(1).strip() if h else base_id)

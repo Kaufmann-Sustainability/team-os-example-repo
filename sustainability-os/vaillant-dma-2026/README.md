@@ -12,7 +12,19 @@
 - **1 `decision-dma-2026`** — append-only Jahres-Record (`affects` → alle 89 Themen).
 - **1 `methodology-dma-2026`**, **1 `person-dma-lead`** (Platzhalter-Owner).
 
-**296 Objekte, Validator grün.**
+**608 Objekte, Validator grün** (inkl. der voll gesteuerten Themen + templatisierter Rest).
+
+## Vollmodelliertes Beispiel: E1 Klimawandel-Mitigation
+Ein Bereich exemplarisch von *bewertet* zu *gesteuert* gebracht (statt Template):
+- **1 Strategie** + **2 Policies** + **5 Ziele** + **6 KPIs** + **6 Maßnahmen** (echte Rollen-Owner,
+  Budgets, verlinkte Dependencies) + **1 Grundsatz-Entscheidung**.
+- Neue Kanten: **`addresses`** (Ziel/Strategie/Policy → IRO, *many-to-many* — das Kernziel
+  „Wärmepumpen-Absatzanteil" deckt 8 IROs ab) und **`depends_on`** (Maßnahme → Dependency).
+- Konsistenz prüfbar: `python3 tools/query.py coverage topic-e1-klimawandel-mitigation`
+  (jede wesentliche IRO abgedeckt; ◐ = nur Strategie/Policy, kein Metrik-Ziel).
+- **Emergente Skills** (global, `.claude/skills/`): `iro-coverage` (IRO-Abdeckung) und
+  `measure-planning` (Maßnahme = Owner+Budget+Dependencies) — wahren die Konsistenz wie der
+  `sustainability-standard`-Skill die Baseline.
 
 ## So wurde es erzeugt (reproduzierbar)
 ```bash

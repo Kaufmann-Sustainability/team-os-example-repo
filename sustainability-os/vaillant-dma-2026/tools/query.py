@@ -35,7 +35,7 @@ KANTEN = {
     "has_target","has_kpi","has_initiative","has_iro","measured_by","supported_by",
     "approved_by","decided_by","supports","affects","at_risk_from","has_budget",
     "uses_factor","concerns","informed_by","scored_under","based_on","applies",
-    "discloses","reports","backs","covers","challenges",
+    "discloses","reports","backs","covers","challenges","addresses","depends_on","plans",
 }
 
 
@@ -204,6 +204,45 @@ def gaps(objs):
         print("  Keine Lücke — alle wesentlichen Themen haben mindestens ein Ziel.")
 
 
+# ---------- COVERAGE (emergente Konsistenz: jede wesentliche IRO von >=1 Ziel abgedeckt) ----------
+def coverage(objs, topic_id):
+    print(f"\n# IRO-Abdeckung (Konsistenz)  ({topic_id})\n")
+    topic = objs.get(topic_id)
+    if not topic:
+        sys.exit(f"Unbekanntes Topic: {topic_id}")
+    iros = [objs[i] for i in out(topic.get("has_iro", [])) if i in objs]
+    material = [i for i in iros if str(i.get("wesentlich")).strip('"').lower() != "nein"]
+    targets = [objs[t] for t in out(topic.get("has_target", [])) if t in objs]
+    # alle addresses-Kanten auf diese IROs (von Zielen vs. Strategie/Policy)
+    by_target = {i["id"]: [] for i in material}
+    by_strapol = {i["id"]: [] for i in material}
+    for o in objs.values():
+        for iid in out(o.get("addresses", [])):
+            if iid in by_target:
+                (by_target if o.get("type") == "target" else by_strapol)[iid].append(o["id"])
+    print(f"Wesentliche IROs: {len(material)} · Ziele: {len(targets)}")
+    print("\nAbdeckung je IRO  (✓ Ziel · ◐ nur Strategie/Policy · ⛔ gar nicht):")
+    nur_sp, gar = [], []
+    for i in material:
+        t, sp = by_target[i["id"]], by_strapol[i["id"]]
+        if t:
+            print(f"  ✓ {i['id']:10} ← {', '.join(t)}")
+        elif sp:
+            print(f"  ◐ {i['id']:10} ← {', '.join(sp)} (kein Metrik-Ziel)")
+            nur_sp.append(i["id"])
+        else:
+            print(f"  ⛔ {i['id']:10} ← NICHTS")
+            gar.append(i["id"])
+    orph = [t for t in targets if not out(t.get("addresses", []))]
+    print("\nKonsistenz-Befund:")
+    print("  ✓ Jede wesentliche IRO ist adressiert."
+          if not gar else f"  ⛔ Nicht adressiert: {', '.join(gar)}")
+    if nur_sp:
+        print(f"  ◐ Nur über Strategie/Policy gemanagt (bewusst? kein Metrik-Ziel): {', '.join(nur_sp)}")
+    print("  ✓ Jedes Ziel adressiert mindestens eine IRO."
+          if not orph else f"  ⛔ Orphan-Ziel(e): {', '.join(t['id'] for t in orph)}")
+
+
 # ---------- STALE ----------
 def stale(objs):
     print("\n# Frische-Sweep: überfällige Objekte\n")
@@ -245,6 +284,8 @@ def main():
         {"target-setting": pack_target_setting, "disclosure": pack_disclosure, "dma": pack_dma}[sub](objs, a[2])
     elif cmd == "my-work":
         my_work(objs, a[1])
+    elif cmd == "coverage":
+        coverage(objs, a[1])
     elif cmd == "gaps":
         gaps(objs)
     elif cmd == "stale":
