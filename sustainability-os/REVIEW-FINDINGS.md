@@ -30,6 +30,7 @@ Fast alle Punkte fallen unter ein Dach: **strukturierte Metadaten + Single Sourc
 | 16 | Kein Artefakt-Typ „Policies" (ESRS-Pflicht) | Hoch | Offen |
 | 17 | Kein Nachweis-/Prüfspur-Layer (Disclosure ↔ Beleg) | Hoch | Offen |
 | 18 | Kein Audit-/Assurance-Feedback-Record (intern & extern) | Mittel | Offen |
+| 19 | Kein Artefakt für den Berichtstext / keine Bericht-Versionierung | Mittel | Offen |
 
 ---
 
@@ -123,6 +124,11 @@ Fast alle Punkte fallen unter ein Dach: **strukturierte Metadaten + Single Sourc
 **Problem:** Es gibt keine Historie von Prüf-Feedback (internes Audit, externe Assurance-Findings). „Welches Audit-Feedback gab es letztes Jahr?" ist nicht beantwortbar.
 **Warum prinzipiell:** Audit-Findings und ihre Erledigung sind steuerungs- und prüfungsrelevant; ohne Record wiederholen sich Mängel.
 **Fix-Richtung:** `reporting/assurance/findings/` (analog zu `data-quality-findings/`), datiert, mit Status/Erledigung.
+
+### 19 — Kein Artefakt für den Berichtstext / keine Versionierung
+**Problem:** Die `reporting/`-Ebene speichert nur das Datenpunkt-**Mapping** (woher die Daten kommen), nicht den **tatsächlichen Offenlegungstext** (das publizierte Narrativ je Datenpunkt). Es gibt auch kein Jahres-Archiv publizierter Berichte. „Was war der letztjährige Berichtstext zu E1?" ist nicht beantwortbar.
+**Warum prinzipiell:** Für Jahr-zu-Jahr-Vergleich, Konsistenzprüfung, Restatement-Nachvollzug und „was haben wir letztes Jahr gesagt" braucht es den versionierten Berichtstext als eigenes Artefakt — nicht nur die Datenquellen-Verdrahtung.
+**Fix-Richtung:** `reporting/disclosures/<jahr>/` mit dem Narrativ je Datenpunkt, versioniert; Mapping verweist auf den jeweiligen Text.
 
 ---
 
