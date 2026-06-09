@@ -36,6 +36,7 @@ KANTEN = {
     "approved_by","decided_by","supports","affects","at_risk_from","has_budget",
     "uses_factor","concerns","informed_by","scored_under","based_on","applies",
     "discloses","reports","backs","covers","challenges","addresses","depends_on","plans",
+    "for_kpi","underpins","assumes","proposes","tests","remediates","for_initiative",
 }
 
 
@@ -243,6 +244,36 @@ def coverage(objs, topic_id):
           if not orph else f"  ⛔ Orphan-Ziel(e): {', '.join(t['id'] for t in orph)}")
 
 
+# ---------- KPI-STATUS (Zeitreihe: Ist-Werte, Forecast, Trend, Frische) ----------
+def kpi_status(objs, topic_id):
+    print(f"\n# KPI-Status über Zeit  ({topic_id})\n")
+    topic = objs.get(topic_id)
+    if not topic:
+        sys.exit(f"Unbekanntes Topic: {topic_id}")
+    kpis = [objs[k] for k in out(topic.get("has_kpi", [])) if k in objs]
+    vals, fcs, trs = {}, {}, {}
+    for o in objs.values():
+        for k in out(o.get("for_kpi", [])):
+            t = o.get("type")
+            (vals if t == "kpi-value" else fcs if t == "forecast" else trs if t == "trend" else {}).setdefault(k, []).append(o)
+    for kpi in kpis:
+        kid = kpi["id"]
+        vs = sorted(vals.get(kid, []), key=lambda x: x.get("jahr", 0))
+        reihe = "  ".join(f"{v.get('jahr')}:{v.get('wert')}" for v in vs) or "— keine Ist-Werte"
+        fc = "  ".join(f"{f.get('jahr')}→{f.get('wert')}" for f in fcs.get(kid, [])) or "—"
+        tr = trs.get(kid, [])
+        trb = tr[0].get("bewertung") if tr else "—"
+        mark = "⏰" if not vs else ("⚠" if any(t.get("bewertung") == "off-track" for t in tr) else "✓")
+        print(f"  {mark} {kid}")
+        print(f"      Ist: {reihe}   ·   Forecast: {fc}   ·   Trend: {trb}")
+    off = [k["id"] for k in kpis if any(t.get("bewertung") == "off-track" for t in trs.get(k["id"], []))]
+    nodata = [k["id"] for k in kpis if not vals.get(k["id"])]
+    print("\nBefund:")
+    print(f"  ⚠ Off-track: {', '.join(off)}" if off else "  ✓ Keine KPI off-track.")
+    if nodata:
+        print(f"  ⏰ Ohne Ist-Werte (Datenlücke): {', '.join(nodata)}")
+
+
 # ---------- STALE ----------
 def stale(objs):
     print("\n# Frische-Sweep: überfällige Objekte\n")
@@ -286,6 +317,8 @@ def main():
         my_work(objs, a[1])
     elif cmd == "coverage":
         coverage(objs, a[1])
+    elif cmd == "kpi-status":
+        kpi_status(objs, a[1])
     elif cmd == "gaps":
         gaps(objs)
     elif cmd == "stale":

@@ -89,6 +89,39 @@ objekt_typen:
   dependency:                   # Abhängigkeit von natürl./sozialem Kapital (DMA Sheet 2)
     pflichtfelder: []
     beziehungen: []
+  # --- Ontologie v1: Performance über Zeit ---
+  kpi-value:                    # gemessener Ist-Wert einer KPI je Jahr (Zeitreihe)
+    pflichtfelder: [jahr, wert]
+    beziehungen: [for_kpi]
+  forecast:                     # projizierter Wert
+    pflichtfelder: [jahr, wert]
+    beziehungen: [for_kpi]
+  trend:                        # Richtung/Bewertung (on-track / off-track)
+    pflichtfelder: []
+    beziehungen: [for_kpi]
+  # --- Ontologie v1: Steuerungs-Memory ---
+  assumption:                   # Annahme hinter Ziel/Entscheidung/Szenario (mit Confidence)
+    pflichtfelder: [confidence]
+    beziehungen: [underpins]
+  scenario:                     # Was-wäre-wenn fürs nächste Ziel
+    pflichtfelder: []
+    beziehungen: [concerns, assumes, proposes]
+  recommendation:               # Handlungsempfehlung
+    pflichtfelder: []
+    beziehungen: [concerns, assumes, proposes]
+  regulation:                   # externe Verpflichtung (EPBD, GEG, ETS2, CBAM …)
+    pflichtfelder: []
+    beziehungen: [concerns]
+  # --- Ontologie v1: Assurance + Execution ---
+  test:                         # Test einer Kontrolle
+    pflichtfelder: [datum]
+    beziehungen: [tests]
+  remediation:                  # Behebung eines Findings
+    pflichtfelder: []
+    beziehungen: [remediates]
+  milestone:                    # Meilenstein einer Maßnahme
+    pflichtfelder: [datum]
+    beziehungen: [for_initiative]
 
 # --- Beziehungs-Vokabular: erlaubte Kante -> erlaubte Ziel-Typen ---
 # Eine Kante, die hier nicht steht, ist verboten. Eine Kante auf einen
@@ -111,6 +144,13 @@ beziehungs_vokabular:
   plans:        [initiative]
   addresses:    [iro]
   depends_on:   [dependency]
+  for_kpi:        [kpi]
+  underpins:      [target, decision, scenario]
+  assumes:        [assumption]
+  proposes:       [target, initiative, decision]
+  tests:          [control]
+  remediates:     [finding, audit-finding]
+  for_initiative: [initiative]
   concerns:     [topic]
   informed_by:  [stakeholder]
   scored_under: [methodology]
@@ -119,8 +159,8 @@ beziehungs_vokabular:
   # --- Disclosure-Slice ---
   discloses:    [datapoint]
   reports:      [kpi]
-  backs:        [disclosure]
-  covers:       [datapoint]
+  backs:        [disclosure, kpi-value, control]
+  covers:       [datapoint, kpi, target]
   challenges:   [disclosure]
   # sourced_from darf auf eine EXTERNE Datei im Repo zeigen (kein Objekt),
   # z. B. das Inventar. validate.py prüft hier nur: Pfad existiert.
