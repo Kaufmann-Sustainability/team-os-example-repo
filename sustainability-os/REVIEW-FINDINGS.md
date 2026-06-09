@@ -23,6 +23,8 @@ Fast alle Punkte fallen unter ein Dach: **strukturierte Metadaten + Single Sourc
 | 9 | Grenze „OS ↔ Systems of Record" undefiniert | Mittel | Offen |
 | 10 | Querverweise manuell & brüchig (keine CI) | Niedrig | Offen |
 | 11 | „Strategie" verteilt statt eigenständiges Artefakt | Mittel | Offen |
+| 12 | Fehlender zeitlich gerahmter Jahresprogramm-/Planungs-Layer | Mittel | Offen |
+| 13 | Stakeholder-Ansprechpersonen nicht strukturiert; Accounts uneinheitlich befüllt | Mittel | Offen |
 
 ---
 
@@ -79,6 +81,16 @@ Fast alle Punkte fallen unter ein Dach: **strukturierte Metadaten + Single Sourc
 **Problem:** Es gibt kein kanonisches Strategie-Dokument. Die Frage „Was ist unsere Strategie?" musste aus `business-context` + `strategy/CLAUDE.md` + `roadmap` + `programs/CLAUDE.md` zusammengesetzt werden. Zudem unscharfe Grenze „Kontext vs. Strategie".
 **Warum prinzipiell:** Häufige Kernfrage ohne kanonische Quelle (Spezialfall von #1).
 **Fix-Richtung:** `strategy/sustainability-strategy.md` als bündelndes Artefakt; Kontext und Strategie sauber trennen.
+
+### 12 — Fehlender Jahresprogramm-/Planungs-Layer
+**Problem:** Es gibt kein eigenständiges „Jahresprogramm 2026"-Artefakt. Die Frage „Was ist unser Programm dieses Jahr?" musste aus Roadmap-Zeile + Index-Status + Brief-Meilensteinen rekonstruiert werden.
+**Warum prinzipiell:** Zwischen mehrjähriger Roadmap und einzelnen Initiativen fehlt der zeitlich gerahmte Operating-Layer (Jahres-/Quartalsziele, OKR-artig) — für Teams, die in solchen Zyklen planen, eine Kernsicht.
+**Fix-Richtung:** Ein `programs/annual/2026-programm.md` (oder Planungs-Layer), das Initiativen + Zielwerte je Jahr bündelt und auf die Detailartefakte verweist.
+
+### 13 — Stakeholder-Ansprechpersonen nicht strukturiert
+**Problem:** Das Stakeholder-Register (`programs/stakeholders/CLAUDE.md`) listet Stakeholder, aber Ansprechpersonen stehen — wenn überhaupt — nur im Fließtext einzelner Account-Dokumente. Die Accounts sind zudem uneinheitlich befüllt (z. B. `lieferant-acme-stahl/` und `procurement/` ausgearbeitet, `finance-controlling/` nur als Platzhalter referenziert). Die Frage „Wer ist unsere Ansprechperson bei Finance?" ist daher aus dem OS **nicht** beantwortbar.
+**Warum prinzipiell:** „Wer ist mein Kontakt bei X?" ist eine Kernfrage ans OS — und scheitert an fehlenden strukturierten Kontaktfeldern + lückenhafter Account-Abdeckung (Spezialfall von #2).
+**Fix-Richtung:** `ansprechperson` als strukturiertes Feld im Stakeholder-Register; Mindest-Stub-Pflicht pro gelistetem Account.
 
 ---
 
