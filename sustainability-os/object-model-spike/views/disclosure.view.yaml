@@ -1,0 +1,28 @@
+# View: Disclosure / Assurance   (stehende Perspektive: Reporting-Lead + Prüfer)
+# ============================================================================
+# View = wer schaut (Reporting-Lead, Wirtschaftsprüfer, dauerhaft).
+# Context Pack = welche Aufgabe (einen einzelnen Datenpunkt finalisieren).
+# ============================================================================
+
+view: disclosure
+typ: persistente-rollen-perspektive
+fuer: [person-markusbauer, stakeholder-wirtschaftspruefer-assurance]
+
+zeigt:
+  - "alle datapoint-Objekte je wesentlichem Thema"
+  - spalten: [esrs_datapoint, disclosure.version, disclosure.status, evidence?, control?]
+  - "je datapoint: verlinkte Disclosure, Evidence (backs), Control (covers), offene Audit-Findings"
+  - markiere: "datapoint OHNE finale disclosure            → Reporting-Gap"
+  - markiere: "disclosure status != assured MIT offener Finding/Audit-Finding → Blocker offen"
+  - markiere: "datapoint OHNE control                      → Kontroll-Lücke (Assurance-Risiko)"
+
+beantwortet:
+  - "Welche Datenpunkte sind offenlegungsbereit — und welche nicht, warum?"
+  - "Wo fehlt die Prüfspur (Evidence/Control)?"
+  - "Was haben die Auditoren beanstandet und ist es behoben?"
+
+# Ergebnis in diesem Slice (datapoint-e1-6-brutto-thg):
+#   disclosure-e1-6-2025  : v0.3-entwurf  ⛔ 2 Blocker offen
+#     - finding-2026-05-12-spend-based-overcount   (KPI vorläufig)
+#     - audit-finding-2026-baseline-konsistenz     (Prüfer-Beanstandung)
+#   evidence : evidence-inventar-2025 (vorläufig) · control : control-thg-bilanzierung (wirksam)

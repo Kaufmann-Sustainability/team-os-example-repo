@@ -54,6 +54,22 @@ objekt_typen:
   threshold:                    # Governance: ab wann gilt etwas als wesentlich
     pflichtfelder: []
     beziehungen: []
+  # --- Disclosure-Slice: Offenlegung & Assurance ---
+  datapoint:                    # ESRS-Offenlegungs-Anforderung (die Pflicht)
+    pflichtfelder: [esrs_datapoint]
+    beziehungen: [concerns]
+  disclosure:                   # versionierter Berichtstext, der die Pflicht erfüllt (#19)
+    pflichtfelder: [esrs_datapoint, berichtsjahr, version]
+    beziehungen: [discloses, reports]
+  evidence:                     # Nachweis/Prüfspur hinter einer Offenlegung (#17)
+    pflichtfelder: []
+    beziehungen: [backs, sourced_from]
+  control:                      # Kontrolle, die einen Datenpunkt absichert (#17)
+    pflichtfelder: []
+    beziehungen: [covers]
+  audit-finding:                # Auditor-Beanstandung (#18)
+    pflichtfelder: [datum]
+    beziehungen: [challenges]
 
 # --- Beziehungs-Vokabular: erlaubte Kante -> erlaubte Ziel-Typen ---
 # Eine Kante, die hier nicht steht, ist verboten. Eine Kante auf einen
@@ -77,6 +93,12 @@ beziehungs_vokabular:
   scored_under: [methodology]
   based_on:     [methodology]
   applies:      [threshold]
+  # --- Disclosure-Slice ---
+  discloses:    [datapoint]
+  reports:      [kpi]
+  backs:        [disclosure]
+  covers:       [datapoint]
+  challenges:   [disclosure]
   # sourced_from darf auf eine EXTERNE Datei im Repo zeigen (kein Objekt),
   # z. B. das Inventar. validate.py prüft hier nur: Pfad existiert.
   sourced_from: [_extern_]

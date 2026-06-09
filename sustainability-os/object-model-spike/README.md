@@ -5,9 +5,11 @@
 > durch** — über alle vier Schichten des Objektmodells. Ziel: an echtem Material sehen,
 > **wo das Modell trägt und wo es hakt**, bevor groß umgebaut wird.
 >
-> Aktuell zwei Durchstiche:
+> Aktuell drei Durchstiche:
 > 1. **Target-Setting** — *ein Ziel für ein Thema setzen* (strukturlastig).
 > 2. **DMA** — *Wesentlichkeit eines Themas bestimmen/verteidigen* (narrativlastig, härtere Probe).
+> 3. **Disclosure/Assurance** — *einen ESRS-Datenpunkt prüfsicher offenlegen* (schließt die
+>    Reporting-/Prüf-Lücken #17/#18/#19).
 >
 > **Status:** Spike / Diskussionsgrundlage. Bewusst **außerhalb** der normalen
 > `CLAUDE.md`-Ordnerkonvention und **nicht** im Doc-Index verdrahtet — er konkurriert
@@ -95,6 +97,35 @@ Risiko) herein — damit der Ausschluss bei der nächsten Prüfung verteidigt od
 wird, statt im Stillen zu veralten. Das `review_zyklus: P6M` auf dem IRO sorgt zusätzlich
 dafür, dass der Refresh-Sweep ihn früher wieder hochspült.
 
+## Dritter Durchstich: Disclosure / Assurance (schließt #17/#18/#19)
+Modelliert die Offenlegung eines Datenpunkts — die Schicht, die im alten OS ganz fehlte:
+
+- **Versionierter Berichtstext (#19):** `disclosure-e1-6-2025` trägt `berichtsjahr` + `version`
+  + den eigentlichen Wortlaut im Body. Der Bericht ist ein *Objekt*, keine verstreute Word-Datei.
+- **Pflicht vs. Erfüllung getrennt:** `datapoint` (die ESRS-Anforderung) ↔ `disclosure` (der
+  erfüllte Text). Ein Datenpunkt ohne finale Disclosure ist ein **abfragbarer Reporting-Gap**.
+- **Prüfspur (#17):** `evidence` (`backs` → disclosure) und `control` (`covers` → datapoint).
+- **Audit-Feedback (#18):** eigener Typ `audit-finding` (`challenges` → disclosure) — Prüfer-
+  Beanstandung, getrennt von eigenen Datenqualitäts-Findings.
+
+### Der stärkste Beweis des ganzen Spikes: eine Tatsache, drei Aufgaben
+Das spend-based-Finding (`finding-2026-05-12-spend-based-overcount`) kippt die Scope-3-Baseline.
+Dieselbe **eine** Tatsache taucht jetzt in **drei** Aufgaben auf, weil alle zum selben
+`kpi-scope3-intensitaet`-Objekt traversieren:
+1. **Target-Setting** → „kein Ziel auf kippeliger Baseline".
+2. **Disclosure** → KPI vorläufig, Offenlegung kann nicht final werden.
+3. **Assurance** → der Auditor beanstandet exakt dieselbe Baseline-Konsistenz (`audit-finding-…`).
+
+Im alten OS lag diese Tatsache in *einer* Datei und wäre in den anderen zwei Kontexten
+unsichtbar geblieben. Hier ist sie **einmal** modelliert und über Kanten **überall** präsent.
+Das ist „Objekte existieren einmal, Kontext ist verbunden" — am konkreten Fall.
+
+### Disclosure-Eskalation = ein Gate
+Der `disclosure.pack` ist ein **Freigabe-Gate**: Eine Offenlegung darf `final`/`assured` nicht
+erreichen, solange (a) eine offene Datenqualitäts-Finding den berichteten KPI berührt oder
+(b) ein offenes Audit-Finding sie beanstandet. Beide werden immer mitgeliefert — auch wenn der
+Konsument „nur den Text" wollte. *Nichts veröffentlichen, was du nicht beweisen kannst.*
+
 ## Die Loop-/Refresh-Frage (Pflege als Feature)
 Siehe `triggers/quarterly-refresh.md` + `context-packs/refresh-sweep.pack.yaml`:
 Ein **geplanter Trigger** (nicht `/loop` — Container sind ephemer) fährt quartalsweise
@@ -109,10 +140,10 @@ python3 tools/validate.py        # erwartet: ✓ Integrität OK
 Zum Gegentest: in einem Objekt eine Kanten-ID verfälschen → `validate.py` meldet die tote Kante (exit 1).
 
 ## Wo es (ehrlich) hakt — was der Spike sichtbar macht
-- **Narrativ-in-Objekten:** Durch die DMA getestet — **hält**. Body = Begründung (Prosa),
-  Frontmatter = Scores/Kanten. Caveat: Sehr lange, mehrteilige Narrative (volle DMA-Doku,
-  Methodik-Handbuch) wollen perspektivisch ein eigenes Doc-Objekt, das das IRO *referenziert*,
-  statt alles in einen Body zu pressen. Disclosure-Wortlaut (#19) ist noch nicht modelliert.
+- **Narrativ-in-Objekten:** Durch DMA *und* Disclosure getestet — **hält**. Body = Begründung/
+  Berichtstext (Prosa), Frontmatter = Scores/Version/Kanten. Caveat: Sehr lange, mehrteilige
+  Narrative (volle DMA-Doku, Methodik-Handbuch) wollen perspektivisch ein eigenes Doc-Objekt,
+  das das IRO/die Disclosure *referenziert*, statt alles in einen Body zu pressen.
 - **Views sind nicht gratis:** `my-work.view.yaml` ist eine *Spezifikation* — sie zu
   rendern braucht Tooling (oder die KI generiert sie on demand). Im Repo gibt es keine
   Klick-Oberfläche.
