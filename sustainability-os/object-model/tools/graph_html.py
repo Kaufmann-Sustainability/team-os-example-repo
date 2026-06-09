@@ -116,7 +116,7 @@ const TYPECOL={topic:"#3498db",iro:"#e67e22",target:"#2ecc71",kpi:"#1abc9c",poli
 initiative:"#e74c3c",dependency:"#95a5a6",decision:"#f1c40f",methodology:"#e84393",person:"#7f8c8d",
 "audit-finding":"#c0392b",finding:"#d35400",disclosure:"#2980b9",datapoint:"#636e72",evidence:"#8395a7",
 control:"#576574",budget:"#27ae60","emission-factor":"#16a085",term:"#a29bfe",threshold:"#fd79a8",
-stakeholder:"#fdcb6e","annual-plan":"#00cec9"};
+stakeholder:"#fdcb6e","annual-plan":"#00cec9",strategy:"#0c5fb3"};
 function tcol(t){return TYPECOL[t]||"#bbb";}
 const cx=()=>W/2,cy=()=>H/2,Rr=()=>Math.min(W,H)*0.36;
 const anchor={};G.forEach((g,i)=>{const a=2*Math.PI*i/G.length;anchor[g]=[()=>cx()+Rr()*Math.cos(a),()=>cy()+Rr()*Math.sin(a)];});
