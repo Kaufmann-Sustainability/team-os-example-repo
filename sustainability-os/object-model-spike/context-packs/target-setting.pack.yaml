@@ -1,0 +1,61 @@
+# Context Pack: Target-Setting
+# ============================================================================
+# Ein Context Pack ist KEINE handgepflegte Dateiliste, sondern eine QUERY über
+# den Objektgraphen. Dadurch ist er immer frisch und immer minimal — der Tod
+# dieser Schicht wäre eine statische Liste, die veraltet (= der Ordner, vor dem
+# diese ganze Architektur flieht).
+#
+# Aufgabe: Ein Reduktions-/Quotenziel für ein Thema setzen oder überarbeiten.
+# Konsument: der `sustainability-standard`-Skill (Modus B) ODER ein:e Mensch.
+# ============================================================================
+
+pack: target-setting
+zweck: >
+  Minimaler Kontext, um für ein wesentliches Thema ein Ziel zu setzen —
+  ohne im Rest des OS zu ertrinken.
+
+# Parameter: das Thema, für das ein Ziel gesetzt wird.
+parameter:
+  topic_id: topic-e1-klima        # Beispiel-Belegung dieses Slices
+
+# --- WAS REIN MUSS (Traversierung statt Dateiliste) ---
+include:
+  - object: "{topic_id}"                                   # das Thema selbst
+  - traverse: "{topic_id} -> has_kpi -> kpi"               # aktueller Wert + Trend
+  - traverse: "{topic_id} -> has_target -> target"         # bestehende Ziele (Konsistenz!)
+  - traverse: "target -> supported_by -> initiative"       # welche Hebel zahlen ein
+  - traverse: "initiative -> has_budget -> budget"         # Budget-Restriktion
+  - ref: sustainability-development/programs/strategy/roadmaps/net-zero-roadmap-2030.md  # strategische Priorität
+
+# --- WAS DRAUSSEN BLEIBT (das macht „minimal" erst minimal) ---
+exclude:
+  - type: finding              # Berechnungs-/Datenqualitätsdetails ...
+  - reason_for_finding_exclude: "... ABER siehe Eskalations-Klausel unten."
+  - external: DMA-Workshop-Notizen
+  - external: Lieferantenverträge
+  - external: Audit-Evidence / Controls
+
+# --- ESKALATIONS-KLAUSEL: „du hast nicht gefragt, aber du MUSST es wissen" ---
+# Überschreibt exclude. Verhindert den teuren Fehler: ein materieller Ausschluss
+# ist schlimmer als etwas Rauschen. Hier zieht es genau das spend-based-Finding
+# herein, das die Baseline kippt — obwohl `type: finding` oben ausgeschlossen ist.
+eskalation_immer_einschliessen:
+  - traverse: "target -> measured_by -> kpi -> at_risk_from -> finding WHERE status != geschlossen"
+  - traverse: "target -> at_risk_from -> finding WHERE status != geschlossen"
+  - regel: >
+      Jede offene Finding, die Baseline oder Metrik des Ziels berührt, wird IMMER
+      mitgeliefert. Begründung: Assurance prüft Konsistenz Basisjahr ↔ Berichtsjahr;
+      ein Ziel auf falscher Baseline ist nicht prüfsicher.
+
+# --- ACCESS-CONTROL ÜBER DEN PACK (Grundproblem D) ---
+# Minimal-Retrieval und Need-to-know sind derselbe Mechanismus: Der Filter blendet
+# Objekte oberhalb der Freigabestufe des Konsumenten aus. Für externe Auditoren
+# fiele z. B. `budget-scope3-engagement-2026` (vertraulich) automatisch weg.
+vertraulichkeit_filter: "<= freigabe_des_konsumenten"
+
+# --- ERWARTETES ERGEBNIS für topic-e1-klima (zur Veranschaulichung) ---
+# Eingeschlossen:  topic-e1-klima, kpi-scope3-intensitaet, target-sbti-scope3-2030,
+#                  initiative-scope3-supplier-engagement, budget-scope3-engagement-2026,
+#                  net-zero-roadmap-2030.md
+# Per Eskalation:  finding-2026-05-12-spend-based-overcount  (trotz exclude!)
+# Ausgeschlossen:  Audit-Evidence, Lieferantenverträge, DMA-Workshop-Notizen
