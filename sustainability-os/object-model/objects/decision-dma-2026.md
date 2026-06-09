@@ -14,7 +14,7 @@ quelle: sustainability-development/programs/strategy/materiality/double-material
 decided_by: [person-markusbauer]
 based_on: [methodology-dma-2026]
 applies: [threshold-wesentlichkeit-2026]
-affects: [topic-e1-klima, topic-e2-umwelt, topic-e3-wasser]
+affects: [topic-e1-klima, topic-e2-umwelt, topic-e3-wasser, topic-e5-kreislauf, topic-s1-belegschaft]
 informed_by: [stakeholder-procurement, stakeholder-wirtschaftspruefer-assurance, stakeholder-investoren-hausbanken]
 ---
 
