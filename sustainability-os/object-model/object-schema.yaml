@@ -80,6 +80,9 @@ objekt_typen:
   policy:                       # ESRS-Policy je wesentlichem Thema (#16)
     pflichtfelder: []
     beziehungen: [concerns]
+  annual-plan:                  # Jahres-Planungs-Layer (#12/#14)
+    pflichtfelder: [jahr]
+    beziehungen: [plans]
 
 # --- Beziehungs-Vokabular: erlaubte Kante -> erlaubte Ziel-Typen ---
 # Eine Kante, die hier nicht steht, ist verboten. Eine Kante auf einen
@@ -99,6 +102,7 @@ beziehungs_vokabular:
   uses_factor:  [emission-factor]
   # --- DMA-Slice ---
   has_iro:      [iro]
+  plans:        [initiative]
   concerns:     [topic]
   informed_by:  [stakeholder]
   scored_under: [methodology]

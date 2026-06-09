@@ -9,15 +9,17 @@ vertraulichkeit: intern
 esrs_bezug: E2
 quelle: sustainability-development/programs/strategy/materiality/double-materiality-assessment-2026.md
 has_iro: [iro-e2-prozessemissionen]
+has_target: [target-nox-reduktion]
+has_kpi: [kpi-nox-emissionen, kpi-feinstaub-emissionen]
+has_initiative: [initiative-filtertechnik-nachruestung]
 ---
 
 # Thema: E2 Umweltverschmutzung
 
 Als **wesentlich** eingestuft (Impact mittel / finanziell mittel) — Prozessemissionen
-der Metallverarbeitung.
+der Metallverarbeitung (NOx, Feinstaub).
 
-> **Slice-Hinweis (Grundproblem B sichtbar):** Dieses Thema ist wesentlich, aber im
-> bestehenden OS **hohl** — keine Targets, KPIs oder Initiativen. Im Objektmodell ist
-> diese Lücke kein blinder Fleck mehr, sondern *sichtbar*: Das Topic existiert mit nur
-> **einer** Kante (`has_iro`) und keinem `has_target`. Eine Query „wesentliche Themen
-> ohne Ziel" findet E2 sofort. Genau das forderte die Synthese (leerer Ordner = sichtbare Aufgabe).
+Voll ausmodelliert: IRO, Ziel (NOx −33 %), KPIs (NOx, Feinstaub), Initiative
+(Filtertechnik-Nachrüstung) und Policy (`policy-emissionsminderung-luft`). Damit ist die
+zuvor sichtbare Lücke (wesentlich, aber hohl) geschlossen — die `gaps`-Query findet E2
+nicht mehr.
