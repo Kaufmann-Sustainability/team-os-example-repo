@@ -25,6 +25,7 @@ Fast alle Punkte fallen unter ein Dach: **strukturierte Metadaten + Single Sourc
 | 11 | „Strategie" verteilt statt eigenständiges Artefakt | Mittel | Offen |
 | 12 | Fehlender zeitlich gerahmter Jahresprogramm-/Planungs-Layer | Mittel | Offen |
 | 13 | Stakeholder-Ansprechpersonen nicht strukturiert; Accounts uneinheitlich befüllt | Mittel | Offen |
+| 14 | Kein Record durchgeführter Maßnahmen (Aktivitäts-/Done-Log fehlt) | Hoch | Offen |
 
 ---
 
@@ -32,6 +33,7 @@ Fast alle Punkte fallen unter ein Dach: **strukturierte Metadaten + Single Sourc
 **Problem:** `initiative-index.yaml` spiegelt Infos aus Briefs/Plänen (Status, Verknüpfungen); Zahlen (z. B. ~430.000 tCO₂e) stehen in Geschäftskontext, Inventar *und* Roadmap.
 **Warum prinzipiell:** Mehrfach gehaltene Wahrheit driftet garantiert; Vertrauen ins OS bricht.
 **Fix-Richtung:** Daten leben einmal (Inventar/Katalog), Narrativ referenziert statt kopiert.
+**Konkret entdeckter Drift (Beleg):** Das Inventar 2025 schreibt die Scope-2-Senkung „PPA Tranche 1 wirksam" zu (also bereits geliefert), während Roadmap, Brief und Plan PPA Tranche 1 als 2026-Meilenstein mit Status „Vertrag final 🔄" führen. Widersprüchliche Aussage über denselben Sachverhalt.
 
 ### 2 — Metadaten im Fließtext
 **Problem:** Owner/Status/Datum/Datenqualität mal in Kopfzeilen, mal im Index, mal nicht (Fuhrpark/PCF ohne Owner — Testfrage unbeantwortbar).
@@ -91,6 +93,11 @@ Fast alle Punkte fallen unter ein Dach: **strukturierte Metadaten + Single Sourc
 **Problem:** Das Stakeholder-Register (`programs/stakeholders/CLAUDE.md`) listet Stakeholder, aber Ansprechpersonen stehen — wenn überhaupt — nur im Fließtext einzelner Account-Dokumente. Die Accounts sind zudem uneinheitlich befüllt (z. B. `lieferant-acme-stahl/` und `procurement/` ausgearbeitet, `finance-controlling/` nur als Platzhalter referenziert). Die Frage „Wer ist unsere Ansprechperson bei Finance?" ist daher aus dem OS **nicht** beantwortbar.
 **Warum prinzipiell:** „Wer ist mein Kontakt bei X?" ist eine Kernfrage ans OS — und scheitert an fehlenden strukturierten Kontaktfeldern + lückenhafter Account-Abdeckung (Spezialfall von #2).
 **Fix-Richtung:** `ansprechperson` als strukturiertes Feld im Stakeholder-Register; Mindest-Stub-Pflicht pro gelistetem Account.
+
+### 14 — Kein Record durchgeführter Maßnahmen
+**Problem:** Das OS trackt nur *vorausschauenden* Status (`in Umsetzung / geplant / Discovery`) und Meilenstein-Häkchen, aber keine durchgeführten Maßnahmen. Die Frage „Was wurde dieses Jahr umgesetzt?" ist nicht sauber beantwortbar: keine Initiative ist „abgeschlossen", ✅-Meilensteine haben uneinheitliche/fehlende Abschlussdaten, und es gibt kein Aktivitäts-/Done-Log.
+**Warum prinzipiell:** „Was haben wir erreicht?" ist eine Kern-Reporting- und Steuerungsfrage (auch für ESRS E1-3 „Maßnahmen"). Ohne Done-Record bleibt sie an Erinnerung gebunden — genau das, was das OS auflösen soll.
+**Fix-Richtung:** Maßnahmen-/Aktivitäts-Log mit Abschlussdatum (oder `abgeschlossen`-Status + `abgeschlossen_am` im Index); Meilensteine mit Pflicht-Datum.
 
 ---
 
