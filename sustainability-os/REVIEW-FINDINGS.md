@@ -26,6 +26,7 @@ Fast alle Punkte fallen unter ein Dach: **strukturierte Metadaten + Single Sourc
 | 12 | Fehlender zeitlich gerahmter Jahresprogramm-/Planungs-Layer | Mittel | Offen |
 | 13 | Stakeholder-Ansprechpersonen nicht strukturiert; Accounts uneinheitlich befüllt | Mittel | Offen |
 | 14 | Kein Record durchgeführter Maßnahmen (Aktivitäts-/Done-Log fehlt) | Hoch | Offen |
+| 15 | Wesentliche Themen außer E1 nicht operationalisiert (Daten-/Ziel-Lücke) | Hoch | Offen |
 
 ---
 
@@ -98,6 +99,11 @@ Fast alle Punkte fallen unter ein Dach: **strukturierte Metadaten + Single Sourc
 **Problem:** Das OS trackt nur *vorausschauenden* Status (`in Umsetzung / geplant / Discovery`) und Meilenstein-Häkchen, aber keine durchgeführten Maßnahmen. Die Frage „Was wurde dieses Jahr umgesetzt?" ist nicht sauber beantwortbar: keine Initiative ist „abgeschlossen", ✅-Meilensteine haben uneinheitliche/fehlende Abschlussdaten, und es gibt kein Aktivitäts-/Done-Log.
 **Warum prinzipiell:** „Was haben wir erreicht?" ist eine Kern-Reporting- und Steuerungsfrage (auch für ESRS E1-3 „Maßnahmen"). Ohne Done-Record bleibt sie an Erinnerung gebunden — genau das, was das OS auflösen soll.
 **Fix-Richtung:** Maßnahmen-/Aktivitäts-Log mit Abschlussdatum (oder `abgeschlossen`-Status + `abgeschlossen_am` im Index); Meilensteine mit Pflicht-Datum.
+
+### 15 — Wesentliche Themen außer E1 nicht operationalisiert
+**Problem:** Die Wesentlichkeitsanalyse deklariert sechs wesentliche Themen (E1, E2, E5, S1, S2, G1), aber nur **E1 (Klima)** ist mit Daten, Metriken, Roadmap, Initiativen und Zielen hinterlegt. E2/E5/S1/S2/G1 existieren nur als Zeile im `esrs-datapoint-mapping.md` mit Status ⏳ — ohne Baseline, Metrik, Datenquelle (außer grobem Pointer), Initiative oder Ziel. Beispiel: Für E5 (Metallschrott/Kreislauf) lässt sich kein Ziel ableiten, weil keinerlei Ausgangsdaten existieren. Zudem ist die `carbon-data/`-Ebene **ausschließlich THG/Klima** — es gibt keinen Ort für nicht-klimatische Umwelt-/Sozial-Metriken.
+**Warum prinzipiell:** Das OS verspricht über die Wesentlichkeit mehr, als es trägt — für 5 von 6 wesentlichen Themen kann es keine Frage beantworten. Die Datenarchitektur ist klima-zentriert statt an den deklarierten Themen ausgerichtet.
+**Fix-Richtung:** Entweder Scope ehrlich auf Klima begrenzen, oder pro wesentlichem Thema mindestens Baseline-Metrik + Datenquelle + Owner anlegen; Datenebene über THG hinaus öffnen (z. B. `carbon-data/` → `sustainability-data/` mit Metrik-Bereichen je Thema).
 
 ---
 
