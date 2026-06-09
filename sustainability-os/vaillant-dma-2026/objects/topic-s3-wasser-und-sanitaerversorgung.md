@@ -7,7 +7,10 @@ stand: 2026-06-09
 review_zyklus: P12M
 vertraulichkeit: intern
 esrs_bezug: S3
-has_iro: [iro-s3-i3]
+has_iro: ['iro-s3-i3']
+has_target: [target-s3-wasser-und-sanitaerversorgung]
+has_kpi: [kpi-s3-wasser-und-sanitaerversorgung]
+has_initiative: [initiative-s3-wasser-und-sanitaerversorgung]
 ---
 
 # Thema: Wasser und Sanitärversorgung

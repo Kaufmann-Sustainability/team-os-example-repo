@@ -7,7 +7,10 @@ stand: 2026-06-09
 review_zyklus: P12M
 vertraulichkeit: intern
 esrs_bezug: ES
-has_iro: [iro-es-i1]
+has_iro: ['iro-es-i1']
+has_target: [target-es-installateurs-schulung-i]
+has_kpi: [kpi-es-installateurs-schulung-i]
+has_initiative: [initiative-es-installateurs-schulung-i]
 ---
 
 # Thema: Installateurs-Schulung (I+)

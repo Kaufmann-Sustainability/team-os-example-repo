@@ -7,7 +7,10 @@ stand: 2026-06-09
 review_zyklus: P12M
 vertraulichkeit: intern
 esrs_bezug: S1
-has_iro: [iro-s1-i1, iro-s1-r1]
+has_iro: ['iro-s1-i1', 'iro-s1-r1']
+has_target: [target-s1-angemessene-entlohnung]
+has_kpi: [kpi-s1-angemessene-entlohnung]
+has_initiative: [initiative-s1-angemessene-entlohnung]
 ---
 
 # Thema: Angemessene Entlohnung

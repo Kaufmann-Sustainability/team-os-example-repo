@@ -7,7 +7,10 @@ stand: 2026-06-09
 review_zyklus: P12M
 vertraulichkeit: intern
 esrs_bezug: E3
-has_iro: [iro-e3-i2, iro-e3-r2]
+has_iro: ['iro-e3-i2', 'iro-e3-r2']
+has_target: [target-e3-wasserverbrauch]
+has_kpi: [kpi-e3-wasserverbrauch]
+has_initiative: [initiative-e3-wasserverbrauch]
 ---
 
 # Thema: Wasserverbrauch

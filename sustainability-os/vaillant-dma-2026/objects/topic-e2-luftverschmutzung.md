@@ -7,7 +7,10 @@ stand: 2026-06-09
 review_zyklus: P12M
 vertraulichkeit: intern
 esrs_bezug: E2
-has_iro: [iro-e2-i1, iro-e2-i2, iro-e2-i3, iro-e2-i4, iro-e2-r1, iro-e2-r2, iro-e2-o1]
+has_iro: ['iro-e2-i1', 'iro-e2-i2', 'iro-e2-i3', 'iro-e2-i4', 'iro-e2-r1', 'iro-e2-r2', 'iro-e2-o1']
+has_target: [target-e2-luftverschmutzung]
+has_kpi: [kpi-e2-luftverschmutzung]
+has_initiative: [initiative-e2-luftverschmutzung]
 ---
 
 # Thema: Luftverschmutzung

@@ -7,7 +7,10 @@ stand: 2026-06-09
 review_zyklus: P12M
 vertraulichkeit: intern
 esrs_bezug: G1
-has_iro: [iro-g1-i6, iro-g1-i7, iro-g1-r3, iro-g1-o2]
+has_iro: ['iro-g1-i6', 'iro-g1-i7', 'iro-g1-r3', 'iro-g1-o2']
+has_target: [target-g1-management-lieferantenbeziehungen]
+has_kpi: [kpi-g1-management-lieferantenbeziehungen]
+has_initiative: [initiative-g1-management-lieferantenbeziehungen]
 ---
 
 # Thema: Management Lieferantenbeziehungen

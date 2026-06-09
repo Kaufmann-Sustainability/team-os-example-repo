@@ -7,7 +7,10 @@ stand: 2026-06-09
 review_zyklus: P12M
 vertraulichkeit: intern
 esrs_bezug: ES
-has_iro: [iro-es-o1]
+has_iro: ['iro-es-o1']
+has_target: [target-es-waermepumpen-transformation-strategi]
+has_kpi: [kpi-es-waermepumpen-transformation-strategi]
+has_initiative: [initiative-es-waermepumpen-transformation-strategi]
 ---
 
 # Thema: Wärmepumpen-Transformation Strategie

@@ -7,7 +7,10 @@ stand: 2026-06-09
 review_zyklus: P12M
 vertraulichkeit: intern
 esrs_bezug: ES
-has_iro: [iro-es-r1]
+has_iro: ['iro-es-r1']
+has_target: [target-es-waermepumpen-transformation-executio]
+has_kpi: [kpi-es-waermepumpen-transformation-executio]
+has_initiative: [initiative-es-waermepumpen-transformation-executio]
 ---
 
 # Thema: Wärmepumpen-Transformation Execution
