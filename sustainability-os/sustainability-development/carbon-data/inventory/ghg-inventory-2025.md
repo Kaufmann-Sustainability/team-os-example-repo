@@ -25,7 +25,7 @@
 
 - **Scope 2 market-based** sinkt deutlich durch PPA Tranche 1 (`../../programs/briefs/renewable-electricity-ppa/`). Location-based bleibt nahezu konstant — der echte Reduktionseffekt ist im market-based-Wert sichtbar.
 - **Scope 3 Kat. 1** dominiert und ist methodisch schwach (spend-based). Verbesserung über Lieferanten-Engagement (`../../programs/briefs/scope-3-supplier-engagement/`). Achtung Doppelzählungs-Risiko beim Methodenwechsel: `../../implementation/data-quality-findings/scope-3/2026-05-12-spend-based-overcount.md`.
-- Verwendete Faktoren: `../emission-factors-catalog.yaml`.
+- Verwendete Faktoren: die `ef-*`-Objekte unter `../../../object-model/objects/`.
 
 ## Reporting-Bezug
 

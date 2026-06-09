@@ -1,4 +1,4 @@
-# Objekt-Schema — Knowledge Layer des Sustainability OS (Spike)
+# Objekt-Schema — Knowledge Layer des Sustainability OS (kanonisch)
 # Definiert: Pflicht-Metadaten, Objekt-Typen, das erlaubte Beziehungs-Vokabular
 # und die Integritätsregeln. `tools/validate.py` liest genau diese Datei.
 #
@@ -28,7 +28,7 @@ objekt_typen:
     beziehungen: [sourced_from, at_risk_from]
   initiative:
     pflichtfelder: []
-    beziehungen: [has_budget, supports]
+    beziehungen: [has_budget, supports, uses_factor]
   decision:
     pflichtfelder: [datum, entscheidung]
     beziehungen: [decided_by, affects, based_on, applies, informed_by]
@@ -70,6 +70,13 @@ objekt_typen:
   audit-finding:                # Auditor-Beanstandung (#18)
     pflichtfelder: [datum]
     beziehungen: [challenges]
+  # --- Migrierte Registries (ex targets.yaml / glossary.md / EF-Katalog) ---
+  term:                         # kanonische Definition (ex glossary.md)
+    pflichtfelder: [begriff]
+    beziehungen: []
+  emission-factor:              # Emissionsfaktor (ex emission-factors-catalog.yaml)
+    pflichtfelder: [einheit, wert]
+    beziehungen: []
 
 # --- Beziehungs-Vokabular: erlaubte Kante -> erlaubte Ziel-Typen ---
 # Eine Kante, die hier nicht steht, ist verboten. Eine Kante auf einen
@@ -86,6 +93,7 @@ beziehungs_vokabular:
   affects:      [target, kpi, topic]
   at_risk_from: [finding]
   has_budget:   [budget]
+  uses_factor:  [emission-factor]
   # --- DMA-Slice ---
   has_iro:      [iro]
   concerns:     [topic]

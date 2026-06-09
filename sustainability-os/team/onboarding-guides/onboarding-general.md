@@ -19,7 +19,7 @@ Gilt für alle neuen Mitglieder des Nordmark-Nachhaltigkeitsteams. Rollenspezifi
 1. [Root-Wegweiser](../../CLAUDE.md) — Team, Kanäle, Doc-Index, Terminologie
 2. [Nachhaltigkeitskontext](../../sustainability-development/programs/strategy/business-context/company-sustainability-context.md) — wer wir sind, Emissionsprofil, Ziele
 3. [Net-Zero-Roadmap](../../sustainability-development/programs/strategy/roadmaps/net-zero-roadmap-2030.md) — wohin wir wollen
-4. [Initiative-Index](../../sustainability-development/initiative-index.yaml) — woran wir gerade arbeiten
+4. [Initiativen-Objekte](../../object-model/objects/) (`initiative-*.md`) — woran wir gerade arbeiten
 
 ## Slack-Kanäle
 

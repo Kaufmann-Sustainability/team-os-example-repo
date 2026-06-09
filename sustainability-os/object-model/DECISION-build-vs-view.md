@@ -1,13 +1,20 @@
 # Entscheidungsvorlage: Wird der Objektgraph kanonisch — oder bleibt er generierte Sicht?
 
-**Owner:** Head of Sustainability · **Stand:** 2026-06-09 · **Status:** Entwurf zur Freigabe
-**Entscheider:** Sustainability Leads (Lena, Markus, Aylin) · **Blockiert:** weitere Umsetzung des Objektmodells
+**Owner:** Head of Sustainability · **Stand:** 2026-06-09 · **Status:** ENTSCHIEDEN
+**Entscheider:** Sustainability Leads (Lena, Markus, Aylin)
+
+> **✅ Beschluss (2026-06-09): Option A — Graph kanonisch.** Im Test-Kontext umgesetzt:
+> voller Umzug der Registries (`targets.yaml`, `glossary.md`, `initiative-index.yaml`,
+> EF-Katalog) in Objekte; die Registries wurden gelöscht. Damit ist der Objektgraph die
+> einzige Schreib-Heimat. Die ursprüngliche Empfehlung (unten) lautete Option C (Hybrid) —
+> bewusst überstimmt, weil dies ein Demo-/Test-Repo ist und der saubere Endzustand den
+> höheren Lehrwert hat. Die Optionen/Trigger bleiben als Dokumentation der Abwägung erhalten.
 
 ---
 
-## Worum es geht
+## Worum es ging
 
-Der Spike (`object-model-spike/`) hat an **drei** Aufgaben gezeigt, dass das Objektmodell trägt:
+Das Objektmodell hat an **drei** Aufgaben gezeigt, dass es trägt:
 Target-Setting (struktur-), DMA (narrativ-), Disclosure (prüfungslastig). 29 Objekte, Validator grün, CI aktiv.
 Bevor wir es ausweiten, ist **eine** Frage zu klären:
 

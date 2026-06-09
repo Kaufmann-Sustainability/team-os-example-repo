@@ -26,9 +26,9 @@ Statt „einmal im Quartal alles durchgehen" — an konkrete Ereignisse koppeln:
 
 | Auslöser | Was aktualisieren |
 |----------|-------------------|
-| Neue Initiative startet | Brief anlegen + Eintrag in `initiative-index.yaml` |
-| Initiative ändert Status | `status:` im Index + Meilensteine im Brief |
-| Neue/aktualisierte Emissionsfaktoren | `emission-factors-catalog.yaml` |
+| Neue Initiative startet | Brief anlegen + `initiative-*`-Objekt unter `object-model/objects/` + Objekt-Kanten setzen |
+| Initiative ändert Status | `status:` im `initiative-*`-Objekt + Meilensteine im Brief |
+| Neue/aktualisierte Emissionsfaktoren | `ef-*`-Objekt unter `object-model/objects/` |
 | Inventar neu berechnet | `carbon-data/inventory/` + ggf. Basisjahr-Hinweis |
 | Datenproblem entdeckt | Neues `data-quality-findings/`-Dokument |
 | Reporting-Zyklus abgeschlossen | `reporting/` + Retro in `team/retros/` |
@@ -37,16 +37,16 @@ Statt „einmal im Quartal alles durchgehen" — an konkrete Ereignisse koppeln:
 ## So fügst du eine neue Initiative hinzu (Schritt für Schritt)
 
 1. **Brief schreiben:** Neuer Ordner unter `programs/briefs/<initiative-name>/` mit `<initiative-name>-brief.md`. Nutze das Template-Schema aus `programs/briefs/CLAUDE.md` (Problem · Ziel & Metrik · Scope · Hebel · Abhängigkeiten · Reporting-Bezug · Owner · Meilensteine).
-2. **Im Index registrieren:** Eintrag in `sustainability-development/initiative-index.yaml` unter der passenden Säule — mit Verweisen auf Brief, geplanten Plan, betroffene Faktoren, ESRS-Datenpunkte, Stakeholder, Tickets, `status:`.
+2. **Als Objekt anlegen:** Neues `initiative-*.md`-Objekt unter `object-model/objects/` — mit Objekt-Kanten auf Brief, geplanten Plan, betroffene Faktoren, ESRS-Datenpunkte, Stakeholder, Tickets, `status:`.
 3. **Umsetzungsplan (wenn es losgeht):** `implementation/plans/<säule>/<name>.md`, verlinkt zurück auf den Brief.
-4. **Daten anbinden:** Betroffene Emissionsfaktoren im Katalog ergänzen/markieren; Inventar-Bezug herstellen.
+4. **Daten anbinden:** Betroffene Emissionsfaktoren als `ef-*`-Objekte unter `object-model/objects/` ergänzen/markieren; Inventar-Bezug herstellen.
 5. **Reporting-Bezug:** Falls offenlegungsrelevant, in `reporting/esrs-datapoint-mapping.md` ergänzen.
 
 ## Konventionen (damit es konsistent bleibt)
 
 - **Jeder Ordner hat ein `CLAUDE.md`** als Wegweiser — was liegt hier, wohin führt es weiter. Neuer Ordner → neues `CLAUDE.md`.
 - **Relative Links** zwischen Dokumenten (keine absoluten Pfade), damit Navigation und Forks funktionieren.
-- **Der Index ist die Wahrheit über Verknüpfungen.** Wenn zwei Dinge zusammengehören, gehören sie in `initiative-index.yaml`.
+- **Die Objekt-Kanten sind die Wahrheit über Verknüpfungen.** Wenn zwei Dinge zusammengehören, werden sie über Kanten zwischen den Objekten unter `object-model/objects/` verbunden.
 - **Platzhalter klar markieren** (z. B. „(Stub)", „(Platzhalter)") — damit niemand erfundene Zahlen für echte hält.
 - **Datumsformat** in Dateinamen: `YYYY-MM-DD` (z. B. Findings), chronologisch sortierbar.
 
@@ -55,6 +55,6 @@ Statt „einmal im Quartal alles durchgehen" — an konkrete Ereignisse koppeln:
 Wenn das OS produktiv genutzt wird, lohnt sich:
 - **SessionStart-Hook** — lädt bei jeder KI-Session automatisch den Root-Kontext (siehe die `session-start-hook`-Anleitung).
 - **Link-Check in CI** — prüft bei jedem Commit, dass keine relativen Links ins Leere zeigen.
-- **Schema-Check** für `initiative-index.yaml` — stellt sicher, dass neue Einträge alle Pflichtfelder haben.
+- **Schema-Check** für die Objekte unter `object-model/objects/` (via `object-model/`-Validator gegen das Schema) — stellt sicher, dass neue Objekte alle Pflichtfelder haben.
 
 Sag Bescheid, wenn einer dieser Bausteine eingerichtet werden soll.

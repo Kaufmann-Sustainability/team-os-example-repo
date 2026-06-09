@@ -10,7 +10,7 @@ Beim Probelauf der Umstellung einzelner Stahl-Positionen von spend-based auf sup
 
 1. Spend-Positionen je Materialgruppe gegen Lieferanten-Mengen abgeglichen.
 2. Festgestellt: Einige Spend-Positionen umfassen **weiterverarbeitete Vormaterialien**, deren Rohmaterial-Spend separat bereits erfasst war.
-3. Der generische spend-based-Faktor (`emission-factors-catalog.yaml#stahl-spend-based`) zählt damit Teile der Wertschöpfung doppelt.
+3. Der generische spend-based-Faktor (`../../../../object-model/objects/ef-stahl-spend-based.md`) zählt damit Teile der Wertschöpfung doppelt.
 
 ## Ursache
 

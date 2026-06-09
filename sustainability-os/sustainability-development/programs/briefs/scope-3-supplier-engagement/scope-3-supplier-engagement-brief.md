@@ -31,7 +31,7 @@
 ## Abhängigkeiten
 
 - **Procurement** (`../../stakeholders/accounts/procurement/`) — muss CO₂ ins Vergabe-Scoring aufnehmen.
-- **Carbon Data** — Aufnahme lieferanten-spezifischer EFs in den Katalog (`../../../carbon-data/emission-factors-catalog.yaml`).
+- **Carbon Data** — Aufnahme lieferanten-spezifischer EFs als `ef-*`-Objekte (`../../../../object-model/objects/`).
 - **Datenqualität** — bekanntes Doppelzählungs-Risiko beim Übergang spend→supplier (siehe `../../../implementation/data-quality-findings/scope-3/2026-05-12-spend-based-overcount.md`).
 
 ## Reporting-Bezug (ESRS)

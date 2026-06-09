@@ -45,13 +45,11 @@ Nordmark Industrie GmbH — mittelständischer Industriezulieferer (Metallverarb
 
 ## Doc-Index
 
-**Wenn du Artefakte zu einer bestimmten Initiative suchst (Briefs, Pläne, Faktoren, Inventar, Reporting-Datenpunkte, Tickets), schau zuerst in `sustainability-development/initiative-index.yaml`.** Dort ist jede Initiative auf all ihre zugehörigen Artefakte gemappt.
+**Wenn du Artefakte zu einer bestimmten Initiative suchst (Briefs, Pläne, Faktoren, Inventar, Reporting-Datenpunkte, Tickets), schau zuerst im Objektmodell unter `object-model/objects/` (Initiativen liegen als `initiative-*.md`-Objekte vor).** Jede Initiative ist über Objekt-Kanten auf all ihre zugehörigen Artefakte verknüpft.
 
 | Bereich | Datei | Beschreibung |
 |---------|-------|--------------|
-| Initiative-Index | `sustainability-development/initiative-index.yaml` | Master-Lookup — jede Initiative → Briefs, Pläne, Faktoren, Inventar, Reporting, Tickets |
-| Glossar | `sustainability-development/glossary.md` | Kanonische Definitionen aller Begriffe/Kennzahlen (Single Source of Truth) |
-| Ziele | `sustainability-development/targets.yaml` | Kanonisches Register aller Ziele (Baseline, Zielwert, Owner, ESRS-Bezug) |
+| Objektmodell | `object-model/` | Kanonische Objekte: targets/term/ef/initiative/kpi/… + Schema + Validator. Initiativen (`initiative-*.md`), Begriffe (`term-*.md`), Ziele (`target-*.md`) und Emissionsfaktoren (`ef-*.md`) leben hier; verknüpft über Objekt-Kanten |
 | Sustainability Development | `sustainability-development/CLAUDE.md` | Dachordner für alle Nachhaltigkeits-Artefakte |
 | Programme | `sustainability-development/programs/CLAUDE.md` | Strategie, Roadmaps, Initiativen-Briefs, Regulatorik, Stakeholder, Meetings |
 | Strategie | `sustainability-development/programs/strategy/CLAUDE.md` | Net-Zero-Strategie, Roadmaps, Wesentlichkeitsanalyse, Geschäftskontext |
@@ -65,7 +63,7 @@ Nordmark Industrie GmbH — mittelständischer Industriezulieferer (Metallverarb
 
 ## Terminologie
 
-> Diese Tabelle ist eine Kurzreferenz. **Kanonische, vollständige Definitionen** stehen im Glossar: `sustainability-development/glossary.md` — gepflegt über den `sustainability-standard`-Skill (so können auch HR/Procurement konsistent Begriffe ergänzen).
+> Diese Tabelle ist eine Kurzreferenz. **Kanonische, vollständige Definitionen** stehen als Begriffsobjekte unter `object-model/objects/term-*.md` — gepflegt über den `sustainability-standard`-Skill (so können auch HR/Procurement konsistent Begriffe ergänzen).
 
 | Begriff | Definition |
 |---------|------------|

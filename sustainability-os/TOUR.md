@@ -22,11 +22,11 @@ Das Herzstück: Wie hängt alles zusammen? Folge **einer** echten Initiative —
 
 1. **Das „Warum"** → [Brief](sustainability-development/programs/briefs/scope-3-supplier-engagement/scope-3-supplier-engagement-brief.md): Problem, Ziel, Erfolgsmetrik.
 2. **Das „Wie"** → [Umsetzungsplan](sustainability-development/implementation/plans/scope-3/supplier-data-collection.md): Arbeitspakete, wer macht was.
-3. **Die Daten** → [Emissionsfaktoren](sustainability-development/carbon-data/emission-factors-catalog.yaml) und [THG-Inventar](sustainability-development/carbon-data/inventory/ghg-inventory-2025.md): die Zahlen dahinter.
+3. **Die Daten** → [Emissionsfaktoren](object-model/objects/) (`ef-*`-Objekte) und [THG-Inventar](sustainability-development/carbon-data/inventory/ghg-inventory-2025.md): die Zahlen dahinter.
 4. **Ein Problem** → [Datenqualitäts-Finding](sustainability-development/implementation/data-quality-findings/scope-3/2026-05-12-spend-based-overcount.md): ein dokumentierter Datenfehler und seine Korrektur.
 5. **Das Reporting** → [ESRS-Datenpunkt-Mapping](sustainability-development/reporting/esrs-datapoint-mapping.md): wie dieselbe Initiative in die CSRD-Offenlegung fließt.
 
-> 💡 Das ist der Kern: Eine Initiative ist *kein* einzelnes Dokument, sondern ein roter Faden durch Strategie → Umsetzung → Daten → Reporting. Die Datei [`initiative-index.yaml`](sustainability-development/initiative-index.yaml) verknüpft das alles an einer Stelle.
+> 💡 Das ist der Kern: Eine Initiative ist *kein* einzelnes Dokument, sondern ein roter Faden durch Strategie → Umsetzung → Daten → Reporting. Das [`initiative-*.md`-Objekt](object-model/objects/) im Objektmodell verknüpft das alles über Objekt-Kanten an einer Stelle.
 
 ## 3. Der Praxistest (1,5 Minuten) — optional, wenn KI zur Hand
 

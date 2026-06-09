@@ -5,14 +5,14 @@ Ergänzt das [allgemeine Onboarding](onboarding-general.md). Fokus: THG-Bilanzie
 ## Was du besitzt
 
 - Das **THG-Inventar** (`../../sustainability-development/carbon-data/inventory/`) — die offiziellen Zahlen.
-- Den **Emissionsfaktoren-Katalog** (`../../sustainability-development/carbon-data/emission-factors-catalog.yaml`) — Pflege, Quellen, Gültigkeit.
+- Die **Emissionsfaktoren** als `ef-*`-Objekte (`../../object-model/objects/`) — Pflege, Quellen, Gültigkeit.
 - **Datenqualität** — Plausibilisierung, Findings (`../../sustainability-development/implementation/data-quality-findings/`).
 
 ## Mentales Modell
 
 ```
 Aktivitätsdaten (kWh, t, €)  ×  Emissionsfaktor (kgCO2e/Einheit)  =  Emission (tCO2e)
-        ↑ aus ERP/Zählern              ↑ aus Faktoren-Katalog
+        ↑ aus ERP/Zählern              ↑ aus den ef-*-Objekten
 ```
 
 Scope 2 immer **dual** (location- + market-based). Scope 3 priorisiert nach Beitrag — Genauigkeit folgt Wesentlichkeit (Kat. 1 zuerst).

@@ -1,5 +1,7 @@
 # Review-Synthese & Ziel-Struktur
 
+> **Update 2026-06-09:** Das OS wurde inzwischen vollständig auf das Objektmodell (`object-model/`) umgestellt; die hier erwähnten Registries (`targets.yaml`, `glossary.md`, `initiative-index.yaml`, EF-Katalog) sind in Objekte migriert und gelöscht.
+
 > Verdichtet die 19 Findings aus [`REVIEW-FINDINGS.md`](REVIEW-FINDINGS.md) auf **5 Grundprobleme** und entwirft die überarbeitete OS-Struktur, die sie adressiert. **Stand:** 2026-06-09 · **Status:** Entwurf zur Freigabe (noch nicht umgesetzt).
 
 ---

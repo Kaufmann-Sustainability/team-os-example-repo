@@ -12,7 +12,7 @@ Alle Inhalte beziehen sich auf **Nordmark Industrie GmbH**, einen fiktiven mitte
 
 ## Architektur in einem Satz
 
-`CLAUDE.md`-Dateien auf jeder Ebene wirken als Wegweiser; ein Master-Index (`initiative-index.yaml`) verbindet jede Initiative mit all ihren Artefakten; Inhalte sind nach Funktion gegliedert (`programs/`, `carbon-data/`, `implementation/`, `reporting/`).
+`CLAUDE.md`-Dateien auf jeder Ebene wirken als Wegweiser; das Objektmodell (`object-model/`) verbindet jede Initiative über Objekt-Kanten mit all ihren Artefakten (`initiative-*.md`-Objekte); Inhalte sind nach Funktion gegliedert (`programs/`, `carbon-data/`, `implementation/`, `reporting/`).
 
 ## Einstieg
 
@@ -20,7 +20,7 @@ Alle Inhalte beziehen sich auf **Nordmark Industrie GmbH**, einen fiktiven mitte
 - **Wie bleibt das OS lebendig?** → [`MAINTAINING.md`](MAINTAINING.md) (Pflege & Beiträge)
 - **Neu im Team?** → [`team/onboarding-guides/onboarding-general.md`](team/onboarding-guides/onboarding-general.md)
 - **Überblick über alles?** → [`CLAUDE.md`](CLAUDE.md) (Root-Wegweiser)
-- **Eine bestimmte Initiative?** → [`sustainability-development/initiative-index.yaml`](sustainability-development/initiative-index.yaml)
+- **Eine bestimmte Initiative?** → [`object-model/objects/`](object-model/objects/) (`initiative-*.md`-Objekte)
 
 ## Lizenz
 

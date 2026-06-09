@@ -20,7 +20,7 @@ Scope 2 (market-based) beträgt ~52.000 tCO₂e — eingekaufter Graustrom für 
 
 ## Ansatz
 
-Langfristiges **Power Purchase Agreement (PPA)** mit EE-Anbieter, zwei Tranchen: Tranche 1 (DE-Werke, 2026), Tranche 2 (PL/CZ, 2027). Ergänzt durch standortnahe PV-Eigenerzeugung wo wirtschaftlich. Market-based-Faktor wird auf den Residualmix bzw. PPA-spezifischen Faktor umgestellt — siehe `../../../carbon-data/emission-factors-catalog.yaml#strom-de-market-based`.
+Langfristiges **Power Purchase Agreement (PPA)** mit EE-Anbieter, zwei Tranchen: Tranche 1 (DE-Werke, 2026), Tranche 2 (PL/CZ, 2027). Ergänzt durch standortnahe PV-Eigenerzeugung wo wirtschaftlich. Market-based-Faktor wird auf den Residualmix bzw. PPA-spezifischen Faktor umgestellt — siehe `../../../../object-model/objects/ef-strom-de-market-based.md`.
 
 ## Abhängigkeiten
 

@@ -7,8 +7,8 @@ Die Datenebene des Nachhaltigkeitsteams — das Pendant zu „Analytics". Hier l
 | Ordner/Datei | Beschreibung |
 |--------------|--------------|
 | `inventory/` | THG-Inventar nach Scope/Jahr — die offiziellen Bilanzierungs-Zahlen |
-| `emission-factors-catalog.yaml` | Registry aller verwendeten Emissionsfaktoren — Quelle, Einheit, Gültigkeit, Owner |
-| `metrics/` | KPI-Definitionen (analog Metrik-Glossar) |
+| `../../object-model/objects/ef-*.md` | Emissionsfaktoren als Objekte — Quelle, Einheit, Gültigkeit, Owner (kanonische Heimat im Objektmodell) |
+| `metrics/` | KPI-Definitionen (analog Metrik-Glossar); kanonisch als `kpi-*`-Objekte unter `../../object-model/objects/` |
 | `queries/` | Wiederkehrende Auswertungen (SQL / Tabellen-Transformationen) |
 | `dashboards.md` | Verweise auf Dashboards (z. B. Power BI / internes Carbon-Tool) |
 
@@ -22,6 +22,8 @@ Die Datenebene des Nachhaltigkeitsteams — das Pendant zu „Analytics". Hier l
 | Emissionsfaktor-DBs | DEFRA, ecoinvent, GEMIS, Versorger-Faktoren | Lizenzierte DBs |
 
 ## Kern-KPIs
+
+> Die KPIs sind kanonisch als `kpi-*`-Objekte unter `../../object-model/objects/` gepflegt; die Tabelle ist eine Kurzreferenz.
 
 | KPI | Definition | Ziel |
 |-----|------------|------|
@@ -39,5 +41,5 @@ Nach **GHG Protocol** (siehe `../programs/regulatory/frameworks/frameworks-matri
 ## Wichtigste Verweise
 
 - Aktuelles Inventar: `inventory/ghg-inventory-2025.md`
-- Faktoren-Katalog: `emission-factors-catalog.yaml`
+- Faktoren-Objekte: `../../object-model/objects/ef-*.md`
 - Datenqualitäts-Findings: `../implementation/data-quality-findings/`

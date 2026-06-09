@@ -21,7 +21,7 @@
 
 ## Auswirkung auf Carbon Data
 
-Nach Go-Live Tranche 1: market-based-Faktor auf 0 / PPA-spezifisch → `carbon-data/emission-factors-catalog.yaml#strom-de-market-based`. Effekt im Inventar 2025 bereits sichtbar (Scope 2 market-based −21 %).
+Nach Go-Live Tranche 1: market-based-Faktor auf 0 / PPA-spezifisch → `../../../object-model/objects/ef-strom-de-market-based.md`. Effekt im Inventar 2025 bereits sichtbar (Scope 2 market-based −21 %).
 
 ## Reporting-Bezug
 

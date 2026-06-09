@@ -7,10 +7,10 @@ name: Validate Object Model
 on:
   push:
     paths:
-      - 'sustainability-os/object-model-spike/**'
+      - 'sustainability-os/object-model/**'
   pull_request:
     paths:
-      - 'sustainability-os/object-model-spike/**'
+      - 'sustainability-os/object-model/**'
   workflow_dispatch:        # manuell auslösbar
 
 jobs:
@@ -24,4 +24,4 @@ jobs:
       - name: PyYAML installieren
         run: pip install pyyaml
       - name: Objektgraph validieren
-        run: python3 sustainability-os/object-model-spike/tools/validate.py
+        run: python3 sustainability-os/object-model/tools/validate.py

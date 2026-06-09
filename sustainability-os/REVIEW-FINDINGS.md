@@ -1,5 +1,7 @@
 # Review-Findings: Struktureller Aufbau des Sustainability OS
 
+> **Update 2026-06-09:** Das OS wurde inzwischen vollständig auf das Objektmodell (`object-model/`) umgestellt; die hier erwähnten Registries (`targets.yaml`, `glossary.md`, `initiative-index.yaml`, EF-Katalog) sind in Objekte migriert und gelöscht.
+
 > **Zweck:** Backlog der strukturellen (architektonischen) Schwächen des OS-Aufbaus — bewusst getrennt von inhaltlichen Nordmark-Platzhaltern. Entstanden im Review durch Testfragen an das OS.
 >
 > **Reviewer:** dk (Kaufmann) · **Stand:** 2026-06-09 · **Status:** Review läuft — Liste wächst noch, Priorisierung folgt.

@@ -9,9 +9,9 @@ vertraulichkeit: intern
 esrs_bezug: E1
 quelle: sustainability-development/programs/strategy/materiality/double-materiality-assessment-2026.md
 # Beziehungen (getypte Kanten -> IDs in objects/)
-has_target: [target-sbti-scope3-2030]
-has_kpi: [kpi-scope3-intensitaet]
-has_initiative: [initiative-scope3-supplier-engagement]
+has_target: [target-sbti-scope3-2030, target-sbti-scope1-2-2030, target-gruenstrom-100-2027, target-net-zero-2040]
+has_kpi: [kpi-scope3-intensitaet, kpi-scope1-2-absolut, kpi-thg-gesamt, kpi-erneuerbarer-strom-anteil, kpi-primaerdaten-abdeckung, kpi-datenqualitaets-score]
+has_initiative: [initiative-scope3-supplier-engagement, initiative-renewable-electricity-ppa, initiative-fuhrpark-elektrifizierung, initiative-produktbezogene-pcf]
 has_iro: [iro-e1-klimawandel]
 ---
 
@@ -22,9 +22,9 @@ Klima ist nach der Doppelten Wesentlichkeitsanalyse 2026 für Nordmark wesentlic
 alle klimabezogenen Ziele, KPIs und Initiativen hängen daran, statt in verstreuten
 Ordnern zu leben.
 
-> **Slice-Hinweis:** Dieser Spike zeigt nur den Ausschnitt, den die Aufgabe
-> *Target-Setting* berührt (ein Scope-3-Ziel). Das echte Thema trüge zusätzlich
-> Scope-1/2-Ziele, Policies, Decisions und Evidence als weitere Kanten.
+Nach dem vollen Umzug trägt E1 jetzt **alle** migrierten Klima-Ziele (Scope 1+2, Scope 3,
+Grünstrom, Net-Zero), die sechs Kern-KPIs und die Reduktions-Initiativen — die Registries
+(`targets.yaml`, `initiative-index.yaml`) sind in diese Objekte aufgegangen.
 
 ## Warum wesentlich
 Energieintensive Metallverarbeitung; Scope 3 (eingekaufte Güter) dominiert den

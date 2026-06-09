@@ -1,19 +1,19 @@
-# Object-Model Spike — Vertikale Durchstiche „Target-Setting" & „DMA"
+# Object-Model — die kanonische Wissensschicht des Sustainability OS
 
-> **Was das ist:** Ein bewusst kleiner, *vertikaler* Proof-of-Concept. Statt alle
-> Themen horizontal zu modellieren, sticht dieser Spike **ganze Aufgaben komplett
-> durch** — über alle vier Schichten des Objektmodells. Ziel: an echtem Material sehen,
-> **wo das Modell trägt und wo es hakt**, bevor groß umgebaut wird.
+> **Was das ist:** Das **kanonische** Objektmodell des OS. Jeder Fakt ist genau ein
+> Objekt unter `objects/`; Sichten (`views/`) und Context-Packs (`context-packs/`) lesen
+> daraus, kopieren nicht. Validiert von `tools/validate.py`, in CI erzwungen.
 >
-> Aktuell drei Durchstiche:
+> Erprobt wurde es an drei vertikalen Durchstichen — alle drei tragen:
 > 1. **Target-Setting** — *ein Ziel für ein Thema setzen* (strukturlastig).
 > 2. **DMA** — *Wesentlichkeit eines Themas bestimmen/verteidigen* (narrativlastig, härtere Probe).
 > 3. **Disclosure/Assurance** — *einen ESRS-Datenpunkt prüfsicher offenlegen* (schließt die
 >    Reporting-/Prüf-Lücken #17/#18/#19).
 >
-> **Status:** Spike / Diskussionsgrundlage. Bewusst **außerhalb** der normalen
-> `CLAUDE.md`-Ordnerkonvention und **nicht** im Doc-Index verdrahtet — er konkurriert
-> (noch) nicht mit der bestehenden Ordnerwelt, er erprobt eine Alternative.
+> **Status:** Kanonisch (voller Umzug umgesetzt). Die früheren Registries
+> (`targets.yaml`, `glossary.md`, `initiative-index.yaml`, EF-Katalog) sind in Objekte
+> migriert und gelöscht; ihre Inhalte leben hier als `target-*`, `term-*`, `initiative-*`,
+> `kpi-*` und `ef-*`. Im Doc-Index der Root-`CLAUDE.md` verlinkt.
 
 ## Woher die Idee kommt
 Drei Evolutionsschritte führten hierher: **(1)** Domänen-Taxonomie → **(2)** Objekte +
@@ -31,10 +31,10 @@ liegenden Probleme stehen in [`../REVIEW-SYNTHESIS.md`](../REVIEW-SYNTHESIS.md) 
 | **AI** | Wie nutzt ein Agent das? | `sustainability-standard`-Skill konsumiert den Pack (s. u.); `triggers/` |
 
 ## Das Beispiel (echte Daten, kein Fantasie-Set)
-Ziel **SBTi Near-Term Scope 3** (`target-sbti-scope3-2030`) aus der echten
-`../sustainability-development/targets.yaml`, mit seinem KPI, der einzahlenden
-Initiative, Budget, Freigabe-Entscheidung — und dem **realen** Datenqualitäts-Finding
-`finding-2026-05-12-spend-based-overcount`.
+Ziel **SBTi Near-Term Scope 3** (`target-sbti-scope3-2030`) — ursprünglich aus dem
+inzwischen migrierten `targets.yaml`, jetzt kanonisch als Objekt — mit seinem KPI, der
+einzahlenden Initiative, Budget, Freigabe-Entscheidung und dem **realen**
+Datenqualitäts-Finding `finding-2026-05-12-spend-based-overcount`.
 
 ## Was der Spike beweist (gegen die 5 Grundprobleme)
 
@@ -134,7 +134,7 @@ den Sweep und fragt Owner gezielt: *„Gab es seit Q1 neue Klima-Maßnahmen, die
 
 ## Selbst ausprobieren
 ```bash
-cd sustainability-os/object-model-spike
+cd sustainability-os/object-model
 python3 tools/validate.py        # erwartet: ✓ Integrität OK
 ```
 Zum Gegentest: in einem Objekt eine Kanten-ID verfälschen → `validate.py` meldet die tote Kante (exit 1).
@@ -149,12 +149,14 @@ Zum Gegentest: in einem Objekt eine Kanten-ID verfälschen → `validate.py` mel
   Klick-Oberfläche.
 - **Wer pflegt's?** Das echte Risiko. Der Refresh-Trigger mildert, ersetzt aber nicht den
   Owner, der antwortet.
-- **Doppelung Graph ↔ Ordnerwelt:** Solange dies ein Spike ist, existieren KPI/Target an
-  *zwei* Orten (hier als Objekt, dort in `targets.yaml`/Inventar). Bei Adoption muss genau
-  eine Seite kanonisch werden — sonst kehrt Grundproblem A zurück.
+- **Doppelung Graph ↔ Ordnerwelt:** ~~offen~~ **gelöst** — die Registries wurden migriert und
+  gelöscht; KPI/Target leben jetzt nur noch *einmal* (als Objekt). Verbleibende Rohdaten
+  (Inventar) bleiben als referenzierte Datenquelle, nicht als konkurrierende Wahrheit.
+- **Lange Narrative** wollen perspektivisch ein referenziertes Doc-Objekt statt alles im Body.
 
-## Mögliche nächste Schritte
-1. Zweite Aufgabe durchstechen (z. B. **DMA** oder **Disclosure**), um die Schichten zu stressen.
-2. `validate.py` als CI-Check verdrahten (Link-/Schema-/Drift-Check, Grundproblem E).
-3. Entscheiden: Wird der Graph kanonisch (dann Registries → Objekte migrieren) — oder bleibt
-   er eine generierte Sicht auf die Registries? (Das ist die Bau-Entscheidung aus der Diskussion.)
+## Status der Bau-Entscheidung
+Die Bau-Frage (`DECISION-build-vs-view.md`) wurde zugunsten **Option A (Graph kanonisch)**
+entschieden und umgesetzt: voller Umzug der Registries in Objekte. Offene Folgeschritte:
+1. Refresh-Trigger (quartalsweise) real einrichten — Pflege der ~lebendigen Objekte.
+2. Weitere Themen (E2/E5/S1/S2/G1) über die hohlen Topic-Objekte hinaus ausmodellieren.
+3. View-Rendering (KI-generiert) für die menschlichen Sichten.

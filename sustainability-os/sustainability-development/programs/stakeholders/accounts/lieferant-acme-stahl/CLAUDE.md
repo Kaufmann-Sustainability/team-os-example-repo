@@ -8,7 +8,7 @@ ACME Stahl liefert Walzstahl für Nordmarks Umformprozesse. Heute spend-based bi
 
 ## Was wir brauchen
 
-- Lieferanten-spezifischen Emissionsfaktor (statt generisch) → siehe `../../../../carbon-data/emission-factors-catalog.yaml#stahl-supplier-specific`.
+- Lieferanten-spezifischen Emissionsfaktor (statt generisch) → siehe `../../../../../object-model/objects/ef-stahl-supplier-specific.md`.
 - Reduktions-/SBTi-Commitment.
 - Angebot grüner Stahlmengen für 2027+.
 
