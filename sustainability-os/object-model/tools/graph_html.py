@@ -82,7 +82,8 @@ def main():
     data = {"nodes": nodes, "links": links, "groups": groups}
     n_obj, n_edge = len(nodes), len(links)
     title = f"{ROOT.name} — Objektgraph"
-    sub = f"{n_obj} Objekte · {n_edge} Kanten · Farbe = Gruppe (ESRS/Typ) · ziehen · scrollen=zoom · hover=Details"
+    sub = (f"{n_obj} Objekte · {n_edge} Kanten · Farbe = Gruppe · "
+           f"KLICK auf einen Knoten = nur dessen Umfeld zeigen (Klick auf Hintergrund = zurück) · ziehen · scroll=zoom · hover=Details")
     htmldoc = TEMPLATE.replace("__DATA__", json.dumps(data)).replace("__TITLE__", html.escape(title)).replace("__SUB__", html.escape(sub))
     (OUT / "graph.html").write_text(htmldoc, encoding="utf-8")
     print(f"Gerendert: diagrams/graph.html  ({n_obj} Objekte, {n_edge} Kanten, {len(groups)} Gruppen)")
@@ -125,33 +126,53 @@ function tick(){
  L.forEach(l=>{const a=byId[l.s],b=byId[l.t];let dx=b.x-a.x,dy=b.y-a.y,d=Math.sqrt(dx*dx+dy*dy)+.01;
   let f=(d-LEN)*SPR,fx=f*dx/d,fy=f*dy/d;a.vx+=fx;a.vy+=fy;b.vx-=fx;b.vy-=fy;});
  N.forEach(n=>{const[ax,ay]=anchor[n.g];n.vx+=(ax()-n.x)*GG+(cx()-n.x)*CG;n.vy+=(ay()-n.y)*GG+(cy()-n.y)*CG;
-  if(n.fix)return;n.vx*=DAMP;n.vy*=DAMP;n.x+=n.vx*alpha;n.y+=n.vy*alpha;});
+  if(n.fix||n.pin)return;n.vx*=DAMP;n.vy*=DAMP;n.x+=n.vx*alpha;n.y+=n.vy*alpha;});
  if(alpha>0.06)alpha*=0.996;
 }
 let scale=0.85,tx=0,ty=0;
+let focusId=null,focusSet=null;
+function vis(n){return !focusSet||focusSet.has(n.id);}
 function draw(){
  ctx.setTransform(1,0,0,1,0,0);ctx.clearRect(0,0,W,H);
  ctx.setTransform(scale,0,0,scale,tx,ty);
- ctx.strokeStyle="rgba(120,140,160,0.14)";ctx.lineWidth=0.6;ctx.beginPath();
- L.forEach(l=>{const a=byId[l.s],b=byId[l.t];ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);});ctx.stroke();
- N.forEach(n=>{ctx.beginPath();ctx.arc(n.x,n.y,n.r,0,6.283);ctx.fillStyle=color[n.g];
-  ctx.globalAlpha=n.mat?1:0.4;ctx.fill();ctx.globalAlpha=1;
-  if(n.r>6){ctx.strokeStyle="rgba(255,255,255,0.5)";ctx.lineWidth=0.8;ctx.stroke();}});
- ctx.fillStyle="#cbd5e1";ctx.font="9px Helvetica";
- N.forEach(n=>{if(n.r>7){ctx.fillText(n.l,n.x+n.r+2,n.y+3);}});
+ ctx.strokeStyle=focusSet?"rgba(150,170,190,0.35)":"rgba(120,140,160,0.14)";ctx.lineWidth=0.7;ctx.beginPath();
+ L.forEach(l=>{if(focusSet&&!(focusSet.has(l.s)&&focusSet.has(l.t)))return;
+  const a=byId[l.s],b=byId[l.t];ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);});ctx.stroke();
+ N.forEach(n=>{if(!vis(n))return;ctx.beginPath();ctx.arc(n.x,n.y,n.r,0,6.283);ctx.fillStyle=color[n.g];
+  ctx.globalAlpha=n.mat?1:0.45;ctx.fill();ctx.globalAlpha=1;
+  if(n.r>6||focusSet){ctx.strokeStyle=(n.id===focusId)?"#fff":"rgba(255,255,255,0.6)";
+   ctx.lineWidth=(n.id===focusId)?2:0.8;ctx.stroke();}});
+ ctx.fillStyle="#dbe4ee";ctx.font="10px Helvetica";
+ N.forEach(n=>{if(!vis(n))return;if(focusSet||n.r>7){ctx.fillText(n.l,n.x+n.r+3,n.y+3);}});
 }
 function loop(){tick();draw();requestAnimationFrame(loop);}loop();
 // Interaktion
 function world(e){return[(e.clientX-tx)/scale,(e.clientY-ty)/scale];}
-function pick(e){const[mx,my]=world(e);let best=null,bd=1e9;N.forEach(n=>{const d=(n.x-mx)**2+(n.y-my)**2;if(d<bd&&d<Math.max(64,n.r*n.r*4)){bd=d;best=n;}});return best;}
-let drag=null,pan=null;
-cv.addEventListener('mousedown',e=>{const n=pick(e);if(n){drag=n;n.fix=true;}else{pan=[e.clientX-tx,e.clientY-ty];}});
+function pick(e){const[mx,my]=world(e);let best=null,bd=1e9;N.forEach(n=>{if(!vis(n))return;
+ const d=(n.x-mx)**2+(n.y-my)**2;if(d<bd&&d<Math.max(80,n.r*n.r*4)){bd=d;best=n;}});return best;}
+function neigh(id){const s=new Set([id]);L.forEach(l=>{if(l.s===id)s.add(l.t);if(l.t===id)s.add(l.s);});return s;}
+function setFocus(id){
+ if(focusId===id){clearFocus();return;}
+ if(focusSet)focusSet.forEach(x=>byId[x].pin=false);
+ focusId=id;focusSet=neigh(id);const f=byId[id];
+ f.x=(W/2-tx)/scale;f.y=(H/2-ty)/scale;f.vx=f.vy=0;
+ const nb=[...focusSet].filter(x=>x!==id),R=140;
+ nb.forEach((x,i)=>{const a=2*Math.PI*i/nb.length,n=byId[x];n.x=f.x+R*Math.cos(a);n.y=f.y+R*Math.sin(a);n.vx=n.vy=0;});
+ focusSet.forEach(x=>byId[x].pin=true);
+}
+function clearFocus(){if(focusSet)focusSet.forEach(x=>byId[x].pin=false);focusId=null;focusSet=null;}
+let drag=null,pan=null,down=null;
+cv.addEventListener('mousedown',e=>{const n=pick(e);down={n:n,x:e.clientX,y:e.clientY,m:false};
+ if(n){drag=n;n.fix=true;}else{pan=[e.clientX-tx,e.clientY-ty];}});
 addEventListener('mousemove',e=>{
+ if(down&&(Math.abs(e.clientX-down.x)>4||Math.abs(e.clientY-down.y)>4))down.m=true;
  if(drag){const[mx,my]=world(e);drag.x=mx;drag.y=my;drag.vx=drag.vy=0;alpha=Math.max(alpha,0.3);}
  else if(pan){tx=e.clientX-pan[0];ty=e.clientY-pan[1];}
  else{const n=pick(e);if(n){tip.style.display='block';tip.style.left=(e.clientX+12)+'px';tip.style.top=(e.clientY+12)+'px';tip.textContent=n.title;}else tip.style.display='none';}
 });
-addEventListener('mouseup',()=>{if(drag)drag.fix=false;drag=null;pan=null;});
+addEventListener('mouseup',()=>{
+ if(down&&!down.m){if(down.n)setFocus(down.n.id);else clearFocus();}
+ if(drag)drag.fix=false;drag=null;pan=null;down=null;});
 cv.addEventListener('wheel',e=>{e.preventDefault();const f=e.deltaY<0?1.1:0.9;const mx=e.clientX,my=e.clientY;
  tx=mx-(mx-tx)*f;ty=my-(my-ty)*f;scale*=f;},{passive:false});
 </script></body></html>"""
