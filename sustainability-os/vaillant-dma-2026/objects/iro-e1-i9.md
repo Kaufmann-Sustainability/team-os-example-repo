@@ -21,10 +21,10 @@ scored_under: [methodology-dma-2026]
 
 # IRO E1-I9: Energie
 
-**Typ:** I+ · **Aktuell/Potenziell:** Aktuell · **Wertschöpfungskette:** Downstream · **Zeithorizont:** Mittel
+**Typ:** I+ · **Aktuell/Potenziell:** Aktuell · **Wertschöpfungskette:** Downstream · **Zeithorizont:** Mittel · **Wesentlich:** Ja
 
 ## Beschreibung
 Energieeffiziente Produkte: A+++-Wärmepumpen und Brennwertkessel reduzieren den Energiebedarf der Kund:innen gegenüber dem Marktdurchschnitt — qualifiziert als positive Wirkung, wo Vaillant die gesetzliche Ecodesign-Baseline übertrifft.
 
-## Begründung der Wesentlichkeit
+## Begründung
 Übersteigt Ecodesign-Baseline auf führenden Produktlinien (IG1 §117).

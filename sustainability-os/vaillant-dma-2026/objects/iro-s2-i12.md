@@ -21,10 +21,10 @@ scored_under: [methodology-dma-2026]
 
 # IRO S2-I12: Gesundheit und Sicherheit
 
-**Typ:** I- · **Aktuell/Potenziell:** Aktuell · **Wertschöpfungskette:** Downstream · **Zeithorizont:** Mittel
+**Typ:** I- · **Aktuell/Potenziell:** Aktuell · **Wertschöpfungskette:** Downstream · **Zeithorizont:** Mittel · **Wesentlich:** Ja
 
 ## Beschreibung
 Arbeitssicherheit der Installateure — Kältemittel-Brennbarkeit (R290), Elektroarbeiten, Wärmepumpen-Dachinstallationen ergeben Verletzungs-Exposition für 340.000-köpfige erweiterte Belegschaft.
 
-## Begründung der Wesentlichkeit
+## Begründung
 Tatsächliche H&S-Exposition über 340.000-Installateur-Belegschaft; §52 (IG1 §117).

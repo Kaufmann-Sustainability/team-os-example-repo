@@ -21,10 +21,10 @@ scored_under: [methodology-dma-2026]
 
 # IRO E1-I1: Klimawandel-Mitigation
 
-**Typ:** I- · **Aktuell/Potenziell:** Aktuell · **Wertschöpfungskette:** Downstream · **Zeithorizont:** Lang
+**Typ:** I- · **Aktuell/Potenziell:** Aktuell · **Wertschöpfungskette:** Downstream · **Zeithorizont:** Lang · **Wesentlich:** Ja
 
 ## Beschreibung
 Die Verbrennung der installierten Gaskessel-Basis im Kundenbetrieb verursacht jährlich rund 133 Mio. t CO2-Äquivalente (Scope 3.11) — die mit Abstand größte Klimawirkung der Vaillant-Wertschöpfungskette. Die 15-20-jährige Geräte-Lebensdauer verriegelt fossile Emissionen über Jahrzehnte.
 
-## Begründung der Wesentlichkeit
+## Begründung
 Aktuelle, katastrophale und global wirksame Wirkung mit über Jahrzehnte hinweg geltendem langfristige Festlegung; SBTi-Ziele gelten als spätere Minderung und reduzieren die Berichtsjahres-Schwere nach §44a nicht (IG1 §117).

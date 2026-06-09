@@ -21,10 +21,10 @@ scored_under: [methodology-dma-2026]
 
 # IRO S2-I9: Partizipationsrechte
 
-**Typ:** I- · **Aktuell/Potenziell:** Potenziell · **Wertschöpfungskette:** Upstream · **Zeithorizont:** Mittel
+**Typ:** I- · **Aktuell/Potenziell:** Potenziell · **Wertschöpfungskette:** Upstream · **Zeithorizont:** Mittel · **Wesentlich:** Ja
 
 ## Beschreibung
 Arbeitnehmerstimme in Lieferkette begrenzt; CSDDD wird Partizipation als Teil der Sorgfaltspflicht verlangen.
 
-## Begründung der Wesentlichkeit
+## Begründung
 Menschenrechts-Vorrang: Partizipationsrechte, Basis-Schwere 3.0 (IG1 §120).

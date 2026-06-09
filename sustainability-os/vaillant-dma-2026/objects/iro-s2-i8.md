@@ -21,10 +21,10 @@ scored_under: [methodology-dma-2026]
 
 # IRO S2-I8: Vereinigungsfreiheit
 
-**Typ:** I- · **Aktuell/Potenziell:** Potenziell · **Wertschöpfungskette:** Upstream · **Zeithorizont:** Mittel
+**Typ:** I- · **Aktuell/Potenziell:** Potenziell · **Wertschöpfungskette:** Upstream · **Zeithorizont:** Mittel · **Wesentlich:** Ja
 
 ## Beschreibung
 Vereinigungsfreiheit-Unterdrückung in CN-Elektronik-Lieferkette und Teilen der Metalle; Xinjiang-Exposition für einige Inputs sind nicht auszuschließen.
 
-## Begründung der Wesentlichkeit
+## Begründung
 Menschenrechts-Vorrang: Vereinigungsfreiheit, Basis-Schwere 3.67; §34 ITUC Global Rights Index 2024 (IG1 §120).

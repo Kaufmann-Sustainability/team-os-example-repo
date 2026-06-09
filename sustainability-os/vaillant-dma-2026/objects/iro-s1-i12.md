@@ -21,10 +21,10 @@ scored_under: [methodology-dma-2026]
 
 # IRO S1-I12: Gesundheit und Sicherheit
 
-**Typ:** I+ · **Aktuell/Potenziell:** Potenziell · **Wertschöpfungskette:** Eigenbetrieb · **Zeithorizont:** Mittel
+**Typ:** I+ · **Aktuell/Potenziell:** Potenziell · **Wertschöpfungskette:** Eigenbetrieb · **Zeithorizont:** Mittel · **Wesentlich:** Ja
 
 ## Beschreibung
 ISO 45001 gruppenweit; 0-Unfall-2030-Ziel; H&S-Investition über statutorisches Minimum, wo SEEDS-Budget alloziert.
 
-## Begründung der Wesentlichkeit
+## Begründung
 Über statutorischem Minimum mit SEEDS-Budget (IG1 §117).

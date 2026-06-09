@@ -21,10 +21,10 @@ scored_under: [methodology-dma-2026]
 
 # IRO E1-O2: Klimawandel-Mitigation
 
-**Typ:** O · **Aktuell/Potenziell:** Potenziell · **Wertschöpfungskette:** Downstream · **Zeithorizont:** Mittel
+**Typ:** O · **Aktuell/Potenziell:** Potenziell · **Wertschöpfungskette:** Downstream · **Zeithorizont:** Mittel · **Wesentlich:** Ja
 
 ## Beschreibung
 Service- und Ersatzteil-Umsätze aus wachsender Wärmepumpen-Basis (340.000 Fachpartner); margenstärkere vernetzte Dienste (Monitoring, Optimierung) als Zusatzangebot.
 
-## Begründung der Wesentlichkeit
+## Begründung
 Wiederkehrende Umsätze mit höheren Margen; EUR 50-100m EBIT-Potenzial (IG1 §128).

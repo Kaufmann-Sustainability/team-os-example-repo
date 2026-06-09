@@ -21,10 +21,10 @@ scored_under: [methodology-dma-2026]
 
 # IRO S1-I1: Angemessene Entlohnung
 
-**Typ:** I+ · **Aktuell/Potenziell:** Aktuell · **Wertschöpfungskette:** Eigenbetrieb · **Zeithorizont:** Kurz
+**Typ:** I+ · **Aktuell/Potenziell:** Aktuell · **Wertschöpfungskette:** Eigenbetrieb · **Zeithorizont:** Kurz · **Wesentlich:** Ja
 
 ## Beschreibung
 Mittelstand-Industrievergütung plus IG-Metall-/EVG-Tarifbindung an DE-Werken oberhalb gesetzlichem Minimum und oberhalb Sektor-Baseline an DE/EU-Standorten [TR/CN zu validieren].
 
-## Begründung der Wesentlichkeit
+## Begründung
 Oberhalb Sektor- und gesetzlicher Baseline an DE/EU-Werken (IG1 §117).

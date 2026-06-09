@@ -21,10 +21,10 @@ scored_under: [methodology-dma-2026]
 
 # IRO S1-I6: Sozialer Dialog
 
-**Typ:** I+ · **Aktuell/Potenziell:** Aktuell · **Wertschöpfungskette:** Eigenbetrieb · **Zeithorizont:** Kurz
+**Typ:** I+ · **Aktuell/Potenziell:** Aktuell · **Wertschöpfungskette:** Eigenbetrieb · **Zeithorizont:** Kurz · **Wesentlich:** Ja
 
 ## Beschreibung
 SE-Betriebsrat seit 2001, KBR/GBR, SENSOR-Befragung, SEEDS-Ambassadors — institutioneller Dialog übertrifft gesetzliche Baseline für deutschen Mittelstand.
 
-## Begründung der Wesentlichkeit
+## Begründung
 Transnationaler Dialog übertrifft Mittelstand-Baseline (IG1 §117).

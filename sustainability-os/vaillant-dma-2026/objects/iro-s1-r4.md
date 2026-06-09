@@ -21,10 +21,10 @@ scored_under: [methodology-dma-2026]
 
 # IRO S1-R4: Aus- und Weiterbildung
 
-**Typ:** R · **Aktuell/Potenziell:** Potenziell · **Wertschöpfungskette:** Eigenbetrieb · **Zeithorizont:** Mittel
+**Typ:** R · **Aktuell/Potenziell:** Potenziell · **Wertschöpfungskette:** Eigenbetrieb · **Zeithorizont:** Mittel · **Wesentlich:** Ja
 
 ## Beschreibung
 Qualifikationslücken-Risiko: unzureichende Wärmepumpen-geschulte Ingenieur:innen/Produktionskräfte bremsen Senica-Hochlauf; Verlust von Schlüsselkräften während Restrukturierung.
 
-## Begründung der Wesentlichkeit
+## Begründung
 Kappt Wärmepumpen-Wachstumspotenzial um 10-20%; EUR 40-80m EBIT-Opportunitätskosten über 3-5 Jahre (IG1 §128).

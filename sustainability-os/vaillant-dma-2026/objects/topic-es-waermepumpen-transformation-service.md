@@ -12,6 +12,6 @@ has_iro: [iro-es-o2]
 
 # Thema: Wärmepumpen-Transformation Service-Uplift
 
-**ESRS-Standard:** ES · **Wesentliche IROs:** 1
+**ESRS-Standard:** ES · **Wesentlich:** Ja · **IROs:** 1
 
 Wesentlich laut DMA 2026.

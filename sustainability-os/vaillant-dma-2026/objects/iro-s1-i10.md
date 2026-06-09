@@ -21,10 +21,10 @@ scored_under: [methodology-dma-2026]
 
 # IRO S1-I10: Tarifverhandlungen
 
-**Typ:** I+ · **Aktuell/Potenziell:** Aktuell · **Wertschöpfungskette:** Eigenbetrieb · **Zeithorizont:** Kurz
+**Typ:** I+ · **Aktuell/Potenziell:** Aktuell · **Wertschöpfungskette:** Eigenbetrieb · **Zeithorizont:** Kurz · **Wesentlich:** Ja
 
 ## Beschreibung
 Hohe Tarifbindung an DE/EU-Werken (IG-Metall-Tarif) — über globaler Sektor-Baseline.
 
-## Begründung der Wesentlichkeit
+## Begründung
 Über globaler Sektor-Baseline (IG1 §117).

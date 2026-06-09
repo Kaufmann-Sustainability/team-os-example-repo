@@ -21,10 +21,10 @@ scored_under: [methodology-dma-2026]
 
 # IRO S4-R4: Verantwortungsvolle Marketingpraktiken
 
-**Typ:** R · **Aktuell/Potenziell:** Potenziell · **Wertschöpfungskette:** Downstream · **Zeithorizont:** Kurz-Mittel
+**Typ:** R · **Aktuell/Potenziell:** Potenziell · **Wertschöpfungskette:** Downstream · **Zeithorizont:** Kurz-Mittel · **Wesentlich:** Ja
 
 ## Beschreibung
 Regulatorische Aktion + Verbraucher-Litigation-Risiko bei unbegründeten Claims.
 
-## Begründung der Wesentlichkeit
+## Begründung
 Pro Fall EUR <10m, kumulatives Risiko (IG1 §131).

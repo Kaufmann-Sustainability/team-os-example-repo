@@ -12,6 +12,6 @@ has_iro: [iro-s4-i7]
 
 # Thema: Schutz von Kindern
 
-**ESRS-Standard:** S4 · **Wesentliche IROs:** 1
+**ESRS-Standard:** S4 · **Wesentlich:** Ja · **IROs:** 1
 
 Wesentlich laut DMA 2026.

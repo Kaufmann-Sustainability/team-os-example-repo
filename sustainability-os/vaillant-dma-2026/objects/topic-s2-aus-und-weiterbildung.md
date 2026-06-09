@@ -12,6 +12,6 @@ has_iro: [iro-s2-i13, iro-s2-r2]
 
 # Thema: Aus- und Weiterbildung
 
-**ESRS-Standard:** S2 · **Wesentliche IROs:** 2
+**ESRS-Standard:** S2 · **Wesentlich:** Ja · **IROs:** 2
 
 Wesentlich laut DMA 2026.

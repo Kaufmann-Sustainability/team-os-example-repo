@@ -21,10 +21,10 @@ scored_under: [methodology-dma-2026]
 
 # IRO S1-I4: Sichere Beschäftigung
 
-**Typ:** I- · **Aktuell/Potenziell:** Aktuell · **Wertschöpfungskette:** Eigenbetrieb · **Zeithorizont:** Kurz
+**Typ:** I- · **Aktuell/Potenziell:** Aktuell · **Wertschöpfungskette:** Eigenbetrieb · **Zeithorizont:** Kurz · **Wesentlich:** Ja
 
 ## Beschreibung
 Rund 700 Stellenkürzungen nach Geschäftsjahr 2023-Restrukturierung — direkte adverse Wirkung auf betroffene Belegschaft; geografische Konzentration nicht offengelegt.
 
-## Begründung der Wesentlichkeit
+## Begründung
 Direkte adverse Wirkung; Mitbestimmung aktiv nach §44a (IG1 §117).

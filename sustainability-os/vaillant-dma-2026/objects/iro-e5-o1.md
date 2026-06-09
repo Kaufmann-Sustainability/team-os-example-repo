@@ -21,10 +21,10 @@ scored_under: [methodology-dma-2026]
 
 # IRO E5-O1: Ressourcen-Inflows
 
-**Typ:** O · **Aktuell/Potenziell:** Potenziell · **Wertschöpfungskette:** Upstream · **Zeithorizont:** Mittel
+**Typ:** O · **Aktuell/Potenziell:** Potenziell · **Wertschöpfungskette:** Upstream · **Zeithorizont:** Mittel · **Wesentlich:** Ja
 
 ## Beschreibung
 Sekundärmaterial-Beschaffungspartnerschaften (grüner Stahl — H2-DRI von SSAB/ThyssenKrupp; Recycling-Kupfer) — First-Mover im HVAC erlaubt CO2-arme Produktvariante.
 
-## Begründung der Wesentlichkeit
+## Begründung
 Grünes Produktvariant öffnet Spezifizierer-Ausschreibungen + CBAM-Hedge (IG1 §128).

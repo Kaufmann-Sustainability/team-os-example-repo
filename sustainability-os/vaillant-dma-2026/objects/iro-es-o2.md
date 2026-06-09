@@ -21,10 +21,10 @@ scored_under: [methodology-dma-2026]
 
 # IRO ES-O2: Wärmepumpen-Transformation Service-Uplift
 
-**Typ:** O · **Aktuell/Potenziell:** Potenziell · **Wertschöpfungskette:** Downstream · **Zeithorizont:** Mittel
+**Typ:** O · **Aktuell/Potenziell:** Potenziell · **Wertschöpfungskette:** Downstream · **Zeithorizont:** Mittel · **Wesentlich:** Ja
 
 ## Beschreibung
 Service- und Ersatzteilumsatz-Uplift aus wachsender installierter Wärmepumpen- Basis + Zusatzverkauf vernetzter Dienste.
 
-## Begründung der Wesentlichkeit
+## Begründung
 Duplikat-Framing von E1-O2 auf Entity-Specific-Ebene (IG1 §128).

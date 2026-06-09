@@ -21,10 +21,10 @@ scored_under: [methodology-dma-2026]
 
 # IRO S2-R1: Angemessene Entlohnung
 
-**Typ:** R · **Aktuell/Potenziell:** Potenziell · **Wertschöpfungskette:** Upstream · **Zeithorizont:** Mittel
+**Typ:** R · **Aktuell/Potenziell:** Potenziell · **Wertschöpfungskette:** Upstream · **Zeithorizont:** Mittel · **Wesentlich:** Ja
 
 ## Beschreibung
 CSDDD-Existenzlohn-Sorgfaltsanforderung ab 2027 → Lieferantenentwicklungskosten.
 
-## Begründung der Wesentlichkeit
+## Begründung
 Lieferanten-Uplift-Programme + Audit-Ausweitung EUR 10-20m (IG1 §130).

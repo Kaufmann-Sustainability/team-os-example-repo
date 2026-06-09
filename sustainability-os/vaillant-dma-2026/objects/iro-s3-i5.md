@@ -21,10 +21,10 @@ scored_under: [methodology-dma-2026]
 
 # IRO S3-I5: FPIC
 
-**Typ:** I- · **Aktuell/Potenziell:** Potenziell · **Wertschöpfungskette:** Upstream (tief) · **Zeithorizont:** Lang
+**Typ:** I- · **Aktuell/Potenziell:** Potenziell · **Wertschöpfungskette:** Upstream (tief) · **Zeithorizont:** Lang · **Wesentlich:** Ja
 
 ## Beschreibung
 Vorgelagerte Metalle queren indigene Territorien (Pilbara — Juukan Gorge; Atacama; Guinea-Bauxit).
 
-## Begründung der Wesentlichkeit
+## Begründung
 Menschenrechts-Vorrang: FPIC, Basis-Schwere 4.0; Juukan Gorge-Präzedenz in gleicher Mineralienkette (IG1 §120).

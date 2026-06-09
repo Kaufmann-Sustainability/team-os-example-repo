@@ -12,6 +12,6 @@ has_iro: [iro-s2-i7]
 
 # Thema: Sozialer Dialog
 
-**ESRS-Standard:** S2 · **Wesentliche IROs:** 1
+**ESRS-Standard:** S2 · **Wesentlich:** Ja · **IROs:** 1
 
 Wesentlich laut DMA 2026.

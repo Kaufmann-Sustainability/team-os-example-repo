@@ -12,6 +12,6 @@ has_iro: [iro-es-i1]
 
 # Thema: Installateurs-Schulung (I+)
 
-**ESRS-Standard:** ES · **Wesentliche IROs:** 1
+**ESRS-Standard:** ES · **Wesentlich:** Ja · **IROs:** 1
 
 Wesentlich laut DMA 2026.

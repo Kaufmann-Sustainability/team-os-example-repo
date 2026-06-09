@@ -21,10 +21,10 @@ scored_under: [methodology-dma-2026]
 
 # IRO G1-I7: Management Lieferantenbeziehungen
 
-**Typ:** I+ · **Aktuell/Potenziell:** Aktuell · **Wertschöpfungskette:** Upstream · **Zeithorizont:** Mittel
+**Typ:** I+ · **Aktuell/Potenziell:** Aktuell · **Wertschöpfungskette:** Upstream · **Zeithorizont:** Mittel · **Wesentlich:** Ja
 
 ## Beschreibung
 Lieferanten-Verhaltenskodex-Programm + 111 Audits/Jahr + Human Rights Officer + LkSG-Risikoanalyse → Reife der Sorgfaltspflicht über Sektor-Baseline für DE-mittelständischen HVAC-Sektor.
 
-## Begründung der Wesentlichkeit
+## Begründung
 Reife der Sorgfaltspflicht über Sektor-Baseline für DE-mittelständischen HVAC-Sektor (IG1 §117).

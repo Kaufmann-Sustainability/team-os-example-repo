@@ -21,10 +21,10 @@ scored_under: [methodology-dma-2026]
 
 # IRO S3-I1: Landbezogene Auswirkungen
 
-**Typ:** I- · **Aktuell/Potenziell:** Potenziell · **Wertschöpfungskette:** Upstream (tief) · **Zeithorizont:** Lang
+**Typ:** I- · **Aktuell/Potenziell:** Potenziell · **Wertschöpfungskette:** Upstream (tief) · **Zeithorizont:** Lang · **Wesentlich:** Ja
 
 ## Beschreibung
 Indirekt über vorgelagerte Metalle — Community-Landvertreibung bei Pilbara, Carajás, Guinea-Bauxit.
 
-## Begründung der Wesentlichkeit
+## Begründung
 Menschenrechts-Vorrang: Landrechte, Basis-Schwere 4.0; §34 BHRRC Transition Minerals Tracker 2024; weitgehend irreversibel (IG1 §120).

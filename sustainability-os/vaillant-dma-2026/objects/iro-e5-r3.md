@@ -21,10 +21,10 @@ scored_under: [methodology-dma-2026]
 
 # IRO E5-R3: Ressourcen-Outflows (Produkte)
 
-**Typ:** R · **Aktuell/Potenziell:** Potenziell · **Wertschöpfungskette:** Eigenbetrieb + Downstream · **Zeithorizont:** Mittel
+**Typ:** R · **Aktuell/Potenziell:** Potenziell · **Wertschöpfungskette:** Eigenbetrieb + Downstream · **Zeithorizont:** Mittel · **Wesentlich:** Ja
 
 ## Beschreibung
 ESPR (Digital Product Passport) + Reparierbarkeits-Scoring + Rezyklat-Anteilsschwellen erhöhen Compliance-Kosten; Non-Compliance gefährdet Marktzugang.
 
-## Begründung der Wesentlichkeit
+## Begründung
 Mehrjähriges IT- und Produktdaten-Programm EUR 15-30m (IG1 §130).

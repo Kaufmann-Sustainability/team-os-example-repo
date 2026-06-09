@@ -21,10 +21,10 @@ scored_under: [methodology-dma-2026]
 
 # IRO E1-O3: Klimawandel-Mitigation
 
-**Typ:** O · **Aktuell/Potenziell:** Potenziell · **Wertschöpfungskette:** Downstream · **Zeithorizont:** Lang
+**Typ:** O · **Aktuell/Potenziell:** Potenziell · **Wertschöpfungskette:** Downstream · **Zeithorizont:** Lang · **Wesentlich:** Ja
 
 ## Beschreibung
 Hybrid-Heizung + Netzflexibilitätsservices (WP + Speicher + Tarifoptimierung) — neues Geschäftsmodell auf Basis des vernetzten Produkt-Bestands.
 
-## Begründung der Wesentlichkeit
+## Begründung
 Geschäftsmodell im Entstehen; abhängig von Reife der Grid-Services-Märkte (IG1 §128).

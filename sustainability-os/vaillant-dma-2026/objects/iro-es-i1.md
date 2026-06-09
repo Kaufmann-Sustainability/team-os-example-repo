@@ -21,10 +21,10 @@ scored_under: [methodology-dma-2026]
 
 # IRO ES-I1: Installateurs-Schulung (I+)
 
-**Typ:** I+ · **Aktuell/Potenziell:** Aktuell · **Wertschöpfungskette:** Downstream · **Zeithorizont:** Mittel
+**Typ:** I+ · **Aktuell/Potenziell:** Aktuell · **Wertschöpfungskette:** Downstream · **Zeithorizont:** Mittel · **Wesentlich:** Ja
 
 ## Beschreibung
 Vaillant Group Pro Academy + 62.000 Wärmepumpen-Schulungen 2024 heben Installateur-Basis-Kompetenz jenseits dessen, was einzelne SMEs finanzieren könnten → nützt ganzem Sektor + Erweiterte Belegschaft-Wohl.
 
-## Begründung der Wesentlichkeit
+## Begründung
 Sektor-weite Kompetenz-Uplift; §52 (IG1 §117).

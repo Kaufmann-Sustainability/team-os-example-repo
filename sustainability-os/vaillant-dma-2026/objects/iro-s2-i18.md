@@ -21,10 +21,10 @@ scored_under: [methodology-dma-2026]
 
 # IRO S2-I18: Anti-Belästigung
 
-**Typ:** I- · **Aktuell/Potenziell:** Potenziell · **Wertschöpfungskette:** Upstream · **Zeithorizont:** Mittel
+**Typ:** I- · **Aktuell/Potenziell:** Potenziell · **Wertschöpfungskette:** Upstream · **Zeithorizont:** Mittel · **Wesentlich:** Ja
 
 ## Beschreibung
 Belästigungsrisiken an Lieferantenstandorten (insb. isolierte Bergbau-/Förderstandorte) sind nicht auszuschließen.
 
-## Begründung der Wesentlichkeit
+## Begründung
 Menschenrechts-Vorrang: Belästigung (S1/S2-geschütztes Sub-Thema), Basis-Schwere 3.0 (IG1 §120).

@@ -21,10 +21,10 @@ scored_under: [methodology-dma-2026]
 
 # IRO ES-O3: Loyalität der Installateurs-Basis (O)
 
-**Typ:** O · **Aktuell/Potenziell:** Potenziell · **Wertschöpfungskette:** Downstream · **Zeithorizont:** Mittel
+**Typ:** O · **Aktuell/Potenziell:** Potenziell · **Wertschöpfungskette:** Downstream · **Zeithorizont:** Mittel · **Wesentlich:** Ja
 
 ## Beschreibung
 Loyalität + Digital-Plattform-Integration mit Installateurs-Basis (Auftragsweiterleitung, Finanzierung, Teilelogistik) = verteidigbarer Moat vs Vergleichsunternehmen ohne vergleichbares Netzwerk.
 
-## Begründung der Wesentlichkeit
+## Begründung
 Auftragsweiterleitung + Finanzierung + Teilelogistik; sichert Preismacht (IG1 §128).

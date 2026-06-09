@@ -12,6 +12,6 @@ has_iro: [iro-s4-i9, iro-s4-o1, iro-s4-i10]
 
 # Thema: Zugang zu Produkten
 
-**ESRS-Standard:** S4 · **Wesentliche IROs:** 3
+**ESRS-Standard:** S4 · **Wesentlich:** Ja · **IROs:** 3
 
 Wesentlich laut DMA 2026.

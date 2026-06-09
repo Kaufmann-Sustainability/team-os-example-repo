@@ -21,10 +21,10 @@ scored_under: [methodology-dma-2026]
 
 # IRO S3-I7: Kulturelle Rechte
 
-**Typ:** I- · **Aktuell/Potenziell:** Potenziell · **Wertschöpfungskette:** Upstream (tief) · **Zeithorizont:** Lang
+**Typ:** I- · **Aktuell/Potenziell:** Potenziell · **Wertschöpfungskette:** Upstream (tief) · **Zeithorizont:** Lang · **Wesentlich:** Ja
 
 ## Beschreibung
 Indirekte vorgelagerte sakraler-Stätten-Exposition (Pilbara, Andean).
 
-## Begründung der Wesentlichkeit
+## Begründung
 Menschenrechts-Vorrang: Kulturelle Rechte, Basis-Schwere 3.67 (IG1 §120).

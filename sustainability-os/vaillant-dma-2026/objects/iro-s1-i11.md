@@ -21,10 +21,10 @@ scored_under: [methodology-dma-2026]
 
 # IRO S1-I11: Gesundheit und Sicherheit
 
-**Typ:** I- · **Aktuell/Potenziell:** Aktuell · **Wertschöpfungskette:** Eigenbetrieb · **Zeithorizont:** Kurz
+**Typ:** I- · **Aktuell/Potenziell:** Aktuell · **Wertschöpfungskette:** Eigenbetrieb · **Zeithorizont:** Kurz · **Wesentlich:** Ja
 
 ## Beschreibung
 LTIFR 1,58 (2024) gegenüber 0,99 (2023) — adverser Trend (teilweise Methodikwechsel inkl. Vertriebsgesellschaften); Verletzungen an Montagelinien, Hartlöten, schwerem Heben.
 
-## Begründung der Wesentlichkeit
+## Begründung
 Stakeholder-Signal aus Nachhaltigkeitsbericht S. 15; teils Methodik, Trend rechtfertigt aber S1-Aufmerksamkeit (IG1 §107, §117).

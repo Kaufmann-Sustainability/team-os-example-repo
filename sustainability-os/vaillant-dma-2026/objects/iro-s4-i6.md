@@ -21,10 +21,10 @@ scored_under: [methodology-dma-2026]
 
 # IRO S4-I6: Gesundheit und Sicherheit der Verbraucher:innen
 
-**Typ:** I+ · **Aktuell/Potenziell:** Aktuell · **Wertschöpfungskette:** Downstream · **Zeithorizont:** Mittel
+**Typ:** I+ · **Aktuell/Potenziell:** Aktuell · **Wertschöpfungskette:** Downstream · **Zeithorizont:** Mittel · **Wesentlich:** Ja
 
 ## Beschreibung
 Sicherheitsfeatures über regulatorisches Minimum hinaus — Flammausfall-Vorrichtungen, CO-Sensoren in manchen Modellen integriert, Leckage-Detektion an R290-Leitungen → reduziert Verbraucher-Sicherheitsrisiko vs Sektor-Baseline.
 
-## Begründung der Wesentlichkeit
+## Begründung
 Sicherheitsfeatures über regulatorisches Minimum auf ausgewählten Linien (IG1 §117).

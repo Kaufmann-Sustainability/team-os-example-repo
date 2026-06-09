@@ -21,10 +21,10 @@ scored_under: [methodology-dma-2026]
 
 # IRO S2-I7: Sozialer Dialog
 
-**Typ:** I- · **Aktuell/Potenziell:** Potenziell · **Wertschöpfungskette:** Upstream · **Zeithorizont:** Mittel
+**Typ:** I- · **Aktuell/Potenziell:** Potenziell · **Wertschöpfungskette:** Upstream · **Zeithorizont:** Mittel · **Wesentlich:** Ja
 
 ## Beschreibung
 Eingeschränkte Sichtbarkeit auf Lieferanten-Arbeitnehmerdialog; Beschwerdemechanismus-Abdeckung an tieferen Tiers unklar.
 
-## Begründung der Wesentlichkeit
+## Begründung
 CSDDD-relevante Lücke; LkSG-Infrastruktur reicht nicht voll bis tiefe Lieferketten-Ebenen (Tier 2+) (IG1 §120).

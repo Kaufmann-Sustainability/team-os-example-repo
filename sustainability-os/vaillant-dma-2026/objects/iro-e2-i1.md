@@ -21,10 +21,10 @@ scored_under: [methodology-dma-2026]
 
 # IRO E2-I1: Luftverschmutzung
 
-**Typ:** I- · **Aktuell/Potenziell:** Aktuell · **Wertschöpfungskette:** Downstream · **Zeithorizont:** Lang
+**Typ:** I- · **Aktuell/Potenziell:** Aktuell · **Wertschöpfungskette:** Downstream · **Zeithorizont:** Lang · **Wesentlich:** Ja
 
 ## Beschreibung
 NOx- und CH4-Slip aus der installierten Gaskessel-Basis bei ~30 Mio Kundenstandorten beeinträchtigt die lokale Luftqualität, insbesondere in Stadtzentren.
 
-## Begründung der Wesentlichkeit
+## Begründung
 Persistenter Beitrag zur urbanen Luftqualität; reversibel auf Source-Ebene nach Vollendung des Gas-Ausstiegs (IG1 §117).

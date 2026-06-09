@@ -21,10 +21,10 @@ scored_under: [methodology-dma-2026]
 
 # IRO G1-I1: Anti-Korruption
 
-**Typ:** I- · **Aktuell/Potenziell:** Potenziell · **Wertschöpfungskette:** Eigenbetrieb + Downstream · **Zeithorizont:** Kurz-Mittel
+**Typ:** I- · **Aktuell/Potenziell:** Potenziell · **Wertschöpfungskette:** Eigenbetrieb + Downstream · **Zeithorizont:** Kurz-Mittel · **Wesentlich:** Ja
 
 ## Beschreibung
 Operationen in CPI-erhöhten Ländern (TR — DemirDöküm; CN — Wuxi; Teile LatAm via Saunier Duval) + Installateurs-Anreiz-Zahlungen + öffentlich-subventionierte Verkäufe (DE GEG) → Korruptions-Expositionspfad.
 
-## Begründung der Wesentlichkeit
+## Begründung
 CPI-erhöhte Geografien + Subventionskanal-Exposition; §44b — Compliance-Programm-Implementierung berücksichtigt (IG1 §120).

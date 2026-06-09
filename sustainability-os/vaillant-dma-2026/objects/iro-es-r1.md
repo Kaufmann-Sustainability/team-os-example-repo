@@ -21,10 +21,10 @@ scored_under: [methodology-dma-2026]
 
 # IRO ES-R1: Wärmepumpen-Transformation Execution
 
-**Typ:** R · **Aktuell/Potenziell:** Aktuell · **Wertschöpfungskette:** Eigenbetrieb · **Zeithorizont:** Mittel
+**Typ:** R · **Aktuell/Potenziell:** Aktuell · **Wertschöpfungskette:** Eigenbetrieb · **Zeithorizont:** Mittel · **Wesentlich:** Ja
 
 ## Beschreibung
 Umsetzungsrisiko: simultaner Gas-Portfolio-Rückgang + Investitionsaufwand für Wärmepumpen + Umschulungskosten → Phase der Margenkompression 2025-2030; 2024 -15% Umsatz ist Frühwarnsignal.
 
-## Begründung der Wesentlichkeit
+## Begründung
 Aktuell — 2024 -15% Umsatz ist Frühwarnsignal; Cashflow-Druck überschreitet RBC über 3-5 Jahre deutlich (IG1 §128).

@@ -12,6 +12,6 @@ has_iro: [iro-s3-i7]
 
 # Thema: Kulturelle Rechte
 
-**ESRS-Standard:** S3 · **Wesentliche IROs:** 1
+**ESRS-Standard:** S3 · **Wesentlich:** Ja · **IROs:** 1
 
 Wesentlich laut DMA 2026.

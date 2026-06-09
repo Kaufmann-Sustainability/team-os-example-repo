@@ -21,10 +21,10 @@ scored_under: [methodology-dma-2026]
 
 # IRO S2-I23: Angemessene Unterkunft
 
-**Typ:** I- · **Aktuell/Potenziell:** Potenziell · **Wertschöpfungskette:** Upstream · **Zeithorizont:** Mittel
+**Typ:** I- · **Aktuell/Potenziell:** Potenziell · **Wertschöpfungskette:** Upstream · **Zeithorizont:** Mittel · **Wesentlich:** Ja
 
 ## Beschreibung
 Unangemessene Wohnheim-Unterkunft bei CN-Elektronik-Lieferanten (sektor-bekanntes Thema) ist nicht auszuschließen.
 
-## Begründung der Wesentlichkeit
+## Begründung
 §34 CN-Wohnheim-Modell dokumentiert (IG1 §120).

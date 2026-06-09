@@ -21,10 +21,10 @@ scored_under: [methodology-dma-2026]
 
 # IRO S4-I5: Gesundheit und Sicherheit der Verbraucher:innen
 
-**Typ:** I- · **Aktuell/Potenziell:** Potenziell · **Wertschöpfungskette:** Downstream · **Zeithorizont:** Mittel
+**Typ:** I- · **Aktuell/Potenziell:** Potenziell · **Wertschöpfungskette:** Downstream · **Zeithorizont:** Mittel · **Wesentlich:** Ja
 
 ## Beschreibung
 Verbrühungen aus Heißwassersystemen; Kältemittel-Expositionsvorfälle (R290-Propan-Brennbarkeit) während Service oder Lebensende.
 
-## Begründung der Wesentlichkeit
+## Begründung
 Personenschaden-Exposition über installierte Basis (IG1 §120).

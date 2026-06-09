@@ -21,10 +21,10 @@ scored_under: [methodology-dma-2026]
 
 # IRO S1-I14: Gleichstellung der Geschlechter
 
-**Typ:** I- · **Aktuell/Potenziell:** Aktuell · **Wertschöpfungskette:** Eigenbetrieb · **Zeithorizont:** Mittel
+**Typ:** I- · **Aktuell/Potenziell:** Aktuell · **Wertschöpfungskette:** Eigenbetrieb · **Zeithorizont:** Mittel · **Wesentlich:** Ja
 
 ## Beschreibung
 Historisch männlich dominierte Produktionsbelegschaft; Lücke in Leadership-Repräsentation typisch für HVAC.
 
-## Begründung der Wesentlichkeit
+## Begründung
 Sektor-typisch; EU-Entgelttransparenz-Richtlinie 2026 erhöht Stakes (IG1 §117).

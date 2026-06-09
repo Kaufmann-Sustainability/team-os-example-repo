@@ -21,10 +21,10 @@ scored_under: [methodology-dma-2026]
 
 # IRO S4-I7: Schutz von Kindern
 
-**Typ:** I- · **Aktuell/Potenziell:** Potenziell · **Wertschöpfungskette:** Downstream · **Zeithorizont:** Lang
+**Typ:** I- · **Aktuell/Potenziell:** Potenziell · **Wertschöpfungskette:** Downstream · **Zeithorizont:** Lang · **Wesentlich:** Ja
 
 ## Beschreibung
 Produkte in Haushalten mit Kindern — passives Sicherheitsdesign (heiße Oberflächen, Verbrühschutz-Temperaturlimits) kritisch.
 
-## Begründung der Wesentlichkeit
+## Begründung
 Passive-Sicherheits-Designrelevanz; vulnerable Nutzer:innen (IG1 §120).

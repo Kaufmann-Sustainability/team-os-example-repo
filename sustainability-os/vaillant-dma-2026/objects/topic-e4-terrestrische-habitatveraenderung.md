@@ -7,11 +7,11 @@ stand: 2026-06-09
 review_zyklus: P12M
 vertraulichkeit: intern
 esrs_bezug: E4
-has_iro: [iro-e4-i1, iro-e4-r1]
+has_iro: [iro-e4-i1, iro-e4-i2, iro-e4-r1]
 ---
 
 # Thema: Terrestrische Habitatveränderung
 
-**ESRS-Standard:** E4 · **Wesentliche IROs:** 2
+**ESRS-Standard:** E4 · **Wesentlich:** Ja · **IROs:** 3
 
 Wesentlich laut DMA 2026.

@@ -21,10 +21,10 @@ scored_under: [methodology-dma-2026]
 
 # IRO S2-I6: Sozialschutz
 
-**Typ:** I- · **Aktuell/Potenziell:** Potenziell · **Wertschöpfungskette:** Upstream · **Zeithorizont:** Mittel
+**Typ:** I- · **Aktuell/Potenziell:** Potenziell · **Wertschöpfungskette:** Upstream · **Zeithorizont:** Mittel · **Wesentlich:** Ja
 
 ## Beschreibung
 Statutorische Sozialschutz-Lücken bei Lieferanten in CN/TR/DRC/Chile sind nicht auszuschließen.
 
-## Begründung der Wesentlichkeit
+## Begründung
 §34 regional/Sektordaten (IG1 §120).

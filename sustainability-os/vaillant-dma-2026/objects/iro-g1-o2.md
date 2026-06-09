@@ -21,10 +21,10 @@ scored_under: [methodology-dma-2026]
 
 # IRO G1-O2: Management Lieferantenbeziehungen
 
-**Typ:** O · **Aktuell/Potenziell:** Potenziell · **Wertschöpfungskette:** Eigenbetrieb + Upstream · **Zeithorizont:** Mittel
+**Typ:** O · **Aktuell/Potenziell:** Potenziell · **Wertschöpfungskette:** Eigenbetrieb + Upstream · **Zeithorizont:** Mittel · **Wesentlich:** Ja
 
 ## Beschreibung
 First-Mover-CSDDD-Compliance über vorhandene LkSG-Infrastruktur → wettbewerbliches Procurement-Narrativ + Investorensignal.
 
-## Begründung der Wesentlichkeit
+## Begründung
 einkaufsgetriebene Ausschreibungen verlangen zunehmend CSDDD-Ready-Lieferanten (IG1 §128).

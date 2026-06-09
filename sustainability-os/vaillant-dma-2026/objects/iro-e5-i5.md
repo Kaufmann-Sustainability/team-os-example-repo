@@ -21,10 +21,10 @@ scored_under: [methodology-dma-2026]
 
 # IRO E5-I5: Ressourcen-Outflows (Produkte)
 
-**Typ:** I+ · **Aktuell/Potenziell:** Aktuell · **Wertschöpfungskette:** Downstream · **Zeithorizont:** Lang
+**Typ:** I+ · **Aktuell/Potenziell:** Aktuell · **Wertschöpfungskette:** Downstream · **Zeithorizont:** Lang · **Wesentlich:** Ja
 
 ## Beschreibung
 Lange Produktlebensdauer (15-20 Jahre Designleben), Ersatzteilverfügbarkeit über Produktgenerationen und reparaturfreundliches Design verlängern Nutzungsphase über Sektor-Baseline hinaus.
 
-## Begründung der Wesentlichkeit
+## Begründung
 Verlängert Nutzungsphase beim Kunden über Sektor-Baseline; im Einklang mit dem Recht auf Reparatur (IG1 §117).

@@ -21,10 +21,10 @@ scored_under: [methodology-dma-2026]
 
 # IRO E4-I1: Terrestrische Habitatveränderung
 
-**Typ:** I- · **Aktuell/Potenziell:** Aktuell · **Wertschöpfungskette:** Upstream (tief) · **Zeithorizont:** Lang
+**Typ:** I- · **Aktuell/Potenziell:** Aktuell · **Wertschöpfungskette:** Upstream (tief) · **Zeithorizont:** Lang · **Wesentlich:** Ja
 
 ## Beschreibung
 Vorgelagerter Kupfer-/Eisenerz-/Bauxitabbau treibt Landumwandlung in Pilbara (Australien), Cerrado/Carajás (Brasilien) und Guinea-Bauxitgürtel — überwiegend irreversibel.
 
-## Begründung der Wesentlichkeit
+## Begründung
 IPBES 2019 identifiziert Bergbau als beschleunigenden Habitat-Treiber; Landumwandlung weitgehend irreversibel (IG1 §117).

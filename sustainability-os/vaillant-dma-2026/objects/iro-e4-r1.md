@@ -21,10 +21,10 @@ scored_under: [methodology-dma-2026]
 
 # IRO E4-R1: Terrestrische Habitatveränderung
 
-**Typ:** R · **Aktuell/Potenziell:** Potenziell · **Wertschöpfungskette:** Upstream · **Zeithorizont:** Mittel
+**Typ:** R · **Aktuell/Potenziell:** Potenziell · **Wertschöpfungskette:** Upstream · **Zeithorizont:** Mittel · **Wesentlich:** Ja
 
 ## Beschreibung
 EU-Entwaldungsverordnung (EUDR — Gummi, Holzverpackung) Compliance-Aufwand; CSDDD erweitert auf Umweltsorgfaltspflicht in Bergbau-Tier.
 
-## Begründung der Wesentlichkeit
+## Begründung
 Rückverfolgbarkeit in tieferen Lieferketten-Ebenen (Tier 2+)-Programm EUR 5-15m Setup + laufend (IG1 §130).

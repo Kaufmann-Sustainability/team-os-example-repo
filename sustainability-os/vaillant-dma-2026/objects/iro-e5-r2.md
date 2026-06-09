@@ -21,10 +21,10 @@ scored_under: [methodology-dma-2026]
 
 # IRO E5-R2: Ressourcen-Inflows
 
-**Typ:** R · **Aktuell/Potenziell:** Aktuell · **Wertschöpfungskette:** Upstream · **Zeithorizont:** Kurz-Mittel
+**Typ:** R · **Aktuell/Potenziell:** Aktuell · **Wertschöpfungskette:** Upstream · **Zeithorizont:** Kurz-Mittel · **Wesentlich:** Ja
 
 ## Beschreibung
 CBAM (Stahl, Aluminium) erhöht Landed Cost importierter Metalle → Margenrisiko.
 
-## Begründung der Wesentlichkeit
+## Begründung
 CBAM-Einführungsphase 2026-2034; ~EUR 10-30m Landed-Cost-Anstieg auf Metallimporte (IG1 §130).

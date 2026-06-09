@@ -12,6 +12,6 @@ has_iro: [iro-s2-i8]
 
 # Thema: Vereinigungsfreiheit
 
-**ESRS-Standard:** S2 · **Wesentliche IROs:** 1
+**ESRS-Standard:** S2 · **Wesentlich:** Ja · **IROs:** 1
 
 Wesentlich laut DMA 2026.

@@ -21,10 +21,10 @@ scored_under: [methodology-dma-2026]
 
 # IRO S3-I6: Selbstbestimmung
 
-**Typ:** I- · **Aktuell/Potenziell:** Potenziell · **Wertschöpfungskette:** Upstream (tief) · **Zeithorizont:** Lang
+**Typ:** I- · **Aktuell/Potenziell:** Potenziell · **Wertschöpfungskette:** Upstream (tief) · **Zeithorizont:** Lang · **Wesentlich:** Ja
 
 ## Beschreibung
 Dieselbe vorgelagerte indigene Territorialexposition über CRM-Extraktion.
 
-## Begründung der Wesentlichkeit
+## Begründung
 Menschenrechts-Vorrang: Selbstbestimmung; §34 (IG1 §120).

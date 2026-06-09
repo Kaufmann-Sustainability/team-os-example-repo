@@ -12,6 +12,6 @@ has_iro: [iro-s1-i9]
 
 # Thema: Partizipationsrechte
 
-**ESRS-Standard:** S1 · **Wesentliche IROs:** 1
+**ESRS-Standard:** S1 · **Wesentlich:** Ja · **IROs:** 1
 
 Wesentlich laut DMA 2026.

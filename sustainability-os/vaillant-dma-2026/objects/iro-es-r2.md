@@ -21,10 +21,10 @@ scored_under: [methodology-dma-2026]
 
 # IRO ES-R2: Wärmepumpen-Transformation Kapitalallokation
 
-**Typ:** R · **Aktuell/Potenziell:** Potenziell · **Wertschöpfungskette:** Eigenbetrieb · **Zeithorizont:** Mittel
+**Typ:** R · **Aktuell/Potenziell:** Potenziell · **Wertschöpfungskette:** Eigenbetrieb · **Zeithorizont:** Mittel · **Wesentlich:** Ja
 
 ## Beschreibung
 Family-Ownership-Kapitalbeschränkung — ohne Börsenkapital ist Abwägung beim Investitionsaufwand zwischen Wärmepumpen-Kapazität und Legacy-Support bindend; vgl. Viessmann an Carrier 2024.
 
-## Begründung der Wesentlichkeit
+## Begründung
 EUR 500m+ Investitionsprogramm für die Wärmepumpen-Transformation belastet Mittelstand-Bilanz; Präzedenz: Vergleichsunternehmen verkaufte sein Geschäft (IG1 §89).

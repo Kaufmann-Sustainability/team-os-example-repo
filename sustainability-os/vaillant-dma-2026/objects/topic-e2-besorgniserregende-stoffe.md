@@ -12,6 +12,6 @@ has_iro: [iro-e2-i7, iro-e2-i8, iro-e2-i9, iro-e2-r5]
 
 # Thema: Besorgniserregende Stoffe
 
-**ESRS-Standard:** E2 · **Wesentliche IROs:** 4
+**ESRS-Standard:** E2 · **Wesentlich:** Ja · **IROs:** 4
 
 Wesentlich laut DMA 2026.

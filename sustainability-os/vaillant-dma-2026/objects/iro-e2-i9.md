@@ -21,10 +21,10 @@ scored_under: [methodology-dma-2026]
 
 # IRO E2-I9: Besorgniserregende Stoffe
 
-**Typ:** I+ · **Aktuell/Potenziell:** Potenziell · **Wertschöpfungskette:** Eigenbetrieb · **Zeithorizont:** Mittel
+**Typ:** I+ · **Aktuell/Potenziell:** Potenziell · **Wertschöpfungskette:** Eigenbetrieb · **Zeithorizont:** Mittel · **Wesentlich:** Ja
 
 ## Beschreibung
 Einführung von R290 portfolioweit + SVHC-Substitutionsprogramm überschreitet REACH-Baseline-Zeitpläne für mehrere Stoffe [zu validieren via Lieferantendossier].
 
-## Begründung der Wesentlichkeit
+## Begründung
 Voraussetzung: Lieferantendossier validiert; Sub-REACH-Timing als Differenzierung (IG1 §117).

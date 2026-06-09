@@ -21,10 +21,10 @@ scored_under: [methodology-dma-2026]
 
 # IRO E1-R3: Klimawandel-Mitigation
 
-**Typ:** R · **Aktuell/Potenziell:** Potenziell · **Wertschöpfungskette:** Eigenbetrieb · **Zeithorizont:** Kurz-Mittel
+**Typ:** R · **Aktuell/Potenziell:** Potenziell · **Wertschöpfungskette:** Eigenbetrieb · **Zeithorizont:** Kurz-Mittel · **Wesentlich:** Ja
 
 ## Beschreibung
 Reputations-/Finanzierungsrisiko: Als privater Mittelständler ohne Börsenkapital ist Vaillant auf Bank- und Schuldscheinmarkt angewiesen; verbleibende Gaskessel-Exposition erhöht ESG-Spread um 50-100bps.
 
-## Begründung der Wesentlichkeit
+## Begründung
 Bei EUR 0,5-1 Mrd Fremdkapital entspricht das EUR 5-10m p.a. — material auf RBC-Niveau (IG1 §89).

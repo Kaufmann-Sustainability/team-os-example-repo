@@ -21,10 +21,10 @@ scored_under: [methodology-dma-2026]
 
 # IRO E5-I2: Ressourcen-Inflows
 
-**Typ:** I- · **Aktuell/Potenziell:** Aktuell · **Wertschöpfungskette:** Upstream + Eigenbetrieb · **Zeithorizont:** Kurz
+**Typ:** I- · **Aktuell/Potenziell:** Aktuell · **Wertschöpfungskette:** Upstream + Eigenbetrieb · **Zeithorizont:** Kurz · **Wesentlich:** Ja
 
 ## Beschreibung
 Stahl- und Elektronikverbrauch an 11 Werken; Virgin-Anteil nicht offengelegt; 96% Materialeffizienz in Produktion = positiv, ersetzt aber nicht Rezyklatanteil.
 
-## Begründung der Wesentlichkeit
+## Begründung
 96% Materialeffizienz berichtet, Recycling-Anteil aber unklar (IG1 §117).

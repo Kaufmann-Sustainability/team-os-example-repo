@@ -21,10 +21,10 @@ scored_under: [methodology-dma-2026]
 
 # IRO S2-I14: Gleichstellung der Geschlechter
 
-**Typ:** I- · **Aktuell/Potenziell:** Aktuell · **Wertschöpfungskette:** Up- + Downstream · **Zeithorizont:** Lang
+**Typ:** I- · **Aktuell/Potenziell:** Aktuell · **Wertschöpfungskette:** Up- + Downstream · **Zeithorizont:** Lang · **Wesentlich:** Ja
 
 ## Beschreibung
 Stark männlich dominierte Installateurs-, Bergbau- und Metalllieferketten; geschlechter-segregierte Elektronikmontage.
 
-## Begründung der Wesentlichkeit
+## Begründung
 Systemisches Sektor-Pattern; geschlechter-segregierte Elektronikmontage (IG1 §117).

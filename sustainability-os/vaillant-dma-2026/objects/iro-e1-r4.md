@@ -21,10 +21,10 @@ scored_under: [methodology-dma-2026]
 
 # IRO E1-R4: Klimawandel-Mitigation
 
-**Typ:** R · **Aktuell/Potenziell:** Potenziell · **Wertschöpfungskette:** Downstream · **Zeithorizont:** Kurz-Mittel
+**Typ:** R · **Aktuell/Potenziell:** Potenziell · **Wertschöpfungskette:** Downstream · **Zeithorizont:** Kurz-Mittel · **Wesentlich:** Ja
 
 ## Beschreibung
 Abhängigkeit von Wärmepumpen-Förderprogrammen: GEG-Rückbau 2024 (DE), Superbonus-Kürzung (IT), BUS-Unsicherheit (UK). Wärmepumpen-Absatz in DE fiel 2024 nach Heizungsgesetz-Politisierung um ~50%.
 
-## Begründung der Wesentlichkeit
+## Begründung
 Dependency-derived per §49b; politisch volatile Förderlandschaft trifft Umsatz direkt (IG1 §128).

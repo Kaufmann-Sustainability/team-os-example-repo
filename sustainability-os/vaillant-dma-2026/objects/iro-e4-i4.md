@@ -21,10 +21,10 @@ scored_under: [methodology-dma-2026]
 
 # IRO E4-I4: Umfang und Zustand terrestrischer Ökosysteme
 
-**Typ:** I- · **Aktuell/Potenziell:** Potenziell · **Wertschöpfungskette:** Upstream (tief) · **Zeithorizont:** Lang
+**Typ:** I- · **Aktuell/Potenziell:** Potenziell · **Wertschöpfungskette:** Upstream (tief) · **Zeithorizont:** Lang · **Wesentlich:** Ja
 
 ## Beschreibung
 Indirekt über vorgelagerte Metalle; Tailings-Damm-Exposition Brasilien/Peru (Brumadinho-Präzedenz).
 
-## Begründung der Wesentlichkeit
+## Begründung
 Katastrophales Vorfallrisiko upstream; standortspezifisch aber ökosystem-permanent (IG1 §120).

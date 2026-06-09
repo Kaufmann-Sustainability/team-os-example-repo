@@ -21,10 +21,10 @@ scored_under: [methodology-dma-2026]
 
 # IRO E2-R5: Besorgniserregende Stoffe
 
-**Typ:** R · **Aktuell/Potenziell:** Potenziell · **Wertschöpfungskette:** Upstream + Eigenbetrieb · **Zeithorizont:** Mittel
+**Typ:** R · **Aktuell/Potenziell:** Potenziell · **Wertschöpfungskette:** Upstream + Eigenbetrieb · **Zeithorizont:** Mittel · **Wesentlich:** Ja
 
 ## Beschreibung
 REACH-SVHC-Dynamic-List — neue Beschränkungen für PFAS (in Dichtungen, Kältemitteln); Redesign-Kosten je Stoff; PFAS in Kältemittel-Abbauprodukten unter Beobachtung.
 
-## Begründung der Wesentlichkeit
+## Begründung
 Pro Stoff Redesign EUR 10-30m (IG1 §130).

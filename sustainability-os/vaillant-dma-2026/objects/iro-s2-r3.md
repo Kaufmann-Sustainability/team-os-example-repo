@@ -21,10 +21,10 @@ scored_under: [methodology-dma-2026]
 
 # IRO S2-R3: Lieferketten-Menschenrechts
 
-**Typ:** R · **Aktuell/Potenziell:** Potenziell · **Wertschöpfungskette:** Upstream · **Zeithorizont:** Kurz-Mittel
+**Typ:** R · **Aktuell/Potenziell:** Potenziell · **Wertschöpfungskette:** Upstream · **Zeithorizont:** Kurz-Mittel · **Wesentlich:** Ja
 
 ## Beschreibung
 LkSG (DE) + CSDDD (EU ab 2027) Vollzug — Bußgelder, zivilrechtliche Haftung, Marktzugangs-Beschränkungen bei Aufdeckung vorgelagerter Menschenrechts-Verstöße.
 
-## Begründung der Wesentlichkeit
+## Begründung
 LkSG-Bußgelder bis 2% Konzernumsatz (~EUR 64m); CSDDD ergänzt zivilrechtliche Haftung (IG1 §131).

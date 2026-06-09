@@ -21,10 +21,10 @@ scored_under: [methodology-dma-2026]
 
 # IRO S2-I3: Arbeitszeit
 
-**Typ:** I- · **Aktuell/Potenziell:** Potenziell · **Wertschöpfungskette:** Upstream · **Zeithorizont:** Mittel
+**Typ:** I- · **Aktuell/Potenziell:** Potenziell · **Wertschöpfungskette:** Upstream · **Zeithorizont:** Mittel · **Wesentlich:** Ja
 
 ## Beschreibung
 Exzessive Überstunden bei Elektronik-/Metalllieferanten — Spitzenzeit-Pull-In für Halbleiter für Wärmepumpen sind nicht auszuschließen.
 
-## Begründung der Wesentlichkeit
+## Begründung
 §34 Electronics Watch 2024 (IG1 §120).

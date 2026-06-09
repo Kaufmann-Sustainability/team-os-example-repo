@@ -21,10 +21,10 @@ scored_under: [methodology-dma-2026]
 
 # IRO S2-I11: Gesundheit und Sicherheit
 
-**Typ:** I- · **Aktuell/Potenziell:** Potenziell · **Wertschöpfungskette:** Upstream (tief) · **Zeithorizont:** Lang
+**Typ:** I- · **Aktuell/Potenziell:** Potenziell · **Wertschöpfungskette:** Upstream (tief) · **Zeithorizont:** Lang · **Wesentlich:** Ja
 
 ## Beschreibung
 Vorgelagerte Metalle-H&S-Risiken (Brumadinho-Klasse Tailings; Silikose/Staub; Bergbau-Verletzungen) und Kältemittelproduktion (toxische Zwischenprodukte) sind nicht auszuschließen.
 
-## Begründung der Wesentlichkeit
+## Begründung
 Menschenrechts-Vorrang: H&S, Basis-Schwere 4.33; §34 ILO + IndustriALL-Bulletins (IG1 §120).

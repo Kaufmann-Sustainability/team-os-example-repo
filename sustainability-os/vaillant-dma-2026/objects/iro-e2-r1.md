@@ -21,10 +21,10 @@ scored_under: [methodology-dma-2026]
 
 # IRO E2-R1: Luftverschmutzung
 
-**Typ:** R · **Aktuell/Potenziell:** Potenziell · **Wertschöpfungskette:** Downstream · **Zeithorizont:** Mittel
+**Typ:** R · **Aktuell/Potenziell:** Potenziell · **Wertschöpfungskette:** Downstream · **Zeithorizont:** Mittel · **Wesentlich:** Ja
 
 ## Beschreibung
 NOx-Ecodesign-Verschärfung + nationale Low-NOx-Auflagen schränken Gaskessel-Modellpalette ein; potenzielle Kommunalverbote für Gasgeräte in Stadtzentren (Paris, Amsterdam).
 
-## Begründung der Wesentlichkeit
+## Begründung
 Untermenge von E1-R1 — beschleunigt Gas-Exit in dichten Städten; Produktlinien-Redesign-Kosten (IG1 §130).

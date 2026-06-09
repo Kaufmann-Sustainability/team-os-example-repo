@@ -21,10 +21,10 @@ scored_under: [methodology-dma-2026]
 
 # IRO S2-I21: Zwangsarbeit
 
-**Typ:** I- · **Aktuell/Potenziell:** Potenziell · **Wertschöpfungskette:** Upstream (tief) · **Zeithorizont:** Lang
+**Typ:** I- · **Aktuell/Potenziell:** Potenziell · **Wertschöpfungskette:** Upstream (tief) · **Zeithorizont:** Lang · **Wesentlich:** Ja
 
 ## Beschreibung
 Zwangsarbeit — Xinjiang-Polysilizium/Halbleiter, DRC-Kobalt-Schuldknechtschaft, Golf-Wanderarbeiter in Metallraffination sind nicht auszuschließen.
 
-## Begründung der Wesentlichkeit
+## Begründung
 Menschenrechts-Vorrang: Zwangsarbeit, Basis-Schwere 4.33; §34 Global Slavery Index 2023 + BHRRC; LkSG/CSDDD-Scope (IG1 §120).

@@ -21,10 +21,10 @@ scored_under: [methodology-dma-2026]
 
 # IRO E1-I8: Energie
 
-**Typ:** I- · **Aktuell/Potenziell:** Aktuell · **Wertschöpfungskette:** Eigenbetrieb · **Zeithorizont:** Kurz
+**Typ:** I- · **Aktuell/Potenziell:** Aktuell · **Wertschöpfungskette:** Eigenbetrieb · **Zeithorizont:** Kurz · **Wesentlich:** Ja
 
 ## Beschreibung
 Energieverbrauch der Produktionsstandorte — Gasnutzung in älteren Werken (z.B. Wärmebehandlung) noch nicht vollständig elektrifiziert.
 
-## Begründung der Wesentlichkeit
+## Begründung
 Erfasst in Scope 1+2; geringer aber persistenter fossiler Rest an nicht elektrifizierter Wärmebehandlung (IG1 §117).

@@ -21,10 +21,10 @@ scored_under: [methodology-dma-2026]
 
 # IRO S4-I9: Zugang zu Produkten
 
-**Typ:** I- · **Aktuell/Potenziell:** Potenziell · **Wertschöpfungskette:** Downstream · **Zeithorizont:** Mittel
+**Typ:** I- · **Aktuell/Potenziell:** Potenziell · **Wertschöpfungskette:** Downstream · **Zeithorizont:** Mittel · **Wesentlich:** Ja
 
 ## Beschreibung
 Investitionskosten für Wärmepumpen ohne Förderung für einkommensschwache Haushalte unerschwinglich; Gaskessel-Verbot riskiert Energiearmut + verfestigte fossile Heizung für vulnerable Gruppen.
 
-## Begründung der Wesentlichkeit
+## Begründung
 Access-to-Products Sub-Thema; betrifft vulnerable Haushalte EU-weit (IG1 §120).

@@ -21,10 +21,10 @@ scored_under: [methodology-dma-2026]
 
 # IRO G1-I4: Politischer Einfluss und Lobbying
 
-**Typ:** I- · **Aktuell/Potenziell:** Potenziell · **Wertschöpfungskette:** Außerhalb VC · **Zeithorizont:** Kurz-Mittel
+**Typ:** I- · **Aktuell/Potenziell:** Potenziell · **Wertschöpfungskette:** Außerhalb VC · **Zeithorizont:** Kurz-Mittel · **Wesentlich:** Ja
 
 ## Beschreibung
 Mitgliedschaft in BDH, EHPA, Allianz für Entwicklung und Klima; Risiko, dass Lobbying-Positionen zu GEG/EPBD/F-Gas mit deklarierten SBTi-Klimazielen nicht im Einklang sind.
 
-## Begründung der Wesentlichkeit
+## Begründung
 Reputatives Risiko fehlender Übereinstimmung; InfluenceMap-ähnliche Prüfungen wächst (IG1 §120).

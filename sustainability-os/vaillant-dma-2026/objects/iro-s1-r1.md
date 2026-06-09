@@ -21,10 +21,10 @@ scored_under: [methodology-dma-2026]
 
 # IRO S1-R1: Angemessene Entlohnung
 
-**Typ:** R · **Aktuell/Potenziell:** Aktuell · **Wertschöpfungskette:** Eigenbetrieb · **Zeithorizont:** Kurz
+**Typ:** R · **Aktuell/Potenziell:** Aktuell · **Wertschöpfungskette:** Eigenbetrieb · **Zeithorizont:** Kurz · **Wesentlich:** Ja
 
 ## Beschreibung
 Lohninflationsdruck im DE-Arbeitsmarkt (IG-Metall-Abschlüsse), Senica Arbeitsmarktverengung für Wärmepumpen-Hochlauf.
 
-## Begründung der Wesentlichkeit
+## Begründung
 3-5% Lohndrift auf ~EUR 800m-1 Mrd Personalkosten = EUR 25-50m (IG1 §126).

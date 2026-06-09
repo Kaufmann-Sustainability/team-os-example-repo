@@ -21,10 +21,10 @@ scored_under: [methodology-dma-2026]
 
 # IRO E3-I2: Wasserverbrauch
 
-**Typ:** I- · **Aktuell/Potenziell:** Aktuell · **Wertschöpfungskette:** Upstream · **Zeithorizont:** Mittel
+**Typ:** I- · **Aktuell/Potenziell:** Aktuell · **Wertschöpfungskette:** Upstream · **Zeithorizont:** Mittel · **Wesentlich:** Ja
 
 ## Beschreibung
 Nettoverbrauch im Eigenbetrieb marginal; große vorgelagerte Embedded-Water-Last in Kupfer, Aluminium, Stahl. Proxy: WWF Water Risk Filter — Kupferbergbau ~150 m³/t Median.
 
-## Begründung der Wesentlichkeit
+## Begründung
 Kupfer-Embedded-Water in Atacama-Hochstress-Becken; §34 Sektordaten (IG1 §117).

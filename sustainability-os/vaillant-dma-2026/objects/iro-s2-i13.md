@@ -21,10 +21,10 @@ scored_under: [methodology-dma-2026]
 
 # IRO S2-I13: Aus- und Weiterbildung
 
-**Typ:** I+ · **Aktuell/Potenziell:** Aktuell · **Wertschöpfungskette:** Downstream · **Zeithorizont:** Mittel
+**Typ:** I+ · **Aktuell/Potenziell:** Aktuell · **Wertschöpfungskette:** Downstream · **Zeithorizont:** Mittel · **Wesentlich:** Ja
 
 ## Beschreibung
 62.000 Installateure 2024 auf Wärmepumpen geschult; Trainingsinfrastruktur (Vaillant Group Pro Academy) übertrifft individuelle Kapazität kleiner und mittlerer Installateursbetriebe — Kompetenzaufbau für erweiterte Belegschaft über Sektor-Baseline.
 
-## Begründung der Wesentlichkeit
+## Begründung
 Kompetenzaufbau für erweiterte Belegschaft über Sektor-Baseline; §52 (IG1 §117).

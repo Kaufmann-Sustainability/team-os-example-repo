@@ -21,10 +21,10 @@ scored_under: [methodology-dma-2026]
 
 # IRO S1-I13: Aus- und Weiterbildung
 
-**Typ:** I+ · **Aktuell/Potenziell:** Aktuell · **Wertschöpfungskette:** Eigenbetrieb · **Zeithorizont:** Mittel
+**Typ:** I+ · **Aktuell/Potenziell:** Aktuell · **Wertschöpfungskette:** Eigenbetrieb · **Zeithorizont:** Mittel · **Wesentlich:** Ja
 
 ## Beschreibung
 Massives Umschulungsprogramm für Wärmepumpen-Produktion (Werker:innen) und Engineering (F&E); 62.000 Installateurs-Schulungen 2024 (S2-Verknüpfung); Ausgaben vermutlich oberhalb Sektor-Baseline.
 
-## Begründung der Wesentlichkeit
+## Begründung
 Umschulungs-Ausgaben oberhalb Sektor-Baseline (IG1 §117).

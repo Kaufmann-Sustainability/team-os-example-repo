@@ -21,10 +21,10 @@ scored_under: [methodology-dma-2026]
 
 # IRO E4-I3: Zustand der Arten
 
-**Typ:** I- · **Aktuell/Potenziell:** Potenziell · **Wertschöpfungskette:** Upstream (tief) · **Zeithorizont:** Lang
+**Typ:** I- · **Aktuell/Potenziell:** Potenziell · **Wertschöpfungskette:** Upstream (tief) · **Zeithorizont:** Lang · **Wesentlich:** Ja
 
 ## Beschreibung
 Abbau kritischer Rohstoffe (3TG-Elektronik, Kobalt, Kupfer) überlappt mit IUCN-Rote-Liste-Lebensräumen in DRC-/Anden-/SO-asiatischen Wäldern.
 
-## Begründung der Wesentlichkeit
+## Begründung
 Artenverlust tief vorgelagert; Wärmepumpen-Transformation intensiviert Exposition; §34 BHRRC Transition Minerals Tracker (IG1 §120).

@@ -21,10 +21,10 @@ scored_under: [methodology-dma-2026]
 
 # IRO ES-O1: Wärmepumpen-Transformation Strategie
 
-**Typ:** O · **Aktuell/Potenziell:** Potenziell · **Wertschöpfungskette:** Eigenbetrieb + Downstream · **Zeithorizont:** Lang
+**Typ:** O · **Aktuell/Potenziell:** Potenziell · **Wertschöpfungskette:** Eigenbetrieb + Downstream · **Zeithorizont:** Lang · **Wesentlich:** Ja
 
 ## Beschreibung
 Strategische Repositionierung als europäischer Wärmepumpen-Marktführer (EU-#3) — langfristiger Unternehmenswert-Uplift bei erfolgreicher Transition; im Einklang mit EPBD, REPowerEU, GEG.
 
-## Begründung der Wesentlichkeit
+## Begründung
 Kumulativer Payoff von E1-O1 + E1-O2 + E2-O1 auf strategischer Ebene; abhängig von Execution (IG1 §128).

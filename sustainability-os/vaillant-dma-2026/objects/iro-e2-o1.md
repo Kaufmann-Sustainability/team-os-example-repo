@@ -21,10 +21,10 @@ scored_under: [methodology-dma-2026]
 
 # IRO E2-O1: Luftverschmutzung
 
-**Typ:** O · **Aktuell/Potenziell:** Aktuell · **Wertschöpfungskette:** Downstream · **Zeithorizont:** Kurz-Mittel
+**Typ:** O · **Aktuell/Potenziell:** Aktuell · **Wertschöpfungskette:** Downstream · **Zeithorizont:** Kurz-Mittel · **Wesentlich:** Ja
 
 ## Beschreibung
 First-Mover-R290-Portfolio (aroTHERM plus bereits R290) befiehlt Preis-/Spezifikationsaufschlag, während Wettbewerber ihre Linien umrüsten.
 
-## Begründung der Wesentlichkeit
+## Begründung
 R290 bereits kommerzialisiert plus F-Gas-Rückenwind; EUR 50m+ Margenvorteil (IG1 §128).

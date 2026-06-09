@@ -12,6 +12,6 @@ has_iro: [iro-es-o1]
 
 # Thema: Wärmepumpen-Transformation Strategie
 
-**ESRS-Standard:** ES · **Wesentliche IROs:** 1
+**ESRS-Standard:** ES · **Wesentlich:** Ja · **IROs:** 1
 
 Wesentlich laut DMA 2026.

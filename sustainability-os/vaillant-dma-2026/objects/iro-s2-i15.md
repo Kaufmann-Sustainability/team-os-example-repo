@@ -21,10 +21,10 @@ scored_under: [methodology-dma-2026]
 
 # IRO S2-I15: Gleiches Entgelt
 
-**Typ:** I- · **Aktuell/Potenziell:** Potenziell · **Wertschöpfungskette:** Upstream · **Zeithorizont:** Lang
+**Typ:** I- · **Aktuell/Potenziell:** Potenziell · **Wertschöpfungskette:** Upstream · **Zeithorizont:** Lang · **Wesentlich:** Ja
 
 ## Beschreibung
 Ungleiches Entgelt in Lieferantenbelegschaft ist nicht auszuschließen; begrenzte Sichtlinie.
 
-## Begründung der Wesentlichkeit
+## Begründung
 Menschenrechts-Vorrang: gleiches Entgelt, Basis-Schwere 3.0 (IG1 §120).

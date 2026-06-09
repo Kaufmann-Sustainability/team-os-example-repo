@@ -21,10 +21,10 @@ scored_under: [methodology-dma-2026]
 
 # IRO E1-R1: Klimawandel-Mitigation
 
-**Typ:** R · **Aktuell/Potenziell:** Potenziell · **Wertschöpfungskette:** Downstream · **Zeithorizont:** Mittel-Lang
+**Typ:** R · **Aktuell/Potenziell:** Potenziell · **Wertschöpfungskette:** Downstream · **Zeithorizont:** Mittel-Lang · **Wesentlich:** Ja
 
 ## Beschreibung
 Transitionsrisiko wertgeminderte Vermögenswerte im Gas-Portfolio: EPBD-Ausstieg + GEG 65%-Erneuerbar-Regel + EU F-Gas-VO. Rund 50-60% des 2024er Umsatzes hängen am Gaskessel-Geschäft; das bereits realisierte -15% YoY ist teilweise auf den Vorzieheffekt der Nachfrage und das Heizungsgesetz-Chaos zurückzuführen.
 
-## Begründung der Wesentlichkeit
+## Begründung
 Nachfrageklippe plausibel 2028-2035 in DE/NL/UK; jede 5%-Punkt-Umsatzerosion entspricht ~EUR 160m und damit der gesamten Risikotragfähigkeit (IG1 §128).

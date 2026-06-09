@@ -21,10 +21,10 @@ scored_under: [methodology-dma-2026]
 
 # IRO S4-I4: Gesundheit und Sicherheit der Verbraucher:innen
 
-**Typ:** I- · **Aktuell/Potenziell:** Aktuell · **Wertschöpfungskette:** Downstream · **Zeithorizont:** Lang
+**Typ:** I- · **Aktuell/Potenziell:** Aktuell · **Wertschöpfungskette:** Downstream · **Zeithorizont:** Lang · **Wesentlich:** Ja
 
 ## Beschreibung
 CO-Vergiftungsrisiko aus schlecht gewarteten oder installierten Gasgeräten am Kundenstandort; PED/GAR reguliert, Produktsicherheits-Governance kritisch. Proxy: HSE UK ~30 CO-Tote/Jahr.
 
-## Begründung der Wesentlichkeit
+## Begründung
 Tatsächliche Letalverletzungs-Exposition; PED/GAR-Governance gilt nach §44a als implementierte Minderung — reduziert die aktuelle Schwere aber nicht (IG1 §117).

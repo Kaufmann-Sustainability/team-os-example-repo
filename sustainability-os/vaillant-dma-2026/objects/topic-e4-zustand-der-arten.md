@@ -12,6 +12,6 @@ has_iro: [iro-e4-i3]
 
 # Thema: Zustand der Arten
 
-**ESRS-Standard:** E4 · **Wesentliche IROs:** 1
+**ESRS-Standard:** E4 · **Wesentlich:** Ja · **IROs:** 1
 
 Wesentlich laut DMA 2026.

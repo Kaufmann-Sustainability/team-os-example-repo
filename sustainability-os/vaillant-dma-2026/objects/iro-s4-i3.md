@@ -21,10 +21,10 @@ scored_under: [methodology-dma-2026]
 
 # IRO S4-I3: Zugang zu Informationen
 
-**Typ:** I+ · **Aktuell/Potenziell:** Potenziell · **Wertschöpfungskette:** Downstream · **Zeithorizont:** Mittel
+**Typ:** I+ · **Aktuell/Potenziell:** Potenziell · **Wertschöpfungskette:** Downstream · **Zeithorizont:** Mittel · **Wesentlich:** Ja
 
 ## Beschreibung
 Transparente Produkt-Umwelt-Footprint-Offenlegung (EPDs, Energieetiketten) über Ecodesign-Minimum hinaus, wo angewendet.
 
-## Begründung der Wesentlichkeit
+## Begründung
 Über gesetzlicher Baseline, wo angewendet (IG1 §117).

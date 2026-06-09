@@ -21,10 +21,10 @@ scored_under: [methodology-dma-2026]
 
 # IRO E2-I4: Luftverschmutzung
 
-**Typ:** I+ · **Aktuell/Potenziell:** Aktuell · **Wertschöpfungskette:** Downstream · **Zeithorizont:** Mittel
+**Typ:** I+ · **Aktuell/Potenziell:** Aktuell · **Wertschöpfungskette:** Downstream · **Zeithorizont:** Mittel · **Wesentlich:** Ja
 
 ## Beschreibung
 R290-Propan-Wärmepumpen (GWP ~3) verdrängen kundenseitige HFKW-Systeme und reduzieren atmosphärische F-Gas-Freisetzung gegenüber Marktbasislinie deutlich.
 
-## Begründung der Wesentlichkeit
+## Begründung
 Materielle Reduktion der atmosphärischen F-Gas-Belastung gegenüber Marktdurchschnitt (IG1 §117).

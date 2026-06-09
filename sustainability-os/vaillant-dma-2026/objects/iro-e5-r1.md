@@ -21,10 +21,10 @@ scored_under: [methodology-dma-2026]
 
 # IRO E5-R1: Ressourcen-Inflows
 
-**Typ:** R · **Aktuell/Potenziell:** Potenziell · **Wertschöpfungskette:** Upstream · **Zeithorizont:** Mittel
+**Typ:** R · **Aktuell/Potenziell:** Potenziell · **Wertschöpfungskette:** Upstream · **Zeithorizont:** Mittel · **Wesentlich:** Ja
 
 ## Beschreibung
 CRM-Act-Compliance + Versorgungskonzentration: SE-Versorgung ~85% China-stämmig; Halbleiterengpässe 2021-23 als Präzedenz; Preisspikes auf Cu/Al lock-in Marge.
 
-## Begründung der Wesentlichkeit
+## Begründung
 2021-23 Chipkrise kostete HVAC-Sektor EUR 100m+ Umsatz auf Einzelfirmenebene; Wärmepumpen-Transformation verstärkt CRM-Intensität (IG1 §131).

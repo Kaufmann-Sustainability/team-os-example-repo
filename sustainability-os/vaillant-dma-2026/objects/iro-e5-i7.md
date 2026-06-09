@@ -21,10 +21,10 @@ scored_under: [methodology-dma-2026]
 
 # IRO E5-I7: Ressourcen-Outflows (Abfall)
 
-**Typ:** I+ · **Aktuell/Potenziell:** Aktuell · **Wertschöpfungskette:** Eigenbetrieb · **Zeithorizont:** Kurz
+**Typ:** I+ · **Aktuell/Potenziell:** Aktuell · **Wertschöpfungskette:** Eigenbetrieb · **Zeithorizont:** Kurz · **Wesentlich:** Ja
 
 ## Beschreibung
 Hoher In-Plant-Metallschrott-Recovery (≥95% typisch in HVAC-Montage), wird in Lieferkette zurückgespeist — übertrifft Baseline, wo verifiziert.
 
-## Begründung der Wesentlichkeit
+## Begründung
 Übersteigt Baseline, wo verifiziert (IG1 §117).

@@ -21,10 +21,10 @@ scored_under: [methodology-dma-2026]
 
 # IRO G1-I6: Management Lieferantenbeziehungen
 
-**Typ:** I- · **Aktuell/Potenziell:** Aktuell · **Wertschöpfungskette:** Upstream · **Zeithorizont:** Mittel
+**Typ:** I- · **Aktuell/Potenziell:** Aktuell · **Wertschöpfungskette:** Upstream · **Zeithorizont:** Mittel · **Wesentlich:** Ja
 
 ## Beschreibung
 Trotz 79% Einkaufsvolumen unter Verhaltenskodex verbleiben 21% des Einkaufsvolumen nicht abgedeckt → residuales vorgelagertes Menschenrechts- und Umweltrisiko; nur 71% der Audits beinhalten Sozial-Audit.
 
-## Begründung der Wesentlichkeit
+## Begründung
 Abdeckungslücke ist der residuale S2/E-Risikokanal; tatsächliche Lücke in 2024 nach §44a (IG1 §117).

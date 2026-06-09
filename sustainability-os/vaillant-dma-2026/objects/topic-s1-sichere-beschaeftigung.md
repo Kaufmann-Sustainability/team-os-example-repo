@@ -7,11 +7,11 @@ stand: 2026-06-09
 review_zyklus: P12M
 vertraulichkeit: intern
 esrs_bezug: S1
-has_iro: [iro-s1-i4]
+has_iro: [iro-s1-i4, iro-s1-o1]
 ---
 
 # Thema: Sichere Beschäftigung
 
-**ESRS-Standard:** S1 · **Wesentliche IROs:** 1
+**ESRS-Standard:** S1 · **Wesentlich:** Ja · **IROs:** 2
 
 Wesentlich laut DMA 2026.

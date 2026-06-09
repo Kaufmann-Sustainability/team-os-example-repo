@@ -21,10 +21,10 @@ scored_under: [methodology-dma-2026]
 
 # IRO S2-I24: Wasser und Sanitärversorgung
 
-**Typ:** I- · **Aktuell/Potenziell:** Potenziell · **Wertschöpfungskette:** Upstream (tief) · **Zeithorizont:** Lang
+**Typ:** I- · **Aktuell/Potenziell:** Potenziell · **Wertschöpfungskette:** Upstream (tief) · **Zeithorizont:** Lang · **Wesentlich:** Ja
 
 ## Beschreibung
 Unangemessene Wasser-/Sanitärversorgung an Metallbergbau-Belegschaftslagern in wasserstressigen Regionen (Chile, DRC) ist nicht auszuschließen.
 
-## Begründung der Wesentlichkeit
+## Begründung
 §34 wasserstressige Bergbauregionen; ILO-Sektorberichte (IG1 §120).

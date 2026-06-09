@@ -7,11 +7,11 @@ stand: 2026-06-09
 review_zyklus: P12M
 vertraulichkeit: intern
 esrs_bezug: E2
-has_iro: [iro-e2-i1, iro-e2-i2, iro-e2-i4, iro-e2-r1, iro-e2-r2, iro-e2-o1]
+has_iro: [iro-e2-i1, iro-e2-i2, iro-e2-i3, iro-e2-i4, iro-e2-r1, iro-e2-r2, iro-e2-o1]
 ---
 
 # Thema: Luftverschmutzung
 
-**ESRS-Standard:** E2 · **Wesentliche IROs:** 6
+**ESRS-Standard:** E2 · **Wesentlich:** Ja · **IROs:** 7
 
 Wesentlich laut DMA 2026.

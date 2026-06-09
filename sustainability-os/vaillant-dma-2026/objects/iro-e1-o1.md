@@ -21,10 +21,10 @@ scored_under: [methodology-dma-2026]
 
 # IRO E1-O1: Klimawandel-Mitigation
 
-**Typ:** O · **Aktuell/Potenziell:** Potenziell · **Wertschöpfungskette:** Downstream · **Zeithorizont:** Mittel
+**Typ:** O · **Aktuell/Potenziell:** Potenziell · **Wertschöpfungskette:** Downstream · **Zeithorizont:** Mittel · **Wesentlich:** Ja
 
 ## Beschreibung
 Wachstumschance EU-Wärmepumpen-Markt: REPowerEU-Ziel 60 Mio Einheiten bis 2030; Vaillant EU-#3; Senica-Investitionsaufwand ermöglicht Skalierung; adressierbares Umsatzplus EUR 1+ Mrd über 5 Jahre.
 
-## Begründung der Wesentlichkeit
+## Begründung
 Wahrscheinlichkeit gedämpft durch aktuelle Policy-Rückschläge (Heizungsgesetz-Politisierung 2024); langfristige Logik intakt (IG1 §128).

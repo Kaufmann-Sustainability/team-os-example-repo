@@ -21,10 +21,10 @@ scored_under: [methodology-dma-2026]
 
 # IRO S2-I1: Angemessene Entlohnung
 
-**Typ:** I- · **Aktuell/Potenziell:** Potenziell · **Wertschöpfungskette:** Upstream · **Zeithorizont:** Mittel
+**Typ:** I- · **Aktuell/Potenziell:** Potenziell · **Wertschöpfungskette:** Upstream · **Zeithorizont:** Mittel · **Wesentlich:** Ja
 
 ## Beschreibung
 Existenzlohn-Lücken bei Tier-2/3-Elektronik-Lieferanten (CN/SEA) und Metallminern (DRC, Anden) sind nicht auszuschließen.
 
-## Begründung der Wesentlichkeit
+## Begründung
 Menschenrechts-Vorrang: Löhne, Basis-Schwere 3.33; §34 ILO Global Wage Report + WageIndicator (IG1 §120).

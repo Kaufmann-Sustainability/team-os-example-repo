@@ -21,10 +21,10 @@ scored_under: [methodology-dma-2026]
 
 # IRO E2-R2: Luftverschmutzung
 
-**Typ:** R · **Aktuell/Potenziell:** Aktuell · **Wertschöpfungskette:** Eigenbetrieb · **Zeithorizont:** Kurz
+**Typ:** R · **Aktuell/Potenziell:** Aktuell · **Wertschöpfungskette:** Eigenbetrieb · **Zeithorizont:** Kurz · **Wesentlich:** Ja
 
 ## Beschreibung
 EU-F-Gas-VO 2024/573 HFKW-Quotenkürzungen führen zu Kostenanstieg und Produktredesign; HFKW-Spotpreise +200-400% in 2024.
 
-## Begründung der Wesentlichkeit
+## Begründung
 Quoten-Klippe 2025-2030 bereits aktiv; Kältemittel- und Redesign-Kosten EUR 30-60m (IG1 §131).

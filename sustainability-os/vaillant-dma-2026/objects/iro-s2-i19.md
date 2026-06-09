@@ -21,10 +21,10 @@ scored_under: [methodology-dma-2026]
 
 # IRO S2-I19: Maßnahmen gegen Gewalt
 
-**Typ:** I- · **Aktuell/Potenziell:** Potenziell · **Wertschöpfungskette:** Upstream · **Zeithorizont:** Mittel
+**Typ:** I- · **Aktuell/Potenziell:** Potenziell · **Wertschöpfungskette:** Upstream · **Zeithorizont:** Mittel · **Wesentlich:** Ja
 
 ## Beschreibung
 Gewaltrisiko an vorgelagerten Bergbau-/Konfliktgebietsstandorten (DRC, Teile LatAm); kleine und mittlere Installateursbetriebe niedrigeres Risiko.
 
-## Begründung der Wesentlichkeit
+## Begründung
 Menschenrechts-Vorrang; §34 Global Witness 2024 (IG1 §120).

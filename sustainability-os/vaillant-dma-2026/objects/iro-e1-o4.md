@@ -21,10 +21,10 @@ scored_under: [methodology-dma-2026]
 
 # IRO E1-O4: Klimawandel-Adaptation
 
-**Typ:** O · **Aktuell/Potenziell:** Potenziell · **Wertschöpfungskette:** Downstream · **Zeithorizont:** Mittel
+**Typ:** O · **Aktuell/Potenziell:** Potenziell · **Wertschöpfungskette:** Downstream · **Zeithorizont:** Mittel · **Wesentlich:** Ja
 
 ## Beschreibung
 Wärmepumpen-Kühlung + Lüftungsproduktrange für steigenden Sommer-Kühlbedarf in Mittelmeer-/SE-Europa — Hebel über Saunier Duval / Hermann Saunier Duval.
 
-## Begründung der Wesentlichkeit
+## Begründung
 EUR 50-80m Umsatzplus über Markenportfolio (IG1 §128).

@@ -21,10 +21,10 @@ scored_under: [methodology-dma-2026]
 
 # IRO S4-R2: Gesundheit und Sicherheit der Verbraucher:innen
 
-**Typ:** R · **Aktuell/Potenziell:** Potenziell · **Wertschöpfungskette:** Downstream · **Zeithorizont:** Kurz
+**Typ:** R · **Aktuell/Potenziell:** Potenziell · **Wertschöpfungskette:** Downstream · **Zeithorizont:** Kurz · **Wesentlich:** Ja
 
 ## Beschreibung
 Produktrückruf-Risiko — Einzeldefekt-Rückruf an Wärmepumpen- oder Kessellinie = direkter finanzieller Verlust plus Markenschaden; Präzedenz: Vergleichsunternehmen-Rückrufe 2022-23.
 
-## Begründung der Wesentlichkeit
+## Begründung
 Vergleichsunternehmen-Rückruf-Präzedenz EUR 50-150m direkte + Markenkosten; einzelne Linie könnte RBC-Schwelle überschreiten (IG1 §131).

@@ -21,10 +21,10 @@ scored_under: [methodology-dma-2026]
 
 # IRO S1-R3: Gesundheit und Sicherheit
 
-**Typ:** R · **Aktuell/Potenziell:** Potenziell · **Wertschöpfungskette:** Eigenbetrieb · **Zeithorizont:** Kurz-Mittel
+**Typ:** R · **Aktuell/Potenziell:** Potenziell · **Wertschöpfungskette:** Eigenbetrieb · **Zeithorizont:** Kurz-Mittel · **Wesentlich:** Ja
 
 ## Beschreibung
 Kältemittel-Brennbarkeit (R290) erfordert neue H&S-Protokolle an Prüfständen und Produktionslinien; Vorfallrisiko während Hochlauf.
 
-## Begründung der Wesentlichkeit
+## Begründung
 Werksvorfall könnte Senica-Linie + Versicherung/Regulatorik EUR 10-30m exponieren (IG1 §131).

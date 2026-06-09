@@ -21,10 +21,10 @@ scored_under: [methodology-dma-2026]
 
 # IRO S1-I9: Partizipationsrechte
 
-**Typ:** I+ · **Aktuell/Potenziell:** Aktuell · **Wertschöpfungskette:** Eigenbetrieb · **Zeithorizont:** Kurz
+**Typ:** I+ · **Aktuell/Potenziell:** Aktuell · **Wertschöpfungskette:** Eigenbetrieb · **Zeithorizont:** Kurz · **Wesentlich:** Ja
 
 ## Beschreibung
 SEEDS-Ambassadors + SENSOR + Restrukturierungskonsultation; Partizipation am Nachhaltigkeitsprogramm über Sektor-Baseline.
 
-## Begründung der Wesentlichkeit
+## Begründung
 Partizipationsinfrastruktur über Baseline (IG1 §117).

@@ -21,10 +21,10 @@ scored_under: [methodology-dma-2026]
 
 # IRO S4-I10: Zugang zu Produkten
 
-**Typ:** I+ · **Aktuell/Potenziell:** Aktuell · **Wertschöpfungskette:** Downstream · **Zeithorizont:** Lang
+**Typ:** I+ · **Aktuell/Potenziell:** Aktuell · **Wertschöpfungskette:** Downstream · **Zeithorizont:** Lang · **Wesentlich:** Ja
 
 ## Beschreibung
 Ersatzteilverfügbarkeit + Servicenetzwerk gewährleistet kontinuierlichen Heizungszugang für installierte Basis über Produktlebensdauer — übersteigt Sektor-Baseline, wo verifiziert.
 
-## Begründung der Wesentlichkeit
+## Begründung
 Über Sektor-Baseline (340.000 Installateurnetz) (IG1 §117).

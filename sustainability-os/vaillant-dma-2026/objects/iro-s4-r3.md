@@ -21,10 +21,10 @@ scored_under: [methodology-dma-2026]
 
 # IRO S4-R3: Sicherheit der Person
 
-**Typ:** R · **Aktuell/Potenziell:** Potenziell · **Wertschöpfungskette:** Downstream · **Zeithorizont:** Mittel
+**Typ:** R · **Aktuell/Potenziell:** Potenziell · **Wertschöpfungskette:** Downstream · **Zeithorizont:** Mittel · **Wesentlich:** Ja
 
 ## Beschreibung
 EU Cyber Resilience Act (CRA) Compliance für vernetzte Produkte ab 2027 — Non-Conformance = Marktausschluss.
 
-## Begründung der Wesentlichkeit
+## Begründung
 Firmware-/Sicherheitsarchitektur-Überholung EUR 10-25m (IG1 §130).

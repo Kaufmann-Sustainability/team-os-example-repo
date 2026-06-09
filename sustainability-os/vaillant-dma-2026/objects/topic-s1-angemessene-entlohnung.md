@@ -12,6 +12,6 @@ has_iro: [iro-s1-i1, iro-s1-r1]
 
 # Thema: Angemessene Entlohnung
 
-**ESRS-Standard:** S1 · **Wesentliche IROs:** 2
+**ESRS-Standard:** S1 · **Wesentlich:** Ja · **IROs:** 2
 
 Wesentlich laut DMA 2026.

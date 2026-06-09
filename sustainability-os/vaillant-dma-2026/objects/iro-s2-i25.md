@@ -21,10 +21,10 @@ scored_under: [methodology-dma-2026]
 
 # IRO S2-I25: Lieferanten-Programm-Uplift
 
-**Typ:** I+ · **Aktuell/Potenziell:** Aktuell · **Wertschöpfungskette:** Upstream · **Zeithorizont:** Mittel
+**Typ:** I+ · **Aktuell/Potenziell:** Aktuell · **Wertschöpfungskette:** Upstream · **Zeithorizont:** Mittel · **Wesentlich:** Ja
 
 ## Beschreibung
 Lieferanten-Verhaltenskodex deckt 79% des Einkaufsvolumens; 111 Audits in 2024 (71% mit Sozial-Audit); 83% der Risikoländer-Einkaufsvolumen unter Verhaltenskodex; 100% Sozial-Audit-Ziel 2030 — Lieferantenentwicklung jenseits Baseline qualifiziert als positive Aggregat-Wirkung auf Wohl der Lieferanten-Belegschaft.
 
-## Begründung der Wesentlichkeit
+## Begründung
 Reife der Sorgfaltspflicht oberhalb Vergleichswert im mittelständischen HVAC-Sektor (IG1 §117).

@@ -12,6 +12,6 @@ has_iro: [iro-e3-i2, iro-e3-r2]
 
 # Thema: Wasserverbrauch
 
-**ESRS-Standard:** E3 · **Wesentliche IROs:** 2
+**ESRS-Standard:** E3 · **Wesentlich:** Ja · **IROs:** 2
 
 Wesentlich laut DMA 2026.

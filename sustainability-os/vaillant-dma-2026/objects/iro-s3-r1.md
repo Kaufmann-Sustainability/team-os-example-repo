@@ -21,10 +21,10 @@ scored_under: [methodology-dma-2026]
 
 # IRO S3-R1: Gemeinschaften
 
-**Typ:** R · **Aktuell/Potenziell:** Potenziell · **Wertschöpfungskette:** Upstream (tief) · **Zeithorizont:** Mittel
+**Typ:** R · **Aktuell/Potenziell:** Potenziell · **Wertschöpfungskette:** Upstream (tief) · **Zeithorizont:** Mittel · **Wesentlich:** Ja
 
 ## Beschreibung
 Vorgelagerter Community-Konflikt am Bergbau-Tier → Lieferunterbrechung + Reputation; CSDDD Umwelt- und Community-Rechts-Sorgfalt ab 2027.
 
-## Begründung der Wesentlichkeit
+## Begründung
 Brumadinho-Klasse-Event würde Stahl-/Eisenpreise 10-15% spiken; CSDDD-Sorgfaltskosten überlappen E4-R1 (IG1 §131).

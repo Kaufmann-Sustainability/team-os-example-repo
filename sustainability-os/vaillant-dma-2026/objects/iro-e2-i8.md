@@ -21,10 +21,10 @@ scored_under: [methodology-dma-2026]
 
 # IRO E2-I8: Besorgniserregende Stoffe
 
-**Typ:** I- · **Aktuell/Potenziell:** Aktuell · **Wertschöpfungskette:** Eigenbetrieb + Downstream · **Zeithorizont:** Mittel
+**Typ:** I- · **Aktuell/Potenziell:** Aktuell · **Wertschöpfungskette:** Eigenbetrieb + Downstream · **Zeithorizont:** Mittel · **Wesentlich:** Ja
 
 ## Beschreibung
 PUR-Isolierschäume-Treibmittel-Rückstände; bromierte Flammschutzmittel in Legacy-Elektronikgehäusen.
 
-## Begründung der Wesentlichkeit
+## Begründung
 Persistent in Umwelt nach Entsorgung; EU-Ausstieg laufend (IG1 §117).

@@ -21,10 +21,10 @@ scored_under: [methodology-dma-2026]
 
 # IRO E2-I2: Luftverschmutzung
 
-**Typ:** I- · **Aktuell/Potenziell:** Aktuell · **Wertschöpfungskette:** Eigenbetrieb + Downstream · **Zeithorizont:** Mittel
+**Typ:** I- · **Aktuell/Potenziell:** Aktuell · **Wertschöpfungskette:** Eigenbetrieb + Downstream · **Zeithorizont:** Mittel · **Wesentlich:** Ja
 
 ## Beschreibung
 F-Gas-Leckagen während Produktherstellung, Service und Lebensende aus Legacy-HFKW-Wärmepumpen (GWP 1.400-3.900) — Luftverschmutzung plus Klimawirkung.
 
-## Begründung der Wesentlichkeit
+## Begründung
 F-Gase atmosphärisch extrem langlebig; R290-Umstellung gilt nach §44a als Minderung und reduziert 2024-Schwere nicht (IG1 §117).

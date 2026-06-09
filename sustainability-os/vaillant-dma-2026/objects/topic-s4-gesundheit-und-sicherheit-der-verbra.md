@@ -12,6 +12,6 @@ has_iro: [iro-s4-i4, iro-s4-i5, iro-s4-r2, iro-s4-i6]
 
 # Thema: Gesundheit und Sicherheit der Verbraucher:innen
 
-**ESRS-Standard:** S4 · **Wesentliche IROs:** 4
+**ESRS-Standard:** S4 · **Wesentlich:** Ja · **IROs:** 4
 
 Wesentlich laut DMA 2026.

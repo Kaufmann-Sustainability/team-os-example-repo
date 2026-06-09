@@ -21,10 +21,10 @@ scored_under: [methodology-dma-2026]
 
 # IRO E5-I4: Ressourcen-Outflows (Produkte)
 
-**Typ:** I- · **Aktuell/Potenziell:** Aktuell · **Wertschöpfungskette:** Downstream · **Zeithorizont:** Lang
+**Typ:** I- · **Aktuell/Potenziell:** Aktuell · **Wertschöpfungskette:** Downstream · **Zeithorizont:** Lang · **Wesentlich:** Ja
 
 ## Beschreibung
 End-of-Life-Wärmepumpen und Gaskessel enthalten gefährliche Kältemittel und WEEE-Elektronik; durch Installateure vermittelte Rückgewinnung ist kritischer Schwachpunkt für Kältemittelleckage und Metallverlust.
 
-## Begründung der Wesentlichkeit
+## Begründung
 durch Installateure ausgeführte Rückgewinnung ist kritischer Schwachpunkt; Kältemittel-Release und Metallverlust langlebig (IG1 §117).

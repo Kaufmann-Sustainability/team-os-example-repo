@@ -21,10 +21,10 @@ scored_under: [methodology-dma-2026]
 
 # IRO S3-I8: Gemeinschaften (positiv)
 
-**Typ:** I+ · **Aktuell/Potenziell:** Aktuell · **Wertschöpfungskette:** Außerhalb VC · **Zeithorizont:** Kurz
+**Typ:** I+ · **Aktuell/Potenziell:** Aktuell · **Wertschöpfungskette:** Außerhalb VC · **Zeithorizont:** Kurz · **Wesentlich:** Ja
 
 ## Beschreibung
 SOS-Kinderdörfer-Partnerschaft seit 2013, 14 Heizungsprojekte 2024; WWF-Biodiversitätsprogramm; Costa-Rica-Aufforstung in Gemeinschaften ohne Vaillant-Footprint → mildert Wirkung anderer Akteure.
 
-## Begründung der Wesentlichkeit
+## Begründung
 Minderung außerhalb der Wertschöpfungskette der Wirkung anderer Akteure; langjähriges Programm (IG1 §117).

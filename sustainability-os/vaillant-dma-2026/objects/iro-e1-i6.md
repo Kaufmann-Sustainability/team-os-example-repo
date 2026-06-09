@@ -21,10 +21,10 @@ scored_under: [methodology-dma-2026]
 
 # IRO E1-I6: Klimawandel-Mitigation
 
-**Typ:** I+ · **Aktuell/Potenziell:** Aktuell · **Wertschöpfungskette:** Downstream · **Zeithorizont:** Mittel
+**Typ:** I+ · **Aktuell/Potenziell:** Aktuell · **Wertschöpfungskette:** Downstream · **Zeithorizont:** Mittel · **Wesentlich:** Ja
 
 ## Beschreibung
 Hybridsysteme (Wärmepumpe + Brennwertkessel) reduzieren Kundenemissionen in Retrofit-Szenarien, wo reine WP nicht machbar ist (schlechte Dämmung, Denkmalschutz).
 
-## Begründung der Wesentlichkeit
+## Begründung
 Retrofit-Pfad mit messbarer Reduktion gegenüber reinem Gasbetrieb in Bestandsgebäuden (IG1 §117).

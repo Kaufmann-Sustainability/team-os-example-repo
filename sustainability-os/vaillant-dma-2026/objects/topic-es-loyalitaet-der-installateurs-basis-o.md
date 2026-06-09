@@ -12,6 +12,6 @@ has_iro: [iro-es-o3]
 
 # Thema: Loyalität der Installateurs-Basis (O)
 
-**ESRS-Standard:** ES · **Wesentliche IROs:** 1
+**ESRS-Standard:** ES · **Wesentlich:** Ja · **IROs:** 1
 
 Wesentlich laut DMA 2026.

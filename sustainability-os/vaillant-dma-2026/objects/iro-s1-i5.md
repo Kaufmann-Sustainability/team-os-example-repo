@@ -21,10 +21,10 @@ scored_under: [methodology-dma-2026]
 
 # IRO S1-I5: Sozialschutz
 
-**Typ:** I+ · **Aktuell/Potenziell:** Aktuell · **Wertschöpfungskette:** Eigenbetrieb · **Zeithorizont:** Kurz
+**Typ:** I+ · **Aktuell/Potenziell:** Aktuell · **Wertschöpfungskette:** Eigenbetrieb · **Zeithorizont:** Kurz · **Wesentlich:** Ja
 
 ## Beschreibung
 DE-Betriebsrente + Gesundheitszuschüsse + Mittelstand-Benefitspaket übertrifft i.d.R. gesetzliche Baseline [Nicht-EU-Standorte zu validieren].
 
-## Begründung der Wesentlichkeit
+## Begründung
 Mittelstand-Paket; Nicht-EU-Validierung offen (IG1 §117).

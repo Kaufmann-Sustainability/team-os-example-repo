@@ -21,10 +21,10 @@ scored_under: [methodology-dma-2026]
 
 # IRO E1-R7: Klimawandel-Adaptation
 
-**Typ:** R · **Aktuell/Potenziell:** Potenziell · **Wertschöpfungskette:** Upstream · **Zeithorizont:** Mittel
+**Typ:** R · **Aktuell/Potenziell:** Potenziell · **Wertschöpfungskette:** Upstream · **Zeithorizont:** Mittel · **Wesentlich:** Ja
 
 ## Beschreibung
 Vorgelagerte Kupfer-/Eisenerz-Lieferunterbrechung durch Trockenheit (Chile Atacama, Peru), Tailings-Dammbrüche und Vale-Erzlogistik in Brasilien — verursacht Materialpreis-Spikes und Lieferverzögerungen.
 
-## Begründung der Wesentlichkeit
+## Begründung
 10-20%-Spike auf EUR 400-600m Metallspend = EUR 40-80m Margenwirkung (IG1 §131).

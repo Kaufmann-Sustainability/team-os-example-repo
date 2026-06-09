@@ -21,10 +21,10 @@ scored_under: [methodology-dma-2026]
 
 # IRO S2-R2: Aus- und Weiterbildung
 
-**Typ:** R · **Aktuell/Potenziell:** Aktuell · **Wertschöpfungskette:** Downstream · **Zeithorizont:** Mittel
+**Typ:** R · **Aktuell/Potenziell:** Aktuell · **Wertschöpfungskette:** Downstream · **Zeithorizont:** Mittel · **Wesentlich:** Ja
 
 ## Beschreibung
 Installateur-Skill-Gap kappt Wärmepumpen-Hochlauf-Geschwindigkeit — sektor-weiter Engpass; Risiko, dass Vaillant nicht so schnell wachsen kann wie Marktchance.
 
-## Begründung der Wesentlichkeit
+## Begründung
 EHPA bestätigt Installateurs-Kapazität als bindender Constraint; kappt adressierbares Wärmepumpen-Umsatzplus um 20-40% → EUR 100m+ EBIT-Wirkung (IG1 §128).

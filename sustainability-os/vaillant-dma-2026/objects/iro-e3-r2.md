@@ -21,10 +21,10 @@ scored_under: [methodology-dma-2026]
 
 # IRO E3-R2: Wasserverbrauch
 
-**Typ:** R · **Aktuell/Potenziell:** Potenziell · **Wertschöpfungskette:** Upstream · **Zeithorizont:** Mittel
+**Typ:** R · **Aktuell/Potenziell:** Potenziell · **Wertschöpfungskette:** Upstream · **Zeithorizont:** Mittel · **Wesentlich:** Ja
 
 ## Beschreibung
 Embedded-Water-Preisweitergabe aus wasserstressigen Bergbauregionen; Lieferunterbrechung.
 
-## Begründung der Wesentlichkeit
+## Begründung
 Überlappung mit E1-R7-Treiber; inkrementelle EUR 10-20m Metallkosten-Aufschlag (IG1 §131).

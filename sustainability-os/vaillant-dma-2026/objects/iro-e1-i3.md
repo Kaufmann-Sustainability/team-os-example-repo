@@ -21,10 +21,10 @@ scored_under: [methodology-dma-2026]
 
 # IRO E1-I3: Klimawandel-Mitigation
 
-**Typ:** I- · **Aktuell/Potenziell:** Aktuell · **Wertschöpfungskette:** Upstream · **Zeithorizont:** Mittel
+**Typ:** I- · **Aktuell/Potenziell:** Aktuell · **Wertschöpfungskette:** Upstream · **Zeithorizont:** Mittel · **Wesentlich:** Ja
 
 ## Beschreibung
 Scope 3.1 — eingebetteter Kohlenstoff in Stahl, Kupfer, Aluminium und Elektronik. Pro Einheit steigend mit dem Wärmepumpen-Transformation, weil Wärmepumpen metallintensiver sind als Gaskessel.
 
-## Begründung der Wesentlichkeit
+## Begründung
 Material vorgelagerte CO2-Last, über Jahrzehnte hinweg geltende atmosphärische Persistenz; verstärkt sich mit Wärmepumpen-Hochlauf (IG1 §117).

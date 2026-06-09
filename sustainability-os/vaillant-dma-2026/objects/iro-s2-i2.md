@@ -21,10 +21,10 @@ scored_under: [methodology-dma-2026]
 
 # IRO S2-I2: Work-Life-Balance
 
-**Typ:** I- · **Aktuell/Potenziell:** Potenziell · **Wertschöpfungskette:** Upstream · **Zeithorizont:** Mittel
+**Typ:** I- · **Aktuell/Potenziell:** Potenziell · **Wertschöpfungskette:** Upstream · **Zeithorizont:** Mittel · **Wesentlich:** Ja
 
 ## Beschreibung
 Exzessive Arbeitsstunden-Muster bei asiatischen Elektronik-Lieferanten (Komponenten-PCBs/Sensoren) sind nicht auszuschließen.
 
-## Begründung der Wesentlichkeit
+## Begründung
 §34 SMETA/Sedex-Sektorbenchmark (IG1 §120).

@@ -21,10 +21,10 @@ scored_under: [methodology-dma-2026]
 
 # IRO S3-I4: Menschenrechtsverteidiger:innen
 
-**Typ:** I- · **Aktuell/Potenziell:** Potenziell · **Wertschöpfungskette:** Upstream (tief) · **Zeithorizont:** Lang
+**Typ:** I- · **Aktuell/Potenziell:** Potenziell · **Wertschöpfungskette:** Upstream (tief) · **Zeithorizont:** Lang · **Wesentlich:** Ja
 
 ## Beschreibung
 Indirekt vorgelagert — HRDs dokumentiert als gefährdet in DRC-Bergbau, LatAm-Extraktion; nicht bei Tier 1.
 
-## Begründung der Wesentlichkeit
+## Begründung
 Menschenrechts-Vorrang; §34 Global Witness 2024 (IG1 §120).

@@ -21,10 +21,10 @@ scored_under: [methodology-dma-2026]
 
 # IRO S1-I18: Nichtdiskriminierung
 
-**Typ:** I- · **Aktuell/Potenziell:** Potenziell · **Wertschöpfungskette:** Eigenbetrieb · **Zeithorizont:** Mittel
+**Typ:** I- · **Aktuell/Potenziell:** Potenziell · **Wertschöpfungskette:** Eigenbetrieb · **Zeithorizont:** Mittel · **Wesentlich:** Ja
 
 ## Beschreibung
 77-Nationalitäten-Belegschaft erzeugt Diskriminierungs-/Inklusionsrisiko bei schlechtem Management; interkulturelle Management-Kompetenz erforderlich.
 
-## Begründung der Wesentlichkeit
+## Begründung
 Menschenrechts-Vorrang: Nichtdiskriminierung, Basis-Schwere=3 → material unabhängig von Likelihood (IG1 §120).

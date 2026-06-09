@@ -21,10 +21,10 @@ scored_under: [methodology-dma-2026]
 
 # IRO E2-I7: Besorgniserregende Stoffe
 
-**Typ:** I- · **Aktuell/Potenziell:** Aktuell · **Wertschöpfungskette:** Eigenbetrieb + Downstream · **Zeithorizont:** Mittel
+**Typ:** I- · **Aktuell/Potenziell:** Aktuell · **Wertschöpfungskette:** Eigenbetrieb + Downstream · **Zeithorizont:** Mittel · **Wesentlich:** Ja
 
 ## Beschreibung
 Verwendung von Legacy-HFKW-Kältemitteln (GWP bis 3.900) in installierter Basis und Servicepool; bleifreies Lot erfüllt RoHS, Spuren-SVHC in Elektronik persistieren.
 
-## Begründung der Wesentlichkeit
+## Begründung
 F-Gas- und SVHC-Persistenz; Service-Kanal-Exposition setzt sich für installierte Basis fort nach §44a (IG1 §117).

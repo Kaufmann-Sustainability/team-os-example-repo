@@ -12,6 +12,6 @@ has_iro: [iro-s1-i11, iro-s1-i12, iro-s1-r3]
 
 # Thema: Gesundheit und Sicherheit
 
-**ESRS-Standard:** S1 · **Wesentliche IROs:** 3
+**ESRS-Standard:** S1 · **Wesentlich:** Ja · **IROs:** 3
 
 Wesentlich laut DMA 2026.

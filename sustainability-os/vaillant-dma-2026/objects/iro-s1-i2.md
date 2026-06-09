@@ -21,10 +21,10 @@ scored_under: [methodology-dma-2026]
 
 # IRO S1-I2: Work-Life-Balance
 
-**Typ:** I- · **Aktuell/Potenziell:** Aktuell · **Wertschöpfungskette:** Eigenbetrieb · **Zeithorizont:** Kurz
+**Typ:** I- · **Aktuell/Potenziell:** Aktuell · **Wertschöpfungskette:** Eigenbetrieb · **Zeithorizont:** Kurz · **Wesentlich:** Ja
 
 ## Beschreibung
 Schichtarbeit an 11 Werken plus Restrukturierung (~700 Stellen) erhöht Arbeitsbelastung der verbleibenden Belegschaft — aktuelles S1-Thema.
 
-## Begründung der Wesentlichkeit
+## Begründung
 aktuelles S1-Thema nach dem Abbau von ~700 Stellen; betrifft Multistandort-EU-Belegschaft (IG1 §117).

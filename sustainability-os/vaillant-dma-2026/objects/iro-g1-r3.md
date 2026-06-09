@@ -21,10 +21,10 @@ scored_under: [methodology-dma-2026]
 
 # IRO G1-R3: Management Lieferantenbeziehungen
 
-**Typ:** R · **Aktuell/Potenziell:** Potenziell · **Wertschöpfungskette:** Upstream · **Zeithorizont:** Mittel
+**Typ:** R · **Aktuell/Potenziell:** Potenziell · **Wertschöpfungskette:** Upstream · **Zeithorizont:** Mittel · **Wesentlich:** Ja
 
 ## Beschreibung
 CSDDD ab 2027 — zivilrechtliche Haftung + Marktzugangs-Risiko bei Aufdeckung von Verstöße in tieferen Lieferketten-Ebenen (Tier 2/3).
 
-## Begründung der Wesentlichkeit
+## Begründung
 Überlappt S2-R3 aber unabhängig als Enforcement-Vektor (IG1 §131).

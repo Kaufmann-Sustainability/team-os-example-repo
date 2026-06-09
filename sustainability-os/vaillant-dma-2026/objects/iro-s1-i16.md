@@ -21,10 +21,10 @@ scored_under: [methodology-dma-2026]
 
 # IRO S1-I16: Gleiches Entgelt
 
-**Typ:** I- · **Aktuell/Potenziell:** Potenziell · **Wertschöpfungskette:** Eigenbetrieb · **Zeithorizont:** Kurz-Mittel
+**Typ:** I- · **Aktuell/Potenziell:** Potenziell · **Wertschöpfungskette:** Eigenbetrieb · **Zeithorizont:** Kurz-Mittel · **Wesentlich:** Ja
 
 ## Beschreibung
 Unbereinigte Gender-Pay-Gap typisch im Industrie-Sektor; EU-Entgelttransparenz-Richtlinie 2026 Compliance-Vorbereitung.
 
-## Begründung der Wesentlichkeit
+## Begründung
 Menschenrechts-Vorrang: gleiches Entgelt als geschütztes Sub-Thema, Basis-Schwere 2.33 → Menschenrechts-Vorrang (IG1 §120).

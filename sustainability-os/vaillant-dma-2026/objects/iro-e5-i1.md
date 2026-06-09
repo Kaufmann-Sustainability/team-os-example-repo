@@ -21,10 +21,10 @@ scored_under: [methodology-dma-2026]
 
 # IRO E5-I1: Ressourcen-Inflows
 
-**Typ:** I- · **Aktuell/Potenziell:** Aktuell · **Wertschöpfungskette:** Upstream · **Zeithorizont:** Mittel
+**Typ:** I- · **Aktuell/Potenziell:** Aktuell · **Wertschöpfungskette:** Upstream · **Zeithorizont:** Mittel · **Wesentlich:** Ja
 
 ## Beschreibung
 Wärmepumpen-Transformation intensiviert Verwendung von Kupfer (Wärmetauscher, Motorwicklungen), Aluminium (Lamellen), Seltenen Erden (Dy/Tb in NdFeB-Motoren) und Halbleitern — Materialintensität pro Einheit höher als bei Gaskesseln.
 
-## Begründung der Wesentlichkeit
+## Begründung
 Per-Unit-Materialintensität steigt mit Wärmepumpen-Hochlauf; Druck auf Virgin-Bestände (IG1 §117).

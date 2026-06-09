@@ -21,10 +21,10 @@ scored_under: [methodology-dma-2026]
 
 # IRO S4-O1: Zugang zu Produkten
 
-**Typ:** O · **Aktuell/Potenziell:** Potenziell · **Wertschöpfungskette:** Downstream · **Zeithorizont:** Mittel
+**Typ:** O · **Aktuell/Potenziell:** Potenziell · **Wertschöpfungskette:** Downstream · **Zeithorizont:** Mittel · **Wesentlich:** Ja
 
 ## Beschreibung
 Wärme-als-Service / Leasing / Finanzierungspartnerschaften; gezielte Sozialtarifprogramme — öffnen neue Kundensegmente + ESG-Narrativ.
 
-## Begründung der Wesentlichkeit
+## Begründung
 Schaltet Zugang zu Wärmepumpen für einkommensschwache Haushalte frei; EUR 50-100m Umsatzpotenzial (IG1 §128).

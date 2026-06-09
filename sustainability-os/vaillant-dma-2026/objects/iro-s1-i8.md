@@ -21,10 +21,10 @@ scored_under: [methodology-dma-2026]
 
 # IRO S1-I8: Betriebsräte
 
-**Typ:** I+ · **Aktuell/Potenziell:** Aktuell · **Wertschöpfungskette:** Eigenbetrieb · **Zeithorizont:** Kurz
+**Typ:** I+ · **Aktuell/Potenziell:** Aktuell · **Wertschöpfungskette:** Eigenbetrieb · **Zeithorizont:** Kurz · **Wesentlich:** Ja
 
 ## Beschreibung
 EU-SE-Betriebsrat ist transnational und etabliert; zentral für legitime Handhabung der Restrukturierung — oberhalb Sektor-Baseline.
 
-## Begründung der Wesentlichkeit
+## Begründung
 Oberhalb Sektor-Baseline; kritisch für Restrukturierungs-Social-Licence (IG1 §117).

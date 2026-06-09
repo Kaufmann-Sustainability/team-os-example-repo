@@ -21,10 +21,10 @@ scored_under: [methodology-dma-2026]
 
 # IRO G1-I2: Anti-Korruption
 
-**Typ:** I+ · **Aktuell/Potenziell:** Potenziell · **Wertschöpfungskette:** Eigenbetrieb + Upstream · **Zeithorizont:** Mittel
+**Typ:** I+ · **Aktuell/Potenziell:** Potenziell · **Wertschöpfungskette:** Eigenbetrieb + Upstream · **Zeithorizont:** Mittel · **Wesentlich:** Ja
 
 ## Beschreibung
 Gruppen-Anti-Korruptions-Programm + Schulung + Lieferanten-Verhaltenskodex-Klauseln → reduziert Bestechung im Geschäfts-Ökosystem über Baseline hinaus [Programm-Tiefe zu validieren].
 
-## Begründung der Wesentlichkeit
+## Begründung
 Validierung der Programm-Tiefe erforderlich (IG1 §117).

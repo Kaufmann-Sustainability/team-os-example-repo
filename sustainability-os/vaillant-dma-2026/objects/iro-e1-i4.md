@@ -21,10 +21,10 @@ scored_under: [methodology-dma-2026]
 
 # IRO E1-I4: Klimawandel-Mitigation
 
-**Typ:** I- · **Aktuell/Potenziell:** Aktuell · **Wertschöpfungskette:** Up- + Downstream · **Zeithorizont:** Kurz
+**Typ:** I- · **Aktuell/Potenziell:** Aktuell · **Wertschöpfungskette:** Up- + Downstream · **Zeithorizont:** Kurz · **Wesentlich:** Ja
 
 ## Beschreibung
 Scope 3.4 (Eingangslogistik) + 3.9 (Auslieferung) — globaler Komponententransport aus Asien und Auslieferung von Fertigprodukten innerhalb der EU.
 
-## Begründung der Wesentlichkeit
+## Begründung
 Globaler Schifffahrts-Footprint mit eingeschränkten und langsamen Dekarbonisierungshebeln (IG1 §117).

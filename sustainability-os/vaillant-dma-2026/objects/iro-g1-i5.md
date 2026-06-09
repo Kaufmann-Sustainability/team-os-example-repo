@@ -21,10 +21,10 @@ scored_under: [methodology-dma-2026]
 
 # IRO G1-I5: Politischer Einfluss und Lobbying
 
-**Typ:** I+ · **Aktuell/Potenziell:** Potenziell · **Wertschöpfungskette:** Außerhalb VC · **Zeithorizont:** Mittel
+**Typ:** I+ · **Aktuell/Potenziell:** Potenziell · **Wertschöpfungskette:** Außerhalb VC · **Zeithorizont:** Mittel · **Wesentlich:** Ja
 
 ## Beschreibung
 Pro-Wärmepumpen-Interessenvertretung (EHPA, REPowerEU-Support) treibt öffentliches Dekarbonisierungsinteresse voran — qualifiziert als positive Wirkung, sofern Positionen mit öffentlichem Interesse im Einklang sind.
 
-## Begründung der Wesentlichkeit
+## Begründung
 Treibt Dekarbonisierungs-Öffentlichkeitsinteresse jenseits eigenen Kommerzialinteresses; §52 (IG1 §117).

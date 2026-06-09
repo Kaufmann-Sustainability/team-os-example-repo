@@ -21,10 +21,10 @@ scored_under: [methodology-dma-2026]
 
 # IRO S2-I20: Kinderarbeit
 
-**Typ:** I- · **Aktuell/Potenziell:** Potenziell · **Wertschöpfungskette:** Upstream (tief) · **Zeithorizont:** Lang
+**Typ:** I- · **Aktuell/Potenziell:** Potenziell · **Wertschöpfungskette:** Upstream (tief) · **Zeithorizont:** Lang · **Wesentlich:** Ja
 
 ## Beschreibung
 Kinderarbeit in 3TG-Bergbau (DRC artisanaler Kobalt/Coltan/Wolfram) und Raffination der Metalle in Elektronik-Lieferkette sind nicht auszuschließen.
 
-## Begründung der Wesentlichkeit
+## Begründung
 Menschenrechts-Vorrang: Kinderarbeit, Basis-Schwere 4.33; §34 Amnesty + US DOL ILAB 2024 (IG1 §120).

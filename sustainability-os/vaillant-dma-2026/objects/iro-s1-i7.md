@@ -21,10 +21,10 @@ scored_under: [methodology-dma-2026]
 
 # IRO S1-I7: Vereinigungsfreiheit
 
-**Typ:** I- · **Aktuell/Potenziell:** Potenziell · **Wertschöpfungskette:** Eigenbetrieb · **Zeithorizont:** Mittel
+**Typ:** I- · **Aktuell/Potenziell:** Potenziell · **Wertschöpfungskette:** Eigenbetrieb · **Zeithorizont:** Mittel · **Wesentlich:** Ja
 
 ## Beschreibung
 Am Wuxi-Standort (CN) ist Vereinigungsfreiheit durch nationales Recht beschränkt (keine unabhängigen Gewerkschaften) — Risiko, äquivalente Schutzstandards nicht liefern zu können.
 
-## Begründung der Wesentlichkeit
+## Begründung
 Menschenrechts-Vorrang: Vereinigungsfreiheit-Beschränkung als systemisches Governance-Frage; sub-3 Sev rollt durch Vorrang hoch (IG1 §120).

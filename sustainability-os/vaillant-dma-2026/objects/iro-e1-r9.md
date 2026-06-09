@@ -21,10 +21,10 @@ scored_under: [methodology-dma-2026]
 
 # IRO E1-R9: Energie
 
-**Typ:** R · **Aktuell/Potenziell:** Potenziell · **Wertschöpfungskette:** Eigenbetrieb · **Zeithorizont:** Kurz
+**Typ:** R · **Aktuell/Potenziell:** Potenziell · **Wertschöpfungskette:** Eigenbetrieb · **Zeithorizont:** Kurz · **Wesentlich:** Ja
 
 ## Beschreibung
 Strompreis-Volatilität am Senica-Standort (energieintensiver Wärmepumpen-Hochlauf) belastet Marge; DE-Energiepreis-Exposition auf Rest-Gas an Werken.
 
-## Begründung der Wesentlichkeit
+## Begründung
 Energiekrise 2022-23 als Präzedenz — EUR 20-40m Rechnungs-Swing auf Gruppenebene plausibel (IG1 §126).
