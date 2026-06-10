@@ -8,6 +8,7 @@ review_zyklus: P3M
 vertraulichkeit: intern
 esrs_bezug: E1-6
 einheit: "tCO2e/Jahr"
+from_source: [data-source-thg-inventar]
 ---
 
 # KPI: Scope 1+2 absolut

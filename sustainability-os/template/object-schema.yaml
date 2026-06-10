@@ -32,7 +32,7 @@ objekt_typen:
     beziehungen: [measured_by, supported_by, approved_by, at_risk_from, addresses, responsible, consulted, informed, applies_to]
   kpi:
     pflichtfelder: [einheit]
-    beziehungen: [sourced_from, at_risk_from, responsible, consulted, informed, applies_to]
+    beziehungen: [sourced_from, at_risk_from, responsible, consulted, informed, applies_to, from_source]
   initiative:
     pflichtfelder: []
     beziehungen: [has_budget, supports, depends_on, responsible, consulted, informed, applies_to]
@@ -80,13 +80,16 @@ objekt_typen:
   datapoint:                    # ESRS-Offenlegungs-Anforderung (die Pflicht)
     pflichtfelder: []
     pflicht_eines: [[concept, esrs_datapoint]]   # Offenlegungs-Anker: stabiles concept (bevorzugt) ODER Framework-Code
-    beziehungen: [concerns, equivalent_to, satisfied_by, responsible, consulted, informed]
+    beziehungen: [concerns, equivalent_to, satisfied_by, responsible, consulted, informed, from_source]
   disclosure:                   # versionierter Berichtstext, der die Pflicht erfüllt (#19)
     pflichtfelder: [esrs_datapoint, berichtsjahr, version]
     beziehungen: [discloses, reports]
   evidence:                     # Nachweis/Prüfspur hinter einer Offenlegung (#17)
     pflichtfelder: []
-    beziehungen: [backs, sourced_from]
+    beziehungen: [backs, sourced_from, from_source]
+  data-source:                  # System of Record / Datenquelle hinter einer Kennzahl — Provenienz als OBJEKT (nicht nur Pfad)
+    pflichtfelder: []
+    beziehungen: []
   control:                      # Kontrolle, die einen Datenpunkt absichert (#17)
     pflichtfelder: []
     beziehungen: [covers]
@@ -106,7 +109,7 @@ objekt_typen:
   # --- Ontologie v1: Performance über Zeit ---
   kpi-value:                    # gemessener Ist-Wert einer KPI je Jahr (Zeitreihe)
     pflichtfelder: [jahr, wert]
-    beziehungen: [for_kpi]
+    beziehungen: [for_kpi, from_source]
   forecast:                     # projizierter Wert
     pflichtfelder: [jahr, wert]
     beziehungen: [for_kpi]
@@ -197,6 +200,7 @@ beziehungs_vokabular:
   backs:        [disclosure, kpi-value, control]
   covers:       [datapoint, kpi, target]
   challenges:   [disclosure]
+  from_source:  [data-source]   # Kennzahl/Wert/Nachweis stammt aus diesem System of Record (Objekt)
   # sourced_from darf auf eine EXTERNE Datei im Repo zeigen (kein Objekt),
   # z. B. das Inventar. validate.py prüft hier nur: Pfad existiert.
   sourced_from: [_extern_]
