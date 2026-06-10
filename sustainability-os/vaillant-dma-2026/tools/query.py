@@ -365,8 +365,34 @@ def _topic_checks(objs, tp):
     return checks, []
 
 
+def _policy_checks(objs, p):
+    pid = p["id"]
+    checks = [
+        ("Owner gesetzt",       bool(p.get("owner"))),
+        ("Betrifft ein Thema",  bool(out(p.get("concerns", [])))),
+        ("≥1 IRO adressiert",   bool(out(p.get("addresses", [])))),
+        ("Geltungsbereich",     bool(p.get("geltungsbereich"))),
+        ("Freigabe (approval)", bool(_incoming(objs, "approves", pid))),
+    ]
+    return checks, []
+
+
+def _decision_checks(objs, d):
+    checks = [
+        ("Owner gesetzt",            bool(d.get("owner"))),
+        ("Datum + Entscheidung",     bool(d.get("datum")) and bool(d.get("entscheidung"))),
+        ("Entscheider (decided_by)", bool(out(d.get("decided_by", [])))),
+        ("Begründung",               bool(d.get("begruendung"))),
+        ("Betrifft etwas (affects)", bool(out(d.get("affects", [])))),
+    ]
+    bonus = [("Grundlage (based_on / informed_by)",
+              bool(out(d.get("based_on", [])) or out(d.get("informed_by", []))))]
+    return checks, bonus
+
+
 _CHECKS = {"target": _target_checks, "initiative": _initiative_checks,
-           "iro": _iro_checks, "kpi": _kpi_checks, "topic": _topic_checks}
+           "iro": _iro_checks, "kpi": _kpi_checks, "topic": _topic_checks,
+           "policy": _policy_checks, "decision": _decision_checks}
 
 
 def _print_full(obj, checks, bonus):
@@ -391,6 +417,46 @@ def _print_compact(obj, checks):
     op = " ⚠offen" if obj.get("offene_punkte") else ""
     tail = ("   fehlt: " + ", ".join(fehlt)) if fehlt else ""
     print(f"   {score:3d}%  {obj['id']}{tail}{op}")
+
+
+# ---------- BERICHTSREIFE (Release-Gate vor Offenlegung) ----------
+def berichtsreife(objs, topic_id):
+    tp = objs.get(topic_id)
+    if not tp or tp.get("type") != "topic":
+        sys.exit("berichtsreife erwartet ein topic.")
+    print(f"\n# Berichtsreife: {topic_id}\n")
+    blockers = []
+    # 1) Apparat vollständig (topic-gate)
+    for name, ok in _topic_checks(objs, tp)[0]:
+        if not ok:
+            blockers.append(f"Apparat unvollständig: {name}")
+    # 2) Datenpunkte des Themas -> jeder braucht eine Offenlegung
+    dps = [o for o in objs.values() if o.get("type") == "datapoint" and topic_id in out(o.get("concerns", []))]
+    if not dps:
+        blockers.append("Keine ESRS-Datenpunkte am Thema modelliert")
+    for dp in dps:
+        discs = [o for o in objs.values() if o.get("type") == "disclosure" and dp["id"] in out(o.get("discloses", []))]
+        if not discs:
+            blockers.append(f"Datenpunkt ohne Offenlegung: {dp['id']}")
+            continue
+        # 3) je Offenlegung: berichtete KPI aktuell, ohne offenes Finding, mit Evidenz
+        for disc in discs:
+            for kid in out(disc.get("reports", [])):
+                kvs = [o["id"] for o in objs.values() if o.get("type") == "kpi-value" and kid in out(o.get("for_kpi", []))]
+                if not kvs:
+                    blockers.append(f"{disc['id']}: KPI {kid} ohne aktuellen Wert")
+                if not any(o.get("type") == "evidence" and set(out(o.get("backs", []))) & set(kvs) for o in objs.values()):
+                    blockers.append(f"{disc['id']}: keine Evidenz für KPI {kid}")
+                for fnd in [o for o in objs.values() if o.get("type") == "finding"
+                            and o.get("status") == "offen" and kid in out(o.get("affects", []))]:
+                    blockers.append(f"{disc['id']}: offenes Finding {fnd['id']} betrifft KPI {kid}")
+    if blockers:
+        print(f"  ⛔ NICHT BERICHTSREIF — {len(blockers)} Blocker:\n")
+        for b in blockers:
+            print(f"      • {b}")
+    else:
+        print("  ✅ BERICHTSREIF — Apparat steht, Datenpunkte offengelegt, KPIs aktuell & belegt, keine offenen Findings.")
+    print()
 
 
 # ---------- KPI-STATUS (Zeitreihe: Ist-Werte, Forecast, Trend, Frische) ----------
@@ -470,6 +536,8 @@ def main():
         kpi_status(objs, a[1])
     elif cmd == "reifegrad":
         reifegrad(objs, a[1])
+    elif cmd == "berichtsreife":
+        berichtsreife(objs, a[1])
     elif cmd == "gaps":
         gaps(objs)
     elif cmd == "stale":

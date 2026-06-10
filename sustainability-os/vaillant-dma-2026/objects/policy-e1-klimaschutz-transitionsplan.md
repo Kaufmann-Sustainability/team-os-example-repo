@@ -7,6 +7,7 @@ stand: 2026-06-09
 review_zyklus: P12M
 vertraulichkeit: intern
 esrs_bezug: E1-1
+geltungsbereich: "Konzernweit, alle Heizgeräte-Produktlinien & eigene Standorte"
 concerns: [topic-e1-klimawandel-mitigation]
 addresses: [iro-e1-i1, iro-e1-i2, iro-e1-i5, iro-e1-i6, iro-e1-r1, iro-e1-r2, iro-e1-r4]
 ---

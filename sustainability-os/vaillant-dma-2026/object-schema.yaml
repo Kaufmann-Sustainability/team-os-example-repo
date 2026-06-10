@@ -160,7 +160,7 @@ beziehungs_vokabular:
   tests:          [control]
   remediates:     [finding, audit-finding]
   for_initiative: [initiative]
-  approves:       [target, initiative, decision]
+  approves:       [target, initiative, decision, policy]
   threatens:      [target, initiative]
   concerns:     [topic]
   informed_by:  [stakeholder]
