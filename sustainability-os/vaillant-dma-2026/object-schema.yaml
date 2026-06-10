@@ -63,6 +63,9 @@ objekt_typen:
   stakeholder:                  # interne/externe Partei, deren Input einfließt
     pflichtfelder: [stakeholder_typ]
     beziehungen: []             # owner = interne:r Beziehungs-Verantwortliche:r (person)
+  engagement:                   # belegter Einbindungs-AKT (wer/wann/was/Ergebnis) — Nachweis für DMA & S1–S4
+    pflichtfelder: [datum]
+    beziehungen: [engages, concerns, informs]
   methodology:                  # Governance: wie wurde bewertet (Begründungs-Layer, #3)
     pflichtfelder: []
     beziehungen: []
@@ -189,6 +192,8 @@ beziehungs_vokabular:
   threatens:      [target, initiative]
   concerns:     [topic]
   informed_by:  [stakeholder]
+  engages:      [stakeholder]            # engagement bindet diese:n Stakeholder ein
+  informs:      [iro, target, decision]  # was die Einbindung gespeist/beeinflusst hat
   scored_under: [methodology]
   based_on:     [methodology]
   applies:      [threshold]
@@ -197,7 +202,7 @@ beziehungs_vokabular:
   reports:      [kpi]
   equivalent_to: [datapoint]
   satisfied_by:  [kpi, target, policy, disclosure, initiative]
-  backs:        [disclosure, kpi-value, control]
+  backs:        [disclosure, kpi-value, control, engagement]
   covers:       [datapoint, kpi, target]
   challenges:   [disclosure]
   from_source:  [data-source]   # Kennzahl/Wert/Nachweis stammt aus diesem System of Record (Objekt)
