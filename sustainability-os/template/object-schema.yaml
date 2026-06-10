@@ -29,13 +29,13 @@ objekt_typen:
     beziehungen: [has_target, has_kpi, has_initiative, has_iro, responsible, consulted, informed]
   target:
     pflichtfelder: [baseline_wert, baseline_jahr, zielwert, zieljahr, einheit, geltungsbereich]
-    beziehungen: [measured_by, supported_by, approved_by, at_risk_from, addresses, responsible, consulted, informed]
+    beziehungen: [measured_by, supported_by, approved_by, at_risk_from, addresses, responsible, consulted, informed, applies_to]
   kpi:
     pflichtfelder: [einheit]
-    beziehungen: [sourced_from, at_risk_from, responsible, consulted, informed]
+    beziehungen: [sourced_from, at_risk_from, responsible, consulted, informed, applies_to]
   initiative:
     pflichtfelder: []
-    beziehungen: [has_budget, supports, depends_on, responsible, consulted, informed]
+    beziehungen: [has_budget, supports, depends_on, responsible, consulted, informed, applies_to]
   strategy:                     # thematische Strategie / Transitionsplan
     pflichtfelder: []
     beziehungen: [concerns, addresses]
@@ -59,7 +59,7 @@ objekt_typen:
     # Struktur-Minimum; der konditionale Score (Impact->Impact-Score, R/O->Financial-Score)
     # wird vom iro-gate-Skill / `reifegrad` durchgesetzt, nicht hier.
     pflichtfelder: [iro_typ, wesentlich]
-    beziehungen: [concerns, informed_by, scored_under]
+    beziehungen: [concerns, informed_by, scored_under, applies_to]
   stakeholder:                  # interne/externe Partei, deren Input einfließt
     pflichtfelder: [stakeholder_typ]
     beziehungen: []             # owner = interne:r Beziehungs-Verantwortliche:r (person)
@@ -69,6 +69,13 @@ objekt_typen:
   threshold:                    # Governance: ab wann gilt etwas als wesentlich
     pflichtfelder: []
     beziehungen: []
+  # --- Organisations-Scope: WO / welcher Unternehmensteil (strukturiert statt Freitext) ---
+  site:                         # Standort/Werk — z. B. für standortbezogene Ziele/KPIs/IROs
+    pflichtfelder: []
+    beziehungen: [part_of]      # optional: Standort gehört zu einem Segment
+  segment:                      # Geschäftssegment/Division — z. B. für Segment-Ziele
+    pflichtfelder: []
+    beziehungen: [part_of]      # optional: Segment unter Eltern-Segment (Schachtelung)
   # --- Disclosure-Slice: Offenlegung & Assurance ---
   datapoint:                    # ESRS-Offenlegungs-Anforderung (die Pflicht)
     pflichtfelder: []
@@ -92,7 +99,7 @@ objekt_typen:
     beziehungen: []
   policy:                       # ESRS-Policy je wesentlichem Thema (#16)
     pflichtfelder: []
-    beziehungen: [concerns, addresses, responsible, consulted, informed]
+    beziehungen: [concerns, addresses, responsible, consulted, informed, applies_to]
   dependency:                   # Abhängigkeit von natürl./sozialem Kapital (DMA Sheet 2)
     pflichtfelder: []
     beziehungen: []
@@ -157,6 +164,9 @@ beziehungs_vokabular:
   von:            [person]
   an:             [person]
   bestaetigt_von: [person]
+  # --- Organisations-Scope ---
+  applies_to:   [site, segment]   # Steuerungsobjekt gilt für Standort/Segment
+  part_of:      [segment]         # Standort/Segment gehört zu (Eltern-)Segment
   supports:     [target]
   affects:      [target, kpi, topic]
   at_risk_from: [finding]

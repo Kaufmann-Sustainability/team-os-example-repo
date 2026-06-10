@@ -16,6 +16,7 @@ geltungsbereich: Konzern, Heizgeräte-Absatz EU
 measured_by: [kpi-e1-waermepumpen-absatzanteil]
 supported_by: [initiative-e1-waermepumpen-hochlauf, initiative-e1-gasausstieg-portfolio, initiative-e1-installateurs-qualifizierung]
 addresses: [iro-e1-i5, iro-e1-i6, iro-e1-r1, iro-e1-r2, iro-e1-r4, iro-e1-o1, iro-e1-o2, iro-e1-o3]
+applies_to: [segment-waermeerzeugung]
 offene_punkte:
   - "Evidenz für Baseline-Absatzanteil 2024 (40 %) noch extern zu belegen"
 ---

@@ -17,6 +17,7 @@ iro_nr: "E1-R6"
 sub_thema: "Klimawandel-Adaptation"
 concerns: [topic-e1-klimawandel-adaptation]
 scored_under: [methodology-dma-2026]
+applies_to: [site-remscheid]
 ---
 
 # IRO E1-R6: Klimawandel-Adaptation
