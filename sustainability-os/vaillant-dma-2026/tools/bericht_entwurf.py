@@ -62,15 +62,12 @@ def run(std, version, kunde, out_path):
     cat = yaml.safe_load(open(cat_path(std, version)))
     spine = load_spine(std)
     rules = [(r["typ"], r["feld"], r["praefix"], r["konzept"]) for r in spine.get("ableitung", [])]
-    # ec-draft löst die Anwendbarkeits-Datei (in ec-draft-Codes) auf Konzepte auf
-    eccat = yaml.safe_load(open(cat_path(std, "ecdraft2026")))
-    code2concept = {dr["dr_code"]: dr.get("concept") for dr in eccat["drs"]}
     objs = load_objects()
     appl = yaml.safe_load(open(ROOT / "reference" / f"anwendbarkeit-{kunde}-{std.lower()}.yaml"))
 
-    # Anwendbarkeit -> auf Konzepte heben (versionsunabhängig)
-    appl_con = {code2concept.get(a["dr"]): a["grund"] for a in appl.get("anwendbar", [])}
-    excl_con = {code2concept.get(e["dr"]): e["grund"] for e in appl.get("nicht_anwendbar", [])}
+    # Anwendbarkeit ist bereits konzept-nativ (versionsunabhängig)
+    appl_con = {a["konzept"]: a["grund"] for a in appl.get("anwendbar", [])}
+    excl_con = {e["konzept"]: e["grund"] for e in appl.get("nicht_anwendbar", [])}
 
     # --- Zuordnung je Konzept aufbauen ---
     # MANUELL: datapoint.satisfied_by -> Konzept DIREKT (versionsunabhängig, kein dr_code)

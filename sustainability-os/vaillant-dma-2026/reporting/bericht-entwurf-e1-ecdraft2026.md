@@ -130,7 +130,7 @@
 
 ## E1-3 — Resilience in relation to climate change  ·  ⚠ OFFEN — kein Inhalt zugeordnet
 
-*Konzept:* `resilience`  ·  *anwendbar, weil:* Resilienz-Offenlegung folgt aus E1-2
+*Konzept:* `resilience`  ·  *anwendbar, weil:* Resilienz-Offenlegung folgt aus climate-risks
 
 
 **E1-3 ¶18**  _(narrativ)_
