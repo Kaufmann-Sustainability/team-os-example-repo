@@ -15,6 +15,9 @@ impact_score: 5
 financial_score: 0
 iro_nr: "E1-I5"
 sub_thema: "Klimawandel-Mitigation"
+wertschoepfungskette: downstream
+wirkung_art: potenziell
+begruendung: "Vermiedene Nutzungsphasen-Emissionen, wenn fossile Heizgeräte durch Wärmepumpen ersetzt werden — positiver Klimabeitrag in der nachgelagerten Wertschöpfung."
 concerns: [topic-e1-klimawandel-mitigation]
 scored_under: [methodology-dma-2026]
 ---

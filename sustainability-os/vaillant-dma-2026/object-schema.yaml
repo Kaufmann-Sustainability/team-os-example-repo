@@ -46,7 +46,9 @@ objekt_typen:
     beziehungen: []
   # --- DMA-Slice: Wesentlichkeitsanalyse ---
   iro:                          # Impact / Risk / Opportunity — Kernobjekt der DMA
-    pflichtfelder: [iro_typ, impact_wesentlichkeit, finanz_wesentlichkeit, wesentlich]
+    # Struktur-Minimum; der konditionale Score (Impact->Impact-Score, R/O->Financial-Score)
+    # wird vom iro-gate-Skill / `reifegrad` durchgesetzt, nicht hier.
+    pflichtfelder: [iro_typ, wesentlich]
     beziehungen: [concerns, informed_by, scored_under]
   stakeholder:                  # interne/externe Partei, deren Input einfließt
     pflichtfelder: [stakeholder_typ]

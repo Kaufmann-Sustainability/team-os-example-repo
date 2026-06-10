@@ -15,6 +15,8 @@ impact_score: 0
 financial_score: 5
 iro_nr: "E1-R1"
 sub_thema: "Klimawandel-Mitigation"
+wertschoepfungskette: eigene-ops
+begruendung: "Stranding-Risiko des fossilen Gasheizungs-Portfolios bei beschleunigtem regulatorischem Ausstieg (EPBD/GEG) — finanziell wesentlich über Abschreibungen und Umsatzrückgang."
 concerns: [topic-e1-klimawandel-mitigation]
 scored_under: [methodology-dma-2026]
 ---

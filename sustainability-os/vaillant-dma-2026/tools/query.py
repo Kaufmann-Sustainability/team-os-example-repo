@@ -259,22 +259,29 @@ def reifegrad(objs, arg):
     typ = obj.get("type")
     print(f"\n# Reifegrad: Vollständigkeitsverträge\n")
     if typ == "topic":
-        targets = [objs[t] for t in out(obj.get("has_target", [])) if t in objs]
-        inits = [objs[t] for t in out(obj.get("has_initiative", [])) if t in objs]
-        if targets:
-            print("## Ziele\n")
-            for t in targets:
-                _print_reifegrad(t, *_target_checks(objs, t))
-        if inits:
-            print("## Maßnahmen\n")
-            for i in inits:
-                _print_reifegrad(i, *_initiative_checks(objs, i))
-    elif typ == "target":
-        _print_reifegrad(obj, *_target_checks(objs, obj))
-    elif typ == "initiative":
-        _print_reifegrad(obj, *_initiative_checks(objs, obj))
+        print("## Thema — Apparat (topic-gate)\n")
+        _print_full(obj, *_topic_checks(objs, obj))
+        sections = [("IROs", "has_iro", _iro_checks), ("KPIs", "has_kpi", _kpi_checks),
+                    ("Ziele", "has_target", _target_checks), ("Maßnahmen", "has_initiative", _initiative_checks)]
+        for label, edge, fn in sections:
+            kids = [objs[k] for k in out(obj.get(edge, [])) if k in objs]
+            if not kids:
+                continue
+            print(f"## {label}  (Detail: reifegrad <id>)\n")
+            for k in kids:
+                _print_compact(k, fn(objs, k)[0])
+            print()
+    elif typ in _CHECKS:
+        _print_full(obj, *_CHECKS[typ](objs, obj))
     else:
-        sys.exit("reifegrad erwartet ein topic, target oder initiative.")
+        sys.exit("reifegrad erwartet topic | iro | kpi | target | initiative.")
+
+
+def _wesentlich(o):
+    return str(o.get("wesentlich", "")).lower() in ("ja", "true")
+
+def _addressed(objs, iid):
+    return any(iid in out(t.get("addresses", [])) for t in objs.values())
 
 
 def _target_checks(objs, t):
@@ -304,13 +311,65 @@ def _initiative_checks(objs, i):
         ("Abhängigkeiten explizit",  bool(out(i.get("depends_on", [])))),
         ("Risiken bewertet",         bool(_incoming(objs, "threatens", iid))),
     ]
-    # Bonus: Kosten-Nutzen — Vorgriff auf den economics-Skill (cost/benefit/roi)
     eco = [o for o in objs.values() if iid in out(o.get("prices", [])) or iid in out(o.get("abates", []))]
     bonus = [("Economics (Kosten-Nutzen)", bool(eco))]
     return checks, bonus
 
 
-def _print_reifegrad(obj, checks, bonus):
+def _iro_checks(objs, o):
+    # Konditional: Impact -> Impact-Score; Risk/Opportunity -> Financial-Score.
+    ist_impact = str(o.get("iro_typ", "")).startswith("Impact")
+    checks = [
+        ("Typ + Wesentlichkeit gesetzt", bool(o.get("iro_typ")) and o.get("wesentlich") is not None),
+        ("Wertschöpfungsketten-Position", bool(o.get("wertschoepfungskette"))),
+        ("Begründung vorhanden",         bool(o.get("begruendung"))),
+    ]
+    if ist_impact:
+        checks.append(("Impact-Score (Ausmaß/Umfang)", bool(o.get("impact_wesentlichkeit"))))
+        checks.append(("Tatsächlich/potenziell",       bool(o.get("wirkung_art"))))
+    else:
+        checks.append(("Financial-Score", bool(o.get("finanz_wesentlichkeit"))))
+    if _wesentlich(o):
+        checks.append(("Wesentlich → adressiert", _addressed(objs, o["id"])))
+    return checks, []
+
+
+def _kpi_checks(objs, k):
+    kid = k["id"]
+    checks = [
+        ("Owner gesetzt",         bool(k.get("owner"))),
+        ("Einheit gesetzt",       bool(k.get("einheit"))),
+        ("Definition/Methodik",   bool(k.get("methodik"))),
+        ("Baseline",              k.get("baseline_wert") is not None),
+        ("≥1 Target misst damit", any(kid in out(t.get("measured_by", [])) for t in objs.values())),
+        ("Aktueller Wert (kpi-value)", any(o.get("type") == "kpi-value" and kid in out(o.get("for_kpi", [])) for o in objs.values())),
+    ]
+    bonus = [("Forecast/Trend", any(o.get("type") in ("forecast", "trend") and kid in out(o.get("for_kpi", [])) for o in objs.values()))]
+    return checks, bonus
+
+
+def _topic_checks(objs, tp):
+    tid = tp["id"]
+    pol = [o for o in objs.values() if o.get("type") == "policy" and tid in out(o.get("concerns", []))]
+    mat = [objs[i] for i in out(tp.get("has_iro", [])) if i in objs and _wesentlich(objs[i])]
+    alle_adressiert = bool(mat) and all(_addressed(objs, m["id"]) for m in mat)
+    checks = [
+        ("Owner gesetzt",        bool(tp.get("owner"))),
+        ("≥1 IRO",               bool(out(tp.get("has_iro", [])))),
+        ("≥1 Policy",            bool(pol)),
+        ("≥1 Target",            bool(out(tp.get("has_target", [])))),
+        ("≥1 KPI",               bool(out(tp.get("has_kpi", [])))),
+        ("≥1 Maßnahme",          bool(out(tp.get("has_initiative", [])))),
+        ("Alle wesentlichen IROs adressiert", alle_adressiert),
+    ]
+    return checks, []
+
+
+_CHECKS = {"target": _target_checks, "initiative": _initiative_checks,
+           "iro": _iro_checks, "kpi": _kpi_checks, "topic": _topic_checks}
+
+
+def _print_full(obj, checks, bonus):
     erfuellt = sum(1 for _, ok in checks if ok)
     score = round(100 * erfuellt / len(checks))
     bar = "█" * (score // 10) + "░" * (10 - score // 10)
@@ -323,6 +382,15 @@ def _print_reifegrad(obj, checks, bonus):
     for op in obj.get("offene_punkte", []) or []:
         print(f"      ⚠ offen: {op}")
     print()
+
+
+def _print_compact(obj, checks):
+    erfuellt = sum(1 for _, ok in checks if ok)
+    score = round(100 * erfuellt / len(checks))
+    fehlt = [name for name, ok in checks if not ok]
+    op = " ⚠offen" if obj.get("offene_punkte") else ""
+    tail = ("   fehlt: " + ", ".join(fehlt)) if fehlt else ""
+    print(f"   {score:3d}%  {obj['id']}{tail}{op}")
 
 
 # ---------- KPI-STATUS (Zeitreihe: Ist-Werte, Forecast, Trend, Frische) ----------
