@@ -1,0 +1,166 @@
+# Datentyp-Review — ESRS E1 (Kunde vaillant-dma-2026)
+# Zweck: Der Import stempelt ganze DRs (E1-7..11) pauschal als 'quantitativ'.
+#        Hier wird je ESRS-Absatz ENTSCHIEDEN, was wirklich ein eigener
+#        quantitativer Datenpunkt-Objekt werden soll.
+#
+# entscheidung je Absatz — bitte prüfen/überschreiben:
+#   quantitativ : wird ein eigenes datapoint-Objekt (mintbar)
+#   narrativ    : bleibt auf DR-Ebene im Bericht, KEIN eigenes Objekt
+#   container   : reiner Einleitungs-Stem, KEIN eigenes Objekt
+#   rahmen      : DR-Zweckbeschreibung, KEIN eigenes Objekt
+# 'PRÜFEN' = Heuristik unsicher, Entscheidung erforderlich.
+#
+standard: E1
+kunde: vaillant-dma-2026
+absaetze:
+  # ───────── E1-7  (energy) ─────────
+  - verweis: 'E1-7 ¶25'
+    entscheidung: rahmen
+    text: "25. The objective of this DR is to provide an understanding of the undertaking’s energy consumption and mix."
+  - verweis: 'E1-7 ¶26'
+    entscheidung: container
+    text: "26. The undertaking shall disclose its total energy consumption in megawatt hours (MWh) related to its own operations, disaggregated by:"
+  - verweis: 'E1-7 ¶26(a)'
+    entscheidung: quantitativ
+    text: "(a) total energy consumption from fossil sources;"
+  - verweis: 'E1-7 ¶26(b)'
+    entscheidung: quantitativ
+    text: "(b) total energy consumption from nuclear sources; and"
+  - verweis: 'E1-7 ¶26(c)'
+    entscheidung: quantitativ
+    text: "(c) total energy consumption from renewable sources."
+  - verweis: 'E1-7 ¶27'
+    entscheidung: container
+    text: "27. The undertaking with operations in high climate impact sectors shall further disaggregate its total energy consumption from fossil sources by:"
+  - verweis: 'E1-7 ¶27(a)'
+    entscheidung: quantitativ
+    text: "(a) fuel consumption from coal and coal products;"
+  - verweis: 'E1-7 ¶27(b)'
+    entscheidung: quantitativ
+    text: "(b) fuel consumption from crude oil and petroleum products;"
+  - verweis: 'E1-7 ¶27(c)'
+    entscheidung: quantitativ
+    text: "(c) fuel consumption from natural gas;"
+  - verweis: 'E1-7 ¶27(d)'
+    entscheidung: quantitativ
+    text: "(d) fuel consumption from other fossil sources; and"
+  - verweis: 'E1-7 ¶27(e)'
+    entscheidung: PRÜFEN
+    text: "(e) consumption of purchased or acquired electricity, heat, steam, or cooling from fossil sources."
+  - verweis: 'E1-7 ¶28'
+    entscheidung: quantitativ
+    text: "28. If the undertaking produces energy, it shall also disaggregate and disclose separately its non- renewable energy production and renewable energy production in MWh."
+  # ───────── E1-8  (gross-ghg) ─────────
+  - verweis: 'E1-8 ¶29'
+    entscheidung: rahmen
+    text: "29. The objective of this DR is to enable an understanding of the undertaking’s direct and indirect impacts on climate change as a result of activities in its own operations and in its upstream and downstream value chain."
+  - verweis: 'E1-8 ¶30'
+    entscheidung: container
+    text: "30. The undertaking shall:"
+  - verweis: 'E1-8 ¶30(a)'
+    entscheidung: container
+    text: "(a) disclose absolute gross GHG emissions generated during the reporting period, expressed as metric tonnes of CO₂eq classified as:"
+  - verweis: 'E1-8 ¶30(a)i.'
+    entscheidung: quantitativ
+    text: "i. scope 1 GHG emissions, including the percentage of scope 1 GHG emissions from the EU Emission Trading System (EU ETS) if it has emissions from this system;"
+  - verweis: 'E1-8 ¶30(a)ii.'
+    entscheidung: quantitativ
+    text: "ii. scope 2 GHG emissions (location-based and market-based); and"
+  - verweis: 'E1-8 ¶30(a)iii.'
+    entscheidung: quantitativ
+    text: "iii. scope 3 GHG emissions from each significant scope 3 category as a total and per category."
+  - verweis: 'E1-8 ¶30(b)'
+    entscheidung: PRÜFEN
+    text: "(b) disclose the approach it uses to measure its GHG emissions in accordance with ESRS 2 MDR-M;"
+  - verweis: 'E1-8 ¶30(c)'
+    entscheidung: container
+    text: "(c) for scope 1 and scope 2 GHG emissions disclosed in accordance with paragraph 30(a)(i) and 30(a)(ii), disaggregate emissions between:"
+  - verweis: 'E1-8 ¶30(c)i.'
+    entscheidung: narrativ
+    text: "i. the consolidated accounting group (for example, for an entity applying IFRS Accounting Standards, this group would comprise the parent and its consolidated subsidiaries); and"
+  - verweis: 'E1-8 ¶30(c)ii.'
+    entscheidung: PRÜFEN
+    text: "ii. other emissions excluded from paragraph 30(c)(i)."
+  - verweis: 'E1-8 ¶31'
+    entscheidung: quantitativ
+    text: "31. The undertaking shall disclose its direct biogenic CO₂ emissions from the combustion or biodegradation of biomass separately from scope 1 GHG emissions."
+  # ───────── E1-9  (removals-credits) ─────────
+  - verweis: 'E1-9 ¶32'
+    entscheidung: rahmen
+    text: "32. The objective of this DR is to enable an understanding of the undertaking’s actions to reduce and permanently remove GHGs from the atmosphere and of the amount and quality of carbon credits it has purchased or intends to purchase from the voluntary market."
+  - verweis: 'E1-9 ¶33'
+    entscheidung: container
+    text: "33. If it has implemented GHG removal and storage projects, the undertaking shall disclose information about the projects it has developed in its own operations or contributed to in its upstream and downstream value chain, including:"
+  - verweis: 'E1-9 ¶33(a)'
+    entscheidung: narrativ
+    text: "(a) a brief description of the GHG removal and storage projects;"
+  - verweis: 'E1-9 ¶33(b)'
+    entscheidung: quantitativ
+    text: "(b) the amount of GHG removals and storage resulting from each project;"
+  - verweis: 'E1-9 ¶33(c)'
+    entscheidung: narrativ
+    text: "(c) how the risk of non-permanence is managed, including assumptions and determining and monitoring leakage and reversal events if applicable; and"
+  - verweis: 'E1-9 ¶33(d)'
+    entscheidung: quantitativ
+    text: "(d) disclose any reversals (in tCO₂eq) that may have occurred in the reporting period and decrease the amount of CO₂ removed and stored by the same amount."
+  - verweis: 'E1-9 ¶34'
+    entscheidung: container
+    text: "34. The undertaking shall disclose information about any projects outside its own operations and its upstream and downstream value chain that it has financed or intends to finance through any purchase of carbon credits, including:"
+  - verweis: 'E1-9 ¶34(a)'
+    entscheidung: quantitativ
+    text: "(a) the amount of carbon credits in tCO₂eq that are verified against recognised quality standards for carbon credits and cancelled in the reporting period;"
+  - verweis: 'E1-9 ¶34(b)'
+    entscheidung: quantitativ
+    text: "(b) the amount of carbon credits in tCO₂eq purchased in the reporting period and not cancelled yet; and"
+  - verweis: 'E1-9 ¶34(c)'
+    entscheidung: PRÜFEN
+    text: "(c) the share of carbon credits from removal projects (percentage of total carbon credit volume), with an explanation of whether they are from nature-based or technological sinks."
+  - verweis: 'E1-9 ¶35'
+    entscheidung: container
+    text: "35. In the case where the undertaking has made public claims of GHG neutrality that involve the use of carbon credits, it shall explain:"
+  - verweis: 'E1-9 ¶35(a)'
+    entscheidung: narrativ
+    text: "(a) whether and how these claims and any reliance on carbon credits are consistent with the achievement of its GHG emission reduction targets; and"
+  - verweis: 'E1-9 ¶35(b)'
+    entscheidung: narrativ
+    text: "(b) the credibility and integrity of the carbon credits used by referring to recognised quality standards for carbon credits and any other factors necessary to understand the credibility and integrity of the carbon credits the undertaking plans to use."
+  # ───────── E1-11  (financial-effects) ─────────
+  - verweis: 'E1-11 ¶38'
+    entscheidung: rahmen
+    text: "38. The objective of this DR is to enable an understanding of how the identified climate-related material physical and transition risks and climate-related opportunities are expected to affect the undertaking’s financial position and future performance. Paragraphs 39 and 42 of this Standard add topical specifications to ESRS 2 SBM 3. The information required for this DR is part of the information on current and anticipated financial effects required under ESRS 2 SBM-3."
+  - verweis: 'E1-11 ¶39'
+    entscheidung: container
+    text: "39. The undertaking shall disclose the anticipated financial effects from material physical risks, including:"
+  - verweis: 'E1-11 ¶39(a)'
+    entscheidung: quantitativ
+    text: "(a) the carrying amount of assets at material physical risk before considering climate change adaptation actions, including the relevant time horizons;"
+  - verweis: 'E1-11 ¶39(b)'
+    entscheidung: quantitativ
+    text: "(b) the percentage of the carrying amount of assets at material physical risk addressed by adaptation actions at the reporting date; and"
+  - verweis: 'E1-11 ¶39(c)'
+    entscheidung: quantitativ
+    text: "(c) the monetary amount of net revenue from its business activities at material physical risk, including the relevant time horizons."
+  - verweis: 'E1-11 ¶40'
+    entscheidung: container
+    text: "40. The undertaking shall disclose the anticipated financial effects from material transition risks, including:"
+  - verweis: 'E1-11 ¶40(a)'
+    entscheidung: quantitativ
+    text: "(a) the carrying amount of assets at material transition risk, including the relevant time horizons, and a range of estimated potential stranded assets from the reporting year until the mid-term and long-term time horizons based on a scenario aligned with limiting climate change to 1.5°C;"
+  - verweis: 'E1-11 ¶40(b)'
+    entscheidung: quantitativ
+    text: "(b) the percentage of the carrying amount of assets at material transition risk addressed by mitigation actions;"
+  - verweis: 'E1-11 ¶40(c)'
+    entscheidung: quantitativ
+    text: "(c) a breakdown of the carrying amount of its real estate assets that have been used as loan collaterals by energy-efficiency classes;"
+  - verweis: 'E1-11 ¶40(d)'
+    entscheidung: quantitativ
+    text: "(d) the estimated potential liabilities related to climate transition that do not meet the accounting recognition criteria at the reporting date but that may have to be recognised in financial statements in future periods; and"
+  - verweis: 'E1-11 ¶40(e)'
+    entscheidung: quantitativ
+    text: "(e) the monetary amount of net revenue from its business activities at material transition risk and, if applicable, the net revenue from its customers operating in coal-, oil- and gas-related activities, including the relevant time horizons."
+  - verweis: 'E1-11 ¶41'
+    entscheidung: narrativ
+    text: "41. The undertaking shall disclose the methodology applied to quantify the amounts specified in paragraphs 39 and 40, including the scope adopted in the calculation, critical assumptions, parameters and limitations, and whether the calculation leverages on the process (e.g. scenario analysis) used to identify and assess transition risks."
+  - verweis: 'E1-11 ¶42'
+    entscheidung: quantitativ
+    text: "42. The undertaking shall disclose the amount of assets or revenue from its business activities related to the identified climate-related opportunities, including their associated time horizons."
