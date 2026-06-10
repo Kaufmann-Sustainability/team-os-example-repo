@@ -233,6 +233,7 @@ _Entwurf:_ aus o. g. Quelle(n) zu verfassen — **Absatz-Abdeckung im Review pr�
 - `target-e1-scope3-logistik` — Ziel: Logistik-Emissionen (Scope 3.4/3.9) −25 % bis 2030
 
 **Quellen (abgeleitet · Tier-1-Regel):**
+- `target-e1-energieintensitaet` — Ziel: Energieintensität −30 % bis 2030 (Index 100 → 70)  _(type=target ∧ addresses->iro-e1-*)_
 - `target-e1-scope1-2-netzero` — Ziel: Scope 1+2 Net-Zero bis 2030 (37.965 → 0 tCO₂e)  _(type=target ∧ addresses->iro-e1-*)_
 - `target-e1-scope3-1-embodied` — Ziel: Eingebetteter Kohlenstoff je Einheit −30 % bis 2032 (Index 100 → 70)  _(type=target ∧ addresses->iro-e1-*)_
 - `target-e1-scope3-11-usephase` — Ziel: Use-Phase-Emissionen (Scope 3.11) 133 → 60 Mt CO₂e bis 2035  _(type=target ∧ addresses->iro-e1-*)_
