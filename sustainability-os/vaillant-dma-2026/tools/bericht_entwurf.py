@@ -88,6 +88,22 @@ def run(std, version, kunde, out_path):
                 derived.setdefault(con, []).append((oid, f"type={typ} ∧ {feld}->{praefix}-*"))
                 break
 
+    # DATENPUNKT-EBENE: quantitative Datenpunkt-Objekte (gen_datapoints.py) sind je
+    # ESRS-Absatz (`esrs_datapoint` == Verweis) verankert. Wo es für einen Absatz ein
+    # solches Objekt gibt, wird die Abdeckung absatzfein gezeigt statt konzept-grob.
+    dp_objs = {}  # verweis -> (id, satisfied_by-Liste)
+    for oid, (fm, _t) in objs.items():
+        if fm.get("type") == "datapoint" and fm.get("datentyp") == "quantitativ":
+            ref = fm.get("esrs_datapoint")
+            if ref and "¶" in str(ref):
+                dp_objs[str(ref)] = (oid, list(fm.get("satisfied_by") or []))
+
+    def dp_coverage(dr):
+        """(getrackt, belegt) Absätze dieses DR auf Datenpunkt-Objekt-Ebene."""
+        tracked = [d for d in dr["datenpunkte"] if d["verweis"] in dp_objs]
+        covered = [d for d in tracked if dp_objs[d["verweis"]][1]]
+        return tracked, covered
+
     def title(i):
         return objs.get(i, ({}, ""))[1] or i
 
@@ -102,6 +118,7 @@ def run(std, version, kunde, out_path):
       f"Inhaltliche Vollständigkeit je Absatz ist im Review zu prüfen.\n")
 
     n_appl = n_map = n_open = 0
+    dp_track = dp_cov = 0
     for dr in cat["drs"]:
         con = dr.get("concept")
         if con not in appl_con:
@@ -113,9 +130,17 @@ def run(std, version, kunde, out_path):
             n_map += 1
         else:
             n_open += 1
+        tracked, covered = dp_coverage(dr)
+        dp_track += len(tracked)
+        dp_cov += len(covered)
 
     w(f"**Stand:** {n_appl} anwendbare DRs · {n_map} mit Inhalt · {n_open} offen · "
-      f"{sum(1 for d in cat['drs'] if d.get('concept') in excl_con)} ausgeschlossen.\n")
+      f"{sum(1 for d in cat['drs'] if d.get('concept') in excl_con)} ausgeschlossen.")
+    if dp_track:
+        w(f"\n**Quantitative Datenpunkt-Abdeckung:** {dp_cov}/{dp_track} Datenpunkt-Objekte "
+          f"belegt (absatzfein, aus `gen_datapoints.py`).\n")
+    else:
+        w("")
 
     for dr in cat["drs"]:
         con = dr.get("concept")
@@ -123,7 +148,13 @@ def run(std, version, kunde, out_path):
             continue
         man = sorted(manual.get(con, set()))
         der = derived.get(con, [])
-        mark = "✅ Inhalt zugeordnet" if (man or der) else "⚠ OFFEN — kein Inhalt zugeordnet"
+        tracked, covered = dp_coverage(dr)
+        if tracked:
+            # Quantitativer DR: Abdeckung absatzfein über Datenpunkt-Objekte
+            mark = (f"📊 {len(covered)}/{len(tracked)} Datenpunkte belegt"
+                    + (" · ✅ vollständig" if len(covered) == len(tracked) else " · ⚠ offen"))
+        else:
+            mark = "✅ Inhalt zugeordnet" if (man or der) else "⚠ OFFEN — kein Inhalt zugeordnet"
         w(f"\n---\n\n## {dr['dr_code']} — {dr['dr_name']}  ·  {mark}")
         w(f"\n*Konzept:* `{con}`  ·  *anwendbar, weil:* {appl_con[con]}")
         if man:
@@ -138,7 +169,16 @@ def run(std, version, kunde, out_path):
         for dp in dr["datenpunkte"]:
             w(f"\n**{dp['verweis']}**  _({dp.get('datentyp','')})_")
             w(f"> {dp['text'].rstrip()}")
-            if man or der:
+            if dp["verweis"] in dp_objs:
+                # absatzfein: eigenes Datenpunkt-Objekt entscheidet
+                oid, sat = dp_objs[dp["verweis"]]
+                if sat:
+                    quellen = ", ".join(f"`{s}`" for s in sat)
+                    w(f"\n✅ **belegt** durch {quellen}  ·  Datenpunkt-Objekt `{oid}`")
+                else:
+                    w(f"\n⚠ **OFFEN** — Datenpunkt-Objekt `{oid}` vorhanden, aber ohne "
+                      f"`satisfied_by` (KPI/Target fehlt).")
+            elif man or der:
                 w(f"\n_Entwurf:_ aus o. g. Quelle(n) zu verfassen — **Absatz-Abdeckung im Review prüfen.**")
             else:
                 w(f"\n⚠ **OFFEN** — kein Inhalt für Konzept `{con}` zugeordnet.")

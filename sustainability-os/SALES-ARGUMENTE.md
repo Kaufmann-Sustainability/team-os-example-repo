@@ -3,8 +3,8 @@
 > Ein Nachhaltigkeits-OS, das die ganze CSRD/ESRS-Steuerung als **verknüpften Objekt-Graph**
 > abbildet — nicht als Dokumente in Ordnern. Jedes Ziel, jede IRO, jede Kennzahl, jede
 > Offenlegung ist ein Objekt mit geprüften Beziehungen, versioniert in Git, durchgesetzt von
-> Skills, die Qualität *erzwingen*. Alle Funktionen unten sind an einem echten ESRS-E1-Beispiel
-> (Vaillant) demonstriert, validiert und im Graph sichtbar.
+> Skills, die Qualität *erzwingen*. Alle Funktionen unten sind an echten ESRS-Beispielen
+> (E1 Klimawandel + S1 eigene Belegschaft, Vaillant) demonstriert, validiert und im Graph sichtbar.
 
 ---
 
@@ -140,6 +140,27 @@ verlinkt per Referenz (`sourced_from`) — es dupliziert keine 48.000 Messwerte.
 
 **Der Effekt:** Sofort einführbar neben dem Bestand. Eure Datenplattform liefert die Zahlen, das
 OS liefert Steuerung, Prüfspur und Berichtsreife darüber.
+
+---
+
+## 11. Vom Standard-Katalog zum Datenpunkt-Graph — Abdeckung absatzfein ⭐
+**Der Schmerz:** ESRS verlangt nicht „berichte über THG", sondern hunderte *einzelne* Datenpunkte
+je Absatz — Scope 1, Scope 2 (location- und market-based), Scope 3 je wesentlicher Kategorie, und
+so fort. „Sind wir vollständig?" auf DR-Ebene zu beantworten verschleiert, dass einzelne
+Pflicht-Absätze unbeantwortet sind. Diese Datenpunkte von Hand als Aufgabenliste zu pflegen, ist
+fehleranfällig und veraltet mit jeder Standard-Revision.
+
+**Was das OS tut:** Ein Generator liest den offiziellen ESRS-/EFRAG-Datenpunkt-Katalog und mintet
+**je quantitativem Datenpunkt einen prüfbaren Knoten** im Graph — deterministisch, idempotent und
+nur für die Pflichten, die für das Unternehmen *anwendbar* sind (Ausschlüsse werden automatisch
+übersprungen). Narrative Pflichten bleiben bewusst auf DR-Ebene (sie zu vereinzeln brächte nur
+leere Prosa-Stubs). Jeder Knoten startet **offen** und gilt erst als belegt, wenn eine KPI/Target
+per Kante (`satisfied_by`) zugeordnet ist — bestehende Verknüpfungen werden nie überschrieben.
+
+**Der Effekt:** Aus „E1-8 ✓" wird „**E1-8: 3/10 Datenpunkte belegt**" — Scope 1/2/3 grün, der Rest
+sichtbar offen, jeweils mit ESRS-Originaltext und der speisenden Kennzahl daneben. Die
+Abdeckungslücke ist nicht mehr im DR-Bündel versteckt, sondern **absatzfein und automatisch**
+ausgewiesen. Ein neuer Standard oder eine Katalog-Revision = einlesen, Knoten entstehen von selbst.
 
 ---
 

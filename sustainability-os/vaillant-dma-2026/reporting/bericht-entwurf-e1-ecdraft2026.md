@@ -6,6 +6,8 @@
 
 **Stand:** 10 anwendbare DRs · 4 mit Inhalt · 6 offen · 1 ausgeschlossen.
 
+**Quantitative Datenpunkt-Abdeckung:** 3/45 Datenpunkt-Objekte belegt (absatzfein, aus `gen_datapoints.py`).
+
 
 ---
 
@@ -265,7 +267,7 @@ _Entwurf:_ aus o. g. Quelle(n) zu verfassen — **Absatz-Abdeckung im Review pr�
 
 ---
 
-## E1-7 — Energy consumption and mix  ·  ⚠ OFFEN — kein Inhalt zugeordnet
+## E1-7 — Energy consumption and mix  ·  📊 0/11 Datenpunkte belegt · ⚠ offen
 
 *Konzept:* `energy`  ·  *anwendbar, weil:* Energieverbrauch wesentlich (topic-e1-energie)
 
@@ -278,66 +280,67 @@ _Entwurf:_ aus o. g. Quelle(n) zu verfassen — **Absatz-Abdeckung im Review pr�
 **E1-7 ¶26**  _(quantitativ)_
 > 26. The undertaking shall disclose its total energy consumption in megawatt hours (MWh) related to its own operations, disaggregated by:
 
-⚠ **OFFEN** — kein Inhalt für Konzept `energy` zugeordnet.
+⚠ **OFFEN** — Datenpunkt-Objekt `datapoint-ecdraft2026-e1-7-26` vorhanden, aber ohne `satisfied_by` (KPI/Target fehlt).
 
 **E1-7 ¶26(a)**  _(quantitativ)_
 > (a) total energy consumption from fossil sources;
 
-⚠ **OFFEN** — kein Inhalt für Konzept `energy` zugeordnet.
+⚠ **OFFEN** — Datenpunkt-Objekt `datapoint-ecdraft2026-e1-7-26a` vorhanden, aber ohne `satisfied_by` (KPI/Target fehlt).
 
 **E1-7 ¶26(b)**  _(quantitativ)_
 > (b) total energy consumption from nuclear sources; and
 
-⚠ **OFFEN** — kein Inhalt für Konzept `energy` zugeordnet.
+⚠ **OFFEN** — Datenpunkt-Objekt `datapoint-ecdraft2026-e1-7-26b` vorhanden, aber ohne `satisfied_by` (KPI/Target fehlt).
 
 **E1-7 ¶26(c)**  _(quantitativ)_
 > (c) total energy consumption from renewable sources.
 
-⚠ **OFFEN** — kein Inhalt für Konzept `energy` zugeordnet.
+⚠ **OFFEN** — Datenpunkt-Objekt `datapoint-ecdraft2026-e1-7-26c` vorhanden, aber ohne `satisfied_by` (KPI/Target fehlt).
 
 **E1-7 ¶27**  _(quantitativ)_
 > 27. The undertaking with operations in high climate impact sectors shall further disaggregate its total energy consumption from fossil sources by:
 
-⚠ **OFFEN** — kein Inhalt für Konzept `energy` zugeordnet.
+⚠ **OFFEN** — Datenpunkt-Objekt `datapoint-ecdraft2026-e1-7-27` vorhanden, aber ohne `satisfied_by` (KPI/Target fehlt).
 
 **E1-7 ¶27(a)**  _(quantitativ)_
 > (a) fuel consumption from coal and coal products;
 
-⚠ **OFFEN** — kein Inhalt für Konzept `energy` zugeordnet.
+⚠ **OFFEN** — Datenpunkt-Objekt `datapoint-ecdraft2026-e1-7-27a` vorhanden, aber ohne `satisfied_by` (KPI/Target fehlt).
 
 **E1-7 ¶27(b)**  _(quantitativ)_
 > (b) fuel consumption from crude oil and petroleum products;
 
-⚠ **OFFEN** — kein Inhalt für Konzept `energy` zugeordnet.
+⚠ **OFFEN** — Datenpunkt-Objekt `datapoint-ecdraft2026-e1-7-27b` vorhanden, aber ohne `satisfied_by` (KPI/Target fehlt).
 
 **E1-7 ¶27(c)**  _(quantitativ)_
 > (c) fuel consumption from natural gas;
 
-⚠ **OFFEN** — kein Inhalt für Konzept `energy` zugeordnet.
+⚠ **OFFEN** — Datenpunkt-Objekt `datapoint-ecdraft2026-e1-7-27c` vorhanden, aber ohne `satisfied_by` (KPI/Target fehlt).
 
 **E1-7 ¶27(d)**  _(quantitativ)_
 > (d) fuel consumption from other fossil sources; and
 
-⚠ **OFFEN** — kein Inhalt für Konzept `energy` zugeordnet.
+⚠ **OFFEN** — Datenpunkt-Objekt `datapoint-ecdraft2026-e1-7-27d` vorhanden, aber ohne `satisfied_by` (KPI/Target fehlt).
 
 **E1-7 ¶27(e)**  _(quantitativ)_
 > (e) consumption of purchased or acquired electricity, heat, steam, or cooling from fossil sources.
 
-⚠ **OFFEN** — kein Inhalt für Konzept `energy` zugeordnet.
+⚠ **OFFEN** — Datenpunkt-Objekt `datapoint-ecdraft2026-e1-7-27e` vorhanden, aber ohne `satisfied_by` (KPI/Target fehlt).
 
 **E1-7 ¶28**  _(quantitativ)_
 > 28. If the undertaking produces energy, it shall also disaggregate and disclose separately its non- renewable energy production and renewable energy production in MWh.
 
-⚠ **OFFEN** — kein Inhalt für Konzept `energy` zugeordnet.
+⚠ **OFFEN** — Datenpunkt-Objekt `datapoint-ecdraft2026-e1-7-28` vorhanden, aber ohne `satisfied_by` (KPI/Target fehlt).
 
 ---
 
-## E1-8 — Gross scope 1, 2, 3 GHG emissions  ·  ✅ Inhalt zugeordnet
+## E1-8 — Gross scope 1, 2, 3 GHG emissions  ·  📊 3/10 Datenpunkte belegt · ⚠ offen
 
 *Konzept:* `gross-ghg`  ·  *anwendbar, weil:* Brutto-THG-Emissionen wesentlich
 
 **Quellen (manuell · `satisfied_by`):**
 - `kpi-e1-scope1-2` — KPI: Scope 1+2 absolut
+- `kpi-e1-scope3-1-intensitaet` — KPI: Eingebetteter Kohlenstoff je Einheit
 - `kpi-e1-scope3-11` — KPI: Scope-3.11 Nutzungsphasen-Emissionen
 
 
@@ -349,56 +352,56 @@ _Entwurf:_ aus o. g. Quelle(n) zu verfassen — **Absatz-Abdeckung im Review pr�
 **E1-8 ¶30**  _(quantitativ)_
 > 30. The undertaking shall:
 
-_Entwurf:_ aus o. g. Quelle(n) zu verfassen — **Absatz-Abdeckung im Review prüfen.**
+⚠ **OFFEN** — Datenpunkt-Objekt `datapoint-ecdraft2026-e1-8-30` vorhanden, aber ohne `satisfied_by` (KPI/Target fehlt).
 
 **E1-8 ¶30(a)**  _(quantitativ)_
 > (a) disclose absolute gross GHG emissions generated during the reporting period, expressed as metric tonnes of CO2eq classified as:
 
-_Entwurf:_ aus o. g. Quelle(n) zu verfassen — **Absatz-Abdeckung im Review prüfen.**
+⚠ **OFFEN** — Datenpunkt-Objekt `datapoint-ecdraft2026-e1-8-30a` vorhanden, aber ohne `satisfied_by` (KPI/Target fehlt).
 
 **E1-8 ¶30(a)i.**  _(quantitativ)_
 > i. scope 1 GHG emissions, including the percentage of scope 1 GHG emissions from the EU Emission Trading System (EU ETS) if it has emissions from this system;
 
-_Entwurf:_ aus o. g. Quelle(n) zu verfassen — **Absatz-Abdeckung im Review prüfen.**
+✅ **belegt** durch `kpi-e1-scope1-2`  ·  Datenpunkt-Objekt `datapoint-ecdraft2026-e1-8-30ai`
 
 **E1-8 ¶30(a)ii.**  _(quantitativ)_
 > ii. scope 2 GHG emissions (location-based and market-based); and
 
-_Entwurf:_ aus o. g. Quelle(n) zu verfassen — **Absatz-Abdeckung im Review prüfen.**
+✅ **belegt** durch `kpi-e1-scope1-2`  ·  Datenpunkt-Objekt `datapoint-ecdraft2026-e1-8-30aii`
 
 **E1-8 ¶30(a)iii.**  _(quantitativ)_
 > iii. scope 3 GHG emissions from each significant scope 3 category as a total and per category.
 
-_Entwurf:_ aus o. g. Quelle(n) zu verfassen — **Absatz-Abdeckung im Review prüfen.**
+✅ **belegt** durch `kpi-e1-scope3-11`, `kpi-e1-scope3-1-intensitaet`  ·  Datenpunkt-Objekt `datapoint-ecdraft2026-e1-8-30aiii`
 
 **E1-8 ¶30(b)**  _(quantitativ)_
 > (b) disclose the approach it uses to measure its GHG emissions in accordance with ESRS 2 MDR-M;
 
-_Entwurf:_ aus o. g. Quelle(n) zu verfassen — **Absatz-Abdeckung im Review prüfen.**
+⚠ **OFFEN** — Datenpunkt-Objekt `datapoint-ecdraft2026-e1-8-30b` vorhanden, aber ohne `satisfied_by` (KPI/Target fehlt).
 
 **E1-8 ¶30(c)**  _(quantitativ)_
 > (c) for scope 1 and scope 2 GHG emissions disclosed in accordance with paragraph 30(a)(i) and 30(a)(ii), disaggregate emissions between:
 
-_Entwurf:_ aus o. g. Quelle(n) zu verfassen — **Absatz-Abdeckung im Review prüfen.**
+⚠ **OFFEN** — Datenpunkt-Objekt `datapoint-ecdraft2026-e1-8-30c` vorhanden, aber ohne `satisfied_by` (KPI/Target fehlt).
 
 **E1-8 ¶30(c)i.**  _(quantitativ)_
 > i. the consolidated accounting group (for example, for an entity applying IFRS Accounting Standards, this group would comprise the parent and its consolidated subsidiaries); and
 
-_Entwurf:_ aus o. g. Quelle(n) zu verfassen — **Absatz-Abdeckung im Review prüfen.**
+⚠ **OFFEN** — Datenpunkt-Objekt `datapoint-ecdraft2026-e1-8-30ci` vorhanden, aber ohne `satisfied_by` (KPI/Target fehlt).
 
 **E1-8 ¶30(c)ii.**  _(quantitativ)_
 > ii. other emissions excluded from paragraph 30(c)(i).
 
-_Entwurf:_ aus o. g. Quelle(n) zu verfassen — **Absatz-Abdeckung im Review prüfen.**
+⚠ **OFFEN** — Datenpunkt-Objekt `datapoint-ecdraft2026-e1-8-30cii` vorhanden, aber ohne `satisfied_by` (KPI/Target fehlt).
 
 **E1-8 ¶31**  _(quantitativ)_
 > 31. The undertaking shall disclose its direct biogenic CO emissions from the combustion or biodegradation of biomass separately from scope 1 GHG emissions.
 
-_Entwurf:_ aus o. g. Quelle(n) zu verfassen — **Absatz-Abdeckung im Review prüfen.**
+⚠ **OFFEN** — Datenpunkt-Objekt `datapoint-ecdraft2026-e1-8-31` vorhanden, aber ohne `satisfied_by` (KPI/Target fehlt).
 
 ---
 
-## E1-9 — GHG removals and GHG mitigation projects financed through carbon credits  ·  ⚠ OFFEN — kein Inhalt zugeordnet
+## E1-9 — GHG removals and GHG mitigation projects financed through carbon credits  ·  📊 0/12 Datenpunkte belegt · ⚠ offen
 
 *Konzept:* `removals-credits`  ·  *anwendbar, weil:* Removals/Carbon-Credits genutzt
 
@@ -411,66 +414,66 @@ _Entwurf:_ aus o. g. Quelle(n) zu verfassen — **Absatz-Abdeckung im Review pr�
 **E1-9 ¶33**  _(quantitativ)_
 > 33. If it has implemented GHG removal and storage projects, the undertaking shall disclose information about the projects it has developed in its own operations or contributed to in its upstream and downstream value chain, including:
 
-⚠ **OFFEN** — kein Inhalt für Konzept `removals-credits` zugeordnet.
+⚠ **OFFEN** — Datenpunkt-Objekt `datapoint-ecdraft2026-e1-9-33` vorhanden, aber ohne `satisfied_by` (KPI/Target fehlt).
 
 **E1-9 ¶33(a)**  _(quantitativ)_
 > (a) a brief description of the GHG removal and storage projects;
 
-⚠ **OFFEN** — kein Inhalt für Konzept `removals-credits` zugeordnet.
+⚠ **OFFEN** — Datenpunkt-Objekt `datapoint-ecdraft2026-e1-9-33a` vorhanden, aber ohne `satisfied_by` (KPI/Target fehlt).
 
 **E1-9 ¶33(b)**  _(quantitativ)_
 > (b) the amount of GHG removals and storage resulting from each project;
 
-⚠ **OFFEN** — kein Inhalt für Konzept `removals-credits` zugeordnet.
+⚠ **OFFEN** — Datenpunkt-Objekt `datapoint-ecdraft2026-e1-9-33b` vorhanden, aber ohne `satisfied_by` (KPI/Target fehlt).
 
 **E1-9 ¶33(c)**  _(quantitativ)_
 > (c) how the risk of non-permanence is managed, including assumptions and determining and monitoring leakage and reversal events if applicable; and
 
-⚠ **OFFEN** — kein Inhalt für Konzept `removals-credits` zugeordnet.
+⚠ **OFFEN** — Datenpunkt-Objekt `datapoint-ecdraft2026-e1-9-33c` vorhanden, aber ohne `satisfied_by` (KPI/Target fehlt).
 
 **E1-9 ¶33(d)**  _(quantitativ)_
 > (d) disclose any reversals (in tCOeq) that may have occurred in the reporting period and decrease the amount of CO2 removed and stored by the same amount.
 
-⚠ **OFFEN** — kein Inhalt für Konzept `removals-credits` zugeordnet.
+⚠ **OFFEN** — Datenpunkt-Objekt `datapoint-ecdraft2026-e1-9-33d` vorhanden, aber ohne `satisfied_by` (KPI/Target fehlt).
 
 **E1-9 ¶34**  _(quantitativ)_
 > 34. The undertaking shall disclose information about any projects outside its own operations and its upstream and downstream value chain that it has financed or intends to finance through any purchase of carbon credits, including:
 
-⚠ **OFFEN** — kein Inhalt für Konzept `removals-credits` zugeordnet.
+⚠ **OFFEN** — Datenpunkt-Objekt `datapoint-ecdraft2026-e1-9-34` vorhanden, aber ohne `satisfied_by` (KPI/Target fehlt).
 
 **E1-9 ¶34(a)**  _(quantitativ)_
 > (a) the amount of carbon credits in tCOeq that are verified against recognised quality standards for carbon credits and cancelled in the reporting period;
 
-⚠ **OFFEN** — kein Inhalt für Konzept `removals-credits` zugeordnet.
+⚠ **OFFEN** — Datenpunkt-Objekt `datapoint-ecdraft2026-e1-9-34a` vorhanden, aber ohne `satisfied_by` (KPI/Target fehlt).
 
 **E1-9 ¶34(b)**  _(quantitativ)_
 > (b) the amount of carbon credits in tCOeq purchased in the reporting period and not cancelled yet; and
 
-⚠ **OFFEN** — kein Inhalt für Konzept `removals-credits` zugeordnet.
+⚠ **OFFEN** — Datenpunkt-Objekt `datapoint-ecdraft2026-e1-9-34b` vorhanden, aber ohne `satisfied_by` (KPI/Target fehlt).
 
 **E1-9 ¶34(c)**  _(quantitativ)_
 > (c) the share of carbon credits from removal projects (percentage of total carbon credit volume), with an explanation of whether they are from nature-based or technological sinks.
 
-⚠ **OFFEN** — kein Inhalt für Konzept `removals-credits` zugeordnet.
+⚠ **OFFEN** — Datenpunkt-Objekt `datapoint-ecdraft2026-e1-9-34c` vorhanden, aber ohne `satisfied_by` (KPI/Target fehlt).
 
 **E1-9 ¶35**  _(quantitativ)_
 > 35. In the case where the undertaking has made public claims of GHG neutrality that involve the use of carbon credits, it shall explain:
 
-⚠ **OFFEN** — kein Inhalt für Konzept `removals-credits` zugeordnet.
+⚠ **OFFEN** — Datenpunkt-Objekt `datapoint-ecdraft2026-e1-9-35` vorhanden, aber ohne `satisfied_by` (KPI/Target fehlt).
 
 **E1-9 ¶35(a)**  _(quantitativ)_
 > (a) whether and how these claims and any reliance on carbon credits are consistent with the achievement of its GHG emission reduction targets; and
 
-⚠ **OFFEN** — kein Inhalt für Konzept `removals-credits` zugeordnet.
+⚠ **OFFEN** — Datenpunkt-Objekt `datapoint-ecdraft2026-e1-9-35a` vorhanden, aber ohne `satisfied_by` (KPI/Target fehlt).
 
 **E1-9 ¶35(b)**  _(quantitativ)_
 > (b) the credibility and integrity of the carbon credits used by referring to recognised quality standards for carbon credits and any other factors necessary to understand the credibility and integrity of the carbon credits the undertaking p
 
-⚠ **OFFEN** — kein Inhalt für Konzept `removals-credits` zugeordnet.
+⚠ **OFFEN** — Datenpunkt-Objekt `datapoint-ecdraft2026-e1-9-35b` vorhanden, aber ohne `satisfied_by` (KPI/Target fehlt).
 
 ---
 
-## E1-11 — Anticipated financial effects from material physical and transition risks and potential climate-related opportunities  ·  ⚠ OFFEN — kein Inhalt zugeordnet
+## E1-11 — Anticipated financial effects from material physical and transition risks and potential climate-related opportunities  ·  📊 0/12 Datenpunkte belegt · ⚠ offen
 
 *Konzept:* `financial-effects`  ·  *anwendbar, weil:* Wesentliche physische & transitorische Risiken -> finanzielle Effekte
 
@@ -483,62 +486,62 @@ _Entwurf:_ aus o. g. Quelle(n) zu verfassen — **Absatz-Abdeckung im Review pr�
 **E1-11 ¶39**  _(quantitativ)_
 > 39. The undertaking shall disclose the anticipated financial effects from material physical risks, including:
 
-⚠ **OFFEN** — kein Inhalt für Konzept `financial-effects` zugeordnet.
+⚠ **OFFEN** — Datenpunkt-Objekt `datapoint-ecdraft2026-e1-11-39` vorhanden, aber ohne `satisfied_by` (KPI/Target fehlt).
 
 **E1-11 ¶39(a)**  _(quantitativ)_
 > (a) the carrying amount of assets at material physical risk before considering climate change adaptation actions, including the relevant time horizons;
 
-⚠ **OFFEN** — kein Inhalt für Konzept `financial-effects` zugeordnet.
+⚠ **OFFEN** — Datenpunkt-Objekt `datapoint-ecdraft2026-e1-11-39a` vorhanden, aber ohne `satisfied_by` (KPI/Target fehlt).
 
 **E1-11 ¶39(b)**  _(quantitativ)_
 > (b) the percentage of the carrying amount of assets at material physical risk addressed by adaptation actions at the reporting date; and
 
-⚠ **OFFEN** — kein Inhalt für Konzept `financial-effects` zugeordnet.
+⚠ **OFFEN** — Datenpunkt-Objekt `datapoint-ecdraft2026-e1-11-39b` vorhanden, aber ohne `satisfied_by` (KPI/Target fehlt).
 
 **E1-11 ¶39(c)**  _(quantitativ)_
 > (c) the monetary amount of net revenue from its business activities at material physical risk, including the relevant time horizons.
 
-⚠ **OFFEN** — kein Inhalt für Konzept `financial-effects` zugeordnet.
+⚠ **OFFEN** — Datenpunkt-Objekt `datapoint-ecdraft2026-e1-11-39c` vorhanden, aber ohne `satisfied_by` (KPI/Target fehlt).
 
 **E1-11 ¶40**  _(quantitativ)_
 > 40. The undertaking shall disclose the anticipated financial effects from material transition risks, including:
 
-⚠ **OFFEN** — kein Inhalt für Konzept `financial-effects` zugeordnet.
+⚠ **OFFEN** — Datenpunkt-Objekt `datapoint-ecdraft2026-e1-11-40` vorhanden, aber ohne `satisfied_by` (KPI/Target fehlt).
 
 **E1-11 ¶40(a)**  _(quantitativ)_
 > (a) the carrying amount of assets at material transition risk, including the relevant time horizons, and a range of estimated potential stranded assets from the reporting year until the mid-term and long-term time horizons based on a scenar
 
-⚠ **OFFEN** — kein Inhalt für Konzept `financial-effects` zugeordnet.
+⚠ **OFFEN** — Datenpunkt-Objekt `datapoint-ecdraft2026-e1-11-40a` vorhanden, aber ohne `satisfied_by` (KPI/Target fehlt).
 
 **E1-11 ¶40(b)**  _(quantitativ)_
 > (b) the percentage of the carrying amount of assets at material transition risk addressed by mitigation actions;
 
-⚠ **OFFEN** — kein Inhalt für Konzept `financial-effects` zugeordnet.
+⚠ **OFFEN** — Datenpunkt-Objekt `datapoint-ecdraft2026-e1-11-40b` vorhanden, aber ohne `satisfied_by` (KPI/Target fehlt).
 
 **E1-11 ¶40(c)**  _(quantitativ)_
 > (c) a breakdown of the carrying amount of its real estate assets that have been used as loan collaterals by energy-efficiency classes;
 
-⚠ **OFFEN** — kein Inhalt für Konzept `financial-effects` zugeordnet.
+⚠ **OFFEN** — Datenpunkt-Objekt `datapoint-ecdraft2026-e1-11-40c` vorhanden, aber ohne `satisfied_by` (KPI/Target fehlt).
 
 **E1-11 ¶40(d)**  _(quantitativ)_
 > (d) the estimated potential liabilities related to climate transition that do not meet the accounting recognition criteria at the reporting date but that may have to be recognised in financial statements in future periods; and
 
-⚠ **OFFEN** — kein Inhalt für Konzept `financial-effects` zugeordnet.
+⚠ **OFFEN** — Datenpunkt-Objekt `datapoint-ecdraft2026-e1-11-40d` vorhanden, aber ohne `satisfied_by` (KPI/Target fehlt).
 
 **E1-11 ¶40(e)**  _(quantitativ)_
 > (e) the monetary amount of net revenue from its business activities at material transition risk and, if applicable, the net revenue from its customers operating in coal-, oil- and gas-related activities, including the relevant time horizons
 
-⚠ **OFFEN** — kein Inhalt für Konzept `financial-effects` zugeordnet.
+⚠ **OFFEN** — Datenpunkt-Objekt `datapoint-ecdraft2026-e1-11-40e` vorhanden, aber ohne `satisfied_by` (KPI/Target fehlt).
 
 **E1-11 ¶41**  _(quantitativ)_
 > 41. The undertaking shall disclose the methodology applied to quantify the amounts specified in paragraphs 39 and 40, including the scope adopted in the calculation, critical assumptions, parameters and limitations, and whether the calculat
 
-⚠ **OFFEN** — kein Inhalt für Konzept `financial-effects` zugeordnet.
+⚠ **OFFEN** — Datenpunkt-Objekt `datapoint-ecdraft2026-e1-11-41` vorhanden, aber ohne `satisfied_by` (KPI/Target fehlt).
 
 **E1-11 ¶42**  _(quantitativ)_
 > 42. The undertaking shall disclose the amount of assets or revenue from its business activities related to the identified climate-related opportunities, including their associated time horizons.
 
-⚠ **OFFEN** — kein Inhalt für Konzept `financial-effects` zugeordnet.
+⚠ **OFFEN** — Datenpunkt-Objekt `datapoint-ecdraft2026-e1-11-42` vorhanden, aber ohne `satisfied_by` (KPI/Target fehlt).
 
 ---
 

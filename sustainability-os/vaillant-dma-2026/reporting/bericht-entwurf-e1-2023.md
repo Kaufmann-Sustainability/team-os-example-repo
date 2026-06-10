@@ -134,6 +134,7 @@ _Entwurf:_ aus o. g. Quelle(n) zu verfassen — **Absatz-Abdeckung im Review pr�
 
 **Quellen (manuell · `satisfied_by`):**
 - `kpi-e1-scope1-2` — KPI: Scope 1+2 absolut
+- `kpi-e1-scope3-1-intensitaet` — KPI: Eingebetteter Kohlenstoff je Einheit
 - `kpi-e1-scope3-11` — KPI: Scope-3.11 Nutzungsphasen-Emissionen
 
 
