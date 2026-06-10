@@ -118,7 +118,8 @@ initiative:"#e74c3c",dependency:"#95a5a6",decision:"#f1c40f",methodology:"#e8439
 control:"#576574",budget:"#27ae60","emission-factor":"#16a085",term:"#a29bfe",threshold:"#fd79a8",
 stakeholder:"#fdcb6e","annual-plan":"#00cec9",strategy:"#0c5fb3","kpi-value":"#48dbb4",
 forecast:"#9ad0ec",trend:"#f6c177",assumption:"#b39ddb",scenario:"#ce93d8",recommendation:"#f48fb1",
-regulation:"#90a4ae",test:"#80cbc4",remediation:"#a1887f",milestone:"#ffb74d"};
+regulation:"#90a4ae",test:"#80cbc4",remediation:"#a1887f",milestone:"#ffb74d",
+approval:"#66bb6a",risk:"#ef5350"};
 function tcol(t){return TYPECOL[t]||"#bbb";}
 const cx=()=>W/2,cy=()=>H/2,Rr=()=>Math.min(W,H)*0.36;
 const anchor={};G.forEach((g,i)=>{const a=2*Math.PI*i/G.length;anchor[g]=[()=>cx()+Rr()*Math.cos(a),()=>cy()+Rr()*Math.sin(a)];});

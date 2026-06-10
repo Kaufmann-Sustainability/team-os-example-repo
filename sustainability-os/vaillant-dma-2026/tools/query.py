@@ -37,6 +37,7 @@ KANTEN = {
     "uses_factor","concerns","informed_by","scored_under","based_on","applies",
     "discloses","reports","backs","covers","challenges","addresses","depends_on","plans",
     "for_kpi","underpins","assumes","proposes","tests","remediates","for_initiative",
+    "approves","threatens",
 }
 
 
@@ -244,6 +245,55 @@ def coverage(objs, topic_id):
           if not orph else f"  ⛔ Orphan-Ziel(e): {', '.join(t['id'] for t in orph)}")
 
 
+# ---------- REIFEGRAD (Vollständigkeits-Vertrag je Target) ----------
+# Vertrag = Kern-Pflichten, die ein Target zu einem "vollständig gesteuerten" machen.
+# Fehlt etwas, ist es entweder anzulegen ODER als offene_punkte zu markieren.
+def _incoming(objs, edge, target_id):
+    """Objekte, deren <edge> auf target_id zeigt (Rückwärts-Lookup)."""
+    return [o for o in objs.values() if target_id in out(o.get(edge, []))]
+
+def reifegrad(objs, arg):
+    obj = objs.get(arg)
+    if not obj:
+        sys.exit(f"Unbekannte ID: {arg}")
+    # Topic -> alle seine Targets; sonst das eine Target
+    if obj.get("type") == "topic":
+        targets = [objs[t] for t in out(obj.get("has_target", [])) if t in objs]
+    elif obj.get("type") == "target":
+        targets = [obj]
+    else:
+        sys.exit("reifegrad erwartet ein topic oder target.")
+    print(f"\n# Reifegrad: Target-Vollständigkeitsvertrag\n")
+    for t in targets:
+        tid = t["id"]
+        checks = [
+            ("Owner gesetzt",          bool(t.get("owner"))),
+            ("Baseline+Ziel+Jahr",     all(t.get(f) is not None for f in ("baseline_wert","zielwert","zieljahr"))),
+            ("≥1 IRO adressiert",      bool(out(t.get("addresses", [])))),
+            ("≥1 KPI misst es",        bool(out(t.get("measured_by", [])))),
+            ("≥1 Maßnahme trägt es",   bool(out(t.get("supported_by", [])))),
+            ("≥1 Annahme hinterlegt",  bool(_incoming(objs, "underpins", tid))),
+            ("Freigabe (approval)",    bool(_incoming(objs, "approves", tid))),
+            ("Risiken bewertet",       bool(_incoming(objs, "threatens", tid))),
+        ]
+        bonus = [
+            ("Szenario",  bool(_incoming(objs, "proposes", tid) and
+                              [o for o in _incoming(objs, "proposes", tid) if o.get("type")=="scenario"])),
+        ]
+        erfuellt = sum(1 for _, ok in checks if ok)
+        score = round(100 * erfuellt / len(checks))
+        bar = "█" * (score // 10) + "░" * (10 - score // 10)
+        print(f"  {tid}")
+        print(f"  Reifegrad {bar} {score}%  ({erfuellt}/{len(checks)} Kern-Pflichten)")
+        for name, ok in checks:
+            print(f"      {'✓' if ok else '✗'} {name}")
+        for name, ok in bonus:
+            print(f"      {'＋' if ok else '·'} {name} (Bonus)")
+        for op in t.get("offene_punkte", []) or []:
+            print(f"      ⚠ offen: {op}")
+        print()
+
+
 # ---------- KPI-STATUS (Zeitreihe: Ist-Werte, Forecast, Trend, Frische) ----------
 def kpi_status(objs, topic_id):
     print(f"\n# KPI-Status über Zeit  ({topic_id})\n")
@@ -319,6 +369,8 @@ def main():
         coverage(objs, a[1])
     elif cmd == "kpi-status":
         kpi_status(objs, a[1])
+    elif cmd == "reifegrad":
+        reifegrad(objs, a[1])
     elif cmd == "gaps":
         gaps(objs)
     elif cmd == "stale":

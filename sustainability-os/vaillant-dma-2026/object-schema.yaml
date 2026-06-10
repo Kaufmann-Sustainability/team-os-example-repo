@@ -8,7 +8,7 @@
 
 # --- Metadaten-Kopf, den JEDES Objekt tragen muss (Synthese-Prinzip 2) ---
 metadata_pflicht: [id, type, owner, status, stand, vertraulichkeit]
-metadata_optional: [review_zyklus, esrs_bezug, quelle]
+metadata_optional: [review_zyklus, esrs_bezug, quelle, offene_punkte]
 
 vertraulichkeit_stufen: [oeffentlich, intern, vertraulich, streng-vertraulich]
 
@@ -122,6 +122,13 @@ objekt_typen:
   milestone:                    # Meilenstein einer Maßnahme
     pflichtfelder: [datum]
     beziehungen: [for_initiative]
+  # --- Ontologie v1: Freigabe & Umsetzungs-/Zielerreichungs-Risiko ---
+  approval:                     # formale Freigabe (Gremium/Genehmiger) eines Ziels/einer Maßnahme
+    pflichtfelder: [datum, genehmiger]
+    beziehungen: [approves]
+  risk:                         # Risiko für Zielerreichung/Umsetzung (NICHT zwingend eine DMA-IRO)
+    pflichtfelder: [wahrscheinlichkeit, auswirkung]
+    beziehungen: [threatens]
 
 # --- Beziehungs-Vokabular: erlaubte Kante -> erlaubte Ziel-Typen ---
 # Eine Kante, die hier nicht steht, ist verboten. Eine Kante auf einen
@@ -151,6 +158,8 @@ beziehungs_vokabular:
   tests:          [control]
   remediates:     [finding, audit-finding]
   for_initiative: [initiative]
+  approves:       [target, initiative, decision]
+  threatens:      [target, initiative]
   concerns:     [topic]
   informed_by:  [stakeholder]
   scored_under: [methodology]
