@@ -12,7 +12,7 @@ mit Inhalt gepflegt wird.
 
 | Schicht | Ordner/Datei | Pro Kunde? |
 |---|---|---|
-| **Core Engine** (framework-agnostisch, **inkl. Wesentlichkeit/DMA-IRO**) | `object-schema.yaml`, `tools/`, generische Gates (`.claude/skills/`) | nein — ausgeliefert |
+| **Core Engine** (framework-agnostisch, **inkl. Wesentlichkeit/DMA-IRO**) | `object-schema.yaml`, `tools/`, generische Gates (`.claude/skills/` — **im Template enthalten**) | nein — ausgeliefert |
 | **Framework-Pack** (Offenlegung) | `reference/esrs-*` (Kataloge, Konzept-Spines) | nein — je Pack ausgeliefert |
 | **Kunden-Instanz** | `instance-config.yaml`, `objects/`, `reference/anwendbarkeit-<instanz>-*.yaml`, `reporting/` | **ja — entsteht hier** |
 
