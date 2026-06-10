@@ -19,7 +19,7 @@ satisfied_by: []
 
 Quantitative Offenlegungspflicht (Konzept `financial-effects`). Originaltext ESRS:
 
-> (e) the monetary amount of net revenue from its business activities at material transition risk and, if applicable, the net revenue from its customers operating in coal-, oil- and gas-related activities, including the relevant time horizons
+> (e) the monetary amount of net revenue from its business activities at material transition risk and, if applicable, the net revenue from its customers operating in coal-, oil- and gas-related activities, including the relevant time horizons.
 
 ⚠ **OFFEN** — noch keine KPI/Target verknüpft (`satisfied_by` leer). Sobald die passende Kennzahl zugeordnet ist, gilt der Datenpunkt als belegt.
 

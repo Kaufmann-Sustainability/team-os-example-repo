@@ -19,7 +19,7 @@ satisfied_by: []
 
 Quantitative Offenlegungspflicht (Konzept `financial-effects`). Originaltext ESRS:
 
-> (a) the carrying amount of assets at material transition risk, including the relevant time horizons, and a range of estimated potential stranded assets from the reporting year until the mid-term and long-term time horizons based on a scenar
+> (a) the carrying amount of assets at material transition risk, including the relevant time horizons, and a range of estimated potential stranded assets from the reporting year until the mid-term and long-term time horizons based on a scenario aligned with limiting climate change to 1.5°C;
 
 ⚠ **OFFEN** — noch keine KPI/Target verknüpft (`satisfied_by` leer). Sobald die passende Kennzahl zugeordnet ist, gilt der Datenpunkt als belegt.
 

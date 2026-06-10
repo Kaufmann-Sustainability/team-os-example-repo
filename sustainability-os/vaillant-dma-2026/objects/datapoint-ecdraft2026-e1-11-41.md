@@ -19,7 +19,7 @@ satisfied_by: []
 
 Quantitative Offenlegungspflicht (Konzept `financial-effects`). Originaltext ESRS:
 
-> 41. The undertaking shall disclose the methodology applied to quantify the amounts specified in paragraphs 39 and 40, including the scope adopted in the calculation, critical assumptions, parameters and limitations, and whether the calculat
+> 41. The undertaking shall disclose the methodology applied to quantify the amounts specified in paragraphs 39 and 40, including the scope adopted in the calculation, critical assumptions, parameters and limitations, and whether the calculation leverages on the process (e.g. scenario analysis) used to identify and assess transition risks.
 
 ⚠ **OFFEN** — noch keine KPI/Target verknüpft (`satisfied_by` leer). Sobald die passende Kennzahl zugeordnet ist, gilt der Datenpunkt als belegt.
 

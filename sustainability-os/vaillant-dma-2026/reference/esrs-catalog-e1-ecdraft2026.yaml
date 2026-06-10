@@ -13,7 +13,7 @@ drs:
       - id: dp-ec-draft-2026-e1-111
         verweis: "E1-1 ¶11"
         datentyp: narrativ
-        text: "11. The objective of this DR is to enable an understanding of the undertaking’s past, current and future mitigation efforts to ensure that its strategy and business model are compatible with the transition to a sustainable economy and with "
+        text: "11. The objective of this DR is to enable an understanding of the undertaking’s past, current and future mitigation efforts to ensure that its strategy and business model are compatible with the transition to a sustainable economy and with limiting global warming to 1.5°C in line with the Paris Agreement and the objectives of the European Climate Law (Regulation (EU) 2021/1119), including achieving climate neutrality by 2050."
       - id: dp-ec-draft-2026-e1-112
         verweis: "E1-1 ¶12"
         datentyp: narrativ
@@ -21,7 +21,7 @@ drs:
       - id: dp-ec-draft-2026-e1-112a
         verweis: "E1-1 ¶12(a)"
         datentyp: narrativ
-        text: "(a) a description of its key features. This includes GHG emission reduction targets, the decarbonisation levers, key actions, investments and funding needed to support the implementation of the plan, the approval of the plan by the administ"
+        text: "(a) a description of its key features. This includes GHG emission reduction targets, the decarbonisation levers, key actions, investments and funding needed to support the implementation of the plan, the approval of the plan by the administrative, management and supervisory bodies, and how the plan is embedded in and aligned with the undertaking’s overall business strategy. It shall also include information on how the undertaking’s strategy and business model are or will be compatible, pursuant to the implementation of the plan, with the limiting of global warming to 1.5°C in line with the Paris Agreement and with the EU’s objective of achieving climate neutrality by 2050;"
       - id: dp-ec-draft-2026-e1-112b
         verweis: "E1-1 ¶12(b)"
         datentyp: narrativ
@@ -41,7 +41,7 @@ drs:
       - id: dp-ec-draft-2026-e1-113
         verweis: "E1-1 ¶13"
         datentyp: narrativ
-        text: "13. If the undertaking does not have in place a transition plan for climate change mitigation which includes the key features listed in paragraph 12(a), it shall disclose this fact and indicate whether and, if so, when it expects to adopt o"
+        text: "13. If the undertaking does not have in place a transition plan for climate change mitigation which includes the key features listed in paragraph 12(a), it shall disclose this fact and indicate whether and, if so, when it expects to adopt one."
   - dr_code: E1-2
     dr_name: "Identification of climate-related risks and scenario analysis"
     concept: climate-risks
@@ -57,7 +57,7 @@ drs:
       - id: dp-ec-draft-2026-e1-216
         verweis: "E1-2 ¶16"
         datentyp: narrativ
-        text: "16. In addition to the disclosure provided in accordance with ESRS 2 IRO-1, the undertaking shall disclose key elements of the methodology used to assess how its assets and business activities in its own operations and its upstream and down"
+        text: "16. In addition to the disclosure provided in accordance with ESRS 2 IRO-1, the undertaking shall disclose key elements of the methodology used to assess how its assets and business activities in its own operations and its upstream and downstream value chain may be exposed and be sensitive over the short, medium and long term to:"
       - id: dp-ec-draft-2026-e1-216a
         verweis: "E1-2 ¶16(a)"
         datentyp: narrativ
@@ -117,7 +117,7 @@ drs:
       - id: dp-ec-draft-2026-e1-319b
         verweis: "E1-3 ¶19(b)"
         datentyp: narrativ
-        text: "(b) in relation to climate-related risks. The undertaking shall explain: (i) the implications of the assessment, if any, for its strategy and business model; (ii) how the effects identified through the climate-related scenario analysis, if "
+        text: "(b) in relation to climate-related risks. The undertaking shall explain: (i) the implications of the assessment, if any, for its strategy and business model; (ii) how the effects identified through the climate-related scenario analysis, if used, inform the undertaking’s potential response to climate-related risks; and (iii) how its transition plan, if existent, and its current and planned mitigation and adaptation actions (ESRS E1-5) contribute to its resilience to climate-related risks;"
       - id: dp-ec-draft-2026-e1-319c
         verweis: "E1-3 ¶19(c)"
         datentyp: narrativ
@@ -169,15 +169,15 @@ drs:
       - id: dp-ec-draft-2026-e1-624a
         verweis: "E1-6 ¶24(a)"
         datentyp: narrativ
-        text: "(a) absolute GHG emission reduction targets for scopes 1, 2 and 3, either separately or combined, and where relevant, in intensity value. The undertaking shall specify, in case of combined GHG emission reduction targets, which GHG emission "
+        text: "(a) absolute GHG emission reduction targets for scopes 1, 2 and 3, either separately or combined, and where relevant, in intensity value. The undertaking shall specify, in case of combined GHG emission reduction targets, which GHG emission scopes (1, 2 and/or 3) are covered by the target and the share related to each respective GHG emission scope;"
       - id: dp-ec-draft-2026-e1-624b
         verweis: "E1-6 ¶24(b)"
         datentyp: narrativ
-        text: "(b) if the scope (geography, GHGs covered, entities included) of the GHG emission reduction target diverges from the scope of the GHG inventory (reported under ESRS E1-8), the percentages for scopes 1, 2 and 3 covered by the target, as well"
+        text: "(b) if the scope (geography, GHGs covered, entities included) of the GHG emission reduction target diverges from the scope of the GHG inventory (reported under ESRS E1-8), the percentages for scopes 1, 2 and 3 covered by the target, as well as which GHGs are covered; and"
       - id: dp-ec-draft-2026-e1-624c
         verweis: "E1-6 ¶24(c)"
         datentyp: narrativ
-        text: "(c) a statement on whether the GHG emission reduction targets are science-based and compatible with limiting global warming to 1.5°C. The undertaking shall state which framework and methodology has been used to determine these targets, incl"
+        text: "(c) a statement on whether the GHG emission reduction targets are science-based and compatible with limiting global warming to 1.5°C. The undertaking shall state which framework and methodology has been used to determine these targets, including whether they are derived using a sectoral decarbonisation pathway, and the underlying climate and policy scenarios. As part of the critical assumptions used for setting GHG emission reduction targets, the undertaking shall briefly explain how it has considered future developments (e.g. changes in sales volumes, shifts in customer preferences and demand, regulatory factors, and new technologies) and how these will potentially impact both its GHG emissions and emissions reductions."
   - dr_code: E1-7
     dr_name: "Energy consumption and mix"
     concept: energy
@@ -245,7 +245,7 @@ drs:
       - id: dp-ec-draft-2026-e1-830a
         verweis: "E1-8 ¶30(a)"
         datentyp: quantitativ
-        text: "(a) disclose absolute gross GHG emissions generated during the reporting period, expressed as metric tonnes of CO2eq classified as:"
+        text: "(a) disclose absolute gross GHG emissions generated during the reporting period, expressed as metric tonnes of CO₂eq classified as:"
       - id: dp-ec-draft-2026-e1-830ai
         verweis: "E1-8 ¶30(a)i."
         datentyp: quantitativ
@@ -277,7 +277,7 @@ drs:
       - id: dp-ec-draft-2026-e1-831
         verweis: "E1-8 ¶31"
         datentyp: quantitativ
-        text: "31. The undertaking shall disclose its direct biogenic CO emissions from the combustion or biodegradation of biomass separately from scope 1 GHG emissions."
+        text: "31. The undertaking shall disclose its direct biogenic CO₂ emissions from the combustion or biodegradation of biomass separately from scope 1 GHG emissions."
   - dr_code: E1-9
     dr_name: "GHG removals and GHG mitigation projects financed through carbon credits"
     concept: removals-credits
@@ -285,7 +285,7 @@ drs:
       - id: dp-ec-draft-2026-e1-932
         verweis: "E1-9 ¶32"
         datentyp: quantitativ
-        text: "32. The objective of this DR is to enable an understanding of the undertaking’s actions to reduce and permanently remove GHGs from the atmosphere and of the amount and quality of carbon credits it has purchased or intends to purchase from t"
+        text: "32. The objective of this DR is to enable an understanding of the undertaking’s actions to reduce and permanently remove GHGs from the atmosphere and of the amount and quality of carbon credits it has purchased or intends to purchase from the voluntary market."
       - id: dp-ec-draft-2026-e1-933
         verweis: "E1-9 ¶33"
         datentyp: quantitativ
@@ -305,7 +305,7 @@ drs:
       - id: dp-ec-draft-2026-e1-933d
         verweis: "E1-9 ¶33(d)"
         datentyp: quantitativ
-        text: "(d) disclose any reversals (in tCOeq) that may have occurred in the reporting period and decrease the amount of CO2 removed and stored by the same amount."
+        text: "(d) disclose any reversals (in tCO₂eq) that may have occurred in the reporting period and decrease the amount of CO₂ removed and stored by the same amount."
       - id: dp-ec-draft-2026-e1-934
         verweis: "E1-9 ¶34"
         datentyp: quantitativ
@@ -313,11 +313,11 @@ drs:
       - id: dp-ec-draft-2026-e1-934a
         verweis: "E1-9 ¶34(a)"
         datentyp: quantitativ
-        text: "(a) the amount of carbon credits in tCOeq that are verified against recognised quality standards for carbon credits and cancelled in the reporting period;"
+        text: "(a) the amount of carbon credits in tCO₂eq that are verified against recognised quality standards for carbon credits and cancelled in the reporting period;"
       - id: dp-ec-draft-2026-e1-934b
         verweis: "E1-9 ¶34(b)"
         datentyp: quantitativ
-        text: "(b) the amount of carbon credits in tCOeq purchased in the reporting period and not cancelled yet; and"
+        text: "(b) the amount of carbon credits in tCO₂eq purchased in the reporting period and not cancelled yet; and"
       - id: dp-ec-draft-2026-e1-934c
         verweis: "E1-9 ¶34(c)"
         datentyp: quantitativ
@@ -333,7 +333,7 @@ drs:
       - id: dp-ec-draft-2026-e1-935b
         verweis: "E1-9 ¶35(b)"
         datentyp: quantitativ
-        text: "(b) the credibility and integrity of the carbon credits used by referring to recognised quality standards for carbon credits and any other factors necessary to understand the credibility and integrity of the carbon credits the undertaking p"
+        text: "(b) the credibility and integrity of the carbon credits used by referring to recognised quality standards for carbon credits and any other factors necessary to understand the credibility and integrity of the carbon credits the undertaking plans to use."
   - dr_code: E1-10
     dr_name: "Internal carbon pricing"
     concept: internal-carbon-price
@@ -349,7 +349,7 @@ drs:
       - id: dp-ec-draft-2026-e1-1037a
         verweis: "E1-10 ¶37(a)"
         datentyp: quantitativ
-        text: "(a) an explanation of whether and how the undertaking applies carbon pricing in decision- making (for example, investment decisions, transfer pricing and scenario analysis) and the consistency of the prices used versus the prices used in th"
+        text: "(a) an explanation of whether and how the undertaking applies carbon pricing in decision- making (for example, investment decisions, transfer pricing and scenario analysis) and the consistency of the prices used versus the prices used in the financial statement for impairment tests; and"
       - id: dp-ec-draft-2026-e1-1037b
         verweis: "E1-10 ¶37(b)"
         datentyp: quantitativ
@@ -361,7 +361,7 @@ drs:
       - id: dp-ec-draft-2026-e1-1138
         verweis: "E1-11 ¶38"
         datentyp: quantitativ
-        text: "38. The objective of this DR is to enable an understanding of how the identified climate-related material physical and transition risks and climate-related opportunities are expected to affect the undertaking’s financial position and future"
+        text: "38. The objective of this DR is to enable an understanding of how the identified climate-related material physical and transition risks and climate-related opportunities are expected to affect the undertaking’s financial position and future performance. Paragraphs 39 and 42 of this Standard add topical specifications to ESRS 2 SBM 3. The information required for this DR is part of the information on current and anticipated financial effects required under ESRS 2 SBM-3."
       - id: dp-ec-draft-2026-e1-1139
         verweis: "E1-11 ¶39"
         datentyp: quantitativ
@@ -385,7 +385,7 @@ drs:
       - id: dp-ec-draft-2026-e1-1140a
         verweis: "E1-11 ¶40(a)"
         datentyp: quantitativ
-        text: "(a) the carrying amount of assets at material transition risk, including the relevant time horizons, and a range of estimated potential stranded assets from the reporting year until the mid-term and long-term time horizons based on a scenar"
+        text: "(a) the carrying amount of assets at material transition risk, including the relevant time horizons, and a range of estimated potential stranded assets from the reporting year until the mid-term and long-term time horizons based on a scenario aligned with limiting climate change to 1.5°C;"
       - id: dp-ec-draft-2026-e1-1140b
         verweis: "E1-11 ¶40(b)"
         datentyp: quantitativ
@@ -401,11 +401,11 @@ drs:
       - id: dp-ec-draft-2026-e1-1140e
         verweis: "E1-11 ¶40(e)"
         datentyp: quantitativ
-        text: "(e) the monetary amount of net revenue from its business activities at material transition risk and, if applicable, the net revenue from its customers operating in coal-, oil- and gas-related activities, including the relevant time horizons"
+        text: "(e) the monetary amount of net revenue from its business activities at material transition risk and, if applicable, the net revenue from its customers operating in coal-, oil- and gas-related activities, including the relevant time horizons."
       - id: dp-ec-draft-2026-e1-1141
         verweis: "E1-11 ¶41"
         datentyp: quantitativ
-        text: "41. The undertaking shall disclose the methodology applied to quantify the amounts specified in paragraphs 39 and 40, including the scope adopted in the calculation, critical assumptions, parameters and limitations, and whether the calculat"
+        text: "41. The undertaking shall disclose the methodology applied to quantify the amounts specified in paragraphs 39 and 40, including the scope adopted in the calculation, critical assumptions, parameters and limitations, and whether the calculation leverages on the process (e.g. scenario analysis) used to identify and assess transition risks."
       - id: dp-ec-draft-2026-e1-1142
         verweis: "E1-11 ¶42"
         datentyp: quantitativ

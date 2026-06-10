@@ -19,7 +19,7 @@ satisfied_by: []
 
 Quantitative Offenlegungspflicht (Konzept `removals-credits`). Originaltext ESRS:
 
-> (a) the amount of carbon credits in tCOeq that are verified against recognised quality standards for carbon credits and cancelled in the reporting period;
+> (a) the amount of carbon credits in tCO₂eq that are verified against recognised quality standards for carbon credits and cancelled in the reporting period;
 
 ⚠ **OFFEN** — noch keine KPI/Target verknüpft (`satisfied_by` leer). Sobald die passende Kennzahl zugeordnet ist, gilt der Datenpunkt als belegt.
 

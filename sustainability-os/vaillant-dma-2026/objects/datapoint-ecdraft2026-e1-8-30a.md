@@ -19,7 +19,7 @@ satisfied_by: []
 
 Quantitative Offenlegungspflicht (Konzept `gross-ghg`). Originaltext ESRS:
 
-> (a) disclose absolute gross GHG emissions generated during the reporting period, expressed as metric tonnes of CO2eq classified as:
+> (a) disclose absolute gross GHG emissions generated during the reporting period, expressed as metric tonnes of CO₂eq classified as:
 
 ⚠ **OFFEN** — noch keine KPI/Target verknüpft (`satisfied_by` leer). Sobald die passende Kennzahl zugeordnet ist, gilt der Datenpunkt als belegt.
 

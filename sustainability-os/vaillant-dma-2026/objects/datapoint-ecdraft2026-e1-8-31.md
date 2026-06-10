@@ -19,7 +19,7 @@ satisfied_by: []
 
 Quantitative Offenlegungspflicht (Konzept `gross-ghg`). Originaltext ESRS:
 
-> 31. The undertaking shall disclose its direct biogenic CO emissions from the combustion or biodegradation of biomass separately from scope 1 GHG emissions.
+> 31. The undertaking shall disclose its direct biogenic CO₂ emissions from the combustion or biodegradation of biomass separately from scope 1 GHG emissions.
 
 ⚠ **OFFEN** — noch keine KPI/Target verknüpft (`satisfied_by` leer). Sobald die passende Kennzahl zugeordnet ist, gilt der Datenpunkt als belegt.
 

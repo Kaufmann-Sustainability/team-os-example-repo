@@ -17,7 +17,7 @@
 
 
 **E1-1 ¶11**  _(narrativ)_
-> 11. The objective of this DR is to enable an understanding of the undertaking’s past, current and future mitigation efforts to ensure that its strategy and business model are compatible with the transition to a sustainable economy and with
+> 11. The objective of this DR is to enable an understanding of the undertaking’s past, current and future mitigation efforts to ensure that its strategy and business model are compatible with the transition to a sustainable economy and with limiting global warming to 1.5°C in line with the Paris Agreement and the objectives of the European Climate Law (Regulation (EU) 2021/1119), including achieving climate neutrality by 2050.
 
 ⚠ **OFFEN** — kein Inhalt für Konzept `transition-plan` zugeordnet.
 
@@ -27,7 +27,7 @@
 ⚠ **OFFEN** — kein Inhalt für Konzept `transition-plan` zugeordnet.
 
 **E1-1 ¶12(a)**  _(narrativ)_
-> (a) a description of its key features. This includes GHG emission reduction targets, the decarbonisation levers, key actions, investments and funding needed to support the implementation of the plan, the approval of the plan by the administ
+> (a) a description of its key features. This includes GHG emission reduction targets, the decarbonisation levers, key actions, investments and funding needed to support the implementation of the plan, the approval of the plan by the administrative, management and supervisory bodies, and how the plan is embedded in and aligned with the undertaking’s overall business strategy. It shall also include information on how the undertaking’s strategy and business model are or will be compatible, pursuant to the implementation of the plan, with the limiting of global warming to 1.5°C in line with the Paris Agreement and with the EU’s objective of achieving climate neutrality by 2050;
 
 ⚠ **OFFEN** — kein Inhalt für Konzept `transition-plan` zugeordnet.
 
@@ -52,7 +52,7 @@
 ⚠ **OFFEN** — kein Inhalt für Konzept `transition-plan` zugeordnet.
 
 **E1-1 ¶13**  _(narrativ)_
-> 13. If the undertaking does not have in place a transition plan for climate change mitigation which includes the key features listed in paragraph 12(a), it shall disclose this fact and indicate whether and, if so, when it expects to adopt o
+> 13. If the undertaking does not have in place a transition plan for climate change mitigation which includes the key features listed in paragraph 12(a), it shall disclose this fact and indicate whether and, if so, when it expects to adopt one.
 
 ⚠ **OFFEN** — kein Inhalt für Konzept `transition-plan` zugeordnet.
 
@@ -74,7 +74,7 @@
 ⚠ **OFFEN** — kein Inhalt für Konzept `climate-risks` zugeordnet.
 
 **E1-2 ¶16**  _(narrativ)_
-> 16. In addition to the disclosure provided in accordance with ESRS 2 IRO-1, the undertaking shall disclose key elements of the methodology used to assess how its assets and business activities in its own operations and its upstream and down
+> 16. In addition to the disclosure provided in accordance with ESRS 2 IRO-1, the undertaking shall disclose key elements of the methodology used to assess how its assets and business activities in its own operations and its upstream and downstream value chain may be exposed and be sensitive over the short, medium and long term to:
 
 ⚠ **OFFEN** — kein Inhalt für Konzept `climate-risks` zugeordnet.
 
@@ -151,7 +151,7 @@
 ⚠ **OFFEN** — kein Inhalt für Konzept `resilience` zugeordnet.
 
 **E1-3 ¶19(b)**  _(narrativ)_
-> (b) in relation to climate-related risks. The undertaking shall explain: (i) the implications of the assessment, if any, for its strategy and business model; (ii) how the effects identified through the climate-related scenario analysis, if
+> (b) in relation to climate-related risks. The undertaking shall explain: (i) the implications of the assessment, if any, for its strategy and business model; (ii) how the effects identified through the climate-related scenario analysis, if used, inform the undertaking’s potential response to climate-related risks; and (iii) how its transition plan, if existent, and its current and planned mitigation and adaptation actions (ESRS E1-5) contribute to its resilience to climate-related risks;
 
 ⚠ **OFFEN** — kein Inhalt für Konzept `resilience` zugeordnet.
 
@@ -251,17 +251,17 @@ _Entwurf:_ aus o. g. Quelle(n) zu verfassen — **Absatz-Abdeckung im Review pr�
 _Entwurf:_ aus o. g. Quelle(n) zu verfassen — **Absatz-Abdeckung im Review prüfen.**
 
 **E1-6 ¶24(a)**  _(narrativ)_
-> (a) absolute GHG emission reduction targets for scopes 1, 2 and 3, either separately or combined, and where relevant, in intensity value. The undertaking shall specify, in case of combined GHG emission reduction targets, which GHG emission
+> (a) absolute GHG emission reduction targets for scopes 1, 2 and 3, either separately or combined, and where relevant, in intensity value. The undertaking shall specify, in case of combined GHG emission reduction targets, which GHG emission scopes (1, 2 and/or 3) are covered by the target and the share related to each respective GHG emission scope;
 
 _Entwurf:_ aus o. g. Quelle(n) zu verfassen — **Absatz-Abdeckung im Review prüfen.**
 
 **E1-6 ¶24(b)**  _(narrativ)_
-> (b) if the scope (geography, GHGs covered, entities included) of the GHG emission reduction target diverges from the scope of the GHG inventory (reported under ESRS E1-8), the percentages for scopes 1, 2 and 3 covered by the target, as well
+> (b) if the scope (geography, GHGs covered, entities included) of the GHG emission reduction target diverges from the scope of the GHG inventory (reported under ESRS E1-8), the percentages for scopes 1, 2 and 3 covered by the target, as well as which GHGs are covered; and
 
 _Entwurf:_ aus o. g. Quelle(n) zu verfassen — **Absatz-Abdeckung im Review prüfen.**
 
 **E1-6 ¶24(c)**  _(narrativ)_
-> (c) a statement on whether the GHG emission reduction targets are science-based and compatible with limiting global warming to 1.5°C. The undertaking shall state which framework and methodology has been used to determine these targets, incl
+> (c) a statement on whether the GHG emission reduction targets are science-based and compatible with limiting global warming to 1.5°C. The undertaking shall state which framework and methodology has been used to determine these targets, including whether they are derived using a sectoral decarbonisation pathway, and the underlying climate and policy scenarios. As part of the critical assumptions used for setting GHG emission reduction targets, the undertaking shall briefly explain how it has considered future developments (e.g. changes in sales volumes, shifts in customer preferences and demand, regulatory factors, and new technologies) and how these will potentially impact both its GHG emissions and emissions reductions.
 
 _Entwurf:_ aus o. g. Quelle(n) zu verfassen — **Absatz-Abdeckung im Review prüfen.**
 
@@ -355,7 +355,7 @@ _Entwurf:_ aus o. g. Quelle(n) zu verfassen — **Absatz-Abdeckung im Review pr�
 ⚠ **OFFEN** — Datenpunkt-Objekt `datapoint-ecdraft2026-e1-8-30` vorhanden, aber ohne `satisfied_by` (KPI/Target fehlt).
 
 **E1-8 ¶30(a)**  _(quantitativ)_
-> (a) disclose absolute gross GHG emissions generated during the reporting period, expressed as metric tonnes of CO2eq classified as:
+> (a) disclose absolute gross GHG emissions generated during the reporting period, expressed as metric tonnes of CO₂eq classified as:
 
 ⚠ **OFFEN** — Datenpunkt-Objekt `datapoint-ecdraft2026-e1-8-30a` vorhanden, aber ohne `satisfied_by` (KPI/Target fehlt).
 
@@ -395,7 +395,7 @@ _Entwurf:_ aus o. g. Quelle(n) zu verfassen — **Absatz-Abdeckung im Review pr�
 ⚠ **OFFEN** — Datenpunkt-Objekt `datapoint-ecdraft2026-e1-8-30cii` vorhanden, aber ohne `satisfied_by` (KPI/Target fehlt).
 
 **E1-8 ¶31**  _(quantitativ)_
-> 31. The undertaking shall disclose its direct biogenic CO emissions from the combustion or biodegradation of biomass separately from scope 1 GHG emissions.
+> 31. The undertaking shall disclose its direct biogenic CO₂ emissions from the combustion or biodegradation of biomass separately from scope 1 GHG emissions.
 
 ⚠ **OFFEN** — Datenpunkt-Objekt `datapoint-ecdraft2026-e1-8-31` vorhanden, aber ohne `satisfied_by` (KPI/Target fehlt).
 
@@ -407,7 +407,7 @@ _Entwurf:_ aus o. g. Quelle(n) zu verfassen — **Absatz-Abdeckung im Review pr�
 
 
 **E1-9 ¶32**  _(quantitativ)_
-> 32. The objective of this DR is to enable an understanding of the undertaking’s actions to reduce and permanently remove GHGs from the atmosphere and of the amount and quality of carbon credits it has purchased or intends to purchase from t
+> 32. The objective of this DR is to enable an understanding of the undertaking’s actions to reduce and permanently remove GHGs from the atmosphere and of the amount and quality of carbon credits it has purchased or intends to purchase from the voluntary market.
 
 ⚠ **OFFEN** — kein Inhalt für Konzept `removals-credits` zugeordnet.
 
@@ -432,7 +432,7 @@ _Entwurf:_ aus o. g. Quelle(n) zu verfassen — **Absatz-Abdeckung im Review pr�
 ⚠ **OFFEN** — Datenpunkt-Objekt `datapoint-ecdraft2026-e1-9-33c` vorhanden, aber ohne `satisfied_by` (KPI/Target fehlt).
 
 **E1-9 ¶33(d)**  _(quantitativ)_
-> (d) disclose any reversals (in tCOeq) that may have occurred in the reporting period and decrease the amount of CO2 removed and stored by the same amount.
+> (d) disclose any reversals (in tCO₂eq) that may have occurred in the reporting period and decrease the amount of CO₂ removed and stored by the same amount.
 
 ⚠ **OFFEN** — Datenpunkt-Objekt `datapoint-ecdraft2026-e1-9-33d` vorhanden, aber ohne `satisfied_by` (KPI/Target fehlt).
 
@@ -442,12 +442,12 @@ _Entwurf:_ aus o. g. Quelle(n) zu verfassen — **Absatz-Abdeckung im Review pr�
 ⚠ **OFFEN** — Datenpunkt-Objekt `datapoint-ecdraft2026-e1-9-34` vorhanden, aber ohne `satisfied_by` (KPI/Target fehlt).
 
 **E1-9 ¶34(a)**  _(quantitativ)_
-> (a) the amount of carbon credits in tCOeq that are verified against recognised quality standards for carbon credits and cancelled in the reporting period;
+> (a) the amount of carbon credits in tCO₂eq that are verified against recognised quality standards for carbon credits and cancelled in the reporting period;
 
 ⚠ **OFFEN** — Datenpunkt-Objekt `datapoint-ecdraft2026-e1-9-34a` vorhanden, aber ohne `satisfied_by` (KPI/Target fehlt).
 
 **E1-9 ¶34(b)**  _(quantitativ)_
-> (b) the amount of carbon credits in tCOeq purchased in the reporting period and not cancelled yet; and
+> (b) the amount of carbon credits in tCO₂eq purchased in the reporting period and not cancelled yet; and
 
 ⚠ **OFFEN** — Datenpunkt-Objekt `datapoint-ecdraft2026-e1-9-34b` vorhanden, aber ohne `satisfied_by` (KPI/Target fehlt).
 
@@ -467,7 +467,7 @@ _Entwurf:_ aus o. g. Quelle(n) zu verfassen — **Absatz-Abdeckung im Review pr�
 ⚠ **OFFEN** — Datenpunkt-Objekt `datapoint-ecdraft2026-e1-9-35a` vorhanden, aber ohne `satisfied_by` (KPI/Target fehlt).
 
 **E1-9 ¶35(b)**  _(quantitativ)_
-> (b) the credibility and integrity of the carbon credits used by referring to recognised quality standards for carbon credits and any other factors necessary to understand the credibility and integrity of the carbon credits the undertaking p
+> (b) the credibility and integrity of the carbon credits used by referring to recognised quality standards for carbon credits and any other factors necessary to understand the credibility and integrity of the carbon credits the undertaking plans to use.
 
 ⚠ **OFFEN** — Datenpunkt-Objekt `datapoint-ecdraft2026-e1-9-35b` vorhanden, aber ohne `satisfied_by` (KPI/Target fehlt).
 
@@ -479,7 +479,7 @@ _Entwurf:_ aus o. g. Quelle(n) zu verfassen — **Absatz-Abdeckung im Review pr�
 
 
 **E1-11 ¶38**  _(quantitativ)_
-> 38. The objective of this DR is to enable an understanding of how the identified climate-related material physical and transition risks and climate-related opportunities are expected to affect the undertaking’s financial position and future
+> 38. The objective of this DR is to enable an understanding of how the identified climate-related material physical and transition risks and climate-related opportunities are expected to affect the undertaking’s financial position and future performance. Paragraphs 39 and 42 of this Standard add topical specifications to ESRS 2 SBM 3. The information required for this DR is part of the information on current and anticipated financial effects required under ESRS 2 SBM-3.
 
 ⚠ **OFFEN** — kein Inhalt für Konzept `financial-effects` zugeordnet.
 
@@ -509,7 +509,7 @@ _Entwurf:_ aus o. g. Quelle(n) zu verfassen — **Absatz-Abdeckung im Review pr�
 ⚠ **OFFEN** — Datenpunkt-Objekt `datapoint-ecdraft2026-e1-11-40` vorhanden, aber ohne `satisfied_by` (KPI/Target fehlt).
 
 **E1-11 ¶40(a)**  _(quantitativ)_
-> (a) the carrying amount of assets at material transition risk, including the relevant time horizons, and a range of estimated potential stranded assets from the reporting year until the mid-term and long-term time horizons based on a scenar
+> (a) the carrying amount of assets at material transition risk, including the relevant time horizons, and a range of estimated potential stranded assets from the reporting year until the mid-term and long-term time horizons based on a scenario aligned with limiting climate change to 1.5°C;
 
 ⚠ **OFFEN** — Datenpunkt-Objekt `datapoint-ecdraft2026-e1-11-40a` vorhanden, aber ohne `satisfied_by` (KPI/Target fehlt).
 
@@ -529,12 +529,12 @@ _Entwurf:_ aus o. g. Quelle(n) zu verfassen — **Absatz-Abdeckung im Review pr�
 ⚠ **OFFEN** — Datenpunkt-Objekt `datapoint-ecdraft2026-e1-11-40d` vorhanden, aber ohne `satisfied_by` (KPI/Target fehlt).
 
 **E1-11 ¶40(e)**  _(quantitativ)_
-> (e) the monetary amount of net revenue from its business activities at material transition risk and, if applicable, the net revenue from its customers operating in coal-, oil- and gas-related activities, including the relevant time horizons
+> (e) the monetary amount of net revenue from its business activities at material transition risk and, if applicable, the net revenue from its customers operating in coal-, oil- and gas-related activities, including the relevant time horizons.
 
 ⚠ **OFFEN** — Datenpunkt-Objekt `datapoint-ecdraft2026-e1-11-40e` vorhanden, aber ohne `satisfied_by` (KPI/Target fehlt).
 
 **E1-11 ¶41**  _(quantitativ)_
-> 41. The undertaking shall disclose the methodology applied to quantify the amounts specified in paragraphs 39 and 40, including the scope adopted in the calculation, critical assumptions, parameters and limitations, and whether the calculat
+> 41. The undertaking shall disclose the methodology applied to quantify the amounts specified in paragraphs 39 and 40, including the scope adopted in the calculation, critical assumptions, parameters and limitations, and whether the calculation leverages on the process (e.g. scenario analysis) used to identify and assess transition risks.
 
 ⚠ **OFFEN** — Datenpunkt-Objekt `datapoint-ecdraft2026-e1-11-41` vorhanden, aber ohne `satisfied_by` (KPI/Target fehlt).
 

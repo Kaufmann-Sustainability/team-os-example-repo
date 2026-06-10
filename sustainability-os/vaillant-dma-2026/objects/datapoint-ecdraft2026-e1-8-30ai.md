@@ -21,6 +21,6 @@ Quantitative Offenlegungspflicht (Konzept `gross-ghg`). Originaltext ESRS:
 
 > i. scope 1 GHG emissions, including the percentage of scope 1 GHG emissions from the EU Emission Trading System (EU ETS) if it has emissions from this system;
 
-✅ **BELEGT** — verknüpft mit `kpi-e1-scope1-2` (Scope-1/2-THG) über `satisfied_by`.
+✅ **BELEGT** — verknüpft mit `kpi-e1-scope1-2` über `satisfied_by`.
 
 > **Educated Guess** — automatisch aus dem ESRS-Katalog gemintet (`tools/gen_datapoints.py`); kein Vaillant-Originaldokument.

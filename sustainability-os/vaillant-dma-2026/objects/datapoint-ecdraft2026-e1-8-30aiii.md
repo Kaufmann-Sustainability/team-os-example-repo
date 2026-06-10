@@ -21,6 +21,6 @@ Quantitative Offenlegungspflicht (Konzept `gross-ghg`). Originaltext ESRS:
 
 > iii. scope 3 GHG emissions from each significant scope 3 category as a total and per category.
 
-✅ **BELEGT** — verknüpft mit `kpi-e1-scope3-11` und `kpi-e1-scope3-1-intensitaet` über `satisfied_by`.
+✅ **BELEGT** — verknüpft mit `kpi-e1-scope3-11`, `kpi-e1-scope3-1-intensitaet` über `satisfied_by`.
 
 > **Educated Guess** — automatisch aus dem ESRS-Katalog gemintet (`tools/gen_datapoints.py`); kein Vaillant-Originaldokument.

@@ -11,11 +11,42 @@ Aufruf:
   python3 tools/import_esrs_catalog.py reference/esrs-ec-draft-2026.xlsx "ESRS E1" \\
           --version ec-draft-2026 --out reference/esrs-catalog-e1-ecdraft2026.yaml
 """
-import argparse, datetime
+import argparse, datetime, glob, re
 import openpyxl
+import yaml
+from pathlib import Path
+
+REF = Path(__file__).resolve().parent.parent / "reference"
 
 # DRs mit überwiegend quantitativen/monetären Datenpunkten (Heuristik für datentyp)
 QUANT_DRS = {"E1-7", "E1-8", "E1-9", "E1-10", "E1-11"}
+
+
+def restore_co2(t: str) -> str:
+    """Stellt das in der Quelle verlorene tiefgestellte ₂ der CO₂-Familie wieder her.
+    Die EFRAG-xlsx legt das Subscript inkonsistent ab (mal 'CO2eq', mal 'CO' / 'tCOeq').
+    Reihenfolge bewusst: erst die fehlenden Fälle, dann Normalisierung der vorhandenen."""
+    t = re.sub(r"\btCOeq\b", "tCO₂eq", t)   # 'tCOeq' / 'tCOeq)' -> tCO₂eq
+    t = re.sub(r"\bCOeq\b", "CO₂eq", t)     # 'COeq'  -> CO₂eq
+    t = re.sub(r"\bCO\b", "CO₂", t)         # alleinstehendes 'CO' (z. B. 'biogenic CO emissions')
+    t = re.sub(r"\bCO2eq\b", "CO₂eq", t)    # vorhandenes 'CO2eq' auf Subscript normalisieren
+    t = re.sub(r"\bCO2\b", "CO₂", t)        # vorhandenes 'CO2'
+    return t
+
+
+def concept_map(standard: str, version: str) -> dict:
+    """dr_code -> concept aus der passenden Konzept-Spine (reference/esrs-concepts*.yaml).
+    Macht das `concept:`-Feld reproduzierbar, statt es nach dem Import von Hand zu setzen."""
+    for p in sorted(glob.glob(str(REF / "esrs-concepts*.yaml"))):
+        sp = yaml.safe_load(open(p))
+        if sp.get("standard") == standard:
+            out = {}
+            for k in sp.get("konzepte", []):
+                code = (k.get("nummerierung") or {}).get(version)
+                if code:
+                    out[code] = k["id"]
+            return out
+    return {}
 
 
 def slug(*parts):
@@ -33,6 +64,7 @@ def run(xlsx, sheet, version, out):
     def g(r, k): v = r[H[k]]; return "" if v is None else str(v).strip()
 
     standard = sheet.replace("ESRS ", "").strip()
+    con_map = concept_map(standard, version)   # dr_code -> concept (aus Spine, reproduzierbar)
     drs = {}          # dr_code -> {name, datapoints:[...]}
     for r in rows[1:]:
         if g(r, "Chapter") != "Disclosure Requirements":
@@ -47,13 +79,13 @@ def run(xlsx, sheet, version, out):
         if g(r, "Type") != "DR" or not g(r, "Para #"):
             continue
         para, sub, subsub = g(r, "Para #"), g(r, "Sub-item"), g(r, "Sub-sub-item")
-        text = g(r, "Text")
+        text = restore_co2(g(r, "Text"))   # volle Länge (keine Kappung) + ₂ wiederhergestellt
         datentyp = "quantitativ" if code in QUANT_DRS else "narrativ"
         dr["datapoints"].append({
             "id": f"dp-{version}-{slug(code, para, sub, subsub)}",
             "verweis": f"{code} ¶{para}{sub}{subsub}".strip(),
             "datentyp": datentyp,
-            "text": text[:240],
+            "text": text,
         })
 
     # YAML von Hand schreiben (deterministisch, keine Sortier-Überraschungen)
@@ -74,6 +106,8 @@ def run(xlsx, sheet, version, out):
         d = drs[code]
         lines.append(f"  - dr_code: {code}")
         lines.append(f"    dr_name: {dump_str(d['name'])}")
+        if con_map.get(code):
+            lines.append(f"    concept: {con_map[code]}")
         lines.append(f"    datenpunkte:")
         for dp in d["datapoints"]:
             lines.append(f"      - id: {dp['id']}")

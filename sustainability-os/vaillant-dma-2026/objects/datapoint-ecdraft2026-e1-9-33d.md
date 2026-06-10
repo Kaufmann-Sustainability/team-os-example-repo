@@ -19,7 +19,7 @@ satisfied_by: []
 
 Quantitative Offenlegungspflicht (Konzept `removals-credits`). Originaltext ESRS:
 
-> (d) disclose any reversals (in tCOeq) that may have occurred in the reporting period and decrease the amount of CO2 removed and stored by the same amount.
+> (d) disclose any reversals (in tCO₂eq) that may have occurred in the reporting period and decrease the amount of CO₂ removed and stored by the same amount.
 
 ⚠ **OFFEN** — noch keine KPI/Target verknüpft (`satisfied_by` leer). Sobald die passende Kennzahl zugeordnet ist, gilt der Datenpunkt als belegt.
 

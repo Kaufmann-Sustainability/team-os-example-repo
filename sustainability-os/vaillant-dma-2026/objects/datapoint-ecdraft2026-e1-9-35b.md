@@ -19,7 +19,7 @@ satisfied_by: []
 
 Quantitative Offenlegungspflicht (Konzept `removals-credits`). Originaltext ESRS:
 
-> (b) the credibility and integrity of the carbon credits used by referring to recognised quality standards for carbon credits and any other factors necessary to understand the credibility and integrity of the carbon credits the undertaking p
+> (b) the credibility and integrity of the carbon credits used by referring to recognised quality standards for carbon credits and any other factors necessary to understand the credibility and integrity of the carbon credits the undertaking plans to use.
 
 ⚠ **OFFEN** — noch keine KPI/Target verknüpft (`satisfied_by` leer). Sobald die passende Kennzahl zugeordnet ist, gilt der Datenpunkt als belegt.
 
