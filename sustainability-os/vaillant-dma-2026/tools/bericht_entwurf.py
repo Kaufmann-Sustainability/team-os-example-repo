@@ -62,7 +62,7 @@ def run(std, version, kunde, out_path):
     cat = yaml.safe_load(open(cat_path(std, version)))
     spine = load_spine(std)
     rules = [(r["typ"], r["feld"], r["praefix"], r["konzept"]) for r in spine.get("ableitung", [])]
-    # ec-draft dient IMMER als Code->Konzept-Auflöser für manuelle datapoints & Anwendbarkeit
+    # ec-draft löst die Anwendbarkeits-Datei (in ec-draft-Codes) auf Konzepte auf
     eccat = yaml.safe_load(open(cat_path(std, "ecdraft2026")))
     code2concept = {dr["dr_code"]: dr.get("concept") for dr in eccat["drs"]}
     objs = load_objects()
@@ -73,11 +73,11 @@ def run(std, version, kunde, out_path):
     excl_con = {code2concept.get(e["dr"]): e["grund"] for e in appl.get("nicht_anwendbar", [])}
 
     # --- Zuordnung je Konzept aufbauen ---
-    # MANUELL: datapoint.satisfied_by -> Konzept via dr_code
+    # MANUELL: datapoint.satisfied_by -> Konzept DIREKT (versionsunabhängig, kein dr_code)
     manual = {}   # concept -> set(ids)
     for oid, (fm, _t) in objs.items():
         if fm.get("type") == "datapoint" and fm.get("satisfied_by"):
-            con = code2concept.get(fm.get("dr_code"))
+            con = fm.get("concept")
             if con:
                 manual.setdefault(con, set()).update(fm["satisfied_by"])
     # ABGELEITET: type + Topologie-Gate -> Konzept

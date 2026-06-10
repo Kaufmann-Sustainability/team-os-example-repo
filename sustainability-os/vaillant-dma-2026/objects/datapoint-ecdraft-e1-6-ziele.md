@@ -5,10 +5,8 @@ owner: person-vaillant-cso
 status: in-arbeit
 stand: 2026-06-10
 vertraulichkeit: intern
-esrs_datapoint: E1-6
 framework: ESRS
-katalog_version: ec-draft-2026
-dr_code: E1-6
+concept: targets-climate
 datentyp: narrativ
 concerns: [topic-e1-klimawandel-mitigation]
 satisfied_by: [target-e1-scope1-2-netzero, target-e1-scope3-11-usephase, target-e1-scope3-logistik, target-e1-scope3-1-embodied]

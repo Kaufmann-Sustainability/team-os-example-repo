@@ -5,10 +5,8 @@ owner: person-vaillant-decarb
 status: in-arbeit
 stand: 2026-06-10
 vertraulichkeit: intern
-esrs_datapoint: E1-8
 framework: ESRS
-katalog_version: ec-draft-2026
-dr_code: E1-8
+concept: gross-ghg
 datentyp: quantitativ
 concerns: [topic-e1-klimawandel-mitigation]
 satisfied_by: [kpi-e1-scope3-11, kpi-e1-scope1-2]

@@ -71,6 +71,10 @@ def pruefe(objekte: dict[str, dict]) -> list[str]:
         for feld in typen[typ]["pflichtfelder"]:
             if feld not in obj:
                 E(oid, f"type={typ} verlangt Feld '{feld}'")
+        # 2b) "eines von" — mind. ein Feld je Gruppe muss vorhanden sein
+        for gruppe in typen[typ].get("pflicht_eines", []):
+            if not any(feld in obj for feld in gruppe):
+                E(oid, f"type={typ} verlangt eines von {gruppe}")
 
         # 3) owner -> existierende person
         owner = obj.get("owner")
