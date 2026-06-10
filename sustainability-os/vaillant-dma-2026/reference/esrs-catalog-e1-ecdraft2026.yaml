@@ -8,6 +8,7 @@ datenpunkte: 90
 drs:
   - dr_code: E1-1
     dr_name: "Transition plan for climate change mitigation"
+    concept: transition-plan
     datenpunkte:
       - id: dp-ec-draft-2026-e1-111
         verweis: "E1-1 ¶11"
@@ -43,6 +44,7 @@ drs:
         text: "13. If the undertaking does not have in place a transition plan for climate change mitigation which includes the key features listed in paragraph 12(a), it shall disclose this fact and indicate whether and, if so, when it expects to adopt o"
   - dr_code: E1-2
     dr_name: "Identification of climate-related risks and scenario analysis"
+    concept: climate-risks
     datenpunkte:
       - id: dp-ec-draft-2026-e1-214
         verweis: "E1-2 ¶14"
@@ -98,6 +100,7 @@ drs:
         text: "(d) the time period when it was carried out."
   - dr_code: E1-3
     dr_name: "Resilience in relation to climate change"
+    concept: resilience
     datenpunkte:
       - id: dp-ec-draft-2026-e1-318
         verweis: "E1-3 ¶18"
@@ -125,6 +128,7 @@ drs:
         text: "(d) its capacity to adjust or adapt its strategy and business model to climate change over the short, medium and long term."
   - dr_code: E1-4
     dr_name: "Policies related to climate change mitigation and adaptation"
+    concept: policies-climate
     datenpunkte:
       - id: dp-ec-draft-2026-e1-420
         verweis: "E1-4 ¶20"
@@ -132,6 +136,7 @@ drs:
         text: "20. The undertaking shall disclose its climate change mitigation and climate change adaptation policies in accordance with the provisions of ESRS 2 GDR-P."
   - dr_code: E1-5
     dr_name: "Actions and resources in relation to climate change mitigation and adaptation"
+    concept: actions-climate
     datenpunkte:
       - id: dp-ec-draft-2026-e1-521
         verweis: "E1-5 ¶21"
@@ -151,6 +156,7 @@ drs:
         text: "(b) the achieved and expected GHG emission reduction by decarbonisation lever."
   - dr_code: E1-6
     dr_name: "Targets related to climate change"
+    concept: targets-climate
     datenpunkte:
       - id: dp-ec-draft-2026-e1-623
         verweis: "E1-6 ¶23"
@@ -174,6 +180,7 @@ drs:
         text: "(c) a statement on whether the GHG emission reduction targets are science-based and compatible with limiting global warming to 1.5°C. The undertaking shall state which framework and methodology has been used to determine these targets, incl"
   - dr_code: E1-7
     dr_name: "Energy consumption and mix"
+    concept: energy
     datenpunkte:
       - id: dp-ec-draft-2026-e1-725
         verweis: "E1-7 ¶25"
@@ -225,6 +232,7 @@ drs:
         text: "28. If the undertaking produces energy, it shall also disaggregate and disclose separately its non- renewable energy production and renewable energy production in MWh."
   - dr_code: E1-8
     dr_name: "Gross scope 1, 2, 3 GHG emissions"
+    concept: gross-ghg
     datenpunkte:
       - id: dp-ec-draft-2026-e1-829
         verweis: "E1-8 ¶29"
@@ -272,6 +280,7 @@ drs:
         text: "31. The undertaking shall disclose its direct biogenic CO emissions from the combustion or biodegradation of biomass separately from scope 1 GHG emissions."
   - dr_code: E1-9
     dr_name: "GHG removals and GHG mitigation projects financed through carbon credits"
+    concept: removals-credits
     datenpunkte:
       - id: dp-ec-draft-2026-e1-932
         verweis: "E1-9 ¶32"
@@ -327,6 +336,7 @@ drs:
         text: "(b) the credibility and integrity of the carbon credits used by referring to recognised quality standards for carbon credits and any other factors necessary to understand the credibility and integrity of the carbon credits the undertaking p"
   - dr_code: E1-10
     dr_name: "Internal carbon pricing"
+    concept: internal-carbon-price
     datenpunkte:
       - id: dp-ec-draft-2026-e1-1036
         verweis: "E1-10 ¶36"
@@ -346,6 +356,7 @@ drs:
         text: "(b) the average carbon price per metric tonne of GHG emissions for each internal pricing scheme."
   - dr_code: E1-11
     dr_name: "Anticipated financial effects from material physical and transition risks and potential climate-related opportunities"
+    concept: financial-effects
     datenpunkte:
       - id: dp-ec-draft-2026-e1-1138
         verweis: "E1-11 ¶38"

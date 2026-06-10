@@ -1,0 +1,60 @@
+# ESRS E1 — FASSUNG 2023 (final, Delegierte VO 2023/2772). Finale DR-Nummerierung.
+# Kompakt gehalten (repräsentative Datenpunkte je DR) — dient der Versions-Demo.
+# Maßgeblich für die Zuordnung ist `concept:` je DR (stabiler Anker, s. esrs-concepts.yaml).
+standard: E1
+katalog_version: esrs-2023
+quelle: "ESRS E1, Delegierte Verordnung (EU) 2023/2772"
+disclosure_requirements: 9
+drs:
+  - dr_code: E1-1
+    dr_name: "Transition plan for climate change mitigation"
+    concept: transition-plan
+    datenpunkte:
+      - {verweis: "E1-1 ¶14", datentyp: narrativ, text: "Die Angaben zum Transitionsplan für den Klimaschutz umfassen Reduktionsziele, Dekarbonisierungshebel, Schlüsselmaßnahmen und Investitionen."}
+      - {verweis: "E1-1 ¶16(g)", datentyp: narrativ, text: "Erläuterung, wie der Transitionsplan in die allgemeine Geschäftsstrategie und Finanzplanung eingebettet ist."}
+  - dr_code: E1-2
+    dr_name: "Policies related to climate change mitigation and adaptation"
+    concept: policies-climate
+    datenpunkte:
+      - {verweis: "E1-2 ¶24", datentyp: narrativ, text: "Das Unternehmen legt die Konzepte (Policies) zur Steuerung seiner wesentlichen Auswirkungen, Risiken und Chancen in Bezug auf Klimaschutz und -anpassung offen."}
+      - {verweis: "E1-2 ¶25", datentyp: narrativ, text: "Verweis auf ESRS 2 MDR-P; Angabe, ob die Policies Klimaschutz, -anpassung, Energieeffizienz, erneuerbare Energie u. a. adressieren."}
+  - dr_code: E1-3
+    dr_name: "Actions and resources in relation to climate change policies"
+    concept: actions-climate
+    datenpunkte:
+      - {verweis: "E1-3 ¶29", datentyp: narrativ, text: "Das Unternehmen legt seine Klimaschutz-Maßnahmen und die zugewiesenen Ressourcen offen (Verweis ESRS 2 MDR-A)."}
+      - {verweis: "E1-3 ¶29(a)", datentyp: narrativ, text: "Zuordnung der wichtigsten Maßnahmen zu Dekarbonisierungshebeln und erwartete THG-Reduktion."}
+  - dr_code: E1-4
+    dr_name: "Targets related to climate change mitigation and adaptation"
+    concept: targets-climate
+    datenpunkte:
+      - {verweis: "E1-4 ¶34", datentyp: narrativ, text: "Das Unternehmen legt die im Zusammenhang mit Klimaschutz und -anpassung gesetzten Ziele offen."}
+      - {verweis: "E1-4 ¶34(a)", datentyp: quantitativ, text: "Absolute oder intensitätsbezogene THG-Reduktionsziele für Scope 1, 2 und 3."}
+      - {verweis: "E1-4 ¶34(c)", datentyp: narrativ, text: "Angabe, ob die Ziele wissenschaftsbasiert und mit der Begrenzung der Erderwärmung auf 1,5 °C vereinbar sind."}
+  - dr_code: E1-5
+    dr_name: "Energy consumption and mix"
+    concept: energy
+    datenpunkte:
+      - {verweis: "E1-5 ¶37", datentyp: quantitativ, text: "Gesamtenergieverbrauch in MWh, aufgeschlüsselt nach fossilen, nuklearen und erneuerbaren Quellen."}
+      - {verweis: "E1-5 ¶38", datentyp: quantitativ, text: "Energieintensität je Nettoumsatz (MWh pro Geldeinheit) für Tätigkeiten in klimaintensiven Sektoren."}
+  - dr_code: E1-6
+    dr_name: "Gross Scopes 1, 2, 3 and Total GHG emissions"
+    concept: gross-ghg
+    datenpunkte:
+      - {verweis: "E1-6 ¶44", datentyp: quantitativ, text: "Brutto-Scope-1-, Scope-2- und Scope-3-THG-Emissionen sowie Gesamt-THG-Emissionen in tCO2e."}
+      - {verweis: "E1-6 ¶48", datentyp: quantitativ, text: "THG-Intensität (Gesamtemissionen je Nettoumsatz)."}
+  - dr_code: E1-7
+    dr_name: "GHG removals and GHG mitigation projects financed through carbon credits"
+    concept: removals-credits
+    datenpunkte:
+      - {verweis: "E1-7 ¶56", datentyp: quantitativ, text: "THG-Entnahmen und -Speicherung in der eigenen Wertschöpfungskette in tCO2e."}
+  - dr_code: E1-8
+    dr_name: "Internal carbon pricing"
+    concept: internal-carbon-price
+    datenpunkte:
+      - {verweis: "E1-8 ¶62", datentyp: narrativ, text: "Beschreibung etwaiger interner CO2-Bepreisungssysteme und ihres Anwendungsbereichs."}
+  - dr_code: E1-9
+    dr_name: "Anticipated financial effects from material physical and transition risks"
+    concept: financial-effects
+    datenpunkte:
+      - {verweis: "E1-9 ¶67", datentyp: quantitativ, text: "Erwartete finanzielle Effekte aus wesentlichen physischen und transitorischen Klimarisiken."}

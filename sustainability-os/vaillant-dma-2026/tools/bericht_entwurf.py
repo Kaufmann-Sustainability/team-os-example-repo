@@ -1,24 +1,28 @@
 #!/usr/bin/env python3
 """
-Bericht-Entwurfs-Generator (ESRS).
+Bericht-Entwurfs-Generator (ESRS) — VERSIONS-PARAMETRIERT.
 
-Konsumiert die drei Schichten und erzeugt einen Markdown-ENTWURF je anwendbarem
-Datenpunkt:
-  1. Katalog        reference/esrs-catalog-<std>-*.yaml   (geteilt, alle Datenpunkte)
-  2. Anwendbarkeit  reference/anwendbarkeit-<kunde>-<std>.yaml (kundenspezifisch, DMA-Output)
-  3. Inhalt         objects/datapoint-*.md  ->  satisfied_by-Kanten auf Targets/KPIs/...
+Erzeugt einen Markdown-Entwurf je anwendbarem Datenpunkt, ausspielbar gegen JEDE
+Katalog-Version (z. B. ESRS 2023 final ODER EC-Entwurf 2026). Inhalt ist nicht an
+DR-Nummern gebunden, sondern an stabile KONZEPTE (reference/esrs-concepts.yaml);
+jede Katalog-Version bildet ihre DR-Codes via `concept:` darauf ab. -> Ein Mapping,
+alle Versionen.
 
-Die Lücke wird EMERGENT sichtbar: jeder anwendbare Absatz ohne verknüpften Inhalt
-erhält einen ⚠ OFFEN-Marker. Der Generator urteilt NICHT über inhaltliche
-Vollständigkeit (z. B. ob alle signifikanten Scope-3-Kategorien abgedeckt sind) —
-das ist ein Review-/disclosure-readiness-Schritt durch den Menschen.
+Zwei Zuordnungs-Quellen je Konzept:
+  - MANUELL    : datapoint-*-Objekte mit `satisfied_by` (autoritativ).
+  - ABGELEITET : Tier-1-Regeln type->Konzept, topologie-gegated (deterministisch, kein
+                 LLM, nicht halluzinierbar). KPIs & narrative DRs werden NICHT abgeleitet.
+
+Lücke bleibt emergent: anwendbarer DR ohne Inhalt -> ⚠ OFFEN. Inhaltliche
+Vollständigkeit je Absatz ist ein menschlicher Review-Schritt.
 
 Aufruf:
-  python3 tools/bericht_entwurf.py E1 --kunde vaillant-dma-2026 --out reporting/bericht-entwurf-e1.md
+  python3 tools/bericht_entwurf.py E1 --version 2023        --kunde vaillant-dma-2026
+  python3 tools/bericht_entwurf.py E1 --version ecdraft2026 --kunde vaillant-dma-2026
 Benötigt: PyYAML.
 """
 from __future__ import annotations
-import argparse, glob, re, sys
+import argparse, re, sys
 from datetime import date
 from pathlib import Path
 import yaml
@@ -26,10 +30,15 @@ import yaml
 ROOT = Path(__file__).resolve().parent.parent
 FM = re.compile(r"^---\n(.*?)\n---(.*)$", re.DOTALL)
 H1 = re.compile(r"^#\s+(.+)$", re.MULTILINE)
+# Tier-1-Ableitungsregeln: (type, gate-feld, gate-id-präfix) -> Konzept
+DERIVE = [
+    ("policy",     "concerns",  "topic-e1",  "policies-climate"),
+    ("target",     "addresses", "iro-e1",    "targets-climate"),
+    ("initiative", "supports",  "target-e1", "actions-climate"),
+]
 
 
 def load_objects():
-    """id -> (frontmatter-dict, titel)"""
     out = {}
     for p in sorted((ROOT / "objects").glob("*.md")):
         m = FM.search(p.read_text(encoding="utf-8"))
@@ -41,86 +50,113 @@ def load_objects():
     return out
 
 
-def run(std, kunde, out_path):
-    cat_files = sorted(glob.glob(str(ROOT / "reference" / f"esrs-catalog-{std.lower()}-*.yaml")))
-    if not cat_files:
-        sys.exit(f"Kein Katalog für {std} gefunden.")
-    cat = yaml.safe_load(open(cat_files[0]))
-    appl = yaml.safe_load(open(ROOT / "reference" / f"anwendbarkeit-{kunde}-{std.lower()}.yaml"))
+def cat_path(std, version):
+    p = ROOT / "reference" / f"esrs-catalog-{std.lower()}-{version}.yaml"
+    if not p.exists():
+        sys.exit(f"Kein Katalog: {p.name}")
+    return p
+
+
+def run(std, version, kunde, out_path):
+    cat = yaml.safe_load(open(cat_path(std, version)))
+    # ec-draft dient IMMER als Code->Konzept-Auflöser für manuelle datapoints & Anwendbarkeit
+    eccat = yaml.safe_load(open(cat_path(std, "ecdraft2026")))
+    code2concept = {dr["dr_code"]: dr.get("concept") for dr in eccat["drs"]}
     objs = load_objects()
+    appl = yaml.safe_load(open(ROOT / "reference" / f"anwendbarkeit-{kunde}-{std.lower()}.yaml"))
 
-    applicable = {a["dr"]: a["grund"] for a in appl.get("anwendbar", [])}
-    excluded = appl.get("nicht_anwendbar", [])
+    # Anwendbarkeit -> auf Konzepte heben (versionsunabhängig)
+    appl_con = {code2concept.get(a["dr"]): a["grund"] for a in appl.get("anwendbar", [])}
+    excl_con = {code2concept.get(e["dr"]): e["grund"] for e in appl.get("nicht_anwendbar", [])}
 
-    # datapoint-Objekte je dr_code (Inhalts-Mapping, validiert via satisfied_by)
-    by_dr = {}
+    # --- Zuordnung je Konzept aufbauen ---
+    # MANUELL: datapoint.satisfied_by -> Konzept via dr_code
+    manual = {}   # concept -> set(ids)
     for oid, (fm, _t) in objs.items():
-        if fm.get("type") == "datapoint" and fm.get("framework") == "ESRS" and fm.get("dr_code"):
-            by_dr.setdefault(fm["dr_code"], []).append(fm)
+        if fm.get("type") == "datapoint" and fm.get("satisfied_by"):
+            con = code2concept.get(fm.get("dr_code"))
+            if con:
+                manual.setdefault(con, set()).update(fm["satisfied_by"])
+    # ABGELEITET: type + Topologie-Gate -> Konzept
+    derived = {}  # concept -> list[(id, rule)]
+    for oid, (fm, _t) in objs.items():
+        for typ, feld, praefix, con in DERIVE:
+            if fm.get("type") == typ and any(str(x).startswith(praefix) for x in fm.get(feld, []) or []):
+                derived.setdefault(con, []).append((oid, f"type={typ} ∧ {feld}->{praefix}-*"))
+                break
 
-    L = []
+    def title(i):
+        return objs.get(i, ({}, ""))[1] or i
+
+    L, w = [], None
     w = L.append
-    w(f"# Berichts-Entwurf — ESRS {std}")
+    w(f"# Berichts-Entwurf — ESRS {std}  ·  Fassung `{cat.get('katalog_version')}`")
     w(f"\n> **MASCHINENGENERIERTER ROH-ENTWURF — nicht freigegeben.** Erzeugt {date.today()} "
-      f"via `tools/bericht_entwurf.py`. Kunde: `{kunde}`. Katalog: `{cat.get('katalog_version')}`.")
-    w(f">\n> Inhaltliche Vollständigkeit je Absatz (z. B. ob Scope-3-Ziele *alle signifikanten "
-      f"Kategorien* abdecken) ist **fachlich im Review zu prüfen** — der Generator markiert nur, "
-      f"wo *kein* Inhalt verknüpft ist.\n")
+      f"via `tools/bericht_entwurf.py --version {version}`. Kunde: `{kunde}`.")
+    w(f">\n> Inhalt ist über **stabile Konzepte** zugeordnet (versionsunabhängig); diese Fassung "
+      f"nummeriert sie als `{cat.get('katalog_version')}`. Quellen sind als **(manuell)** "
+      f"[autoritativ] oder **(abgeleitet)** [Tier-1-Regel, deterministisch] markiert. "
+      f"Inhaltliche Vollständigkeit je Absatz ist im Review zu prüfen.\n")
 
-    # Kennzahlen
-    total_dp = mapped_dr = open_dr = 0
+    n_appl = n_map = n_open = 0
     for dr in cat["drs"]:
-        if dr["dr_code"] not in applicable:
+        con = dr.get("concept")
+        if con not in appl_con:
             continue
-        total_dp += len(dr["datenpunkte"])
-        if by_dr.get(dr["dr_code"]):
-            mapped_dr += 1
+        n_appl += 1
+        man = sorted(manual.get(con, set()))
+        der = derived.get(con, [])
+        if man or der:
+            n_map += 1
         else:
-            open_dr += 1
-    w(f"**Stand:** {len(applicable)} anwendbare DRs ({total_dp} Datenpunkte) · "
-      f"{mapped_dr} mit verknüpftem Inhalt · {open_dr} vollständig offen · "
-      f"{len(excluded)} DR ausgeschlossen.\n")
+            n_open += 1
+
+    w(f"**Stand:** {n_appl} anwendbare DRs · {n_map} mit Inhalt · {n_open} offen · "
+      f"{sum(1 for d in cat['drs'] if d.get('concept') in excl_con)} ausgeschlossen.\n")
 
     for dr in cat["drs"]:
-        code = dr["dr_code"]
-        if code not in applicable:
+        con = dr.get("concept")
+        if con not in appl_con:
             continue
-        dps = by_dr.get(code, [])
-        sources = []
-        for fm in dps:
-            for sid in fm.get("satisfied_by", []) or []:
-                title = objs.get(sid, ({}, ""))[1] or sid
-                sources.append((sid, title))
-        mark = "✅ Inhalt verknüpft" if sources else "⚠ OFFEN — kein Inhalt verknüpft"
-        w(f"\n---\n\n## {code} — {dr['dr_name']}  ·  {mark}")
-        w(f"\n*Anwendbar, weil:* {applicable[code]}")
-        if sources:
-            w(f"\n**Verknüpfte Quellen (`satisfied_by`):**")
-            for sid, title in sources:
-                w(f"- `{sid}` — {title}")
+        man = sorted(manual.get(con, set()))
+        der = derived.get(con, [])
+        mark = "✅ Inhalt zugeordnet" if (man or der) else "⚠ OFFEN — kein Inhalt zugeordnet"
+        w(f"\n---\n\n## {dr['dr_code']} — {dr['dr_name']}  ·  {mark}")
+        w(f"\n*Konzept:* `{con}`  ·  *anwendbar, weil:* {appl_con[con]}")
+        if man:
+            w(f"\n**Quellen (manuell · `satisfied_by`):**")
+            for i in man:
+                w(f"- `{i}` — {title(i)}")
+        if der:
+            w(f"\n**Quellen (abgeleitet · Tier-1-Regel):**")
+            for i, rule in der:
+                w(f"- `{i}` — {title(i)}  _({rule})_")
         w("")
         for dp in dr["datenpunkte"]:
-            w(f"\n**{dp['verweis']}**  _({dp['datentyp']})_")
+            w(f"\n**{dp['verweis']}**  _({dp.get('datentyp','')})_")
             w(f"> {dp['text'].rstrip()}")
-            if sources:
+            if man or der:
                 w(f"\n_Entwurf:_ aus o. g. Quelle(n) zu verfassen — **Absatz-Abdeckung im Review prüfen.**")
             else:
-                w(f"\n⚠ **OFFEN** — kein `datapoint`-Objekt/Inhalt für {code} verknüpft.")
+                w(f"\n⚠ **OFFEN** — kein Inhalt für Konzept `{con}` zugeordnet.")
 
-    if excluded:
+    excl = [d for d in cat["drs"] if d.get("concept") in excl_con]
+    if excl:
         w("\n---\n\n## Nicht anwendbar (Ausschlüsse — prüfungsrelevant)")
-        for e in excluded:
-            w(f"- **{e['dr']}** — {e['grund']}")
+        for d in excl:
+            w(f"- **{d['dr_code']}** ({d.get('concept')}) — {excl_con[d.get('concept')]}")
 
     Path(out_path).write_text("\n".join(L) + "\n", encoding="utf-8")
-    print(f"✓ Entwurf: {len(applicable)} DRs, {total_dp} Datenpunkte, "
-          f"{open_dr} offene DRs -> {out_path}")
+    print(f"✓ {cat.get('katalog_version'):>14}: {n_appl} DRs · {n_map} mit Inhalt · "
+          f"{n_open} offen -> {out_path}")
 
 
 if __name__ == "__main__":
     ap = argparse.ArgumentParser()
     ap.add_argument("standard")
+    ap.add_argument("--version", required=True, help="z. B. 2023 oder ecdraft2026")
     ap.add_argument("--kunde", required=True)
-    ap.add_argument("--out", required=True)
+    ap.add_argument("--out")
     a = ap.parse_args()
-    run(a.standard, a.kunde, a.out)
+    out = a.out or f"reporting/bericht-entwurf-{a.standard.lower()}-{a.version}.md"
+    run(a.standard, a.version, a.kunde, str(ROOT / out) if not Path(out).is_absolute() else out)
