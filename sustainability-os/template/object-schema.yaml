@@ -35,7 +35,7 @@ objekt_typen:
     beziehungen: [sourced_from, at_risk_from, responsible, consulted, informed]
   initiative:
     pflichtfelder: []
-    beziehungen: [has_budget, supports, uses_factor, depends_on, responsible, consulted, informed]
+    beziehungen: [has_budget, supports, depends_on, responsible, consulted, informed]
   strategy:                     # thematische Strategie / Transitionsplan
     pflichtfelder: []
     beziehungen: [concerns, addresses]
@@ -86,19 +86,13 @@ objekt_typen:
   audit-finding:                # Auditor-Beanstandung (#18)
     pflichtfelder: [datum]
     beziehungen: [challenges]
-  # --- Migrierte Registries (ex targets.yaml / glossary.md / EF-Katalog) ---
-  term:                         # kanonische Definition (ex glossary.md)
+  # --- Kanonische Begriffe (ex glossary.md) ---
+  term:                         # kanonische Definition (ex glossary.md) — genutzt von sustainability-standard
     pflichtfelder: [begriff]
-    beziehungen: []
-  emission-factor:              # Emissionsfaktor (ex emission-factors-catalog.yaml)
-    pflichtfelder: [einheit, wert]
     beziehungen: []
   policy:                       # ESRS-Policy je wesentlichem Thema (#16)
     pflichtfelder: []
     beziehungen: [concerns, addresses, responsible, consulted, informed]
-  annual-plan:                  # Jahres-Planungs-Layer (#12/#14)
-    pflichtfelder: [jahr]
-    beziehungen: [plans]
   dependency:                   # Abhängigkeit von natürl./sozialem Kapital (DMA Sheet 2)
     pflichtfelder: []
     beziehungen: []
@@ -167,10 +161,8 @@ beziehungs_vokabular:
   affects:      [target, kpi, topic]
   at_risk_from: [finding]
   has_budget:   [budget]
-  uses_factor:  [emission-factor]
   # --- DMA-Slice ---
   has_iro:      [iro]
-  plans:        [initiative]
   addresses:    [iro]
   depends_on:   [dependency]
   for_kpi:        [kpi]
