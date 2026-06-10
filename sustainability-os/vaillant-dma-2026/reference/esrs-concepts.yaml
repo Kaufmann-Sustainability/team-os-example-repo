@@ -48,6 +48,6 @@ konzepte:
 # Menschen gesetzt -> nicht halluzinierbar. KPIs & narrative DRs werden bewusst NICHT
 # abgeleitet (zu semantisch -> bleiben menschlich/OFFEN).
 ableitung:
-  - {typ: policy,     konzept: policies-climate, gate: "concerns -> topic-e1-*"}
-  - {typ: target,     konzept: targets-climate,  gate: "addresses -> iro-e1-*"}
-  - {typ: initiative, konzept: actions-climate,  gate: "supports  -> target-e1-*"}
+  - {typ: policy,     feld: concerns,  praefix: topic-e1,  konzept: policies-climate}
+  - {typ: target,     feld: addresses, praefix: iro-e1,    konzept: targets-climate}
+  - {typ: initiative, feld: supports,  praefix: target-e1, konzept: actions-climate}

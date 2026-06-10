@@ -30,12 +30,6 @@ import yaml
 ROOT = Path(__file__).resolve().parent.parent
 FM = re.compile(r"^---\n(.*?)\n---(.*)$", re.DOTALL)
 H1 = re.compile(r"^#\s+(.+)$", re.MULTILINE)
-# Tier-1-Ableitungsregeln: (type, gate-feld, gate-id-präfix) -> Konzept
-DERIVE = [
-    ("policy",     "concerns",  "topic-e1",  "policies-climate"),
-    ("target",     "addresses", "iro-e1",    "targets-climate"),
-    ("initiative", "supports",  "target-e1", "actions-climate"),
-]
 
 
 def load_objects():
@@ -57,8 +51,17 @@ def cat_path(std, version):
     return p
 
 
+def load_spine(std):
+    sp = yaml.safe_load(open(ROOT / "reference" / "esrs-concepts.yaml"))
+    if sp.get("standard") != std:
+        sys.exit(f"Keine Konzept-Spine für {std}")
+    return sp
+
+
 def run(std, version, kunde, out_path):
     cat = yaml.safe_load(open(cat_path(std, version)))
+    spine = load_spine(std)
+    rules = [(r["typ"], r["feld"], r["praefix"], r["konzept"]) for r in spine.get("ableitung", [])]
     # ec-draft dient IMMER als Code->Konzept-Auflöser für manuelle datapoints & Anwendbarkeit
     eccat = yaml.safe_load(open(cat_path(std, "ecdraft2026")))
     code2concept = {dr["dr_code"]: dr.get("concept") for dr in eccat["drs"]}
@@ -80,7 +83,7 @@ def run(std, version, kunde, out_path):
     # ABGELEITET: type + Topologie-Gate -> Konzept
     derived = {}  # concept -> list[(id, rule)]
     for oid, (fm, _t) in objs.items():
-        for typ, feld, praefix, con in DERIVE:
+        for typ, feld, praefix, con in rules:
             if fm.get("type") == typ and any(str(x).startswith(praefix) for x in fm.get(feld, []) or []):
                 derived.setdefault(con, []).append((oid, f"type={typ} ∧ {feld}->{praefix}-*"))
                 break
