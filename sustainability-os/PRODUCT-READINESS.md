@@ -28,14 +28,17 @@ anzufassen.
 
 | Schicht | Was | Ausgeliefert? | Beispiele (heute) |
 |---|---|---|---|
-| **A — Core Engine** *(framework-agnostisch)* | Objekt-Grammatik + Qualitäts-Gates + Validator + Abfrage/Index + Visualisierung | **ja, als Produkt** | `object-schema.yaml` (Kernobjekte), `validate.py`, `query.py`, `linkage_guard.py`, Graph-Viz, generische Gates (target/kpi/policy/initiative/assumption/risk/approval, performance-tracking, assurance) |
-| **B — Framework-Pack** *(pluggable)* | Standard-spezifische Referenz + Mapping + Disclosure | **ja, je Pack** | **ESRS-Pack:** Kataloge, Konzept-Spines, Datenpunkt-Schicht, `import_esrs_catalog.py`, `gen_datapoints.py`, `bericht_entwurf.py`, doppelte Wesentlichkeit (IRO/DMA), Anwendbarkeit |
-| **C — Kunden-Instanz** *(pro Deployment)* | Firmenkontext, Team, gewählte Pack(s) + Thema(en), die gepflegten Objekte | **nein, entsteht beim Kunden** | `objects/*.md`, `anwendbarkeit-*.yaml`, Roster/Company-Config (heute in CLAUDE.md), `reporting/*` |
+| **A — Core Engine** *(framework-agnostisch)* | Objekt-Grammatik + Qualitäts-Gates + Validator + Abfrage/Index + Visualisierung **+ Wesentlichkeit (DMA/IRO) als Scope-Fundament** | **ja, als Produkt** | `object-schema.yaml`, `validate.py`, `query.py`, `linkage_guard.py`, Graph-Viz, generische Gates (target/kpi/policy/initiative/**iro/topic**, iro-coverage, assumption/risk/approval, performance-tracking, assurance) |
+| **B — Framework-Pack** *(pluggable)* | Standard-spezifische **Offenlegung**: Referenz-Kataloge + Datenpunkt-Mapping + Bericht | **ja, je Pack** | **ESRS-Pack:** Kataloge, Konzept-Spines, Datenpunkt-/Disclosure-Schicht, `import_esrs_catalog.py`, `gen_datapoints.py`, `bericht_entwurf.py`, Anwendbarkeits-*Semantik* |
+| **C — Kunden-Instanz** *(pro Deployment)* | Firmenkontext, Team, gewählte Pack(s) + Thema(en), die gepflegten Objekte | **nein, entsteht beim Kunden** | `objects/*.md`, `anwendbarkeit-*.yaml`, Roster/Company-Config, `reporting/*` |
 
-**Wichtige Erkenntnis zur Agnostik:** Auch **IRO/doppelte Wesentlichkeit gehört in den Pack**, nicht
-in den Core. Ein freiwilliges Programm hat vielleicht keine DMA. Der nackte Core kennt nur:
-*Verantwortung, Ziel, Maßnahme, Kennzahl, Annahme, Risiko, Freigabe, Vollständigkeit.* Alles
-Wesentlichkeits-/Offenlegungs-spezifische ist Pack.
+**Wichtige Festlegung — DMA/IRO bleibt im Core, NICHT im Pack.** Die Wesentlichkeitsanalyse ist der
+**Scope-Definierer**: Sie sagt, *wofür* überhaupt Policies, Ziele, KPIs und Maßnahmen gebraucht
+werden. Ohne sie ist „ein Ziel anlegen" beliebig; mit ihr ist jedes Steuerungsobjekt an eine
+wesentliche IRO verankert. Genau diese Verankerung ist die Stärke des Modells und gilt für *jedes*
+Rahmenwerk (auch freiwillige). Standard-spezifisch ist nur, **welche Offenlegung** aus der
+gesteuerten Wesentlichkeit folgt — und das ist Pack. Der Core kennt also: *Wesentlichkeit (IRO) →
+Verantwortung, Ziel, Maßnahme, Kennzahl, Annahme, Risiko, Freigabe, Vollständigkeit.*
 
 ## 3. Template-/Instanz-Grenze (heute verschmolzen — Kinderkrankheit #0)
 

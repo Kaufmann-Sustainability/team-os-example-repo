@@ -1,0 +1,17 @@
+# Anwendbarkeit — INSTANZ-spezifisch (pro Kunde + Standard).
+# Vorlage: kopieren nach  anwendbarkeit-<instanz>-e1.yaml  und ausfüllen.
+#
+# Sagt je stabilem KONZEPT, ob es für diesen Kunden anwendbar ist und WARUM.
+# Konzept-ids stammen aus dem ESRS-Pack (reference/esrs-concepts.yaml).
+# Die Begründung ist prüfungsrelevant — kein Konzept ohne Grund ein-/ausschließen.
+
+standard: E1
+instanz: TEMPLATE
+
+anwendbar: []
+  # - konzept: gross-ghg
+  #   grund: "<warum für diesen Kunden wesentlich>"
+
+nicht_anwendbar: []
+  # - konzept: internal-carbon-price
+  #   grund: "<warum nicht anwendbar — z. B. kein internes CO2-Bepreisungsschema>"

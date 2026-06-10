@@ -1,0 +1,34 @@
+# Instanz-Konfiguration — pro Kunde EINMAL ausfüllen, dann steht die Instanz.
+# Ersetzt das frühere Hartcodieren von Firma/Team in CLAUDE.md durch Daten.
+
+instanz: TEMPLATE              # Kunden-id, z. B. "acme-2026" — wird in Dateinamen verwendet
+                              # (anwendbarkeit-<instanz>-<std>.yaml, Berichte …)
+
+firma:
+  name: "<Firmenname>"
+  branche: "<Branche>"
+  mitarbeitende: "<ca. Anzahl>"
+  standorte: "<Länder/Werke>"
+  berichtspflicht_ab: "<Geschäftsjahr>"
+  north_star: "<übergeordnetes Nachhaltigkeitsziel>"
+
+# Gewählte Framework-Packs (Offenlegungs-Schicht). Leer lassen = nur Core-Governance
+# (Wesentlichkeit + Steuerung), ohne regulatorische Offenlegung.
+frameworks:
+  - esrs                      # weitere Packs später: gri, freiwillig, custom …
+
+# Mit WELCHEM Thema gestartet wird (Pilot). Weitere Themen schrittweise ergänzen.
+themen_im_scope: []           # z. B. [topic-e1-klima] — erst nach DMA-Schritt 1 befüllen
+
+# Team-Roster (RASCI-fähig). owner/accountable/responsible zeigen auf diese ids.
+roster: []
+  # - id: person-...
+  #   name: "<Name>"
+  #   rolle: "<Funktion>"
+  #   github: "<handle>"      # optional
+  #   slack: "<id>"           # optional
+
+vertraulichkeit_default: intern
+
+# Hinweis: Verantwortung wird NIE automatisch zugewiesen. Objekte ohne formal
+# übergebenen Owner zeigen auf person-unassigned, bis ein Handover bestätigt ist.
