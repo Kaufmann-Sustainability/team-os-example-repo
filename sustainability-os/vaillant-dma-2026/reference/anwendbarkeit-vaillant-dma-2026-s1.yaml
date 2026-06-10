@@ -1,0 +1,32 @@
+# Anwendbarkeit ESRS S1 — KUNDENSPEZIFISCH (Output des DMA->Datenpunkt-Schritts).
+# Filtert den geteilten Katalog auf die für diesen Kunden wesentlichen Offenlegungen.
+# VERSIONSUNABHÄNGIG: referenziert stabile KONZEPTE (reference/esrs-concepts-s1.yaml),
+# nicht DR-Nummern — gilt damit für jede Katalog-Fassung (2023, ec-draft-2026, …).
+# Ausschlüsse tragen eine Begründung (prüfungsrelevant — Auditoren fechten Ausschlüsse an).
+#
+# Ableitung aus den wesentlichen S1-Themen (status: wesentlich) der DMA 2026:
+#   angemessene-entlohnung, aus-und-weiterbildung, betriebsraete, gesundheit-und-sicherheit,
+#   gleiches-entgelt, gleichstellung-der-geschlechter, nichtdiskriminierung, partizipationsrechte,
+#   sichere-beschaeftigung, sozialer-dialog, sozialschutz, tarifverhandlungen,
+#   vereinigungsfreiheit, work-life-balance.
+standard: S1
+kunde: vaillant-dma-2026
+anwendbar:
+  - {konzept: policies-workforce,         grund: "Eigene Belegschaft wesentlich -> Policies je wesentlichem Thema verpflichtend (S1-1)"}
+  - {konzept: engagement-workforce,       grund: "Sozialer Dialog/Partizipationsrechte wesentlich -> Einbindungsprozesse offenzulegen (topic-s1-sozialer-dialog, -partizipationsrechte)"}
+  - {konzept: remediation-channels,       grund: "Beschwerde-/Abhilfekanäle sind Pflicht-Offenlegung bei wesentlicher Belegschaft (S1-3)"}
+  - {konzept: actions-workforce,          grund: "Maßnahmen zu wesentlichen Belegschaftsthemen vorhanden (initiative-s1-*)"}
+  - {konzept: targets-workforce,          grund: "Ziele je wesentlichem Belegschaftsthema gesetzt (target-s1-*)"}
+  - {konzept: employee-characteristics,   grund: "Sichere Beschäftigung wesentlich -> Beschäftigten-Merkmale offenzulegen (topic-s1-sichere-beschaeftigung)"}
+  - {konzept: collective-bargaining,      grund: "Tarifverhandlungen, Betriebsräte, Vereinigungsfreiheit wesentlich -> Tarifbindung & sozialer Dialog (topic-s1-tarifverhandlungen, -betriebsraete, -vereinigungsfreiheit)"}
+  - {konzept: diversity,                  grund: "Gleichstellung der Geschlechter & Nichtdiskriminierung wesentlich -> Diversitätskennzahlen (topic-s1-gleichstellung-der-geschlechter, -nichtdiskriminierung)"}
+  - {konzept: adequate-wages,             grund: "Angemessene Entlohnung wesentlich (topic-s1-angemessene-entlohnung)"}
+  - {konzept: social-protection,          grund: "Sozialschutz wesentlich (topic-s1-sozialschutz)"}
+  - {konzept: training-development,       grund: "Aus- & Weiterbildung wesentlich (topic-s1-aus-und-weiterbildung)"}
+  - {konzept: health-safety,              grund: "Gesundheit & Sicherheit wesentlich (topic-s1-gesundheit-und-sicherheit)"}
+  - {konzept: work-life-balance,          grund: "Work-Life-Balance wesentlich (topic-s1-work-life-balance)"}
+  - {konzept: remuneration,               grund: "Gleiches Entgelt wesentlich -> Pay-Gap/Vergütung offenzulegen (topic-s1-gleiches-entgelt)"}
+nicht_anwendbar:
+  - {konzept: nonemployee-characteristics, grund: "Keine wesentliche IRO zu Nicht-Beschäftigten in der eigenen Belegschaft (Leiharbeit/Selbstständige nicht als wesentlich bewertet)"}
+  - {konzept: persons-disabilities,        grund: "topic-s1-beschaeftigung-menschen-mit-behinderung nicht wesentlich in DMA 2026 -> S1-12 nicht anwendbar"}
+  - {konzept: incidents,                   grund: "topic-s1-anti-belaestigung nicht wesentlich; keine wesentliche IRO zu schweren Menschenrechtsvorfällen in der eigenen Belegschaft (S1-17 bedingt anwendbar)"}

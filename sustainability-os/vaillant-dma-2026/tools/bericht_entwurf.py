@@ -52,10 +52,13 @@ def cat_path(std, version):
 
 
 def load_spine(std):
-    sp = yaml.safe_load(open(ROOT / "reference" / "esrs-concepts.yaml"))
-    if sp.get("standard") != std:
-        sys.exit(f"Keine Konzept-Spine für {std}")
-    return sp
+    # Sucht unter reference/esrs-concepts*.yaml die Spine, deren `standard` == std ist.
+    # E1 liegt in esrs-concepts.yaml, weitere Standards in esrs-concepts-<std>.yaml.
+    for p in sorted((ROOT / "reference").glob("esrs-concepts*.yaml")):
+        sp = yaml.safe_load(open(p))
+        if sp.get("standard") == std:
+            return sp
+    sys.exit(f"Keine Konzept-Spine für {std}")
 
 
 def run(std, version, kunde, out_path):
