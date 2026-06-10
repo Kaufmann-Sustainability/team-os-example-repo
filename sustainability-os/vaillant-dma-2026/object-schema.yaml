@@ -62,7 +62,7 @@ objekt_typen:
   # --- Disclosure-Slice: Offenlegung & Assurance ---
   datapoint:                    # ESRS-Offenlegungs-Anforderung (die Pflicht)
     pflichtfelder: [esrs_datapoint]
-    beziehungen: [concerns]
+    beziehungen: [concerns, equivalent_to, satisfied_by]
   disclosure:                   # versionierter Berichtstext, der die Pflicht erfüllt (#19)
     pflichtfelder: [esrs_datapoint, berichtsjahr, version]
     beziehungen: [discloses, reports]
@@ -170,6 +170,8 @@ beziehungs_vokabular:
   # --- Disclosure-Slice ---
   discloses:    [datapoint]
   reports:      [kpi]
+  equivalent_to: [datapoint]
+  satisfied_by:  [kpi, target, policy, disclosure, initiative]
   backs:        [disclosure, kpi-value, control]
   covers:       [datapoint, kpi, target]
   challenges:   [disclosure]

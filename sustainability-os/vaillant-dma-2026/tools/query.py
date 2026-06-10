@@ -459,6 +459,49 @@ def berichtsreife(objs, topic_id):
     print()
 
 
+# ---------- OFFENLEGUNGS-GAP (Katalog vs. gesteuerter Inhalt) ----------
+def offenlegungs_gap(objs, standard):
+    import glob, os
+    base = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    pats = sorted(glob.glob(os.path.join(base, "reference", f"esrs-catalog-{standard.lower()}-*.yaml")))
+    if not pats:
+        sys.exit(f"Kein Katalog für {standard} unter reference/ gefunden.")
+    cat = pats[0]
+    version = ""
+    cat_drs, cur = {}, None
+    for ln in open(cat):
+        s = ln.strip()
+        if s.startswith("katalog_version:"):
+            version = s.split(":", 1)[1].strip()
+        elif s.startswith("- dr_code:"):
+            cur = s.split(":", 1)[1].strip(); cat_drs[cur] = 0
+        elif s.startswith("- id:") and cur:
+            cat_drs[cur] += 1
+    gov = {}
+    for o in objs.values():
+        if o.get("type") == "datapoint" and str(o.get("framework")) == "ESRS" and o.get("dr_code"):
+            gov.setdefault(o["dr_code"], []).append(o)
+    print(f"\n# Offenlegungs-Gap: ESRS {standard}  (Katalog: {version})\n")
+    abged = 0
+    for dc in sorted(cat_drs, key=lambda x: int(x.split("-")[1])):
+        sat = [s for o in gov.get(dc, []) for s in out(o.get("satisfied_by", []))]
+        covered = bool(sat)
+        abged += covered
+        mark = "✓" if covered else "·"
+        detail = ("  ⇐ " + ", ".join(sat)) if sat else ""
+        print(f"  {mark} {dc:6} ({cat_drs[dc]:2} Datenpunkte){detail}")
+    print(f"\n  Governance-Abdeckung: {abged}/{len(cat_drs)} DRs an gesteuerten Inhalt gekoppelt"
+          f"  ({sum(cat_drs.values())} Datenpunkte im Katalog).")
+    xwalk = [o for o in objs.values() if o.get("type") == "datapoint" and out(o.get("equivalent_to", []))]
+    if xwalk:
+        print("\n  Map once, report many — Crosswalks auf denselben Inhalt:")
+        for o in xwalk:
+            for eq in out(o.get("equivalent_to", [])):
+                shared = ", ".join(out(o.get("satisfied_by", []))) or "—"
+                print(f"    {o.get('framework','?')} {o['id']}  ≡  {eq}   (Inhalt: {shared})")
+    print()
+
+
 # ---------- KPI-STATUS (Zeitreihe: Ist-Werte, Forecast, Trend, Frische) ----------
 def kpi_status(objs, topic_id):
     print(f"\n# KPI-Status über Zeit  ({topic_id})\n")
@@ -538,6 +581,8 @@ def main():
         reifegrad(objs, a[1])
     elif cmd == "berichtsreife":
         berichtsreife(objs, a[1])
+    elif cmd == "offenlegungs-gap":
+        offenlegungs_gap(objs, a[1])
     elif cmd == "gaps":
         gaps(objs)
     elif cmd == "stale":
