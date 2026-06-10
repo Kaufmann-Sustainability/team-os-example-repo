@@ -1,0 +1,21 @@
+# Anwendbarkeit ESRS E1 — KUNDENSPEZIFISCH (Output des DMA->Datenpunkt-Schritts).
+# Der Katalog (reference/esrs-catalog-*.yaml) ist geteilt/wiederverwendbar; DIESE Datei
+# filtert ihn auf die für diesen Kunden wesentlichen DRs. Würde von deinem DMA-Tool
+# erzeugt; hier von Hand als Vaillant-Beispiel. Ausschlüsse tragen eine Begründung
+# (prüfungsrelevant — Auditoren fechten Ausschlüsse an).
+standard: E1
+katalog_version: ec-draft-2026
+kunde: vaillant-dma-2026
+anwendbar:
+  - {dr: E1-1, grund: "Klimaschutz wesentlich -> Transitionsplan verpflichtend"}
+  - {dr: E1-2, grund: "Wesentliche klimabezogene Risiken identifiziert"}
+  - {dr: E1-3, grund: "Resilienz-Offenlegung folgt aus E1-2"}
+  - {dr: E1-4, grund: "Policy zu Klimaschutz/Anpassung wesentlich"}
+  - {dr: E1-5, grund: "Maßnahmen/Ressourcen wesentlich"}
+  - {dr: E1-6, grund: "THG-Reduktionsziele gesetzt"}
+  - {dr: E1-7, grund: "Energieverbrauch wesentlich (topic-e1-energie)"}
+  - {dr: E1-8, grund: "Brutto-THG-Emissionen wesentlich"}
+  - {dr: E1-9, grund: "Removals/Carbon-Credits genutzt"}
+  - {dr: E1-11, grund: "Wesentliche physische & transitorische Risiken -> finanzielle Effekte"}
+nicht_anwendbar:
+  - {dr: E1-10, grund: "Kein internes CO2-Bepreisungsschema im Einsatz (¶37 bedingt anwendbar)"}
