@@ -10,6 +10,8 @@ esrs_bezug: E1-3
 has_budget: [budget-e1-waermepumpen-hochlauf]
 depends_on: [dependency-e1-03-oeffentliche-subventionen, dependency-e1-05-qualifizierte-f-e-und-inge, dependency-e1-02-versorgung-mit-kohlenstoff]
 supports: [target-e1-waermepumpen-absatzanteil, target-e1-scope3-11-usephase]
+offene_punkte:
+  - "Kosten-Nutzen-Bewertung (ROI / €-pro-t-CO₂) ausstehend — folgt mit economics-Skill"
 ---
 
 # Maßnahme: Wärmepumpen-Kapazitätshochlauf (Senica)

@@ -256,42 +256,73 @@ def reifegrad(objs, arg):
     obj = objs.get(arg)
     if not obj:
         sys.exit(f"Unbekannte ID: {arg}")
-    # Topic -> alle seine Targets; sonst das eine Target
-    if obj.get("type") == "topic":
+    typ = obj.get("type")
+    print(f"\n# Reifegrad: Vollständigkeitsverträge\n")
+    if typ == "topic":
         targets = [objs[t] for t in out(obj.get("has_target", [])) if t in objs]
-    elif obj.get("type") == "target":
-        targets = [obj]
+        inits = [objs[t] for t in out(obj.get("has_initiative", [])) if t in objs]
+        if targets:
+            print("## Ziele\n")
+            for t in targets:
+                _print_reifegrad(t, *_target_checks(objs, t))
+        if inits:
+            print("## Maßnahmen\n")
+            for i in inits:
+                _print_reifegrad(i, *_initiative_checks(objs, i))
+    elif typ == "target":
+        _print_reifegrad(obj, *_target_checks(objs, obj))
+    elif typ == "initiative":
+        _print_reifegrad(obj, *_initiative_checks(objs, obj))
     else:
-        sys.exit("reifegrad erwartet ein topic oder target.")
-    print(f"\n# Reifegrad: Target-Vollständigkeitsvertrag\n")
-    for t in targets:
-        tid = t["id"]
-        checks = [
-            ("Owner gesetzt",          bool(t.get("owner"))),
-            ("Baseline+Ziel+Jahr",     all(t.get(f) is not None for f in ("baseline_wert","zielwert","zieljahr"))),
-            ("≥1 IRO adressiert",      bool(out(t.get("addresses", [])))),
-            ("≥1 KPI misst es",        bool(out(t.get("measured_by", [])))),
-            ("≥1 Maßnahme trägt es",   bool(out(t.get("supported_by", [])))),
-            ("≥1 Annahme hinterlegt",  bool(_incoming(objs, "underpins", tid))),
-            ("Freigabe (approval)",    bool(_incoming(objs, "approves", tid))),
-            ("Risiken bewertet",       bool(_incoming(objs, "threatens", tid))),
-        ]
-        bonus = [
-            ("Szenario",  bool(_incoming(objs, "proposes", tid) and
-                              [o for o in _incoming(objs, "proposes", tid) if o.get("type")=="scenario"])),
-        ]
-        erfuellt = sum(1 for _, ok in checks if ok)
-        score = round(100 * erfuellt / len(checks))
-        bar = "█" * (score // 10) + "░" * (10 - score // 10)
-        print(f"  {tid}")
-        print(f"  Reifegrad {bar} {score}%  ({erfuellt}/{len(checks)} Kern-Pflichten)")
-        for name, ok in checks:
-            print(f"      {'✓' if ok else '✗'} {name}")
-        for name, ok in bonus:
-            print(f"      {'＋' if ok else '·'} {name} (Bonus)")
-        for op in t.get("offene_punkte", []) or []:
-            print(f"      ⚠ offen: {op}")
-        print()
+        sys.exit("reifegrad erwartet ein topic, target oder initiative.")
+
+
+def _target_checks(objs, t):
+    tid = t["id"]
+    checks = [
+        ("Owner gesetzt",          bool(t.get("owner"))),
+        ("Baseline+Ziel+Jahr",     all(t.get(f) is not None for f in ("baseline_wert","zielwert","zieljahr"))),
+        ("≥1 IRO adressiert",      bool(out(t.get("addresses", [])))),
+        ("≥1 KPI misst es",        bool(out(t.get("measured_by", [])))),
+        ("≥1 Maßnahme trägt es",   bool(out(t.get("supported_by", [])))),
+        ("≥1 Annahme hinterlegt",  bool(_incoming(objs, "underpins", tid))),
+        ("Freigabe (approval)",    bool(_incoming(objs, "approves", tid))),
+        ("Risiken bewertet",       bool(_incoming(objs, "threatens", tid))),
+    ]
+    bonus = [("Szenario", bool([o for o in _incoming(objs, "proposes", tid) if o.get("type") == "scenario"]))]
+    return checks, bonus
+
+
+def _initiative_checks(objs, i):
+    iid = i["id"]
+    checks = [
+        ("Owner gesetzt",            bool(i.get("owner"))),
+        ("≥1 Target verknüpft",      bool(out(i.get("supports", [])))),
+        ("≥1 Budget",                bool(out(i.get("has_budget", [])))),
+        ("Freigabe/Status (approval)", bool(_incoming(objs, "approves", iid))),
+        ("≥1 Milestone",             bool(_incoming(objs, "for_initiative", iid))),
+        ("Abhängigkeiten explizit",  bool(out(i.get("depends_on", [])))),
+        ("Risiken bewertet",         bool(_incoming(objs, "threatens", iid))),
+    ]
+    # Bonus: Kosten-Nutzen — Vorgriff auf den economics-Skill (cost/benefit/roi)
+    eco = [o for o in objs.values() if iid in out(o.get("prices", [])) or iid in out(o.get("abates", []))]
+    bonus = [("Economics (Kosten-Nutzen)", bool(eco))]
+    return checks, bonus
+
+
+def _print_reifegrad(obj, checks, bonus):
+    erfuellt = sum(1 for _, ok in checks if ok)
+    score = round(100 * erfuellt / len(checks))
+    bar = "█" * (score // 10) + "░" * (10 - score // 10)
+    print(f"  {obj['id']}")
+    print(f"  Reifegrad {bar} {score}%  ({erfuellt}/{len(checks)} Kern-Pflichten)")
+    for name, ok in checks:
+        print(f"      {'✓' if ok else '✗'} {name}")
+    for name, ok in bonus:
+        print(f"      {'＋' if ok else '·'} {name} (Bonus)")
+    for op in obj.get("offene_punkte", []) or []:
+        print(f"      ⚠ offen: {op}")
+    print()
 
 
 # ---------- KPI-STATUS (Zeitreihe: Ist-Werte, Forecast, Trend, Frische) ----------
