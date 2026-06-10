@@ -16,7 +16,7 @@ Spuren: **Freigabe, Ausführung (Milestones), Risiko** und — als Vorgriff — 
 ## Der Vertrag (Kern-Pflichten)
 | # | Pflicht | Umsetzung |
 |---|---------|-----------|
-| 1 | **Owner** | `owner: person-…` (muss existieren) |
+| 1 | **Verantwortung (RASCI)** | `owner: person-…` = **Accountable** (genau einer) · **≥1 `responsible: [person-…]`** (führt die Umsetzung aus — bei Maßnahmen oft eine *andere* Stelle als die Accountable, z. B. Werkleitung). Owner-Wechsel nur über ein `handover` — **nie still**. |
 | 2 | **≥1 Target** | `supports: [target-…]` — **welches Ziel bedient sie?** Die nicht verhandelbare Invariante: keine Maßnahme ohne Ziel |
 | 3 | **≥1 Budget** | `has_budget: [budget-…]` — woraus finanziert? (→ `measure-planning`) |
 | 4 | **Freigabe/Status** | ein `approval` mit `approves: [diese initiative]` (Gremium + Datum + Genehmiger) |

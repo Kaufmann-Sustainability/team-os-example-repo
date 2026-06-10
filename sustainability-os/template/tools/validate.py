@@ -143,15 +143,39 @@ def frische_warnungen(objekte: dict[str, dict]) -> list[str]:
     return warn
 
 
+# Typen, die Verantwortung tragen und daher ein bestätigtes Handover brauchen.
+VERANTWORTUNGS_TYPEN = {"topic", "target", "kpi", "initiative", "policy", "datapoint"}
+
+
+def handover_warnungen(objekte: dict[str, dict]) -> list[str]:
+    """Owner = echte Person, aber kein handover.assigns auf das Objekt -> unbestätigte
+    Verantwortung. Als EINE Summenzeile (sonst flutet es bei Bestands-Migration)."""
+    zugewiesen: set[str] = set()
+    for obj in objekte.values():
+        if obj.get("type") == "handover":
+            a = obj.get("assigns")
+            zugewiesen.update(a if isinstance(a, list) else [a] if a else [])
+    offen = [
+        oid for oid, obj in objekte.items()
+        if obj.get("type") in VERANTWORTUNGS_TYPEN
+        and obj.get("owner") not in (None, "person-unassigned")
+        and oid not in zugewiesen
+    ]
+    if not offen:
+        return []
+    return [f"WARN    {len(offen)} Objekt(e) mit Owner ohne bestätigtes Handover "
+            f"(unbestätigte Verantwortung — RASCI-Übergabe ausstehend)"]
+
+
 def main() -> int:
     objekte = lade_objekte()
     fehler = pruefe(objekte)
-    warn = frische_warnungen(objekte)
+    warn = frische_warnungen(objekte) + handover_warnungen(objekte)
     print(f"Geprüft: {len(objekte)} Objekte\n")
     for z in fehler + warn:
         print(z)
     if not fehler:
-        print(f"\n✓ Integrität OK ({len(warn)} Frische-Warnung(en)).")
+        print(f"\n✓ Integrität OK ({len(warn)} Warnung(en)).")
         return 0
     print(f"\n✗ {len(fehler)} Integritätsfehler.")
     return 1

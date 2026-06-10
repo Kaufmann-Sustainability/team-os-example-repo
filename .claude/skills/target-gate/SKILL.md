@@ -13,7 +13,7 @@ was seine Erreichung gefährdet. Dieser Skill ist der **Wächter**: Er lässt ei
 ## Der Vertrag (Kern-Pflichten)
 | # | Pflicht | Umsetzung |
 |---|---------|-----------|
-| 1 | **Owner** | `owner: person-…` (muss existieren) |
+| 1 | **Verantwortung (RASCI)** | `owner: person-…` = **Accountable** (genau einer, muss existieren) · **≥1 `responsible: [person-…]`** (führt aus) · optional `consulted`/`informed`. **Accountable ≠ Responsible ist erlaubt** (formell verantwortlich vs. ausführend). Owner-Wechsel nur über ein `handover` (von/an/bestätigt) — **nie still**. |
 | 2 | **Messbar** | `baseline_wert` + `zielwert` + `zieljahr` + `einheit` + `geltungsbereich` |
 | 3 | **≥1 IRO** | `addresses: [iro-…]` — wofür existiert das Ziel? (→ `iro-coverage`) |
 | 4 | **≥1 KPI** | `measured_by: [kpi-…]` — woran misst man Fortschritt? (→ `performance-tracking`) |

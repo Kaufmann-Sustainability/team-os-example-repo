@@ -14,21 +14,28 @@ vertraulichkeit_stufen: [oeffentlich, intern, vertraulich, streng-vertraulich]
 
 # `owner` ist ein Metadatenfeld und MUSS auf eine existierende person-id zeigen.
 # (Die Owner-Kante wird damit nicht doppelt modelliert — owner IST die Kante.)
+#
+# --- RASCI ---
+# `owner` IST das ACCOUNTABLE (genau einer, trägt die Rechenschaft). Die übrigen
+# RASCI-Rollen sind ZUSÄTZLICHE, optionale Kanten auf person:
+#   responsible (führt die Umsetzung aus, ≥1) · consulted (wird gefragt) · informed.
+# Verantwortung wird NIE still vergeben: Ein Owner-Wechsel wird über ein `handover`-
+# Objekt (von/an/bestätigt) belegt. Bis dahin = person-unassigned.
 
 # --- Objekt-Typen + typ-spezifische Pflichtfelder + erlaubte Beziehungen ---
 objekt_typen:
   topic:
     pflichtfelder: []
-    beziehungen: [has_target, has_kpi, has_initiative, has_iro]
+    beziehungen: [has_target, has_kpi, has_initiative, has_iro, responsible, consulted, informed]
   target:
     pflichtfelder: [baseline_wert, baseline_jahr, zielwert, zieljahr, einheit, geltungsbereich]
-    beziehungen: [measured_by, supported_by, approved_by, at_risk_from, addresses]
+    beziehungen: [measured_by, supported_by, approved_by, at_risk_from, addresses, responsible, consulted, informed]
   kpi:
     pflichtfelder: [einheit]
-    beziehungen: [sourced_from, at_risk_from]
+    beziehungen: [sourced_from, at_risk_from, responsible, consulted, informed]
   initiative:
     pflichtfelder: []
-    beziehungen: [has_budget, supports, uses_factor, depends_on]
+    beziehungen: [has_budget, supports, uses_factor, depends_on, responsible, consulted, informed]
   strategy:                     # thematische Strategie / Transitionsplan
     pflichtfelder: []
     beziehungen: [concerns, addresses]
@@ -44,6 +51,9 @@ objekt_typen:
   person:
     pflichtfelder: []
     beziehungen: []
+  handover:                     # bestätigte Übergabe von Verantwortung (kein stiller Owner-Wechsel)
+    pflichtfelder: [datum, von, an, bestaetigt_von]
+    beziehungen: [assigns, von, an, bestaetigt_von]
   # --- DMA-Slice: Wesentlichkeitsanalyse ---
   iro:                          # Impact / Risk / Opportunity — Kernobjekt der DMA
     # Struktur-Minimum; der konditionale Score (Impact->Impact-Score, R/O->Financial-Score)
@@ -63,7 +73,7 @@ objekt_typen:
   datapoint:                    # ESRS-Offenlegungs-Anforderung (die Pflicht)
     pflichtfelder: []
     pflicht_eines: [[concept, esrs_datapoint]]   # Offenlegungs-Anker: stabiles concept (bevorzugt) ODER Framework-Code
-    beziehungen: [concerns, equivalent_to, satisfied_by]
+    beziehungen: [concerns, equivalent_to, satisfied_by, responsible, consulted, informed]
   disclosure:                   # versionierter Berichtstext, der die Pflicht erfüllt (#19)
     pflichtfelder: [esrs_datapoint, berichtsjahr, version]
     beziehungen: [discloses, reports]
@@ -85,7 +95,7 @@ objekt_typen:
     beziehungen: []
   policy:                       # ESRS-Policy je wesentlichem Thema (#16)
     pflichtfelder: []
-    beziehungen: [concerns, addresses]
+    beziehungen: [concerns, addresses, responsible, consulted, informed]
   annual-plan:                  # Jahres-Planungs-Layer (#12/#14)
     pflichtfelder: [jahr]
     beziehungen: [plans]
@@ -144,6 +154,15 @@ beziehungs_vokabular:
   supported_by: [initiative]
   approved_by:  [decision]
   decided_by:   [person]
+  # --- RASCI: zusätzliche Verantwortungs-Rollen (owner = accountable) ---
+  responsible:  [person]
+  consulted:    [person]
+  informed:     [person]
+  # --- Handover: bestätigte Übergabe von Verantwortung ---
+  assigns:        [target, initiative, policy, kpi, datapoint, topic, finding]
+  von:            [person]
+  an:             [person]
+  bestaetigt_von: [person]
   supports:     [target]
   affects:      [target, kpi, topic]
   at_risk_from: [finding]
@@ -183,7 +202,9 @@ beziehungs_vokabular:
 # --- Integritätsregeln (von validate.py durchgesetzt) ---
 integritaets_regeln:
   - "Jedes Objekt trägt alle metadata_pflicht-Felder."
-  - "owner zeigt auf eine existierende person-id."
+  - "owner zeigt auf eine existierende person-id (= das ACCOUNTABLE; genau eines)."
+  - "RASCI-Rollen (responsible/consulted/informed) zeigen auf existierende person-ids."
+  - "Owner mit echter person, aber ohne bestätigtes handover -> Warnung (unbestätigte Verantwortung)."
   - "Jede Beziehungs-id zeigt auf ein existierendes Objekt erlaubten Typs."
   - "type=target: zieljahr > baseline_jahr; baseline_wert & zielwert numerisch."
   - "vertraulichkeit ist eine der vertraulichkeit_stufen."

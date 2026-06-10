@@ -1,7 +1,8 @@
 ---
 id: initiative-e1-scope12-netzero
 type: initiative
-owner: person-vaillant-decarb
+owner: person-vaillant-decarb        # Accountable (Rechenschaft)
+responsible: [person-vaillant-portfolio]   # führt die Umsetzung aus (≠ Accountable)
 status: in-umsetzung
 stand: 2026-06-09
 review_zyklus: P3M
