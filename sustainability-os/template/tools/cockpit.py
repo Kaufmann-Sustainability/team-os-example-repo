@@ -42,6 +42,32 @@ def badge(status):
     return "neutral"
 
 
+# --- Terminologie-Layer: deutsche Anzeige-Labels aus config/terms.de.yaml ---
+TERMS = {}
+
+
+def load_terms():
+    p = ROOT / "config" / "terms.de.yaml"
+    if p.exists():
+        try:
+            return yaml.safe_load(p.read_text(encoding="utf-8")) or {}
+        except Exception:
+            return {}
+    return {}
+
+
+def tlabel(cat, key, default=None):
+    """Engine-Token -> deutsches Label. Fehlt es, wird der Token humanisiert."""
+    v = (TERMS.get(cat) or {}).get(key)
+    if v:
+        return v
+    return default if default is not None else str(key).replace("_", " ")
+
+
+def status_label(s):
+    return tlabel("status", str(s or ""), str(s or ""))
+
+
 def load():
     objs = {}
     for p in sorted((ROOT / "objects").glob("*.md")):
@@ -211,6 +237,8 @@ def svg_sphere(nodes, edges, col, W=600, H=380):
 
 
 def main():
+    global TERMS
+    TERMS = load_terms()
     objs = load()
     OUT.mkdir(exist_ok=True)
     # Reverse-Index: eingehende Kanten
@@ -249,16 +277,24 @@ def main():
                 f"<h1>{html.escape(title)}</h1><div class=sub>{sub}</div>{body}</div>")
 
     # --- generische Objekt-Seite ---
+    def meta_value(k, v):  # Werte glossar-lokalisieren (Typ/Status), sonst roh
+        if k == "type":
+            return html.escape(tlabel("typen", v, v))
+        if k == "status":
+            return html.escape(status_label(v))
+        return html.escape(str(v))
+
     for oid, o in objs.items():
         fm = o["fm"]
-        meta = "".join(f"<tr><td>{html.escape(k)}</td><td>{html.escape(str(fm.get(k)))}</td></tr>"
+        meta = "".join(f"<tr><td>{html.escape(tlabel('felder', k))}</td><td>{meta_value(k, fm.get(k))}</td></tr>"
                        for k in ("type", "owner", "status", "stand", "vertraulichkeit", "esrs_bezug")
                        if fm.get(k) is not None)
         out_html = ""
         for feld, ids in edges_out(fm):
-            out_html += f"<tr><td>{html.escape(feld)}</td><td>{' '.join(link(i) for i in ids)}</td></tr>"
-        in_html = "".join(f"<tr><td>{link(s)}</td><td>{html.escape(f)}</td></tr>" for s, f in incoming.get(oid, []))
-        sub = f"<span class='badge {badge(fm.get('status'))}'>{html.escape(str(fm.get('status','')))}</span> &nbsp;<code>{html.escape(oid)}</code> · {html.escape(str(fm.get('type','')))}"
+            out_html += f"<tr><td>{html.escape(tlabel('kanten', feld))}</td><td>{' '.join(link(i) for i in ids)}</td></tr>"
+        in_html = "".join(f"<tr><td>{link(s)}</td><td>{html.escape(tlabel('kanten', f))}</td></tr>" for s, f in incoming.get(oid, []))
+        sub = (f"<span class='badge {badge(fm.get('status'))}'>{html.escape(status_label(fm.get('status')))}</span> "
+               f"&nbsp;<code>{html.escape(oid)}</code> · {html.escape(tlabel('typen', fm.get('type',''), str(fm.get('type',''))))}")
         cards = f"<div class=card><h3>Metadaten</h3><table class=meta>{meta}</table></div>"
         # Themen zeigen ihre Beziehungen in den kuratierten Cockpit-Tabellen (Klartext),
         # daher die generischen ID-Tabellen dort weglassen.
@@ -274,7 +310,7 @@ def main():
             owner_r = objs.get(fm.get("owner"), {}).get("fm", {}).get("rolle") or str(fm.get("owner", "—"))
             ti = fm.get("has_iro") or []
             n_wes = sum(1 for i in ti if str(objs.get(i, {}).get("fm", {}).get("wesentlich", "")).lower() in ("ja", "true"))
-            sub = (f"<span class='badge {badge(fm.get('status'))}'>{html.escape(str(fm.get('status','')))}</span> &nbsp;"
+            sub = (f"<span class='badge {badge(fm.get('status'))}'>{html.escape(status_label(fm.get('status')))}</span> &nbsp;"
                    f"ESRS {html.escape(str(fm.get('esrs_bezug','')))} · verantwortet von {html.escape(owner_r)} · "
                    f"Review {html.escape(str(fm.get('review_zyklus','—')))} · Stand {html.escape(str(fm.get('stand','—')))} · "
                    f"{n_wes}/{len(ti)} IROs wesentlich")
@@ -288,7 +324,7 @@ def main():
         fm = objs[tid]["fm"]
         n_iro = len(fm.get("has_iro") or []); n_t = len(fm.get("has_target") or [])
         rows += (f"<tr><td><a href='{tid}.html'>{html.escape(objs[tid]['title'])}</a></td>"
-                 f"<td><span class='badge {badge(fm.get('status'))}'>{html.escape(str(fm.get('status','')))}</span></td>"
+                 f"<td><span class='badge {badge(fm.get('status'))}'>{html.escape(status_label(fm.get('status')))}</span></td>"
                  f"<td>{html.escape(str(fm.get('esrs_bezug','')))}</td><td>{n_iro} IROs · {n_t} Ziele</td></tr>")
     body = (f"<div class=card><h3>Themen</h3><table><tr><th>Thema</th><th>Status</th>"
             f"<th>Standard</th><th>Umfang</th></tr>{rows}</table></div>"
@@ -370,9 +406,9 @@ def topic_cockpit(tid, objs, link, rev, target_maturity):
 
     def trend_badge(b):
         if b == "on-track":
-            return "<span class='badge ok'>auf Kurs</span>"
+            return f"<span class='badge ok'>{html.escape(tlabel('begriffe', 'on-track'))}</span>"
         if b == "off-track":
-            return "<span class='badge bad'>nicht auf Kurs</span>"
+            return f"<span class='badge bad'>{html.escape(tlabel('begriffe', 'off-track'))}</span>"
         return "<span class='dim'>kein Trend</span>"
 
     # IRO-Abdeckung: wesentliche IRO adressiert von Policy/Target/Strategy?
@@ -490,7 +526,7 @@ def topic_cockpit(tid, objs, link, rev, target_maturity):
 
     # Maßnahmen — Owner · Status · Budget
     inis = fm.get("has_initiative") or []
-    def stat(i): f = objs.get(i, {}).get("fm", {}); return f"<span class='badge {badge(f.get('status'))}'>{html.escape(str(f.get('status','')))}</span>"
+    def stat(i): f = objs.get(i, {}).get("fm", {}); return f"<span class='badge {badge(f.get('status'))}'>{html.escape(status_label(f.get('status')))}</span>"
     irow = "".join(f"<tr><td><a href='{i}.html'>{dname(i)}</a></td><td>{who_link(objs[i]['fm'].get('owner'))}</td>"
                    f"<td>{stat(i)}</td><td>{money(i)}</td></tr>" for i in inis)
     mass = (f"<div class=card><h3>Maßnahmen ({len(inis)})</h3>"
@@ -573,8 +609,6 @@ def topic_cockpit(tid, objs, link, rev, target_maturity):
     # ---- Objektgraph als rotierender Knoten-Globus (echter Graph des Themas) ----
     COL = {"topic": "#e3e8ee", "iro": "#d29922", "target": "#58a6ff", "kpi": "#3fb950",
            "initiative": "#bc8cff", "policy": "#f778ba", "strategy": "#f0883e"}
-    LBL = {"topic": "Thema", "iro": "IRO", "target": "Ziel", "kpi": "KPI",
-           "initiative": "Maßnahme", "policy": "Policy", "strategy": "Strategie"}
     members = [tid]
     for f2 in ("has_iro", "has_target", "has_kpi", "has_initiative"):
         members += (fm.get(f2) or [])
@@ -594,7 +628,7 @@ def topic_cockpit(tid, objs, link, rev, target_maturity):
                     if key not in seen:
                         seen.add(key); gedges.append([idx[m], idx[t2]])
     present = list(dict.fromkeys(g["t"] for g in gnodes))
-    legend = "".join(f"<span><span class=d style='background:{COL.get(t,'#8a97a6')}'></span>{LBL.get(t,t)}</span>" for t in present)
+    legend = "".join(f"<span><span class=d style='background:{COL.get(t,'#8a97a6')}'></span>{html.escape(tlabel('typen', t, t))}</span>" for t in present)
     gdata = json.dumps({"nodes": gnodes, "edges": gedges, "col": COL}, ensure_ascii=False).replace("<", "\\u003c")
     svg = svg_sphere(gnodes, gedges, COL)
     sphere = (f"<div class=card><h3>Objektgraph — {len(gnodes)} Objekte · {len(gedges)} Verknüpfungen</h3>"

@@ -1,0 +1,138 @@
+# Terminologie-Layer (Deutsch) — Single Source of Truth für Anzeige-Labels.
+#
+# Die ENGINE bleibt sprachneutral/englisch: Objekttypen, Kantennamen und Status-Werte
+# (die Schlüssel links) sind stabile interne Tokens — sie stehen so im Schema, in den
+# 697 Objekten, in Skills und im Validator. Hier wird NUR die DARSTELLUNG lokalisiert.
+#
+# Verwendung: der Cockpit-Generator (und künftige Views/Skill-Ausgaben) schlagen Labels
+# hier nach statt sie inline zu verdrahten. Fehlt ein Schlüssel, wird der Token
+# humanisiert (Unterstriche → Leerzeichen) — nichts bricht.
+#
+# Weitere Sprache = weitere Datei terms.<lang>.yaml mit denselben Schlüsseln.
+
+# --- Objekttypen → Anzeige (Singular) ---
+typen:
+  topic: Thema
+  target: Ziel
+  kpi: KPI
+  initiative: Maßnahme
+  policy: Policy
+  strategy: Strategie
+  iro: IRO
+  datapoint: Datenpunkt
+  disclosure: Offenlegung
+  decision: Entscheidung
+  budget: Budget
+  finding: Feststellung
+  person: Person
+  handover: Übergabe
+  stakeholder: Stakeholder
+  engagement: Einbindung
+  methodology: Methodik
+  threshold: Schwellenwert
+  site: Standort
+  segment: Segment
+  evidence: Nachweis
+  control: Kontrolle
+  test: Test
+  remediation: Behebung
+  recommendation: Empfehlung
+  regulation: Regelwerk
+  dependency: Abhängigkeit
+  assumption: Annahme
+  approval: Freigabe
+  risk: Risiko
+  scenario: Szenario
+  trend: Trend
+  forecast: Prognose
+  milestone: Meilenstein
+  kpi-value: KPI-Wert
+  data-source: Datenquelle
+
+# --- Beziehungs-/Kantennamen → Anzeige ---
+kanten:
+  has_target: hat Ziel
+  has_kpi: hat KPI
+  has_initiative: hat Maßnahme
+  has_iro: hat IRO
+  has_budget: hat Budget
+  measured_by: gemessen durch
+  supported_by: getragen von
+  approved_by: freigegeben durch
+  decided_by: entschieden von
+  responsible: verantwortlich (R)
+  consulted: konsultiert (C)
+  informed: informiert (I)
+  assigns: überträgt
+  von: von
+  an: an
+  bestaetigt_von: bestätigt von
+  applies_to: gilt für
+  part_of: Teil von
+  supports: unterstützt
+  affects: betrifft
+  at_risk_from: gefährdet durch
+  addresses: adressiert
+  depends_on: hängt ab von
+  for_kpi: für KPI
+  for_initiative: für Maßnahme
+  underpins: stützt
+  assumes: nimmt an
+  proposes: schlägt vor
+  tests: testet
+  remediates: behebt
+  approves: genehmigt
+  threatens: bedroht
+  concerns: betrifft Thema
+  informed_by: gespeist von
+  engages: bindet ein
+  informs: speist
+  scored_under: bewertet unter
+  based_on: basiert auf
+  applies: wendet an
+  discloses: legt offen
+  reports: berichtet
+  equivalent_to: entspricht
+  satisfied_by: erfüllt durch
+  backs: belegt
+  covers: deckt ab
+  challenges: hinterfragt
+  from_source: aus Quelle
+  sourced_from: bezogen aus
+
+# --- Status-Werte → Anzeige ---
+status:
+  final: final
+  geplant: geplant
+  aktiv: aktiv
+  in-kraft: in Kraft
+  wesentlich: wesentlich
+  nicht-wesentlich: nicht wesentlich
+  offen: offen
+  erfasst: erfasst
+  in-umsetzung: in Umsetzung
+  in-arbeit: in Arbeit
+  in-pruefung: in Prüfung
+  freigegeben: freigegeben
+  erteilt: erteilt
+  vorlaeufig: vorläufig
+  beschlossen: beschlossen
+  wirksam: wirksam
+  verabschiedet: verabschiedet
+  entwurf: Entwurf
+  bestanden: bestanden
+  abgeschlossen: abgeschlossen
+
+# --- Metadaten-Feldnamen → Anzeige ---
+felder:
+  type: Typ
+  owner: Owner (A)
+  status: Status
+  stand: Stand
+  vertraulichkeit: Vertraulichkeit
+  esrs_bezug: ESRS-Bezug
+
+# --- Freie UI-Begriffe ---
+begriffe:
+  on-track: auf Kurs
+  off-track: nicht auf Kurs
