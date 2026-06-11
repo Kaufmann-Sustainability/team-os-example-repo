@@ -31,6 +31,17 @@ code{background:#0d1117;border:1px solid var(--line);border-radius:4px;padding:1
 blockquote{border-left:3px solid var(--line);margin:6px 0;padding:2px 12px;color:var(--mut)}
 .li{margin:2px 0}.gap{color:var(--warn)}.meta td:first-child{color:var(--mut);width:160px}
 .grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}@media(max-width:700px){.grid{grid-template-columns:1fr}}
+.attn{border:1px solid var(--line);border-left:4px solid var(--neutral);border-radius:10px;background:var(--card);padding:16px 18px;margin:16px 0}
+.attn.bad{border-left-color:#f85149}.attn.warn{border-left-color:var(--warn)}.attn.ok{border-left-color:var(--ok)}
+.attn-h{font-weight:700;font-size:16px;margin-bottom:8px}
+.attn.bad .attn-h{color:#f85149}.attn.warn .attn-h{color:var(--warn)}.attn.ok .attn-h{color:var(--ok)}
+.attn ul{margin:0;padding-left:20px}.attn li{margin:5px 0}
+.attn li.bad::marker{color:#f85149}.attn li.warn::marker{color:var(--warn)}
+.hint{color:var(--mut);font-size:12.5px;font-weight:400;text-transform:none;letter-spacing:0;margin:-4px 0 12px}
+tbody tr:nth-child(even){background:rgba(255,255,255,.02)}
+td,th{padding:8px 10px}
+.prog>i{background:#6e7bd2}.prog.pg>i{background:var(--ok)}.prog.pgbad>i{background:#f85149}
+.unit{color:var(--mut);font-size:11px}.tile{cursor:default}
 </style><div class=wrap><div class=crumb><a href='index.html'>← Cockpits</a></div><h1>Entscheidung: SBTi-Commitment &amp; Fossil-Ausstieg 2035</h1><div class=sub><span class='badge neutral'>beschlossen</span> &nbsp;<code>decision-e1-sbti-fossil-phaseout</code> · decision</div><div class=card><h3>Metadaten</h3><table class=meta><tr><td>type</td><td>decision</td></tr><tr><td>owner</td><td>person-vaillant-cso</td></tr><tr><td>status</td><td>beschlossen</td></tr><tr><td>stand</td><td>2026-06-09</td></tr><tr><td>vertraulichkeit</td><td>intern</td></tr><tr><td>esrs_bezug</td><td>E1-4</td></tr></table></div><div class=card><h3>Beziehungen → </h3><table><tr><td>entscheidung</td><td><code>SBTi-Near-Term-Ziele einreichen und rein-fossile Heizgeräte bis 2035 auslaufen lassen.</code></td></tr><tr><td>decided_by</td><td><a href='person-vaillant-cso.html'><code>person-vaillant-cso</code></a></td></tr><tr><td>affects</td><td><a href='target-e1-waermepumpen-absatzanteil.html'><code>target-e1-waermepumpen-absatzanteil</code></a> <a href='target-e1-scope3-11-usephase.html'><code>target-e1-scope3-11-usephase</code></a> <a href='target-e1-scope1-2-netzero.html'><code>target-e1-scope1-2-netzero</code></a></td></tr></table></div><div class=card><h3>Beschreibung</h3><h2>cheidung: SBTi-Commitment &amp; Fossil-Ausstieg 2035</h2>
 <p>ADR-Record der strategischen Weichenstellung. Erwogene Optionen: (1) Status quo — verworfen wegen Stranding-Risiko (E1-R1); (2) langsamer Ausstieg — verworfen, Wettbewerber überholen; (3) <b>SBTi + Fossil-Ausstieg 2035 (gewählt)</b> — macht aus dem Transitionsrisiko einen Vorsprung.</p>
 <blockquote>b>Educated Guess</b> — kein Vaillant-Originaldokument.</blockquote></div></div>
