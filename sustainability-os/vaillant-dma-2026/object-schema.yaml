@@ -5,6 +5,12 @@
 # Warum das existiert: Sobald Beziehungen GETYPT sind, wird Schema + referenzielle
 # Integrität tragend (Grundproblem E). Ohne diese Datei ist der Objektgraph nur
 # eine hübsche Idee — mit ihr ist er prüfbar.
+#
+# SPRACHE / DARSTELLUNG: Die Tokens hier (Typen, Kantennamen, Status) sind STABILE,
+# sprachneutrale Engine-IDs. Deutsche ANZEIGE-Labels stehen kanonisch in
+# `config/terms.de.yaml` und werden von Views (Cockpit) genutzt. Wer Labels ausgibt
+# (Views, label-erzeugende Skill-Ausgaben), zieht sie von dort — nicht inline verdrahten.
+# Weitere Sprache = weitere `config/terms.<lang>.yaml` mit denselben Schlüsseln.
 
 # --- Metadaten-Kopf, den JEDES Objekt tragen muss (Synthese-Prinzip 2) ---
 metadata_pflicht: [id, type, owner, status, stand, vertraulichkeit]
