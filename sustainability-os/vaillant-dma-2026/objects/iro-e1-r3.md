@@ -17,6 +17,8 @@ iro_nr: "E1-R3"
 sub_thema: "Klimawandel-Mitigation"
 concerns: [topic-e1-klimawandel-mitigation]
 scored_under: [methodology-dma-2026]
+offene_punkte:
+  - "2026-06-11: Reines Finanzierungs-/Reputationsrisiko ohne eigene Metrik (measured_by leer). Bewusst über die Transitionsstrategie gesteuert; bis Q4-2026 prüfen, ob ein ESG-Spread-/Finanzierungs-KPI als Proxy sinnvoll ist (decision-e1-iro-kpi-zuordnung)."
 ---
 
 # IRO E1-R3: Klimawandel-Mitigation

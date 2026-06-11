@@ -17,6 +17,7 @@ iro_nr: "E1-I2"
 sub_thema: "Klimawandel-Mitigation"
 concerns: [topic-e1-klimawandel-mitigation]
 scored_under: [methodology-dma-2026]
+measured_by: [kpi-e1-scope1-2]
 ---
 
 # IRO E1-I2: Klimawandel-Mitigation

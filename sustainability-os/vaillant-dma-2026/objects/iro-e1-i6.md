@@ -17,6 +17,7 @@ iro_nr: "E1-I6"
 sub_thema: "Klimawandel-Mitigation"
 concerns: [topic-e1-klimawandel-mitigation]
 scored_under: [methodology-dma-2026]
+measured_by: [kpi-e1-scope3-11, kpi-e1-vermiedene-emissionen, kpi-e1-waermepumpen-absatzanteil]
 ---
 
 # IRO E1-I6: Klimawandel-Mitigation

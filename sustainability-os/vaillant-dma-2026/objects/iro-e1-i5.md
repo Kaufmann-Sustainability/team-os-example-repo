@@ -20,6 +20,7 @@ wirkung_art: potenziell
 begruendung: "Vermiedene Nutzungsphasen-Emissionen, wenn fossile Heizgeräte durch Wärmepumpen ersetzt werden — positiver Klimabeitrag in der nachgelagerten Wertschöpfung."
 concerns: [topic-e1-klimawandel-mitigation]
 scored_under: [methodology-dma-2026]
+measured_by: [kpi-e1-scope3-11, kpi-e1-vermiedene-emissionen, kpi-e1-waermepumpen-absatzanteil]
 ---
 
 # IRO E1-I5: Klimawandel-Mitigation

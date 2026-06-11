@@ -35,7 +35,9 @@ KANTEN = {
     "has_target","has_kpi","has_initiative","has_iro","measured_by","supported_by",
     "approved_by","decided_by","supports","affects","at_risk_from","has_budget",
     "uses_factor","concerns","informed_by","scored_under","based_on","applies",
-    "discloses","reports","backs","covers","challenges",
+    "discloses","reports","backs","covers","challenges","addresses","depends_on","plans",
+    "for_kpi","underpins","assumes","proposes","tests","remediates","for_initiative",
+    "approves","threatens",
 }
 
 
@@ -204,6 +206,364 @@ def gaps(objs):
         print("  Keine Lücke — alle wesentlichen Themen haben mindestens ein Ziel.")
 
 
+# ---------- COVERAGE (zwei Achsen: Messung=Pflicht via iro.measured_by, Steuerung=optional via addresses) ----------
+def coverage(objs, topic_id):
+    print(f"\n# IRO-Abdeckung (Konsistenz)  ({topic_id})\n")
+    topic = objs.get(topic_id)
+    if not topic:
+        sys.exit(f"Unbekanntes Topic: {topic_id}")
+    iros = [objs[i] for i in out(topic.get("has_iro", [])) if i in objs]
+    material = [i for i in iros if str(i.get("wesentlich")).strip('"').lower() != "nein"]
+    targets = [objs[t] for t in out(topic.get("has_target", [])) if t in objs]
+    # Achse 1 — MESSUNG (Pflicht): KPIs, die eine IRO direkt abbilden (iro -> measured_by -> kpi)
+    by_kpi = {i["id"]: out(i.get("measured_by", [])) for i in material}
+    # Achse 2 — STEUERUNG (optional): addresses-Kanten (von Zielen vs. Strategie/Policy)
+    by_target = {i["id"]: [] for i in material}
+    by_strapol = {i["id"]: [] for i in material}
+    for o in objs.values():
+        for iid in out(o.get("addresses", [])):
+            if iid in by_target:
+                (by_target if o.get("type") == "target" else by_strapol)[iid].append(o["id"])
+    print(f"Wesentliche IROs: {len(material)} · Ziele: {len(targets)}")
+    print("\nMessung — PFLICHT  (iro→measured_by→kpi · ✓ ≥1 KPI · ⛔ keine):")
+    ohne_kpi = []
+    for i in material:
+        k = by_kpi[i["id"]]
+        if k:
+            print(f"  ✓ {i['id']:12} ← {', '.join(k)}")
+        else:
+            print(f"  ⛔ {i['id']:12} ← KEINE KPI")
+            ohne_kpi.append(i["id"])
+    print("\nSteuerung — OPTIONAL  (✓ Ziel · ◐ nur Strategie/Policy · – nur gemessen):")
+    nur_sp, ungesteuert = [], []
+    for i in material:
+        t, sp = by_target[i["id"]], by_strapol[i["id"]]
+        if t:
+            print(f"  ✓ {i['id']:12} ← {', '.join(t)}")
+        elif sp:
+            print(f"  ◐ {i['id']:12} ← {', '.join(sp)} (kein Metrik-Ziel)")
+            nur_sp.append(i["id"])
+        else:
+            print(f"  – {i['id']:12} ← nur gemessen, nicht gesteuert")
+            ungesteuert.append(i["id"])
+    orph = [t for t in targets if not out(t.get("addresses", []))]
+    print("\nKonsistenz-Befund:")
+    print("  ✓ PFLICHT erfüllt: jede wesentliche IRO ist durch ≥1 KPI abgebildet."
+          if not ohne_kpi else f"  ⛔ ESRS-Lücke — IROs ohne KPI: {', '.join(ohne_kpi)}")
+    if nur_sp:
+        print(f"  ◐ Nur über Strategie/Policy gesteuert (bewusst? kein Metrik-Ziel): {', '.join(nur_sp)}")
+    if ungesteuert:
+        print(f"  – Gemessen, aber (noch) nicht gesteuert (optional, ok): {', '.join(ungesteuert)}")
+    if orph:
+        print(f"  ⛔ Orphan-Ziel(e) ohne IRO-Bezug: {', '.join(t['id'] for t in orph)}")
+
+
+# ---------- REIFEGRAD (Vollständigkeits-Vertrag je Target) ----------
+# Vertrag = Kern-Pflichten, die ein Target zu einem "vollständig gesteuerten" machen.
+# Fehlt etwas, ist es entweder anzulegen ODER als offene_punkte zu markieren.
+def _incoming(objs, edge, target_id):
+    """Objekte, deren <edge> auf target_id zeigt (Rückwärts-Lookup)."""
+    return [o for o in objs.values() if target_id in out(o.get(edge, []))]
+
+def reifegrad(objs, arg):
+    obj = objs.get(arg)
+    if not obj:
+        sys.exit(f"Unbekannte ID: {arg}")
+    typ = obj.get("type")
+    print(f"\n# Reifegrad: Vollständigkeitsverträge\n")
+    if typ == "topic":
+        print("## Thema — Apparat (topic-gate)\n")
+        _print_full(obj, *_topic_checks(objs, obj))
+        sections = [("IROs", "has_iro", _iro_checks), ("KPIs", "has_kpi", _kpi_checks),
+                    ("Ziele", "has_target", _target_checks), ("Maßnahmen", "has_initiative", _initiative_checks)]
+        for label, edge, fn in sections:
+            kids = [objs[k] for k in out(obj.get(edge, [])) if k in objs]
+            if not kids:
+                continue
+            print(f"## {label}  (Detail: reifegrad <id>)\n")
+            for k in kids:
+                _print_compact(k, fn(objs, k)[0])
+            print()
+    elif typ in _CHECKS:
+        _print_full(obj, *_CHECKS[typ](objs, obj))
+    else:
+        sys.exit("reifegrad erwartet topic | iro | kpi | target | initiative.")
+
+
+def _wesentlich(o):
+    return str(o.get("wesentlich", "")).lower() in ("ja", "true")
+
+def _addressed(objs, iid):
+    return any(iid in out(t.get("addresses", [])) for t in objs.values())
+
+def _measured(objs, iid):
+    """Wird die IRO durch ≥1 KPI abgebildet? (iro -> measured_by -> kpi) — ESRS-Pflicht."""
+    o = objs.get(iid, {})
+    return bool(out(o.get("measured_by", [])))
+
+
+def _target_checks(objs, t):
+    tid = t["id"]
+    checks = [
+        ("Owner gesetzt",          bool(t.get("owner"))),
+        ("Baseline+Ziel+Jahr",     all(t.get(f) is not None for f in ("baseline_wert","zielwert","zieljahr"))),
+        ("≥1 IRO adressiert",      bool(out(t.get("addresses", [])))),
+        ("≥1 KPI misst es",        bool(out(t.get("measured_by", [])))),
+        ("≥1 Maßnahme trägt es",   bool(out(t.get("supported_by", [])))),
+        ("≥1 Annahme hinterlegt",  bool(_incoming(objs, "underpins", tid))),
+        ("Freigabe (approval)",    bool(_incoming(objs, "approves", tid))),
+        ("Risiken bewertet",       bool(_incoming(objs, "threatens", tid))),
+    ]
+    bonus = [("Szenario", bool([o for o in _incoming(objs, "proposes", tid) if o.get("type") == "scenario"]))]
+    return checks, bonus
+
+
+def _initiative_checks(objs, i):
+    iid = i["id"]
+    checks = [
+        ("Owner gesetzt",            bool(i.get("owner"))),
+        ("≥1 Target verknüpft",      bool(out(i.get("supports", [])))),
+        ("≥1 Budget",                bool(out(i.get("has_budget", [])))),
+        ("Freigabe/Status (approval)", bool(_incoming(objs, "approves", iid))),
+        ("≥1 Milestone",             bool(_incoming(objs, "for_initiative", iid))),
+        ("Abhängigkeiten explizit",  bool(out(i.get("depends_on", [])))),
+        ("Risiken bewertet",         bool(_incoming(objs, "threatens", iid))),
+    ]
+    eco = [o for o in objs.values() if iid in out(o.get("prices", [])) or iid in out(o.get("abates", []))]
+    bonus = [("Economics (Kosten-Nutzen)", bool(eco))]
+    return checks, bonus
+
+
+def _iro_checks(objs, o):
+    # Konditional: Impact -> Impact-Score; Risk/Opportunity -> Financial-Score.
+    ist_impact = str(o.get("iro_typ", "")).startswith("Impact")
+    checks = [
+        ("Typ + Wesentlichkeit gesetzt", bool(o.get("iro_typ")) and o.get("wesentlich") is not None),
+        ("Wertschöpfungsketten-Position", bool(o.get("wertschoepfungskette"))),
+        ("Begründung vorhanden",         bool(o.get("begruendung"))),
+    ]
+    if ist_impact:
+        checks.append(("Impact-Score (Ausmaß/Umfang)", bool(o.get("impact_wesentlichkeit"))))
+        checks.append(("Tatsächlich/potenziell",       bool(o.get("wirkung_art"))))
+    else:
+        checks.append(("Financial-Score", bool(o.get("finanz_wesentlichkeit"))))
+    bonus = []
+    if _wesentlich(o):
+        # ESRS-Pflicht: wesentliche IRO durch ≥1 KPI abgebildet. Steuerung (addresses) = Bonus.
+        checks.append(("Wesentlich → durch ≥1 KPI gemessen", _measured(objs, o["id"])))
+        bonus.append(("Durch Ziel/Policy gesteuert (addresses)", _addressed(objs, o["id"])))
+    return checks, bonus
+
+
+def _kpi_checks(objs, k):
+    kid = k["id"]
+    bildet_iro_ab = any(o.get("type") == "iro" and kid in out(o.get("measured_by", [])) for o in objs.values())
+    misst_target = any(o.get("type") == "target" and kid in out(o.get("measured_by", [])) for o in objs.values())
+    checks = [
+        ("Owner gesetzt",         bool(k.get("owner"))),
+        ("Einheit gesetzt",       bool(k.get("einheit"))),
+        ("Definition/Methodik",   bool(k.get("methodik"))),
+        ("Baseline",              k.get("baseline_wert") is not None),
+        ("Bildet ≥1 IRO ab (measured_by)", bildet_iro_ab),
+        ("Aktueller Wert (kpi-value)", any(o.get("type") == "kpi-value" and kid in out(o.get("for_kpi", [])) for o in objs.values())),
+    ]
+    bonus = [
+        ("Misst ein Target (interne Steuerung)", misst_target),
+        ("Forecast/Trend", any(o.get("type") in ("forecast", "trend") and kid in out(o.get("for_kpi", [])) for o in objs.values())),
+    ]
+    return checks, bonus
+
+
+def _topic_checks(objs, tp):
+    tid = tp["id"]
+    pol = [o for o in objs.values() if o.get("type") == "policy" and tid in out(o.get("concerns", []))]
+    mat = [objs[i] for i in out(tp.get("has_iro", [])) if i in objs and _wesentlich(objs[i])]
+    alle_gemessen = bool(mat) and all(_measured(objs, m["id"]) for m in mat)
+    alle_adressiert = bool(mat) and all(_addressed(objs, m["id"]) for m in mat)
+    checks = [
+        ("Owner gesetzt",        bool(tp.get("owner"))),
+        ("≥1 IRO",               bool(out(tp.get("has_iro", [])))),
+        ("≥1 Policy",            bool(pol)),
+        ("≥1 Target",            bool(out(tp.get("has_target", [])))),
+        ("≥1 KPI",               bool(out(tp.get("has_kpi", [])))),
+        ("≥1 Maßnahme",          bool(out(tp.get("has_initiative", [])))),
+        ("Alle wesentlichen IROs durch KPI gemessen (Pflicht)", alle_gemessen),
+    ]
+    bonus = [("Alle wesentlichen IROs gesteuert (addresses)", alle_adressiert)]
+    return checks, bonus
+
+
+def _policy_checks(objs, p):
+    pid = p["id"]
+    checks = [
+        ("Owner gesetzt",       bool(p.get("owner"))),
+        ("Betrifft ein Thema",  bool(out(p.get("concerns", [])))),
+        ("≥1 IRO adressiert",   bool(out(p.get("addresses", [])))),
+        ("Geltungsbereich",     bool(p.get("geltungsbereich"))),
+        ("Freigabe (approval)", bool(_incoming(objs, "approves", pid))),
+    ]
+    return checks, []
+
+
+def _decision_checks(objs, d):
+    checks = [
+        ("Owner gesetzt",            bool(d.get("owner"))),
+        ("Datum + Entscheidung",     bool(d.get("datum")) and bool(d.get("entscheidung"))),
+        ("Entscheider (decided_by)", bool(out(d.get("decided_by", [])))),
+        ("Begründung",               bool(d.get("begruendung"))),
+        ("Betrifft etwas (affects)", bool(out(d.get("affects", [])))),
+    ]
+    bonus = [("Grundlage (based_on / informed_by)",
+              bool(out(d.get("based_on", [])) or out(d.get("informed_by", []))))]
+    return checks, bonus
+
+
+_CHECKS = {"target": _target_checks, "initiative": _initiative_checks,
+           "iro": _iro_checks, "kpi": _kpi_checks, "topic": _topic_checks,
+           "policy": _policy_checks, "decision": _decision_checks}
+
+
+def _print_full(obj, checks, bonus):
+    erfuellt = sum(1 for _, ok in checks if ok)
+    score = round(100 * erfuellt / len(checks))
+    bar = "█" * (score // 10) + "░" * (10 - score // 10)
+    print(f"  {obj['id']}")
+    print(f"  Reifegrad {bar} {score}%  ({erfuellt}/{len(checks)} Kern-Pflichten)")
+    for name, ok in checks:
+        print(f"      {'✓' if ok else '✗'} {name}")
+    for name, ok in bonus:
+        print(f"      {'＋' if ok else '·'} {name} (Bonus)")
+    for op in obj.get("offene_punkte", []) or []:
+        print(f"      ⚠ offen: {op}")
+    print()
+
+
+def _print_compact(obj, checks):
+    erfuellt = sum(1 for _, ok in checks if ok)
+    score = round(100 * erfuellt / len(checks))
+    fehlt = [name for name, ok in checks if not ok]
+    op = " ⚠offen" if obj.get("offene_punkte") else ""
+    tail = ("   fehlt: " + ", ".join(fehlt)) if fehlt else ""
+    print(f"   {score:3d}%  {obj['id']}{tail}{op}")
+
+
+# ---------- BERICHTSREIFE (Release-Gate vor Offenlegung) ----------
+def berichtsreife(objs, topic_id):
+    tp = objs.get(topic_id)
+    if not tp or tp.get("type") != "topic":
+        sys.exit("berichtsreife erwartet ein topic.")
+    print(f"\n# Berichtsreife: {topic_id}\n")
+    blockers = []
+    # 1) Apparat vollständig (topic-gate)
+    for name, ok in _topic_checks(objs, tp)[0]:
+        if not ok:
+            blockers.append(f"Apparat unvollständig: {name}")
+    # 2) Datenpunkte des Themas -> jeder braucht eine Offenlegung
+    dps = [o for o in objs.values() if o.get("type") == "datapoint" and topic_id in out(o.get("concerns", []))]
+    if not dps:
+        blockers.append("Keine ESRS-Datenpunkte am Thema modelliert")
+    for dp in dps:
+        discs = [o for o in objs.values() if o.get("type") == "disclosure" and dp["id"] in out(o.get("discloses", []))]
+        if not discs:
+            blockers.append(f"Datenpunkt ohne Offenlegung: {dp['id']}")
+            continue
+        # 3) je Offenlegung: berichtete KPI aktuell, ohne offenes Finding, mit Evidenz
+        for disc in discs:
+            for kid in out(disc.get("reports", [])):
+                kvs = [o["id"] for o in objs.values() if o.get("type") == "kpi-value" and kid in out(o.get("for_kpi", []))]
+                if not kvs:
+                    blockers.append(f"{disc['id']}: KPI {kid} ohne aktuellen Wert")
+                if not any(o.get("type") == "evidence" and set(out(o.get("backs", []))) & set(kvs) for o in objs.values()):
+                    blockers.append(f"{disc['id']}: keine Evidenz für KPI {kid}")
+                for fnd in [o for o in objs.values() if o.get("type") == "finding"
+                            and o.get("status") == "offen" and kid in out(o.get("affects", []))]:
+                    blockers.append(f"{disc['id']}: offenes Finding {fnd['id']} betrifft KPI {kid}")
+    if blockers:
+        print(f"  ⛔ NICHT BERICHTSREIF — {len(blockers)} Blocker:\n")
+        for b in blockers:
+            print(f"      • {b}")
+    else:
+        print("  ✅ BERICHTSREIF — Apparat steht, Datenpunkte offengelegt, KPIs aktuell & belegt, keine offenen Findings.")
+    print()
+
+
+# ---------- OFFENLEGUNGS-GAP (Katalog vs. gesteuerter Inhalt) ----------
+def offenlegungs_gap(objs, standard):
+    import glob, os
+    base = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    pats = sorted(glob.glob(os.path.join(base, "reference", f"esrs-catalog-{standard.lower()}-*.yaml")))
+    if not pats:
+        sys.exit(f"Kein Katalog für {standard} unter reference/ gefunden.")
+    cat = pats[0]
+    version = ""
+    cat_drs, cur, dr_con = {}, None, {}
+    for ln in open(cat):
+        s = ln.strip()
+        if s.startswith("katalog_version:"):
+            version = s.split(":", 1)[1].strip()
+        elif s.startswith("- dr_code:"):
+            cur = s.split(":", 1)[1].strip(); cat_drs[cur] = 0
+        elif s.startswith("concept:") and cur:
+            dr_con[cur] = s.split(":", 1)[1].strip()
+        elif (s.startswith("- id:") or s.startswith("- {verweis")) and cur:
+            cat_drs[cur] += 1
+    # Inhalt je KONZEPT (versionsunabhängig) statt je dr_code — derselbe Anker wie im Generator
+    gov = {}
+    for o in objs.values():
+        if o.get("type") == "datapoint" and str(o.get("framework")) == "ESRS" and o.get("concept"):
+            gov.setdefault(o["concept"], []).append(o)
+    print(f"\n# Offenlegungs-Gap: ESRS {standard}  (Katalog: {version})\n")
+    abged = 0
+    for dc in sorted(cat_drs, key=lambda x: int(x.split("-")[1])):
+        con = dr_con.get(dc)
+        sat = [s for o in gov.get(con, []) for s in out(o.get("satisfied_by", []))]
+        covered = bool(sat)
+        abged += covered
+        mark = "✓" if covered else "·"
+        detail = ("  ⇐ " + ", ".join(sat)) if sat else ""
+        print(f"  {mark} {dc:6} [{con or '—'}] ({cat_drs[dc]:2} Datenpunkte){detail}")
+    print(f"\n  Governance-Abdeckung: {abged}/{len(cat_drs)} DRs an gesteuerten Inhalt gekoppelt"
+          f"  ({sum(cat_drs.values())} Datenpunkte im Katalog).")
+    xwalk = [o for o in objs.values() if o.get("type") == "datapoint" and out(o.get("equivalent_to", []))]
+    if xwalk:
+        print("\n  Map once, report many — Crosswalks auf denselben Inhalt:")
+        for o in xwalk:
+            for eq in out(o.get("equivalent_to", [])):
+                shared = ", ".join(out(o.get("satisfied_by", []))) or "—"
+                print(f"    {o.get('framework','?')} {o['id']}  ≡  {eq}   (Inhalt: {shared})")
+    print()
+
+
+# ---------- KPI-STATUS (Zeitreihe: Ist-Werte, Forecast, Trend, Frische) ----------
+def kpi_status(objs, topic_id):
+    print(f"\n# KPI-Status über Zeit  ({topic_id})\n")
+    topic = objs.get(topic_id)
+    if not topic:
+        sys.exit(f"Unbekanntes Topic: {topic_id}")
+    kpis = [objs[k] for k in out(topic.get("has_kpi", [])) if k in objs]
+    vals, fcs, trs = {}, {}, {}
+    for o in objs.values():
+        for k in out(o.get("for_kpi", [])):
+            t = o.get("type")
+            (vals if t == "kpi-value" else fcs if t == "forecast" else trs if t == "trend" else {}).setdefault(k, []).append(o)
+    for kpi in kpis:
+        kid = kpi["id"]
+        vs = sorted(vals.get(kid, []), key=lambda x: x.get("jahr", 0))
+        reihe = "  ".join(f"{v.get('jahr')}:{v.get('wert')}" for v in vs) or "— keine Ist-Werte"
+        fc = "  ".join(f"{f.get('jahr')}→{f.get('wert')}" for f in fcs.get(kid, [])) or "—"
+        tr = trs.get(kid, [])
+        trb = tr[0].get("bewertung") if tr else "—"
+        mark = "⏰" if not vs else ("⚠" if any(t.get("bewertung") == "off-track" for t in tr) else "✓")
+        print(f"  {mark} {kid}")
+        print(f"      Ist: {reihe}   ·   Forecast: {fc}   ·   Trend: {trb}")
+    off = [k["id"] for k in kpis if any(t.get("bewertung") == "off-track" for t in trs.get(k["id"], []))]
+    nodata = [k["id"] for k in kpis if not vals.get(k["id"])]
+    print("\nBefund:")
+    print(f"  ⚠ Off-track: {', '.join(off)}" if off else "  ✓ Keine KPI off-track.")
+    if nodata:
+        print(f"  ⏰ Ohne Ist-Werte (Datenlücke): {', '.join(nodata)}")
+
+
 # ---------- STALE ----------
 def stale(objs):
     print("\n# Frische-Sweep: überfällige Objekte\n")
@@ -245,6 +605,16 @@ def main():
         {"target-setting": pack_target_setting, "disclosure": pack_disclosure, "dma": pack_dma}[sub](objs, a[2])
     elif cmd == "my-work":
         my_work(objs, a[1])
+    elif cmd == "coverage":
+        coverage(objs, a[1])
+    elif cmd == "kpi-status":
+        kpi_status(objs, a[1])
+    elif cmd == "reifegrad":
+        reifegrad(objs, a[1])
+    elif cmd == "berichtsreife":
+        berichtsreife(objs, a[1])
+    elif cmd == "offenlegungs-gap":
+        offenlegungs_gap(objs, a[1])
     elif cmd == "gaps":
         gaps(objs)
     elif cmd == "stale":

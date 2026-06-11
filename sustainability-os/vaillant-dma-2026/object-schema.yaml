@@ -69,7 +69,10 @@ objekt_typen:
     # setzt. Views (Cockpit/Offenlegung) zeigen ihn statt iro_nr/abgeschnittener Beschreibung;
     # Fallback bleibt iro_nr. Kein Pflichtfeld (Bestandsdaten brechen nicht).
     empfohlen: [kurztitel]
-    beziehungen: [concerns, informed_by, scored_under, applies_to]
+    # measured_by (iro -> kpi): die ESRS-Pflicht-Kante — jede WESENTLICHE IRO wird durch
+    # >=1 Kennzahl abgebildet (many-to-many). Steuerung (Ziel/Policy/Strategie via `addresses`)
+    # ist demgegenüber OPTIONAL. Die Zuordnung wird als `decision` dokumentiert (wer/wann/warum).
+    beziehungen: [concerns, informed_by, scored_under, applies_to, measured_by]
   stakeholder:                  # interne/externe Partei, deren Input einfließt
     pflichtfelder: [stakeholder_typ]
     beziehungen: []             # owner = interne:r Beziehungs-Verantwortliche:r (person)
@@ -184,7 +187,7 @@ beziehungs_vokabular:
   applies_to:   [site, segment]   # Steuerungsobjekt gilt für Standort/Segment
   part_of:      [segment]         # Standort/Segment gehört zu (Eltern-)Segment
   supports:     [target]
-  affects:      [target, kpi, topic]
+  affects:      [target, kpi, topic, iro]   # iro: erlaubt, eine IRO→KPI-Zuordnung als decision zu dokumentieren
   at_risk_from: [finding]
   has_budget:   [budget]
   # --- DMA-Slice ---

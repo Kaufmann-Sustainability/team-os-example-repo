@@ -206,7 +206,7 @@ def gaps(objs):
         print("  Keine Lücke — alle wesentlichen Themen haben mindestens ein Ziel.")
 
 
-# ---------- COVERAGE (emergente Konsistenz: jede wesentliche IRO von >=1 Ziel abgedeckt) ----------
+# ---------- COVERAGE (zwei Achsen: Messung=Pflicht via iro.measured_by, Steuerung=optional via addresses) ----------
 def coverage(objs, topic_id):
     print(f"\n# IRO-Abdeckung (Konsistenz)  ({topic_id})\n")
     topic = objs.get(topic_id)
@@ -215,7 +215,9 @@ def coverage(objs, topic_id):
     iros = [objs[i] for i in out(topic.get("has_iro", [])) if i in objs]
     material = [i for i in iros if str(i.get("wesentlich")).strip('"').lower() != "nein"]
     targets = [objs[t] for t in out(topic.get("has_target", [])) if t in objs]
-    # alle addresses-Kanten auf diese IROs (von Zielen vs. Strategie/Policy)
+    # Achse 1 — MESSUNG (Pflicht): KPIs, die eine IRO direkt abbilden (iro -> measured_by -> kpi)
+    by_kpi = {i["id"]: out(i.get("measured_by", [])) for i in material}
+    # Achse 2 — STEUERUNG (optional): addresses-Kanten (von Zielen vs. Strategie/Policy)
     by_target = {i["id"]: [] for i in material}
     by_strapol = {i["id"]: [] for i in material}
     for o in objs.values():
@@ -223,26 +225,37 @@ def coverage(objs, topic_id):
             if iid in by_target:
                 (by_target if o.get("type") == "target" else by_strapol)[iid].append(o["id"])
     print(f"Wesentliche IROs: {len(material)} · Ziele: {len(targets)}")
-    print("\nAbdeckung je IRO  (✓ Ziel · ◐ nur Strategie/Policy · ⛔ gar nicht):")
-    nur_sp, gar = [], []
+    print("\nMessung — PFLICHT  (iro→measured_by→kpi · ✓ ≥1 KPI · ⛔ keine):")
+    ohne_kpi = []
+    for i in material:
+        k = by_kpi[i["id"]]
+        if k:
+            print(f"  ✓ {i['id']:12} ← {', '.join(k)}")
+        else:
+            print(f"  ⛔ {i['id']:12} ← KEINE KPI")
+            ohne_kpi.append(i["id"])
+    print("\nSteuerung — OPTIONAL  (✓ Ziel · ◐ nur Strategie/Policy · – nur gemessen):")
+    nur_sp, ungesteuert = [], []
     for i in material:
         t, sp = by_target[i["id"]], by_strapol[i["id"]]
         if t:
-            print(f"  ✓ {i['id']:10} ← {', '.join(t)}")
+            print(f"  ✓ {i['id']:12} ← {', '.join(t)}")
         elif sp:
-            print(f"  ◐ {i['id']:10} ← {', '.join(sp)} (kein Metrik-Ziel)")
+            print(f"  ◐ {i['id']:12} ← {', '.join(sp)} (kein Metrik-Ziel)")
             nur_sp.append(i["id"])
         else:
-            print(f"  ⛔ {i['id']:10} ← NICHTS")
-            gar.append(i["id"])
+            print(f"  – {i['id']:12} ← nur gemessen, nicht gesteuert")
+            ungesteuert.append(i["id"])
     orph = [t for t in targets if not out(t.get("addresses", []))]
     print("\nKonsistenz-Befund:")
-    print("  ✓ Jede wesentliche IRO ist adressiert."
-          if not gar else f"  ⛔ Nicht adressiert: {', '.join(gar)}")
+    print("  ✓ PFLICHT erfüllt: jede wesentliche IRO ist durch ≥1 KPI abgebildet."
+          if not ohne_kpi else f"  ⛔ ESRS-Lücke — IROs ohne KPI: {', '.join(ohne_kpi)}")
     if nur_sp:
-        print(f"  ◐ Nur über Strategie/Policy gemanagt (bewusst? kein Metrik-Ziel): {', '.join(nur_sp)}")
-    print("  ✓ Jedes Ziel adressiert mindestens eine IRO."
-          if not orph else f"  ⛔ Orphan-Ziel(e): {', '.join(t['id'] for t in orph)}")
+        print(f"  ◐ Nur über Strategie/Policy gesteuert (bewusst? kein Metrik-Ziel): {', '.join(nur_sp)}")
+    if ungesteuert:
+        print(f"  – Gemessen, aber (noch) nicht gesteuert (optional, ok): {', '.join(ungesteuert)}")
+    if orph:
+        print(f"  ⛔ Orphan-Ziel(e) ohne IRO-Bezug: {', '.join(t['id'] for t in orph)}")
 
 
 # ---------- REIFEGRAD (Vollständigkeits-Vertrag je Target) ----------
@@ -282,6 +295,11 @@ def _wesentlich(o):
 
 def _addressed(objs, iid):
     return any(iid in out(t.get("addresses", [])) for t in objs.values())
+
+def _measured(objs, iid):
+    """Wird die IRO durch ≥1 KPI abgebildet? (iro -> measured_by -> kpi) — ESRS-Pflicht."""
+    o = objs.get(iid, {})
+    return bool(out(o.get("measured_by", [])))
 
 
 def _target_checks(objs, t):
@@ -329,22 +347,30 @@ def _iro_checks(objs, o):
         checks.append(("Tatsächlich/potenziell",       bool(o.get("wirkung_art"))))
     else:
         checks.append(("Financial-Score", bool(o.get("finanz_wesentlichkeit"))))
+    bonus = []
     if _wesentlich(o):
-        checks.append(("Wesentlich → adressiert", _addressed(objs, o["id"])))
-    return checks, []
+        # ESRS-Pflicht: wesentliche IRO durch ≥1 KPI abgebildet. Steuerung (addresses) = Bonus.
+        checks.append(("Wesentlich → durch ≥1 KPI gemessen", _measured(objs, o["id"])))
+        bonus.append(("Durch Ziel/Policy gesteuert (addresses)", _addressed(objs, o["id"])))
+    return checks, bonus
 
 
 def _kpi_checks(objs, k):
     kid = k["id"]
+    bildet_iro_ab = any(o.get("type") == "iro" and kid in out(o.get("measured_by", [])) for o in objs.values())
+    misst_target = any(o.get("type") == "target" and kid in out(o.get("measured_by", [])) for o in objs.values())
     checks = [
         ("Owner gesetzt",         bool(k.get("owner"))),
         ("Einheit gesetzt",       bool(k.get("einheit"))),
         ("Definition/Methodik",   bool(k.get("methodik"))),
         ("Baseline",              k.get("baseline_wert") is not None),
-        ("≥1 Target misst damit", any(kid in out(t.get("measured_by", [])) for t in objs.values())),
+        ("Bildet ≥1 IRO ab (measured_by)", bildet_iro_ab),
         ("Aktueller Wert (kpi-value)", any(o.get("type") == "kpi-value" and kid in out(o.get("for_kpi", [])) for o in objs.values())),
     ]
-    bonus = [("Forecast/Trend", any(o.get("type") in ("forecast", "trend") and kid in out(o.get("for_kpi", [])) for o in objs.values()))]
+    bonus = [
+        ("Misst ein Target (interne Steuerung)", misst_target),
+        ("Forecast/Trend", any(o.get("type") in ("forecast", "trend") and kid in out(o.get("for_kpi", [])) for o in objs.values())),
+    ]
     return checks, bonus
 
 
@@ -352,6 +378,7 @@ def _topic_checks(objs, tp):
     tid = tp["id"]
     pol = [o for o in objs.values() if o.get("type") == "policy" and tid in out(o.get("concerns", []))]
     mat = [objs[i] for i in out(tp.get("has_iro", [])) if i in objs and _wesentlich(objs[i])]
+    alle_gemessen = bool(mat) and all(_measured(objs, m["id"]) for m in mat)
     alle_adressiert = bool(mat) and all(_addressed(objs, m["id"]) for m in mat)
     checks = [
         ("Owner gesetzt",        bool(tp.get("owner"))),
@@ -360,9 +387,10 @@ def _topic_checks(objs, tp):
         ("≥1 Target",            bool(out(tp.get("has_target", [])))),
         ("≥1 KPI",               bool(out(tp.get("has_kpi", [])))),
         ("≥1 Maßnahme",          bool(out(tp.get("has_initiative", [])))),
-        ("Alle wesentlichen IROs adressiert", alle_adressiert),
+        ("Alle wesentlichen IROs durch KPI gemessen (Pflicht)", alle_gemessen),
     ]
-    return checks, []
+    bonus = [("Alle wesentlichen IROs gesteuert (addresses)", alle_adressiert)]
+    return checks, bonus
 
 
 def _policy_checks(objs, p):

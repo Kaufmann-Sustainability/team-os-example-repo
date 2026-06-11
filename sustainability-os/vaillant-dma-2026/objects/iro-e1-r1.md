@@ -19,6 +19,7 @@ wertschoepfungskette: eigene-ops
 begruendung: "Stranding-Risiko des fossilen Gasheizungs-Portfolios bei beschleunigtem regulatorischem Ausstieg (EPBD/GEG) — finanziell wesentlich über Abschreibungen und Umsatzrückgang."
 concerns: [topic-e1-klimawandel-mitigation]
 scored_under: [methodology-dma-2026]
+measured_by: [kpi-e1-waermepumpen-absatzanteil]
 ---
 
 # IRO E1-R1: Klimawandel-Mitigation

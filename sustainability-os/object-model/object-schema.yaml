@@ -44,7 +44,10 @@ objekt_typen:
   # --- DMA-Slice: Wesentlichkeitsanalyse ---
   iro:                          # Impact / Risk / Opportunity — Kernobjekt der DMA
     pflichtfelder: [iro_typ, impact_wesentlichkeit, finanz_wesentlichkeit, wesentlich]
-    beziehungen: [concerns, informed_by, scored_under]
+    # measured_by (iro -> kpi): die ESRS-Pflicht-Kante — jede WESENTLICHE IRO wird durch
+    # >=1 Kennzahl abgebildet (many-to-many). Steuerung (Ziel/Policy/Strategie via `addresses`)
+    # ist demgegenüber OPTIONAL. Die Zuordnung wird als `decision` dokumentiert (wer/wann/warum).
+    beziehungen: [concerns, informed_by, scored_under, measured_by]
   stakeholder:                  # interne/externe Partei, deren Input einfließt
     pflichtfelder: [stakeholder_typ]
     beziehungen: []             # owner = interne:r Beziehungs-Verantwortliche:r (person)
@@ -96,7 +99,7 @@ beziehungs_vokabular:
   approved_by:  [decision]
   decided_by:   [person]
   supports:     [target]
-  affects:      [target, kpi, topic]
+  affects:      [target, kpi, topic, iro]   # iro: erlaubt, eine IRO→KPI-Zuordnung als decision zu dokumentieren
   at_risk_from: [finding]
   has_budget:   [budget]
   uses_factor:  [emission-factor]
