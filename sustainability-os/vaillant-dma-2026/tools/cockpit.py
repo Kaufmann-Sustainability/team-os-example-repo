@@ -34,9 +34,10 @@ META = {"id", "type", "owner", "status", "stand", "vertraulichkeit", "review_zyk
 # Status -> Farbklasse
 def badge(status):
     s = (status or "").lower()
-    if s in ("aktiv", "final", "erteilt", "in-umsetzung", "abgeschlossen", "wesentlich"):
+    if s in ("aktiv", "final", "erteilt", "in-umsetzung", "abgeschlossen", "wesentlich",
+             "in-kraft", "verabschiedet", "freigegeben"):
         return "ok"
-    if s in ("offen", "geplant", "entwurf", "in-arbeit"):
+    if s in ("offen", "geplant", "entwurf", "in-arbeit", "in-planung"):
         return "warn"
     return "neutral"
 
@@ -179,9 +180,11 @@ def main():
         in_html = "".join(f"<tr><td>{link(s)}</td><td>{html.escape(f)}</td></tr>" for s, f in incoming.get(oid, []))
         sub = f"<span class='badge {badge(fm.get('status'))}'>{html.escape(str(fm.get('status','')))}</span> &nbsp;<code>{html.escape(oid)}</code> · {html.escape(str(fm.get('type','')))}"
         cards = f"<div class=card><h3>Metadaten</h3><table class=meta>{meta}</table></div>"
-        if out_html:
+        # Themen zeigen ihre Beziehungen in den kuratierten Cockpit-Tabellen (Klartext),
+        # daher die generischen ID-Tabellen dort weglassen.
+        if out_html and fm.get("type") != "topic":
             cards += f"<div class=card><h3>Beziehungen → </h3><table>{out_html}</table></div>"
-        if in_html:
+        if in_html and fm.get("type") != "topic":
             cards += f"<div class=card><h3>← referenziert von</h3><table>{in_html}</table></div>"
         if o["body"]:
             cards += f"<div class=card><h3>Beschreibung</h3>{md(o['body'])}</div>"
@@ -218,6 +221,39 @@ def topic_cockpit(tid, objs, link, rev, target_maturity):
     fm = objs[tid]["fm"]
     def title(i): return html.escape(objs[i]["title"]) if i in objs else i
 
+    def who(i):  # Person -> Rolle (menschenlesbar), sonst Titel
+        f = objs.get(i, {}).get("fm", {})
+        return html.escape(f.get("rolle") or (objs[i]["title"] if i in objs else str(i)))
+
+    def who_link(i):
+        return f"<a href='{i}.html'>{who(i)}</a>" if i in objs else who(i)
+
+    def name_link(i):  # Objekt -> Titel-Link (statt ID-Code)
+        return f"<a href='{i}.html'>{title(i)}</a>" if i in objs else html.escape(str(i))
+
+    def short(t, n=110):
+        t = (t or "").strip()
+        return html.escape(t if len(t) <= n else t[:n - 1].rstrip() + "…")
+
+    def money(i):  # Initiative -> erstes Budget formatiert
+        for b in (objs.get(i, {}).get("fm", {}).get("has_budget") or []):
+            v = _num(objs.get(b, {}).get("fm", {}).get("betrag")); w = objs[b]["fm"].get("waehrung", "")
+            if v is None:
+                return ""
+            unit = (f"{v/1e9:.1f} Mrd" if v >= 1e9 else f"{v/1e6:.0f} Mio" if v >= 1e6 else f"{v/1e3:.0f}k" if v >= 1e3 else f"{v:.0f}")
+            return f"<a href='{b}.html'>{unit} {html.escape(w)}</a>"
+        return "<span class=dim>—</span>"
+
+    def iro_desc(i):
+        m = re.search(r"##\s*Beschreibung\s*\n+(.+)", objs.get(i, {}).get("body", ""))
+        return m.group(1).strip() if m else ""
+
+    def typ_badge(i):
+        t = str(objs.get(i, {}).get("fm", {}).get("iro_typ", "")) or "IRO"
+        cl = "ok" if ("positiv" in t.lower() or "chance" in t.lower() or "opportun" in t.lower()) else \
+             "bad" if "negativ" in t.lower() else "warn" if ("risk" in t.lower() or "risiko" in t.lower()) else "neutral"
+        return f"<span class='badge {cl}'>{html.escape(t)}</span>"
+
     def kpi_latest(k):
         vals = sorted([(_num(objs[v]['fm'].get('jahr')), objs[v]['fm'].get('wert'))
                        for v in rev(k, "for_kpi", "kpi-value") if objs[v]['fm'].get('jahr') is not None],
@@ -253,10 +289,14 @@ def topic_cockpit(tid, objs, link, rev, target_maturity):
             continue
         adr = addressers.get(i, [])
         mark = ("<span class='badge ok'>adressiert</span>" if adr else "<span class='badge warn'>OFFEN</span>")
-        iro_rows += f"<tr><td>{link(i)}</td><td>{mark}</td><td>{' '.join(link(a) for a in adr) or '<span class=gap>—</span>'}</td></tr>"
+        nr = html.escape(str(objs[i]["fm"].get("iro_nr", i)))
+        adr_h = "<br>".join(name_link(a) for a in adr) or "<span class=gap>noch nicht gesteuert</span>"
+        iro_rows += (f"<tr><td><a href='{i}.html'>{nr}</a><br><span class=dim>{short(iro_desc(i),140)}</span></td>"
+                     f"<td>{typ_badge(i)}</td><td>{mark}</td><td>{adr_h}</td></tr>")
     n_open = sum(1 for i in iros if str(objs[i]['fm'].get('wesentlich','')).lower() in ('ja','true') and not addressers.get(i))
     cov = (f"<div class=card><h3>IRO-Abdeckung — {'⚠ '+str(n_open)+' offen' if n_open else '✅ vollständig'}</h3>"
-           f"<table><tr><th>wesentliche IRO</th><th>Status</th><th>adressiert durch</th></tr>{iro_rows}</table></div>")
+           f"<table><tr><th>Wesentliche Auswirkung / Risiko / Chance</th><th>Typ</th><th>Status</th>"
+           f"<th>gesteuert durch</th></tr>{iro_rows}</table></div>")
 
     # Ziele: Reifegrad (mit fehlenden Pflichten) · Fortschritt (Baseline→Ist→Ziel) · Trend · Verantwortung
     targets_ids = fm.get("has_target") or []
@@ -288,7 +328,8 @@ def topic_cockpit(tid, objs, link, rev, target_maturity):
                          f"<b>{html.escape(str(ist[1]))}</b> ({int(ist[0]) if ist[0] else ''}) → {html.escape(str(tf.get('zielwert')))}</span>")
         fc_html = f"<br><span class=dim>Forecast {html.escape(str(fc[1]))} ({fc[0]})</span>" if fc else ""
         resp = (tf.get("responsible") or [])
-        verant = f"A: {link(tf.get('owner')) if tf.get('owner') else '—'}" + (f"<br>R: {' '.join(link(r) for r in resp)}" if resp else "")
+        verant = (f"A: {who_link(tf.get('owner')) if tf.get('owner') else '—'}"
+                  + (f"<br>R: {' '.join(who_link(r) for r in resp)}" if resp else ""))
         trow += (f"<tr><td><a href='{t}.html'>{title(t)}</a></td><td>{reif}</td>"
                  f"<td>{prog_html}</td><td>{trend_badge(trend)}{fc_html}</td><td>{verant}</td></tr>")
     targets = (f"<div class=card><h3>Ziele — Reifegrad · Fortschritt · Trend · Verantwortung</h3>"
@@ -305,16 +346,32 @@ def topic_cockpit(tid, objs, link, rev, target_maturity):
     kpis = (f"<div class=card><h3>KPIs — Ist · Trend · Forecast</h3>"
             f"<table><tr><th>KPI</th><th>Ist-Wert</th><th>Trend</th><th>Forecast</th></tr>{krow}</table></div>")
 
-    # Strategie · Policies · Maßnahmen
-    strat = [o for o, x in objs.items() if x["fm"].get("type") == "strategy" and tid in (x["fm"].get("concerns") or [])]
-    pols = [o for o, x in objs.items() if x["fm"].get("type") == "policy" and tid in (x["fm"].get("concerns") or [])]
+    # Maßnahmen — Owner · Status · Budget
     inis = fm.get("has_initiative") or []
-    sh = " ".join(f"<a href='{s}.html'>{title(s)}</a>" for s in strat) or "<span class=gap>—</span>"
-    ph = " ".join(f"<a href='{p}.html'>{title(p)}</a>" for p in pols) or "<span class=gap>—</span>"
-    ih = " ".join(f"<a href='{i}.html'>{title(i)}</a>" for i in inis) or "<span class=gap>—</span>"
-    steer = (f"<div class=grid><div class=card><h3>Strategie ({len(strat)})</h3>{sh}</div>"
-             f"<div class=card><h3>Policies ({len(pols)})</h3>{ph}</div></div>"
-             f"<div class=card><h3>Maßnahmen ({len(inis)})</h3>{ih}</div>")
+    def stat(i): f = objs.get(i, {}).get("fm", {}); return f"<span class='badge {badge(f.get('status'))}'>{html.escape(str(f.get('status','')))}</span>"
+    irow = "".join(f"<tr><td><a href='{i}.html'>{title(i)}</a></td><td>{who_link(objs[i]['fm'].get('owner'))}</td>"
+                   f"<td>{stat(i)}</td><td>{money(i)}</td></tr>" for i in inis)
+    mass = (f"<div class=card><h3>Maßnahmen ({len(inis)})</h3>"
+            f"<table><tr><th>Maßnahme</th><th>Owner</th><th>Status</th><th>Budget</th></tr>{irow}</table></div>"
+            if inis else "<div class=card><h3>Maßnahmen (0)</h3><span class=gap>—</span></div>")
+
+    # Policies — Owner · Geltungsbereich · Status · letztes Update
+    pols = [o for o, x in objs.items() if x["fm"].get("type") == "policy" and tid in (x["fm"].get("concerns") or [])]
+    prow = "".join(f"<tr><td><a href='{p}.html'>{title(p)}</a></td><td>{who_link(objs[p]['fm'].get('owner'))}</td>"
+                   f"<td>{short(objs[p]['fm'].get('geltungsbereich',''),60)}</td><td>{stat(p)}</td>"
+                   f"<td class=dim>{html.escape(str(objs[p]['fm'].get('stand','—')))}</td></tr>" for p in pols)
+    polt = (f"<div class=card><h3>Policies ({len(pols)})</h3>"
+            f"<table><tr><th>Policy</th><th>Owner</th><th>Geltungsbereich</th><th>Status</th><th>Letztes Update</th></tr>{prow}</table></div>"
+            if pols else "<div class=card><h3>Policies (0)</h3><span class=gap>—</span></div>")
+
+    # Strategie — Owner · Status · letztes Update
+    strat = [o for o, x in objs.items() if x["fm"].get("type") == "strategy" and tid in (x["fm"].get("concerns") or [])]
+    srow = "".join(f"<tr><td><a href='{s}.html'>{title(s)}</a></td><td>{who_link(objs[s]['fm'].get('owner'))}</td>"
+                   f"<td>{stat(s)}</td><td class=dim>{html.escape(str(objs[s]['fm'].get('stand','—')))}</td></tr>" for s in strat)
+    strt = (f"<div class=card><h3>Strategie ({len(strat)})</h3>"
+            f"<table><tr><th>Strategie</th><th>Owner</th><th>Status</th><th>Letztes Update</th></tr>{srow}</table></div>"
+            if strat else "")
+    steer = strt + mass + polt
 
     # Lücken & offene Punkte: aggregiert aus Thema + allen verbundenen Objekten
     related = [tid] + targets_ids + (fm.get("has_kpi") or []) + inis + iros + pols + strat
