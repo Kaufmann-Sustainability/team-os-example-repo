@@ -12,7 +12,7 @@ Navigation = den getypten Kanten folgen (klicken). Kein Server, reine Dateien, i
 Aufruf:  python3 tools/cockpit.py      Benötigt: PyYAML.
 """
 from __future__ import annotations
-import html, re
+import html, re, json
 from pathlib import Path
 import yaml
 
@@ -138,6 +138,43 @@ tbody tr:nth-child(even){background:rgba(255,255,255,.02)}
 td,th{padding:8px 10px}
 .prog>i{background:#6e7bd2}.prog.pg>i{background:var(--ok)}.prog.pgbad>i{background:#f85149}
 .unit{color:var(--mut);font-size:11px}.tile{cursor:default}
+.sph{width:100%;height:380px;display:block;border-radius:10px;touch-action:none;cursor:grab;
+background:radial-gradient(circle at 50% 42%,rgba(46,68,120,.28),rgba(13,17,23,0) 68%)}
+.sph:active{cursor:grabbing}
+.legend{display:flex;flex-wrap:wrap;gap:14px;margin-top:10px;font-size:12px;color:var(--mut)}
+.legend .d{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:5px;vertical-align:middle}
+"""
+
+# Dependency-freie Canvas-Animation: Knoten auf einer Fibonacci-Kugel, Auto-Rotation,
+# Ziehen rotiert manuell. Tiefe steuert Größe/Deckkraft (3D-Anmutung).
+SPHERE_JS = """
+function mountSphere(id,data){
+ var c=document.getElementById(id),x=c.getContext('2d');
+ var DPR=Math.min(2,window.devicePixelRatio||1),W,H,R,cx,cy;
+ function rs(){W=c.clientWidth;H=380;c.width=W*DPR;c.height=H*DPR;x.setTransform(DPR,0,0,DPR,0,0);cx=W/2;cy=H/2;R=Math.min(W,H)*0.40;}
+ var n=data.nodes,e=data.edges,col=data.col,N=n.length,P=[];
+ for(var i=0;i<N;i++){var y=N>1?1-(i/(N-1))*2:0,r=Math.sqrt(Math.max(0,1-y*y)),ph=i*Math.PI*(3-Math.sqrt(5));P.push({x:Math.cos(ph)*r,y:y,z:Math.sin(ph)*r});}
+ var ay=0,ax=0.5,drag=false,lx=0,ly=0,vy=0.0035;
+ c.addEventListener('pointerdown',function(ev){drag=true;lx=ev.clientX;ly=ev.clientY;vy=0;try{c.setPointerCapture(ev.pointerId);}catch(_){}});
+ window.addEventListener('pointerup',function(){if(drag){drag=false;vy=0.0035;}});
+ c.addEventListener('pointermove',function(ev){if(!drag)return;ay+=(ev.clientX-lx)*0.01;ax=Math.max(-1.2,Math.min(1.2,ax+(ev.clientY-ly)*0.01));lx=ev.clientX;ly=ev.clientY;});
+ function rot(p){var X=p.x*Math.cos(ay)+p.z*Math.sin(ay),Z=-p.x*Math.sin(ay)+p.z*Math.cos(ay),Y=p.y;
+  var Y2=Y*Math.cos(ax)-Z*Math.sin(ax),Z2=Y*Math.sin(ax)+Z*Math.cos(ax);return {x:X,y:Y2,z:Z2};}
+ function frame(){
+  if(!drag)ay+=vy;
+  x.clearRect(0,0,W,H);
+  var p=P.map(rot),i,a,b;
+  x.lineWidth=1;
+  for(i=0;i<e.length;i++){a=p[e[i][0]];b=p[e[i][1]];var d=((a.z+b.z)/2+1)/2;
+   x.strokeStyle='rgba(120,150,215,'+(0.04+d*0.24)+')';x.beginPath();x.moveTo(cx+a.x*R,cy+a.y*R);x.lineTo(cx+b.x*R,cy+b.y*R);x.stroke();}
+  var ord=[];for(i=0;i<N;i++)ord.push(i);ord.sort(function(u,v){return p[u].z-p[v].z;});
+  for(var k=0;k<ord.length;k++){i=ord[k];var q=p[i],d=(q.z+1)/2,px=cx+q.x*R,py=cy+q.y*R,rad=2.2+d*4.2,cc=col[n[i].t]||'#8a97a6';
+   x.beginPath();x.fillStyle=cc;x.globalAlpha=0.35+d*0.65;x.shadowColor=cc;x.shadowBlur=7*d;x.arc(px,py,rad,0,7);x.fill();x.shadowBlur=0;x.globalAlpha=1;
+   if(d>0.80||n[i].t==='topic'||n[i].t==='target'){x.fillStyle='rgba(227,232,238,'+(0.18+d*0.62)+')';x.font='10px -apple-system,Segoe UI,sans-serif';x.fillText(n[i].l,px+rad+3,py+3);}}
+  requestAnimationFrame(frame);
+ }
+ rs();window.addEventListener('resize',rs);requestAnimationFrame(frame);
+}
 """
 
 
@@ -239,10 +276,17 @@ def topic_cockpit(tid, objs, link, rev, target_maturity):
     fm = objs[tid]["fm"]
     def title(i): return html.escape(objs[i]["title"]) if i in objs else i
 
-    def dname(i, n=54):  # Anzeigename: redundantes Typ-Präfix weg, gekürzt
+    def _strip(i):
         t = objs[i]["title"] if i in objs else str(i)
-        t = re.sub(r"^(Ziel|Maßnahme|Policy|Strategie|KPI|IRO[^:]*):\s*", "", t)
+        return re.sub(r"^(Thema|Ziel|Maßnahme|Policy|Strategie|KPI|IRO[^:]*):\s*", "", t)
+
+    def dname(i, n=54):  # Anzeigename: redundantes Typ-Präfix weg, gekürzt
+        t = _strip(i)
         return html.escape(t if len(t) <= n else t[:n - 1].rstrip() + "…")
+
+    def raw_short(i, n=24):  # roher Kurzname für Canvas-Text (nicht HTML-escaped)
+        t = _strip(i)
+        return t if len(t) <= n else t[:n - 1].rstrip() + "…"
 
     def who(i):  # Person -> Rolle (menschenlesbar), sonst Titel
         f = objs.get(i, {}).get("fm", {})
@@ -493,7 +537,39 @@ def topic_cockpit(tid, objs, link, rev, target_maturity):
         f"<div class='tile {c_gap}' title='Dokumentierte offene Punkte über alle verbundenen Objekte'><div class=n>{n_gaps}</div><div class=l>offene Punkte</div></div>"
         f"<div class='tile {c_gov}' title='Vorhandene Strategie- und Policy-Objekte zum Thema'><div class=n>{len(strat)}·{len(pols)}</div><div class=l>Strategie · Policies</div></div>"
         f"</div>")
-    return attn + tiles + cov + targets + kpis + steer + luecken
+
+    # ---- Objektgraph als rotierender Knoten-Globus (echter Graph des Themas) ----
+    COL = {"topic": "#e3e8ee", "iro": "#d29922", "target": "#58a6ff", "kpi": "#3fb950",
+           "initiative": "#bc8cff", "policy": "#f778ba", "strategy": "#f0883e"}
+    LBL = {"topic": "Thema", "iro": "IRO", "target": "Ziel", "kpi": "KPI",
+           "initiative": "Maßnahme", "policy": "Policy", "strategy": "Strategie"}
+    members = [tid]
+    for f2 in ("has_iro", "has_target", "has_kpi", "has_initiative"):
+        members += (fm.get(f2) or [])
+    members += pols + strat
+    members = list(dict.fromkeys(m for m in members if m in objs))
+    idx = {m: i for i, m in enumerate(members)}
+    def glabel(m):
+        f3 = objs[m]["fm"]
+        return str(f3.get("iro_nr")) if f3.get("type") == "iro" and f3.get("iro_nr") else raw_short(m)
+    gnodes = [{"l": glabel(m), "t": objs[m]["fm"].get("type", "")} for m in members]
+    gedges, seen = [], set()
+    for m in members:
+        for _f, ids in edges_out(objs[m]["fm"]):
+            for t2 in ids:
+                if t2 in idx and idx[m] != idx[t2]:
+                    key = (min(idx[m], idx[t2]), max(idx[m], idx[t2]))
+                    if key not in seen:
+                        seen.add(key); gedges.append([idx[m], idx[t2]])
+    present = list(dict.fromkeys(g["t"] for g in gnodes))
+    legend = "".join(f"<span><span class=d style='background:{COL.get(t,'#8a97a6')}'></span>{LBL.get(t,t)}</span>" for t in present)
+    gdata = json.dumps({"nodes": gnodes, "edges": gedges, "col": COL}, ensure_ascii=False).replace("<", "\\u003c")
+    sphere = (f"<div class=card><h3>Objektgraph — {len(gnodes)} Objekte · {len(gedges)} Verknüpfungen</h3>"
+              f"<div class=hint>Der vernetzte Steuerungsapparat dieses Themas — dreht automatisch, Ziehen rotiert.</div>"
+              f"<canvas id=sph class=sph></canvas><div class=legend>{legend}</div>"
+              f"<script>{SPHERE_JS}\nmountSphere('sph',{gdata});</script></div>")
+
+    return attn + tiles + sphere + cov + targets + kpis + steer + luecken
 
 
 if __name__ == "__main__":
