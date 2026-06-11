@@ -12,7 +12,7 @@ Navigation = den getypten Kanten folgen (klicken). Kein Server, reine Dateien, i
 Aufruf:  python3 tools/cockpit.py      Benötigt: PyYAML.
 """
 from __future__ import annotations
-import html, re, json
+import html, re, json, math
 from pathlib import Path
 import yaml
 
@@ -143,15 +143,17 @@ background:radial-gradient(circle at 50% 42%,rgba(46,68,120,.28),rgba(13,17,23,0
 .sph:active{cursor:grabbing}
 .legend{display:flex;flex-wrap:wrap;gap:14px;margin-top:10px;font-size:12px;color:var(--mut)}
 .legend .d{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:5px;vertical-align:middle}
+.sphsvg{width:100%;height:380px;display:block}
 """
 
 # Dependency-freie Canvas-Animation: Knoten auf einer Fibonacci-Kugel, Auto-Rotation,
 # Ziehen rotiert manuell. Tiefe steuert Größe/Deckkraft (3D-Anmutung).
 SPHERE_JS = """
 function mountSphere(id,data){
- var c=document.getElementById(id),x=c.getContext('2d');
+ var c=document.getElementById(id);if(!c||!c.getContext)return;var x=c.getContext('2d');
+ var fb=document.getElementById('sphfb');if(fb)fb.style.display='none';c.style.display='block';
  var DPR=Math.min(2,window.devicePixelRatio||1),W,H,R,cx,cy;
- function rs(){W=c.clientWidth;H=380;c.width=W*DPR;c.height=H*DPR;x.setTransform(DPR,0,0,DPR,0,0);cx=W/2;cy=H/2;R=Math.min(W,H)*0.40;}
+ function rs(){W=c.clientWidth||(c.parentNode&&c.parentNode.clientWidth)||600;H=380;c.width=W*DPR;c.height=H*DPR;x.setTransform(DPR,0,0,DPR,0,0);cx=W/2;cy=H/2;R=Math.min(W,H)*0.40;}
  var n=data.nodes,e=data.edges,col=data.col,N=n.length,P=[];
  for(var i=0;i<N;i++){var y=N>1?1-(i/(N-1))*2:0,r=Math.sqrt(Math.max(0,1-y*y)),ph=i*Math.PI*(3-Math.sqrt(5));P.push({x:Math.cos(ph)*r,y:y,z:Math.sin(ph)*r});}
  var ay=0,ax=0.5,drag=false,lx=0,ly=0,vy=0.0035;
@@ -173,9 +175,39 @@ function mountSphere(id,data){
    if(d>0.80||n[i].t==='topic'||n[i].t==='target'){x.fillStyle='rgba(227,232,238,'+(0.18+d*0.62)+')';x.font='10px -apple-system,Segoe UI,sans-serif';x.fillText(n[i].l,px+rad+3,py+3);}}
   requestAnimationFrame(frame);
  }
- rs();window.addEventListener('resize',rs);requestAnimationFrame(frame);
+ rs();window.addEventListener('resize',rs);
+ if(window.ResizeObserver){try{new ResizeObserver(rs).observe(c);}catch(_){}}
+ requestAnimationFrame(frame);
 }
 """
+
+
+def svg_sphere(nodes, edges, col, W=600, H=380):
+    """Statische SVG-Momentaufnahme desselben Graphen — rendert ohne JS (Mobile-Vorschau)."""
+    N = len(nodes); R = min(W, H) * 0.40; cx = W / 2; cy = H / 2
+    ay, ax = 0.6, 0.5
+    pts = []
+    for i in range(N):
+        y = 1 - (i / (N - 1)) * 2 if N > 1 else 0
+        r = math.sqrt(max(0, 1 - y * y)); ph = i * math.pi * (3 - math.sqrt(5))
+        X, Z = math.cos(ph) * r, math.sin(ph) * r
+        X2 = X * math.cos(ay) + Z * math.sin(ay); Z2 = -X * math.sin(ay) + Z * math.cos(ay)
+        Y2 = y * math.cos(ax) - Z2 * math.sin(ax); Z3 = y * math.sin(ax) + Z2 * math.cos(ax)
+        pts.append((X2, Y2, Z3))
+    sx = lambda p: cx + p[0] * R; sy = lambda p: cy + p[1] * R
+    out = [f"<svg viewBox='0 0 {W} {H}' xmlns='http://www.w3.org/2000/svg' class=sphsvg>"]
+    for a, b in edges:
+        pa, pb = pts[a], pts[b]; d = ((pa[2] + pb[2]) / 2 + 1) / 2
+        out.append(f"<line x1='{sx(pa):.1f}' y1='{sy(pa):.1f}' x2='{sx(pb):.1f}' y2='{sy(pb):.1f}' "
+                   f"stroke='rgb(120,150,215)' stroke-opacity='{0.05+d*0.24:.2f}'/>")
+    for i in sorted(range(N), key=lambda j: pts[j][2]):
+        p = pts[i]; d = (p[2] + 1) / 2; rad = 2.5 + d * 4.5; c = col.get(nodes[i]["t"], "#8a97a6")
+        out.append(f"<circle cx='{sx(p):.1f}' cy='{sy(p):.1f}' r='{rad:.1f}' fill='{c}' fill-opacity='{0.4+d*0.6:.2f}'/>")
+        if nodes[i]["t"] in ("topic", "target") or d > 0.85:
+            out.append(f"<text x='{sx(p)+rad+3:.1f}' y='{sy(p)+3:.1f}' fill='rgb(227,232,238)' "
+                       f"fill-opacity='{0.2+d*0.6:.2f}' font-size='10' font-family='sans-serif'>{html.escape(nodes[i]['l'])}</text>")
+    out.append("</svg>")
+    return "".join(out)
 
 
 def main():
@@ -564,9 +596,12 @@ def topic_cockpit(tid, objs, link, rev, target_maturity):
     present = list(dict.fromkeys(g["t"] for g in gnodes))
     legend = "".join(f"<span><span class=d style='background:{COL.get(t,'#8a97a6')}'></span>{LBL.get(t,t)}</span>" for t in present)
     gdata = json.dumps({"nodes": gnodes, "edges": gedges, "col": COL}, ensure_ascii=False).replace("<", "\\u003c")
+    svg = svg_sphere(gnodes, gedges, COL)
     sphere = (f"<div class=card><h3>Objektgraph — {len(gnodes)} Objekte · {len(gedges)} Verknüpfungen</h3>"
-              f"<div class=hint>Der vernetzte Steuerungsapparat dieses Themas — dreht automatisch, Ziehen rotiert.</div>"
-              f"<canvas id=sph class=sph></canvas><div class=legend>{legend}</div>"
+              f"<div class=hint>Der vernetzte Steuerungsapparat dieses Themas — im Browser dreht er automatisch, Ziehen rotiert.</div>"
+              f"<canvas id=sph class=sph style='display:none'></canvas>"
+              f"<div id=sphfb class=sph style='padding:0'>{svg}</div>"
+              f"<div class=legend>{legend}</div>"
               f"<script>{SPHERE_JS}\nmountSphere('sph',{gdata});</script></div>")
 
     return attn + tiles + sphere + cov + targets + kpis + steer + luecken
