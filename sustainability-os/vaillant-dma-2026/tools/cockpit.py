@@ -425,8 +425,11 @@ def topic_cockpit(tid, objs, link, rev, target_maturity):
         adr = addressers.get(i, [])
         mark = ("<span class='badge ok'>adressiert</span>" if adr else "<span class='badge warn'>OFFEN</span>")
         nr = html.escape(str(objs[i]["fm"].get("iro_nr", i)))
+        kt = objs[i]["fm"].get("kurztitel")
+        head = f"<a href='{i}.html'>{nr}</a>" + (f" · <b>{html.escape(str(kt))}</b>" if kt else "")
+        desc = short(iro_desc(i), 120 if kt else 140)
         adr_h = "<br>".join(name_link(a) for a in adr) or "<span class=gap>noch nicht gesteuert</span>"
-        iro_rows += (f"<tr><td><a href='{i}.html'>{nr}</a><br><span class=dim>{short(iro_desc(i),140)}</span></td>"
+        iro_rows += (f"<tr><td>{head}<br><span class=dim>{desc}</span></td>"
                      f"<td>{typ_badge(i)}</td><td>{mark}</td><td>{adr_h}</td></tr>")
     n_open = sum(1 for i in iros if str(objs[i]['fm'].get('wesentlich','')).lower() in ('ja','true') and not addressers.get(i))
     cov = (f"<div class=card><h3>IRO-Abdeckung — {'⚠ '+str(n_open)+' offen' if n_open else '✅ vollständig'}</h3>"
@@ -570,7 +573,9 @@ def topic_cockpit(tid, objs, link, rev, target_maturity):
     for i in iros:
         if str(objs[i]['fm'].get('wesentlich', '')).lower() in ('ja', 'true') and not addressers.get(i):
             nr = html.escape(str(objs[i]['fm'].get('iro_nr', i)))
-            items.append(("bad", f"Wesentliche {typ_word(i)} <b>{nr}</b> ist noch nicht durch Strategie, Policy oder Ziel gesteuert."))
+            kt = objs[i]['fm'].get('kurztitel')
+            lab = f"<b>{nr}</b>" + (f" „{html.escape(str(kt))}“" if kt else "")
+            items.append(("bad", f"Wesentliche {typ_word(i)} {lab} ist noch nicht durch Strategie, Policy oder Ziel gesteuert."))
     if miss_freigabe:
         names = ", ".join(dname(t) for t in miss_freigabe[:3]) + ("…" if len(miss_freigabe) > 3 else "")
         items.append(("warn", f"{len(miss_freigabe)} von {len(targets_ids)} Zielen ohne formale Freigabe: {names}"))
@@ -617,7 +622,9 @@ def topic_cockpit(tid, objs, link, rev, target_maturity):
     idx = {m: i for i, m in enumerate(members)}
     def glabel(m):
         f3 = objs[m]["fm"]
-        return str(f3.get("iro_nr")) if f3.get("type") == "iro" and f3.get("iro_nr") else raw_short(m)
+        if f3.get("type") == "iro":  # kurztitel bevorzugt, sonst iro_nr, sonst Titel
+            return str(f3.get("kurztitel") or f3.get("iro_nr") or raw_short(m))
+        return raw_short(m)
     gnodes = [{"l": glabel(m), "t": objs[m]["fm"].get("type", "")} for m in members]
     gedges, seen = [], set()
     for m in members:

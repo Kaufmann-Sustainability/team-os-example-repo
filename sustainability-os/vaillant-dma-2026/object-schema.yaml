@@ -65,6 +65,10 @@ objekt_typen:
     # Struktur-Minimum; der konditionale Score (Impact->Impact-Score, R/O->Financial-Score)
     # wird vom iro-gate-Skill / `reifegrad` durchgesetzt, nicht hier.
     pflichtfelder: [iro_typ, wesentlich]
+    # empfohlen: kurzer menschlicher Titel (3-6 Wörter), den das iro-gate beim Bewerten
+    # setzt. Views (Cockpit/Offenlegung) zeigen ihn statt iro_nr/abgeschnittener Beschreibung;
+    # Fallback bleibt iro_nr. Kein Pflichtfeld (Bestandsdaten brechen nicht).
+    empfohlen: [kurztitel]
     beziehungen: [concerns, informed_by, scored_under, applies_to]
   stakeholder:                  # interne/externe Partei, deren Input einfließt
     pflichtfelder: [stakeholder_typ]

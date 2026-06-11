@@ -26,6 +26,22 @@ auch gesteuert wird. Dieser Skill ist der **Wächter**.
 | 4a | **wenn Impact** | `impact_wesentlichkeit` **+** `wirkung_art: tatsächlich \| potenziell` |
 | 4b | **wenn Risk/Opportunity** | `finanz_wesentlichkeit` |
 | 5 | **wenn `wesentlich: ja`** | mind. ein `target` mit `addresses: [diese IRO]` (→ `iro-coverage`) |
+| 6 | **Kurztitel** (empfohlen) | `kurztitel:` — 3–6 Wörter, menschlich; das Label, das Views (Cockpit/Offenlegung) zeigen |
+
+## Guter `kurztitel` (das menschliche Label)
+Der H1-Titel ist oft generisch (`IRO E1-I1: Klimawandel-Mitigation`) und `iro_nr` (`E1-I1`)
+ist kryptisch — Views brauchen einen **kurzen, sprechenden Griff**. Den setzt du hier, einmal,
+beim Bewerten. Regeln: **3–6 Wörter**, der *Kern* (Quelle/Mechanismus), kein ganzer Satz,
+kein nacktes Standard-Kürzel.
+
+| statt | `kurztitel` |
+|-------|-------------|
+| „IRO E1-I1: Klimawandel-Mitigation" | **Gaskessel-Bestand: fossiler Lock-in** |
+| „IRO E1-I2: Klimawandel-Mitigation" | **Eigenbetrieb Scope 1+2** |
+| „IRO E1-I5: Klimawandel-Mitigation" | **Wärmepumpen vermeiden Kundenemissionen** |
+
+Fehlt `kurztitel`, fallen Views auf `iro_nr` zurück — es bricht nichts, aber die Oberfläche
+bleibt kryptisch. Darum: **bei jeder IRO setzen.**
 
 ## Ablauf
 1. `python3 tools/query.py reifegrad <iro-id>` (oder `<topic-id>` für alle IROs des Themas).
@@ -41,4 +57,5 @@ auch gesteuert wird. Dieser Skill ist der **Wächter**.
 ## Vor dem Abschluss
 - [ ] `reifegrad <iro>` 100 % **oder** jede offene Pflicht in `offene_punkte`
 - [ ] Score entspricht dem Typ (kein doppelter Score)
+- [ ] `kurztitel` gesetzt (3–6 Wörter, sprechend)
 - [ ] `validate.py` grün
