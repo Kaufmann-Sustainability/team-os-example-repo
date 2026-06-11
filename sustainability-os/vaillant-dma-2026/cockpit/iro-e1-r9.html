@@ -11,6 +11,15 @@ h1{font-size:24px;margin:0 0 4px}.sub{color:var(--mut);margin-bottom:20px}
 .badge.ok{background:rgba(63,185,80,.15);color:var(--ok)}
 .badge.warn{background:rgba(210,153,34,.15);color:var(--warn)}
 .badge.neutral{background:rgba(110,118,129,.15);color:var(--neutral)}
+.badge.bad{background:rgba(248,81,73,.15);color:#f85149}
+.tiles{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin:14px 0}
+@media(max-width:700px){.tiles{grid-template-columns:repeat(2,1fr)}}
+.tile{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px}
+.tile .n{font-size:26px;font-weight:700;line-height:1.1}.tile .l{color:var(--mut);font-size:12px;margin-top:4px}
+.tile.ok .n{color:var(--ok)}.tile.warn .n{color:var(--warn)}.tile.bad .n{color:#f85149}
+.prog{display:inline-block;width:120px;height:9px;background:#0d1117;border-radius:5px;overflow:hidden;vertical-align:middle;position:relative}
+.prog>i{display:block;height:100%;background:var(--link)}
+.miss{color:#f85149;font-size:12px}.dim{color:var(--mut);font-size:12px}
 .card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px;margin:14px 0}
 .card h3{margin:0 0 10px;font-size:15px;color:var(--mut);text-transform:uppercase;letter-spacing:.04em}
 table{width:100%;border-collapse:collapse}td,th{text-align:left;padding:6px 8px;border-bottom:1px solid var(--line);font-size:14px;vertical-align:top}
